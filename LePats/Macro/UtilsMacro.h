@@ -30,12 +30,6 @@ enum connectP2P
     CONNECT_DEV_ERROR
 };
 
-#define  kTableviewDeviceCellHeight   92
-#define  kTableViewRTSPCellHeight   69
-
-
-
-
 #define DEFINE_SINGLETON_FOR_HEADER(className) \
 \
 + (className *)shared##className;
@@ -52,14 +46,8 @@ enum connectP2P
 }
 
 #define kNSCachesPath [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0]
-
 #define kDocumentPath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
-#define kDatabasePath [kDocumentPath stringByAppendingPathComponent:@"xc.db"]
-#define kDatabaseUserRecord [kDocumentPath stringByAppendingPathComponent:@"xcRecord.db"]
-#define kDatabaseRecord [kDocumentPath stringByAppendingPathComponent:@"record.db"]
-#define kDatabaseRTSP [kDocumentPath stringByAppendingPathComponent:@"rtsp.db"]
 #define kLibraryPath  [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0]
-#define kLibaryShoto [kLibraryPath stringByAppendingPathComponent:@"shoto"]
 #define IOS_SYSTEM_8 [[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0
 
 #ifdef DEBUG

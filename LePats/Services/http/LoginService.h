@@ -8,6 +8,13 @@
 
 #import "HttpManager.h"
 
+typedef void(^HttpLoginService)(int nStatus);
+
 @interface LoginService : HttpManager
+
+
+@property (nonatomic,copy) HttpLoginService httpBlock;
+
+-(void)requestLogin:(NSString *)strUser password:(NSString *)strPwd;
 
 @end

@@ -19,7 +19,6 @@
     //%@pats/user/setInfo.do?nickname=%@&sex=%d&birthday=%@&signature=0&password=%@userid=%@token=%@%@
     NSString *strUrl = [NSString stringWithFormat:@"%@pats/user/setInfo.do?nickname=%@&sex=%d&birthday=%@&password=%@&userid=%@&token=%@%@",
                         LEPAT_HTTP_HOST,user.strNickName,user.nSex,user.strBirthday,user.strPassword,user.strUserId,user.strToken,LEPAT_VERSION_INFO];
-    DLog(@"strUrl:\n%@",strUrl);
     [self sendRequest:strUrl];
 }
 

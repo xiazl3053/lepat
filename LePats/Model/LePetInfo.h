@@ -9,5 +9,23 @@
 #import <Foundation/Foundation.h>
 
 @interface LePetInfo : NSObject
+/*
+petId:宠物ID
+petName：宠物名称
+petCount：拥有宠物数量
+birthday：生日
+sortId：宠物分类id
+description：宠物描述
+sex：性别
+*/
+@property (nonatomic,assign) int nPetId;
+@property (nonatomic,strong) NSString *strName;
+@property (nonatomic,assign) int nPetCount;
+@property (nonatomic,strong) NSString *strBirthday;
+@property (nonatomic,assign) int nSortId;
+@property (nonatomic,strong) NSString *strDescription;
+@property (nonatomic,assign) int nSex;
+@property (nonatomic,assign) int nPhotoId;
+
 
 @end

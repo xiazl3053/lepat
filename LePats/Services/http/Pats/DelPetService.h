@@ -10,4 +10,6 @@
 
 @interface DelPetService : HttpManager
 
+-(void)requestDelPetInfo:(int)nPetId;
+
 @end

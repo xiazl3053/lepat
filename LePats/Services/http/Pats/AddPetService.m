@@ -7,7 +7,27 @@
 //
 
 #import "AddPetService.h"
+#import "UserInfo.h"
 
 @implementation AddPetService
+
+-(void)requestAddPet:(LePetInfo*)lePet
+{
+    UserInfo *user = [UserInfo sharedUserInfo];
+    NSString *strUrl = [NSString stringWithFormat:@"%@pats/pet/doAdd.do?petName=%@&petCount%d&birthday=%@&sortId=%d&photoid=%d&description=%@&sex=%d&userid=%@&token=%@%@",LEPAT_HTTP_HOST,lePet.strName,lePet.nPetCount,lePet.strBirthday,lePet.nSortId,lePet.nPhotoId,lePet.strDescription,lePet.nSex,
+                        user.strUserId,user.strToken,LEPAT_VERSION_INFO];
+    [self sendRequest:strUrl];
+}
+
+-(void)reciveInfo:(int *)nStatus data:(NSData *)data
+{
+    if (*nStatus!=200)
+    {
+        DLog(@"获取我的宠物信息错误");
+        return ;
+    }
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+    DLog(@"dic:%@",dic);
+}
 
 @end

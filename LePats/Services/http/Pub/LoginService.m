@@ -23,6 +23,7 @@
             NSDictionary *dicInfo = [dic objectForKey:@"loginuser"];
             [[UserInfo sharedUserInfo] setLoginUser:dicInfo];
             [UserInfo sharedUserInfo].strToken = [dic objectForKey:@"token"];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"QUERY_PET_INFO" object:nil];
         }
     }
     else

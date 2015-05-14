@@ -10,4 +10,6 @@
 
 @interface PetSortService : HttpManager
 
+-(void)requestPetSort;
+
 @end

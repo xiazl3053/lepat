@@ -15,4 +15,9 @@
 
 -(void)reciveHttp:(NSURLResponse *)response data:(NSData*)data error:(NSError*)connectionError;
 
+
+
+
+
+
 @end

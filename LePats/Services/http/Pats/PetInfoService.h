@@ -10,4 +10,6 @@
 
 @interface PetInfoService : HttpManager
 
+-(void)requestPetInfo:(int)nPetId;
+
 @end

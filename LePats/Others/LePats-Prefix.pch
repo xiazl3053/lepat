@@ -6,10 +6,25 @@
 //  Copyright (c) 2015年 admin. All rights reserved.
 //
 
-#ifndef LePats_LePats_Prefix_pch
-#define LePats_LePats_Prefix_pch
+#import <Availability.h>
 
-// Include any system framework and library headers here that should be included in all compilation units.
-// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "PubDefine.h"
+#import "UtilsMacro.h"
+
+#define XCLocalized(x) NSLocalizedString(x, "")
+#define XCFONT(x) [UIFont fontWithName:@"Helvetica" size:x]
+
+#define LEPAT_HTTP_HOST @"http://www.lxhes.com.cn:8082/"
+#define LEPAT_VERSION_INFO @"&v=1_0"
+
+
 
 #endif

@@ -8,6 +8,9 @@
 
 #import "HttpManager.h"
 
+#import "LePetInfo.h"
 @interface AddPetService : HttpManager
+
+-(void)requestAddPet:(LePetInfo*)lePet;
 
 @end

@@ -10,10 +10,6 @@
 
 @implementation HttpManager
 
-
-
-
-
 -(void)sendRequest:(NSString *)strPath
 {
     NSURL *url=[NSURL URLWithString:strPath];
@@ -29,7 +25,6 @@
          }
      }];
 }
-
 
 -(void)reciveHttp:(NSURLResponse *)response data:(NSData*)data error:(NSError*)connectionError
 {

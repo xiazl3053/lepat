@@ -10,4 +10,8 @@
 
 @interface MyPetService : HttpManager
 
+
+-(void)requestPetInfo:(int)nCur;
+
+
 @end
