@@ -11,9 +11,12 @@
 // 发布代码于最专业的源码分享网站: Code4App.com
 
 #import "LeftViewController.h"
+#import "HomeItemModel.h"
+#import "Common.h"
 
-@interface LeftViewController ()
+@interface LeftViewController ()<UITableViewDataSource,UITableViewDelegate>
 
+@property (nonatomic,strong) NSMutableArray *itemList;
 @end
 
 @implementation LeftViewController
@@ -23,7 +26,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        [self createrView];
         
     }
     return self;
@@ -32,7 +34,60 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self initParams];
+    [self initViews];
     // Do any additional setup after loading the view.
+}
+
+-(void)initParams{
+    self.itemList=[NSMutableArray array];
+    HomeItemModel *model=[[HomeItemModel alloc]init];
+    model.title=@"我的QQ会员";
+    model.img=@"my";
+    
+    HomeItemModel *model1=[[HomeItemModel alloc]init];
+    model1.title=@"QQ钱包";
+    model1.img=@"my";
+    
+    HomeItemModel *model2=[[HomeItemModel alloc]init];
+    model2.title=@"网上营业厅";
+    model2.img=@"my";
+    
+    [self.itemList addObject:model];
+    [self.itemList addObject:model1];
+    [self.itemList addObject:model2];
+    
+}
+
+-(void)initViews{
+    [self initTableView];
+}
+
+-(void)initTableView{
+    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 80, 200, self.view.frame.size.height-80) style:UITableViewStylePlain];
+    tableView.delegate=self;
+    tableView.dataSource=self;
+    tableView.backgroundColor=[UIColor redColor];
+    [self.view addSubview:tableView];
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.itemList.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *identifier=@"CELL";
+    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:identifier];
+    if (cell==nil) {
+        cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+    }
+    HomeItemModel *model=[self.itemList objectAtIndex:indexPath.row];
+    cell.textLabel.text=model.title;
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [[NSNotificationCenter defaultCenter]postNotificationName:KShowMainViewController object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,16 +96,5 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)createrView{
-    [self.view setBackgroundColor:[UIColor redColor]];
-    
-    UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200, [UIScreen mainScreen].bounds.size.height)];
-    [label setText:@"这是左视图"];
-    [label setTextColor:[UIColor whiteColor]];
-    [label setNumberOfLines:0];
-    [label setFont:[UIFont systemFontOfSize:100]];
-    
-    [self.view addSubview:label];
-}
 
 @end

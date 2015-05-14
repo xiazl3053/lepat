@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		7AE8302AB035A0F6C58184D7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF811F65411D3FCD44EA091 /* libPods.a */; };
 		843EA8801B044EDE004B9BC1 /* HomeItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EA87F1B044EDE004B9BC1 /* HomeItemModel.m */; };
+		843EA8981B04521E004B9BC1 /* HomeItemCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EA8951B04521E004B9BC1 /* HomeItemCollectionCell.m */; };
+		843EA8991B04521E004B9BC1 /* HomeItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EA8971B04521E004B9BC1 /* HomeItemButton.m */; };
+		843EA89D1B045242004B9BC1 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EA89C1B045242004B9BC1 /* BaseViewController.m */; };
+		843EA89F1B0452AF004B9BC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843EA89E1B0452AF004B9BC1 /* Main.storyboard */; };
 		BB088E341B032B1D00F5E092 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB088E331B032B1D00F5E092 /* UserInfo.m */; };
 		BB088E411B03453900F5E092 /* HttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB088E3A1B03453900F5E092 /* HttpManager.m */; };
 		BB088E421B03453900F5E092 /* LoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = BB088E3C1B03453900F5E092 /* LoginService.m */; };
@@ -30,7 +34,6 @@
 		BB9A04B61B01F28F007DFDC8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB9A04A01B01F28F007DFDC8 /* Images.xcassets */; };
 		BB9A04B71B01F28F007DFDC8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9A04A61B01F28F007DFDC8 /* AppDelegate.m */; };
 		BB9A04B81B01F28F007DFDC8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB9A04A71B01F28F007DFDC8 /* LaunchScreen.xib */; };
-		BB9A04B91B01F28F007DFDC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB9A04A91B01F28F007DFDC8 /* Main.storyboard */; };
 		BB9A04BA1B01F28F007DFDC8 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB9A04AB1B01F28F007DFDC8 /* Info.plist */; };
 		BB9A04BB1B01F28F007DFDC8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9A04AC1B01F28F007DFDC8 /* main.m */; };
 /* End PBXBuildFile section */
@@ -41,6 +44,14 @@
 		635FBA24F678FB40B37ED093 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		843EA87E1B044EDE004B9BC1 /* HomeItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeItemModel.h; sourceTree = "<group>"; };
 		843EA87F1B044EDE004B9BC1 /* HomeItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeItemModel.m; sourceTree = "<group>"; };
+		843EA8941B04521E004B9BC1 /* HomeItemCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeItemCollectionCell.h; sourceTree = "<group>"; };
+		843EA8951B04521E004B9BC1 /* HomeItemCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeItemCollectionCell.m; sourceTree = "<group>"; };
+		843EA8961B04521E004B9BC1 /* HomeItemButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeItemButton.h; sourceTree = "<group>"; };
+		843EA8971B04521E004B9BC1 /* HomeItemButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeItemButton.m; sourceTree = "<group>"; };
+		843EA89A1B04522C004B9BC1 /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		843EA89B1B045242004B9BC1 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		843EA89C1B045242004B9BC1 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		843EA89E1B0452AF004B9BC1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		84D4D1C91B018FA400E67D9C /* LePats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LePats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB088E281B02D72D00F5E092 /* LePats-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LePats-Prefix.pch"; sourceTree = "<group>"; };
 		BB088E291B02D7F800F5E092 /* PubDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PubDefine.h; sourceTree = "<group>"; };
@@ -85,7 +96,6 @@
 		BB9A04A51B01F28F007DFDC8 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BB9A04A61B01F28F007DFDC8 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		BB9A04A81B01F28F007DFDC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		BB9A04AA1B01F28F007DFDC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BB9A04AB1B01F28F007DFDC8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB9A04AC1B01F28F007DFDC8 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,6 +112,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		843EA8931B04520D004B9BC1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				843EA8941B04521E004B9BC1 /* HomeItemCollectionCell.h */,
+				843EA8951B04521E004B9BC1 /* HomeItemCollectionCell.m */,
+				843EA8961B04521E004B9BC1 /* HomeItemButton.h */,
+				843EA8971B04521E004B9BC1 /* HomeItemButton.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		84D4D1C01B018FA400E67D9C = {
 			isa = PBXGroup;
 			children = (
@@ -123,13 +144,13 @@
 		84D4D1CB1B018FA400E67D9C /* LePats */ = {
 			isa = PBXGroup;
 			children = (
+				843EA8931B04520D004B9BC1 /* Views */,
 				BB9A04901B01F28F007DFDC8 /* Home */,
 				BB9A04A01B01F28F007DFDC8 /* Images.xcassets */,
 				BB9A04A11B01F28F007DFDC8 /* Macro */,
 				BB9A04A31B01F28F007DFDC8 /* Model */,
 				BB9A04A41B01F28F007DFDC8 /* Others */,
 				BB9A04AD1B01F28F007DFDC8 /* Services */,
-				BB9A04AE1B01F28F007DFDC8 /* VIews */,
 			);
 			path = LePats;
 			sourceTree = "<group>";
@@ -186,6 +207,8 @@
 		BB9A04911B01F28F007DFDC8 /* Controlls */ = {
 			isa = PBXGroup;
 			children = (
+				843EA89B1B045242004B9BC1 /* BaseViewController.h */,
+				843EA89C1B045242004B9BC1 /* BaseViewController.m */,
 				BB9A04921B01F28F007DFDC8 /* HomeViewController.h */,
 				BB9A04931B01F28F007DFDC8 /* HomeViewController.m */,
 				BB9A04941B01F28F007DFDC8 /* LeftViewController.h */,
@@ -207,6 +230,7 @@
 		BB9A04A11B01F28F007DFDC8 /* Macro */ = {
 			isa = PBXGroup;
 			children = (
+				843EA89A1B04522C004B9BC1 /* Common.h */,
 				BB9A04A21B01F28F007DFDC8 /* UtilsMacro.h */,
 				BB088E291B02D7F800F5E092 /* PubDefine.h */,
 			);
@@ -229,8 +253,8 @@
 			children = (
 				BB9A04A51B01F28F007DFDC8 /* AppDelegate.h */,
 				BB9A04A61B01F28F007DFDC8 /* AppDelegate.m */,
+				843EA89E1B0452AF004B9BC1 /* Main.storyboard */,
 				BB9A04A71B01F28F007DFDC8 /* LaunchScreen.xib */,
-				BB9A04A91B01F28F007DFDC8 /* Main.storyboard */,
 				BB9A04AB1B01F28F007DFDC8 /* Info.plist */,
 				BB9A04AC1B01F28F007DFDC8 /* main.m */,
 				BB088E281B02D72D00F5E092 /* LePats-Prefix.pch */,
@@ -245,13 +269,6 @@
 				BB9A04BC1B02031C007DFDC8 /* http */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		BB9A04AE1B01F28F007DFDC8 /* VIews */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = VIews;
 			sourceTree = "<group>";
 		};
 		BB9A04BC1B02031C007DFDC8 /* http */ = {
@@ -340,9 +357,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB9A04BA1B01F28F007DFDC8 /* Info.plist in Resources */,
-				BB9A04B91B01F28F007DFDC8 /* Main.storyboard in Resources */,
 				BB9A04B81B01F28F007DFDC8 /* LaunchScreen.xib in Resources */,
 				BB9A04B61B01F28F007DFDC8 /* Images.xcassets in Resources */,
+				843EA89F1B0452AF004B9BC1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,6 +404,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB088E341B032B1D00F5E092 /* UserInfo.m in Sources */,
+				843EA89D1B045242004B9BC1 /* BaseViewController.m in Sources */,
 				BB088E581B03565000F5E092 /* PetSortService.m in Sources */,
 				BB088E4B1B034A4200F5E092 /* PetInfoService.m in Sources */,
 				BB088E551B034D0700F5E092 /* LePetInfo.m in Sources */,
@@ -401,9 +419,11 @@
 				BB9A04B11B01F28F007DFDC8 /* MainViewController.m in Sources */,
 				BB088E4E1B034C8500F5E092 /* DelPetService.m in Sources */,
 				BB9A04B71B01F28F007DFDC8 /* AppDelegate.m in Sources */,
+				843EA8981B04521E004B9BC1 /* HomeItemCollectionCell.m in Sources */,
 				BB088E411B03453900F5E092 /* HttpManager.m in Sources */,
 				BB088E421B03453900F5E092 /* LoginService.m in Sources */,
 				BB9A04B31B01F28F007DFDC8 /* UserDetailViewController.m in Sources */,
+				843EA8991B04521E004B9BC1 /* HomeItemButton.m in Sources */,
 				BB9A04B01B01F28F007DFDC8 /* LeftViewController.m in Sources */,
 				BB9A04BB1B01F28F007DFDC8 /* main.m in Sources */,
 				BB9A04B41B01F28F007DFDC8 /* UserInfoViewController.m in Sources */,
@@ -419,14 +439,6 @@
 				BB9A04A81B01F28F007DFDC8 /* Base */,
 			);
 			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-		BB9A04A91B01F28F007DFDC8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BB9A04AA1B01F28F007DFDC8 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

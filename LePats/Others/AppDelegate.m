@@ -8,17 +8,10 @@
 
 #import "AppDelegate.h"
 #import "WWSideslipViewController.h"
-
 #import "LeftViewController.h"
-#import "MainViewController.h"
 #import "RightViewController.h"
-
-#import "LoginService.h"
-#import "UserInfo.h"
-#import "RegisterService.h"
-#import "UpdUserService.h"
-#import "MyPetService.h"
-#import "PetSortService.h"
+#import "MainViewController.h"
+#import "HomeViewController.h"
 
 @interface AppDelegate ()
 
@@ -26,16 +19,12 @@
 
 @implementation AppDelegate
 
--(void)addNotify
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryPetInfo) name:@"QUERY_PET_INFO" object:nil];
-}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
-    [self addNotify];
+    
     
     UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     MainViewController *main = [story instantiateViewControllerWithIdentifier:@"MainViewController"];
@@ -44,7 +33,7 @@
     
     LeftViewController *left = [story instantiateViewControllerWithIdentifier:@"LeftViewController"];
     
-    WWSideslipViewController * slide = [[WWSideslipViewController alloc] initWithLeftView:left andMainView:main andRightView:right andBackgroundImage:[UIImage imageNamed:@"bg.png"]];
+    WWSideslipViewController * slide = [[WWSideslipViewController alloc]initWithLeftView:left andMainView:main andRightView:right andBackgroundImage:[UIImage imageNamed:@"bg.png"]];
     
     //滑动速度系数
     [slide setSpeedf:0.5];
@@ -54,34 +43,11 @@
     
     //    UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:slide];
     
-    
-    LoginService *login = [[LoginService alloc] init];
-    [login requestLogin:@"13912345678" password:@"123456"];
-    
-//    RegisterService *reg = [[RegisterService alloc] init];
-//    [reg requestRegCode:@"13912345678"];
-//
-//    [UserInfo sharedUserInfo].strPassword = @"123456";
-//    [UserInfo sharedUserInfo].strNickName = @"test";
-//    [UserInfo sharedUserInfo].strBirthday = @"1970-1-1";
-//        
-//    UpdUserService *updService = [[UpdUserService alloc] init];
-//    [updService updReqUserInfo];
-    
     [self.window setRootViewController:slide];
     
     [self.window makeKeyAndVisible];
     return YES;
-
-}
-
--(void)queryPetInfo
-{
-    PetSortService *petSort = [[PetSortService alloc] init];
-    [petSort requestPetSort];
     
-    MyPetService *myPet = [[MyPetService alloc] init];
-    [myPet requestPetInfo:1];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
