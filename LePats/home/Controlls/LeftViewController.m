@@ -13,6 +13,7 @@
 #import "LeftViewController.h"
 #import "HomeItemModel.h"
 #import "Common.h"
+#import "UserInfoViewController.h"
 
 @interface LeftViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -34,6 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor=[UIColor redColor];
     [self initParams];
     [self initViews];
     // Do any additional setup after loading the view.

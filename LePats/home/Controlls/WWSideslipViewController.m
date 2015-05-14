@@ -11,7 +11,9 @@
 // 发布代码于最专业的源码分享网站: Code4App.com
 
 #import "WWSideslipViewController.h"
-
+#import "Common.h"
+#import "UserInfoViewController.h"
+#import "MainViewController.h"
 @interface WWSideslipViewController ()
 
 @end
@@ -30,10 +32,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self initParams];
     // Do any additional setup after loading the view.
     
     //[self.view addSubview:mainControl.view];
     
+}
+
+-(void)initParams{
+    [self initRegisterNotification];
+}
+
+-(void)initRegisterNotification{
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(gotoMyInfoViewCotroller) name:KShowMainViewController object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -89,6 +100,12 @@
 
 //滑动手势
 - (void) handlePan: (UIPanGestureRecognizer *)rec{
+    MainViewController *tabbar=(MainViewController*)mainControl;
+    UINavigationController *nav=(UINavigationController *)tabbar.selectedViewController;
+    if ([nav.topViewController isKindOfClass:[UserInfoViewController class]]) {
+        return ;
+    }
+    
     CGPoint point = [rec translationInView:self.view];
     scalef = (point.x*speedf+scalef);
     //根据视图位置判断是左滑还是右边滑动
@@ -97,7 +114,7 @@
 //        rec.view.transform = CGAffineTransformScale(CGAffineTransformIdentity,1-scalef/1000,1-scalef/1000);
 //        [rec setTranslation:CGPointMake(0, 0) inView:self.view];
 //        righControl.view.hidden = YES;
-//        leftControl.view.hidden = NO;
+        leftControl.view.hidden = NO;
     }
     else
     {
@@ -147,6 +164,30 @@
     [UIView commitAnimations];
 }
 
+-(void)gotoMyInfoViewCotroller{
+    [self showMainView];
+    [self gotoInfoView];
+    
+}
+
+-(void)gotoInfoView{
+    MainViewController *tabbar=(MainViewController*)mainControl;
+    UIViewController *vc=tabbar.selectedViewController;
+    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UserInfoViewController *info=[story instantiateViewControllerWithIdentifier:@"UserInfoViewController"];
+    info.view.backgroundColor=[UIColor yellowColor];
+    info.hidesBottomBarWhenPushed=YES;
+    [((UINavigationController*)vc) pushViewController:info animated:YES];
+    switch (0) {
+        case 0:
+        {
+           
+        }break;
+            
+        default:
+            break;
+    }
+}
 //显示左视图
 -(void)showLeftView
 {

@@ -133,10 +133,10 @@
             </objects>
             <point key="canvasLocation" x="-327" y="180"/>
         </scene>
-        <!--User Info View Controller-->
+        <!--View Controller-->
         <scene sceneID="FD0-Gt-eBP">
             <objects>
-                <viewController id="dgW-fl-ffI" customClass="UserInfoViewController" sceneMemberID="viewController">
+                <viewController id="dgW-fl-ffI" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Qfd-Fs-YHK"/>
                         <viewControllerLayoutGuide type="bottom" id="Ia8-hb-7fI"/>
@@ -144,17 +144,6 @@
                     <view key="view" contentMode="scaleToFill" id="Ooe-Lv-lAb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7M1-iC-wj4">
-                                <rect key="frame" x="184" y="264" width="46" height="30"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="click:" destination="dgW-fl-ffI" eventType="touchUpInside" id="XIZ-UX-bV6"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" red="0.094117647060000004" green="0.70588235290000001" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="eL9-i2-pI6"/>
