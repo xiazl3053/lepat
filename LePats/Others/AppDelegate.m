@@ -19,6 +19,7 @@
 #import "UpdUserService.h"
 #import "MyPetService.h"
 #import "PetSortService.h"
+#import "HttpUploadManager.h"
 
 @interface AppDelegate ()
 
@@ -30,6 +31,8 @@
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(queryPetInfo) name:@"QUERY_PET_INFO" object:nil];
 }
+
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -82,6 +85,10 @@
     
     MyPetService *myPet = [[MyPetService alloc] init];
     [myPet requestPetInfo:1];
+    
+    HttpUploadManager *httpUpload = [[HttpUploadManager alloc] init];
+    [httpUpload uploadPerson:[UIImage imageNamed:@"my"]];
+     
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -19,6 +19,7 @@
 		BB088E511B034CDC00F5E092 /* AddPetService.m in Sources */ = {isa = PBXBuildFile; fileRef = BB088E501B034CDC00F5E092 /* AddPetService.m */; };
 		BB088E551B034D0700F5E092 /* LePetInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB088E541B034D0700F5E092 /* LePetInfo.m */; };
 		BB088E581B03565000F5E092 /* PetSortService.m in Sources */ = {isa = PBXBuildFile; fileRef = BB088E571B03565000F5E092 /* PetSortService.m */; };
+		BB588F931B047F690095337C /* HttpUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB588F921B047F690095337C /* HttpUploadManager.m */; };
 		BB9A04AF1B01F28F007DFDC8 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9A04931B01F28F007DFDC8 /* HomeViewController.m */; };
 		BB9A04B01B01F28F007DFDC8 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9A04951B01F28F007DFDC8 /* LeftViewController.m */; };
 		BB9A04B11B01F28F007DFDC8 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9A04971B01F28F007DFDC8 /* MainViewController.m */; };
@@ -63,6 +64,8 @@
 		BB088E541B034D0700F5E092 /* LePetInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LePetInfo.m; sourceTree = "<group>"; };
 		BB088E561B03565000F5E092 /* PetSortService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PetSortService.h; sourceTree = "<group>"; };
 		BB088E571B03565000F5E092 /* PetSortService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetSortService.m; sourceTree = "<group>"; };
+		BB588F911B047F690095337C /* HttpUploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpUploadManager.h; sourceTree = "<group>"; };
+		BB588F921B047F690095337C /* HttpUploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpUploadManager.m; sourceTree = "<group>"; };
 		BB9A04921B01F28F007DFDC8 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		BB9A04931B01F28F007DFDC8 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		BB9A04941B01F28F007DFDC8 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
@@ -172,6 +175,15 @@
 			path = Pats;
 			sourceTree = "<group>";
 		};
+		BB588F901B047EE00095337C /* upload */ = {
+			isa = PBXGroup;
+			children = (
+				BB588F911B047F690095337C /* HttpUploadManager.h */,
+				BB588F921B047F690095337C /* HttpUploadManager.m */,
+			);
+			path = upload;
+			sourceTree = "<group>";
+		};
 		BB9A04901B01F28F007DFDC8 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,6 +264,7 @@
 		BB9A04BC1B02031C007DFDC8 /* http */ = {
 			isa = PBXGroup;
 			children = (
+				BB588F901B047EE00095337C /* upload */,
 				BB088E451B03454900F5E092 /* Pats */,
 				BB088E381B03453900F5E092 /* Pub */,
 			);
@@ -393,6 +406,7 @@
 				BB9A04B21B01F28F007DFDC8 /* RightViewController.m in Sources */,
 				BB088E431B03453900F5E092 /* RegisterService.m in Sources */,
 				BB9A04B11B01F28F007DFDC8 /* MainViewController.m in Sources */,
+				BB588F931B047F690095337C /* HttpUploadManager.m in Sources */,
 				BB088E4E1B034C8500F5E092 /* DelPetService.m in Sources */,
 				BB9A04B71B01F28F007DFDC8 /* AppDelegate.m in Sources */,
 				BB088E411B03453900F5E092 /* HttpManager.m in Sources */,
