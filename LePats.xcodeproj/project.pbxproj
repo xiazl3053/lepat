@@ -7,11 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D34E92B1B05FD1D00AE04F7 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D34E9181B05FD1D00AE04F7 /* BaseViewController.m */; };
+		4D34E92C1B05FD1D00AE04F7 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D34E91A1B05FD1D00AE04F7 /* HomeViewController.m */; };
+		4D34E92D1B05FD1D00AE04F7 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D34E91C1B05FD1D00AE04F7 /* LeftViewController.m */; };
+		4D34E92E1B05FD1D00AE04F7 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D34E91E1B05FD1D00AE04F7 /* MainViewController.m */; };
+		4D34E92F1B05FD1D00AE04F7 /* RightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D34E9201B05FD1D00AE04F7 /* RightViewController.m */; };
+		4D34E9301B05FD1D00AE04F7 /* WWSideslipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D34E9221B05FD1D00AE04F7 /* WWSideslipViewController.m */; };
+		4D34E9311B05FD1D00AE04F7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D34E9251B05FD1D00AE04F7 /* LoginViewController.m */; };
+		4D34E9321B05FD1D00AE04F7 /* UserDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D34E9281B05FD1D00AE04F7 /* UserDetailViewController.m */; };
+		4D34E9331B05FD1D00AE04F7 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D34E92A1B05FD1D00AE04F7 /* UserInfoViewController.m */; };
 		7AE8302AB035A0F6C58184D7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF811F65411D3FCD44EA091 /* libPods.a */; };
 		843EA8801B044EDE004B9BC1 /* HomeItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EA87F1B044EDE004B9BC1 /* HomeItemModel.m */; };
 		843EA8981B04521E004B9BC1 /* HomeItemCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EA8951B04521E004B9BC1 /* HomeItemCollectionCell.m */; };
 		843EA8991B04521E004B9BC1 /* HomeItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EA8971B04521E004B9BC1 /* HomeItemButton.m */; };
-		843EA89D1B045242004B9BC1 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EA89C1B045242004B9BC1 /* BaseViewController.m */; };
 		843EA89F1B0452AF004B9BC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843EA89E1B0452AF004B9BC1 /* Main.storyboard */; };
 		BB088E341B032B1D00F5E092 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB088E331B032B1D00F5E092 /* UserInfo.m */; };
 		BB088E411B03453900F5E092 /* HttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB088E3A1B03453900F5E092 /* HttpManager.m */; };
@@ -25,13 +33,6 @@
 		BB088E551B034D0700F5E092 /* LePetInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB088E541B034D0700F5E092 /* LePetInfo.m */; };
 		BB088E581B03565000F5E092 /* PetSortService.m in Sources */ = {isa = PBXBuildFile; fileRef = BB088E571B03565000F5E092 /* PetSortService.m */; };
 		BB588F931B047F690095337C /* HttpUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB588F921B047F690095337C /* HttpUploadManager.m */; };
-		BB9A04AF1B01F28F007DFDC8 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9A04931B01F28F007DFDC8 /* HomeViewController.m */; };
-		BB9A04B01B01F28F007DFDC8 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9A04951B01F28F007DFDC8 /* LeftViewController.m */; };
-		BB9A04B11B01F28F007DFDC8 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9A04971B01F28F007DFDC8 /* MainViewController.m */; };
-		BB9A04B21B01F28F007DFDC8 /* RightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9A04991B01F28F007DFDC8 /* RightViewController.m */; };
-		BB9A04B31B01F28F007DFDC8 /* UserDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9A049B1B01F28F007DFDC8 /* UserDetailViewController.m */; };
-		BB9A04B41B01F28F007DFDC8 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9A049D1B01F28F007DFDC8 /* UserInfoViewController.m */; };
-		BB9A04B51B01F28F007DFDC8 /* WWSideslipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9A049F1B01F28F007DFDC8 /* WWSideslipViewController.m */; };
 		BB9A04B61B01F28F007DFDC8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB9A04A01B01F28F007DFDC8 /* Images.xcassets */; };
 		BB9A04B71B01F28F007DFDC8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9A04A61B01F28F007DFDC8 /* AppDelegate.m */; };
 		BB9A04B81B01F28F007DFDC8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB9A04A71B01F28F007DFDC8 /* LaunchScreen.xib */; };
@@ -42,6 +43,24 @@
 /* Begin PBXFileReference section */
 		279CFB6916D8141457E3072A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		3BF811F65411D3FCD44EA091 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D34E9171B05FD1D00AE04F7 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		4D34E9181B05FD1D00AE04F7 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		4D34E9191B05FD1D00AE04F7 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		4D34E91A1B05FD1D00AE04F7 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		4D34E91B1B05FD1D00AE04F7 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
+		4D34E91C1B05FD1D00AE04F7 /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
+		4D34E91D1B05FD1D00AE04F7 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		4D34E91E1B05FD1D00AE04F7 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		4D34E91F1B05FD1D00AE04F7 /* RightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightViewController.h; sourceTree = "<group>"; };
+		4D34E9201B05FD1D00AE04F7 /* RightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightViewController.m; sourceTree = "<group>"; };
+		4D34E9211B05FD1D00AE04F7 /* WWSideslipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWSideslipViewController.h; sourceTree = "<group>"; };
+		4D34E9221B05FD1D00AE04F7 /* WWSideslipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWSideslipViewController.m; sourceTree = "<group>"; };
+		4D34E9241B05FD1D00AE04F7 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		4D34E9251B05FD1D00AE04F7 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		4D34E9271B05FD1D00AE04F7 /* UserDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDetailViewController.h; sourceTree = "<group>"; };
+		4D34E9281B05FD1D00AE04F7 /* UserDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailViewController.m; sourceTree = "<group>"; };
+		4D34E9291B05FD1D00AE04F7 /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
+		4D34E92A1B05FD1D00AE04F7 /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
 		635FBA24F678FB40B37ED093 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		843EA87E1B044EDE004B9BC1 /* HomeItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeItemModel.h; sourceTree = "<group>"; };
 		843EA87F1B044EDE004B9BC1 /* HomeItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeItemModel.m; sourceTree = "<group>"; };
@@ -50,8 +69,6 @@
 		843EA8961B04521E004B9BC1 /* HomeItemButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeItemButton.h; sourceTree = "<group>"; };
 		843EA8971B04521E004B9BC1 /* HomeItemButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeItemButton.m; sourceTree = "<group>"; };
 		843EA89A1B04522C004B9BC1 /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
-		843EA89B1B045242004B9BC1 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
-		843EA89C1B045242004B9BC1 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		843EA89E1B0452AF004B9BC1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		84D4D1C91B018FA400E67D9C /* LePats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LePats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB088E281B02D72D00F5E092 /* LePats-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LePats-Prefix.pch"; sourceTree = "<group>"; };
@@ -80,20 +97,6 @@
 		BB088E571B03565000F5E092 /* PetSortService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetSortService.m; sourceTree = "<group>"; };
 		BB588F911B047F690095337C /* HttpUploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpUploadManager.h; sourceTree = "<group>"; };
 		BB588F921B047F690095337C /* HttpUploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpUploadManager.m; sourceTree = "<group>"; };
-		BB9A04921B01F28F007DFDC8 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
-		BB9A04931B01F28F007DFDC8 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		BB9A04941B01F28F007DFDC8 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
-		BB9A04951B01F28F007DFDC8 /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
-		BB9A04961B01F28F007DFDC8 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		BB9A04971B01F28F007DFDC8 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		BB9A04981B01F28F007DFDC8 /* RightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightViewController.h; sourceTree = "<group>"; };
-		BB9A04991B01F28F007DFDC8 /* RightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightViewController.m; sourceTree = "<group>"; };
-		BB9A049A1B01F28F007DFDC8 /* UserDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDetailViewController.h; sourceTree = "<group>"; };
-		BB9A049B1B01F28F007DFDC8 /* UserDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailViewController.m; sourceTree = "<group>"; };
-		BB9A049C1B01F28F007DFDC8 /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
-		BB9A049D1B01F28F007DFDC8 /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
-		BB9A049E1B01F28F007DFDC8 /* WWSideslipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWSideslipViewController.h; sourceTree = "<group>"; };
-		BB9A049F1B01F28F007DFDC8 /* WWSideslipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWSideslipViewController.m; sourceTree = "<group>"; };
 		BB9A04A01B01F28F007DFDC8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BB9A04A21B01F28F007DFDC8 /* UtilsMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilsMacro.h; sourceTree = "<group>"; };
 		BB9A04A51B01F28F007DFDC8 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -115,6 +118,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D34E9151B05FD1D00AE04F7 /* Controlls */ = {
+			isa = PBXGroup;
+			children = (
+				4D34E9161B05FD1D00AE04F7 /* home */,
+				4D34E9231B05FD1D00AE04F7 /* login */,
+				4D34E9261B05FD1D00AE04F7 /* my */,
+			);
+			path = Controlls;
+			sourceTree = "<group>";
+		};
+		4D34E9161B05FD1D00AE04F7 /* home */ = {
+			isa = PBXGroup;
+			children = (
+				4D34E9171B05FD1D00AE04F7 /* BaseViewController.h */,
+				4D34E9181B05FD1D00AE04F7 /* BaseViewController.m */,
+				4D34E9191B05FD1D00AE04F7 /* HomeViewController.h */,
+				4D34E91A1B05FD1D00AE04F7 /* HomeViewController.m */,
+				4D34E91B1B05FD1D00AE04F7 /* LeftViewController.h */,
+				4D34E91C1B05FD1D00AE04F7 /* LeftViewController.m */,
+				4D34E91D1B05FD1D00AE04F7 /* MainViewController.h */,
+				4D34E91E1B05FD1D00AE04F7 /* MainViewController.m */,
+				4D34E91F1B05FD1D00AE04F7 /* RightViewController.h */,
+				4D34E9201B05FD1D00AE04F7 /* RightViewController.m */,
+				4D34E9211B05FD1D00AE04F7 /* WWSideslipViewController.h */,
+				4D34E9221B05FD1D00AE04F7 /* WWSideslipViewController.m */,
+			);
+			path = home;
+			sourceTree = "<group>";
+		};
+		4D34E9231B05FD1D00AE04F7 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				4D34E9241B05FD1D00AE04F7 /* LoginViewController.h */,
+				4D34E9251B05FD1D00AE04F7 /* LoginViewController.m */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
+		4D34E9261B05FD1D00AE04F7 /* my */ = {
+			isa = PBXGroup;
+			children = (
+				4D34E9271B05FD1D00AE04F7 /* UserDetailViewController.h */,
+				4D34E9281B05FD1D00AE04F7 /* UserDetailViewController.m */,
+				4D34E9291B05FD1D00AE04F7 /* UserInfoViewController.h */,
+				4D34E92A1B05FD1D00AE04F7 /* UserInfoViewController.m */,
+			);
+			path = my;
+			sourceTree = "<group>";
+		};
 		843EA8931B04520D004B9BC1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,8 +199,8 @@
 		84D4D1CB1B018FA400E67D9C /* LePats */ = {
 			isa = PBXGroup;
 			children = (
+				4D34E9151B05FD1D00AE04F7 /* Controlls */,
 				843EA8931B04520D004B9BC1 /* Views */,
-				BB9A04901B01F28F007DFDC8 /* Home */,
 				BB9A04A01B01F28F007DFDC8 /* Images.xcassets */,
 				BB9A04A11B01F28F007DFDC8 /* Macro */,
 				BB9A04A31B01F28F007DFDC8 /* Model */,
@@ -206,37 +258,6 @@
 				BB588F921B047F690095337C /* HttpUploadManager.m */,
 			);
 			path = upload;
-			sourceTree = "<group>";
-		};
-		BB9A04901B01F28F007DFDC8 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				BB9A04911B01F28F007DFDC8 /* Controlls */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		BB9A04911B01F28F007DFDC8 /* Controlls */ = {
-			isa = PBXGroup;
-			children = (
-				843EA89B1B045242004B9BC1 /* BaseViewController.h */,
-				843EA89C1B045242004B9BC1 /* BaseViewController.m */,
-				BB9A04921B01F28F007DFDC8 /* HomeViewController.h */,
-				BB9A04931B01F28F007DFDC8 /* HomeViewController.m */,
-				BB9A04941B01F28F007DFDC8 /* LeftViewController.h */,
-				BB9A04951B01F28F007DFDC8 /* LeftViewController.m */,
-				BB9A04961B01F28F007DFDC8 /* MainViewController.h */,
-				BB9A04971B01F28F007DFDC8 /* MainViewController.m */,
-				BB9A04981B01F28F007DFDC8 /* RightViewController.h */,
-				BB9A04991B01F28F007DFDC8 /* RightViewController.m */,
-				BB9A049A1B01F28F007DFDC8 /* UserDetailViewController.h */,
-				BB9A049B1B01F28F007DFDC8 /* UserDetailViewController.m */,
-				BB9A049C1B01F28F007DFDC8 /* UserInfoViewController.h */,
-				BB9A049D1B01F28F007DFDC8 /* UserInfoViewController.m */,
-				BB9A049E1B01F28F007DFDC8 /* WWSideslipViewController.h */,
-				BB9A049F1B01F28F007DFDC8 /* WWSideslipViewController.m */,
-			);
-			path = Controlls;
 			sourceTree = "<group>";
 		};
 		BB9A04A11B01F28F007DFDC8 /* Macro */ = {
@@ -417,30 +438,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB088E341B032B1D00F5E092 /* UserInfo.m in Sources */,
-				843EA89D1B045242004B9BC1 /* BaseViewController.m in Sources */,
 				BB088E581B03565000F5E092 /* PetSortService.m in Sources */,
+				4D34E9331B05FD1D00AE04F7 /* UserInfoViewController.m in Sources */,
 				BB088E4B1B034A4200F5E092 /* PetInfoService.m in Sources */,
 				BB088E551B034D0700F5E092 /* LePetInfo.m in Sources */,
-				BB9A04B51B01F28F007DFDC8 /* WWSideslipViewController.m in Sources */,
+				4D34E92F1B05FD1D00AE04F7 /* RightViewController.m in Sources */,
 				BB088E511B034CDC00F5E092 /* AddPetService.m in Sources */,
+				4D34E9311B05FD1D00AE04F7 /* LoginViewController.m in Sources */,
 				843EA8801B044EDE004B9BC1 /* HomeItemModel.m in Sources */,
 				BB088E481B03456100F5E092 /* MyPetService.m in Sources */,
+				4D34E92B1B05FD1D00AE04F7 /* BaseViewController.m in Sources */,
 				BB088E441B03453900F5E092 /* UpdUserService.m in Sources */,
-				BB9A04AF1B01F28F007DFDC8 /* HomeViewController.m in Sources */,
-				BB9A04B21B01F28F007DFDC8 /* RightViewController.m in Sources */,
 				BB088E431B03453900F5E092 /* RegisterService.m in Sources */,
-				BB9A04B11B01F28F007DFDC8 /* MainViewController.m in Sources */,
+				4D34E92E1B05FD1D00AE04F7 /* MainViewController.m in Sources */,
 				BB588F931B047F690095337C /* HttpUploadManager.m in Sources */,
 				BB088E4E1B034C8500F5E092 /* DelPetService.m in Sources */,
 				BB9A04B71B01F28F007DFDC8 /* AppDelegate.m in Sources */,
 				843EA8981B04521E004B9BC1 /* HomeItemCollectionCell.m in Sources */,
 				BB088E411B03453900F5E092 /* HttpManager.m in Sources */,
 				BB088E421B03453900F5E092 /* LoginService.m in Sources */,
-				BB9A04B31B01F28F007DFDC8 /* UserDetailViewController.m in Sources */,
+				4D34E9321B05FD1D00AE04F7 /* UserDetailViewController.m in Sources */,
 				843EA8991B04521E004B9BC1 /* HomeItemButton.m in Sources */,
-				BB9A04B01B01F28F007DFDC8 /* LeftViewController.m in Sources */,
+				4D34E92C1B05FD1D00AE04F7 /* HomeViewController.m in Sources */,
+				4D34E92D1B05FD1D00AE04F7 /* LeftViewController.m in Sources */,
+				4D34E9301B05FD1D00AE04F7 /* WWSideslipViewController.m in Sources */,
 				BB9A04BB1B01F28F007DFDC8 /* main.m in Sources */,
-				BB9A04B41B01F28F007DFDC8 /* UserInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

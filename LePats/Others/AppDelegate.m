@@ -10,10 +10,8 @@
 #import "WWSideslipViewController.h"
 #import "LeftViewController.h"
 #import "RightViewController.h"
-<<<<<<< HEAD
 #import "MainViewController.h"
 #import "HomeViewController.h"
-=======
 
 #import "LoginService.h"
 #import "UserInfo.h"
@@ -22,16 +20,12 @@
 #import "MyPetService.h"
 #import "PetSortService.h"
 #import "HttpUploadManager.h"
->>>>>>> origin/master
 
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
-
-
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -60,16 +54,14 @@
     
     [self.window makeKeyAndVisible];
     return YES;
-    
-<<<<<<< HEAD
-=======
+}
+-(void)requestInfo
+{
     MyPetService *myPet = [[MyPetService alloc] init];
     [myPet requestPetInfo:1];
     
     HttpUploadManager *httpUpload = [[HttpUploadManager alloc] init];
     [httpUpload uploadPerson:[UIImage imageNamed:@"my"]];
-     
->>>>>>> origin/master
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
