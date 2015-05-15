@@ -14,6 +14,7 @@
 #import "Common.h"
 #import "UserInfoViewController.h"
 #import "MainViewController.h"
+#import "LoginViewController.h"
 @interface WWSideslipViewController ()
 
 @end
@@ -44,7 +45,7 @@
 }
 
 -(void)initRegisterNotification{
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(gotoMyInfoViewCotroller) name:KShowMainViewController object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(gotoMyInfoViewCotroller:) name:KShowMainViewController object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -164,7 +165,8 @@
     [UIView commitAnimations];
 }
 
--(void)gotoMyInfoViewCotroller{
+-(void)gotoMyInfoViewCotroller:(NSNotification *)notification{
+    NSLog(@"notification.object=%@",notification.object);
     [self showMainView];
     [self gotoInfoView];
     
@@ -173,11 +175,10 @@
 -(void)gotoInfoView{
     MainViewController *tabbar=(MainViewController*)mainControl;
     UIViewController *vc=tabbar.selectedViewController;
-    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UserInfoViewController *info=[story instantiateViewControllerWithIdentifier:@"UserInfoViewController"];
-    info.view.backgroundColor=[UIColor yellowColor];
-    info.hidesBottomBarWhenPushed=YES;
-    [((UINavigationController*)vc) pushViewController:info animated:YES];
+    LoginViewController *login=[[LoginViewController alloc]init];
+    login.hidesBottomBarWhenPushed=YES;
+    login.view.backgroundColor=[UIColor redColor];
+    [((UINavigationController*)vc) pushViewController:login animated:YES];
     switch (0) {
         case 0:
         {

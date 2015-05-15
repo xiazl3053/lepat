@@ -1,36 +1,21 @@
 //
-//  LeftViewController.m
-//  WWSideslipViewControllerSample
+//  UserInfoViewController.m
+//  LePats
 //
-//  Created by 王维 on 14-8-26.
-//  Copyright (c) 2014年 wangwei. All rights reserved.
+//  Created by admin on 15/5/12.
+//  Copyright (c) 2015年 admin. All rights reserved.
 //
 
-// 版权属于原作者
-// http://code4app.com (cn) http://code4app.net (en)
-// 发布代码于最专业的源码分享网站: Code4App.com
-
-#import "LeftViewController.h"
-#import "HomeItemModel.h"
-#import "Common.h"
 #import "UserInfoViewController.h"
-
-@interface LeftViewController ()<UITableViewDataSource,UITableViewDelegate>
+#import "UserDetailViewController.h"
+#import "HomeItemModel.h"
+@interface UserInfoViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong) NSMutableArray *itemList;
+
 @end
 
-@implementation LeftViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-        
-    }
-    return self;
-}
+@implementation UserInfoViewController
 
 - (void)viewDidLoad
 {
@@ -66,7 +51,7 @@
 }
 
 -(void)initTableView{
-    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 80, 200, self.view.frame.size.height-80) style:UITableViewStylePlain];
+    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 80, 260, self.view.frame.size.height-80) style:UITableViewStylePlain];
     tableView.delegate=self;
     tableView.dataSource=self;
     tableView.backgroundColor=[UIColor redColor];
@@ -87,16 +72,30 @@
     cell.textLabel.text=model.title;
     return cell;
 }
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [[NSNotificationCenter defaultCenter]postNotificationName:KShowMainViewController object:nil];
+- (IBAction)back:(id)sender {
+    NSLog(@"self.navigationController=%@",self.navigationController);
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)click:(id)sender {
+    UserDetailViewController *detail=[[UserDetailViewController alloc]init];
+    detail.view.backgroundColor=[UIColor blueColor];
+    detail.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:detail animated:YES];
+}
 
+/*
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

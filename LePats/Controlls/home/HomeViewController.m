@@ -11,6 +11,7 @@
 #import "HomeItemModel.h"
 #import "HomeItemButton.h"
 #import "UserInfoViewController.h"
+#import "LoginViewController.h"
 
 @interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,HomeItemCollectionCellDelegate>
 @property (nonatomic,strong) NSMutableArray *itemList;
@@ -120,7 +121,7 @@
         case 101:
         {
             UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            UserInfoViewController *info=[story instantiateViewControllerWithIdentifier:@"UserInfoViewController"];
+            LoginViewController *info=[story instantiateViewControllerWithIdentifier:@"LoginViewController"];
             info.view.backgroundColor=[UIColor yellowColor];
             info.hidesBottomBarWhenPushed=YES;
             [self.navigationController pushViewController:info animated:YES];

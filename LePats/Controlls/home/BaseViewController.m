@@ -28,7 +28,7 @@
 
 -(void)initNavigationBar{
     UIView *bgView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
-    bgView.backgroundColor=[UIColor whiteColor];
+    bgView.backgroundColor=[UIColor purpleColor];
     
     UIButton *back=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
     [back setImage:[UIImage imageNamed:@"retrun"] forState:UIControlStateNormal];
