@@ -5,7 +5,11 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
+<<<<<<< HEAD
 	<string>5D5FBA5B-79E5-43D3-93C7-AC44C9721D36</string>
+=======
+	<string>44EA13D2-E2C7-4B03-AD10-3FB17FE6E2A3</string>
+>>>>>>> origin/master
 	<key>IDESourceControlProjectName</key>
 	<string>LePats</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -34,7 +38,11 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>E1B20E625FE3C710FCB404EE1F460326AEE2B139</string>
 			<key>IDESourceControlWCCName</key>
+<<<<<<< HEAD
 			<string>lepat</string>
+=======
+			<string>LePats</string>
+>>>>>>> origin/master
 		</dict>
 	</array>
 </dict>
