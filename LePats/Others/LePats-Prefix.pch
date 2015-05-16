@@ -18,12 +18,14 @@
 #import <Foundation/Foundation.h>
 #import "PubDefine.h"
 #import "UtilsMacro.h"
+#import "PubNotification.h"
 
 #define XCLocalized(x) NSLocalizedString(x, "")
 #define XCFONT(x) [UIFont fontWithName:@"Helvetica" size:x]
 
 #define LEPAT_HTTP_HOST @"http://www.lxhes.com.cn:8082/"
 #define LEPAT_VERSION_INFO @"&v=1_0"
+
 
 
 

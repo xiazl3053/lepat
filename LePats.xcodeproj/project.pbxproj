@@ -43,6 +43,7 @@
 /* Begin PBXFileReference section */
 		279CFB6916D8141457E3072A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		3BF811F65411D3FCD44EA091 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D052AA21B0747F2002AAF1D /* PubNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PubNotification.h; sourceTree = "<group>"; };
 		4D34E9171B05FD1D00AE04F7 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		4D34E9181B05FD1D00AE04F7 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		4D34E9191B05FD1D00AE04F7 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -266,6 +267,7 @@
 				843EA89A1B04522C004B9BC1 /* Common.h */,
 				BB9A04A21B01F28F007DFDC8 /* UtilsMacro.h */,
 				BB088E291B02D7F800F5E092 /* PubDefine.h */,
+				4D052AA21B0747F2002AAF1D /* PubNotification.h */,
 			);
 			path = Macro;
 			sourceTree = "<group>";

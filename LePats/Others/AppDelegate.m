@@ -12,7 +12,6 @@
 #import "RightViewController.h"
 #import "MainViewController.h"
 #import "HomeViewController.h"
-
 #import "LoginService.h"
 #import "UserInfo.h"
 #import "RegisterService.h"
@@ -32,7 +31,6 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     
-    
     UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     MainViewController *main = [story instantiateViewControllerWithIdentifier:@"MainViewController"];
     
@@ -48,10 +46,12 @@
     //点击视图是是否恢复位置
     slide.sideslipTapGes.enabled = YES;
     
-    //    UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:slide];
+     
+    
+    LoginService *login = [[LoginService alloc] init];
+    [login requestLogin:@"13912345678" password:@"123456"];
     
     [self.window setRootViewController:slide];
-    
     [self.window makeKeyAndVisible];
     return YES;
 }
