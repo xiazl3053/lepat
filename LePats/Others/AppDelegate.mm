@@ -19,7 +19,6 @@
 #import "MyPetService.h"
 #import "PetSortService.h"
 #import "HttpUploadManager.h"
-#import <BaiduMapAPI/BMapKit.h>
 
 @interface AppDelegate ()
 
@@ -92,5 +91,33 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+#pragma mark Memory management
+
+- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
+}
+
+- (void)onGetNetworkState:(int)iError
+{
+    if (0 == iError) {
+        DLog(@"联网成功");
+    }
+    else{
+        DLog(@"onGetNetworkState %d",iError);
+    }
+    
+}
+
+- (void)onGetPermissionState:(int)iError
+{
+    if (0 == iError)
+    {
+        DLog(@"授权成功");
+    }
+    else {
+        DLog(@"onGetPermissionState %d",iError);
+    }
+}
+
 
 @end

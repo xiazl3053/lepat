@@ -12,6 +12,8 @@
 #import "HomeItemButton.h"
 #import "UserInfoViewController.h"
 #import "LoginViewController.h"
+#import "MapFriendViewController.h"
+
 
 @interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,HomeItemCollectionCellDelegate>
 @property (nonatomic,strong) NSMutableArray *itemList;
@@ -137,7 +139,8 @@
         }break;
         case 105:
         {
-                
+            MapFriendViewController *mapFriend = [[MapFriendViewController alloc] init];
+            [self.navigationController pushViewController:mapFriend animated:YES];
         }
         break;
         default:

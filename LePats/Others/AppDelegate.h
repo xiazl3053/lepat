@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <BaiduMapAPI/BMapKit.h>
-#import <BaiduMapAPI/BMKMapManager.h>
-
+#import "BMKMapView.h"
+#import "BMapKit.h"
 @interface AppDelegate : UIResponder <UIApplicationDelegate,BMKGeneralDelegate>
 {
     BMKMapManager *bmkManager;
