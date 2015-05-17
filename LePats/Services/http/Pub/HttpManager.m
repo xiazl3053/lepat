@@ -35,13 +35,29 @@
     NSInteger responseCode = [(NSHTTPURLResponse *)response statusCode];
     DLog(@"responseCode:%li",responseCode);
     //准备做加解密
-    
-    [self reciveInfo:(int*)&responseCode data:data];
+    if (responseCode==200)
+    {
+   //     [self reciveInfo:(int*)&responseCode data:data];
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+        [self reciveDic:(int*)&responseCode dic:dic];
+    }
+    else
+    {
+        [self reciveDic:(int *)&responseCode dic:nil];
+    }
 }
 
--(void)reciveInfo:(int *)nStatus data:(NSData *)data
+-(void)reciveDic:(int *)nStatus dic:(NSDictionary *)dict
 {
     
 }
+
+-(void)decodeJson:(NSData*)jsonData
+{
+    
+}
+
+
+
 
 @end

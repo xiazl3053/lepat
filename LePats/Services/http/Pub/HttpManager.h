@@ -10,12 +10,9 @@
 
 @interface HttpManager : NSObject
 
-
 -(void)sendRequest:(NSString*)strPath;
 
--(void)reciveHttp:(NSURLResponse *)response data:(NSData*)data error:(NSError*)connectionError;
-
--(void)reciveInfo:(int*)nStatus data:(NSData*)data;
+-(void)reciveDic:(int*)nStatus dic:(NSDictionary*)dict;
 
 
 @end

@@ -27,6 +27,4 @@
 #define LEPAT_VERSION_INFO @"&v=1_0"
 
 
-
-
 #endif

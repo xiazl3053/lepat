@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D202BDB1B088884007DED73 /* BaiduMapAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D202BDA1B088884007DED73 /* BaiduMapAPI.framework */; };
+		4D202BDD1B08894D007DED73 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D202BDC1B08894D007DED73 /* CoreLocation.framework */; };
+		4D202BDF1B088956007DED73 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D202BDE1B088956007DED73 /* QuartzCore.framework */; };
+		4D202BE11B08895E007DED73 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D202BE01B08895E007DED73 /* OpenGLES.framework */; };
+		4D202BE31B088967007DED73 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D202BE21B088967007DED73 /* SystemConfiguration.framework */; };
+		4D202BE51B088970007DED73 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D202BE41B088970007DED73 /* CoreGraphics.framework */; };
+		4D202BE71B088977007DED73 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D202BE61B088977007DED73 /* Security.framework */; };
+		4D202BE91B089A03007DED73 /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4D202BE81B089A03007DED73 /* mapapi.bundle */; };
 		4D34E92B1B05FD1D00AE04F7 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D34E9181B05FD1D00AE04F7 /* BaseViewController.m */; };
 		4D34E92C1B05FD1D00AE04F7 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D34E91A1B05FD1D00AE04F7 /* HomeViewController.m */; };
 		4D34E92D1B05FD1D00AE04F7 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D34E91C1B05FD1D00AE04F7 /* LeftViewController.m */; };
@@ -34,7 +42,7 @@
 		BB088E581B03565000F5E092 /* PetSortService.m in Sources */ = {isa = PBXBuildFile; fileRef = BB088E571B03565000F5E092 /* PetSortService.m */; };
 		BB588F931B047F690095337C /* HttpUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB588F921B047F690095337C /* HttpUploadManager.m */; };
 		BB9A04B61B01F28F007DFDC8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB9A04A01B01F28F007DFDC8 /* Images.xcassets */; };
-		BB9A04B71B01F28F007DFDC8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9A04A61B01F28F007DFDC8 /* AppDelegate.m */; };
+		BB9A04B71B01F28F007DFDC8 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB9A04A61B01F28F007DFDC8 /* AppDelegate.mm */; };
 		BB9A04B81B01F28F007DFDC8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB9A04A71B01F28F007DFDC8 /* LaunchScreen.xib */; };
 		BB9A04BA1B01F28F007DFDC8 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB9A04AB1B01F28F007DFDC8 /* Info.plist */; };
 		BB9A04BB1B01F28F007DFDC8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9A04AC1B01F28F007DFDC8 /* main.m */; };
@@ -44,6 +52,14 @@
 		279CFB6916D8141457E3072A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		3BF811F65411D3FCD44EA091 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D052AA21B0747F2002AAF1D /* PubNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PubNotification.h; sourceTree = "<group>"; };
+		4D202BDA1B088884007DED73 /* BaiduMapAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI.framework; sourceTree = "<group>"; };
+		4D202BDC1B08894D007DED73 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		4D202BDE1B088956007DED73 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		4D202BE01B08895E007DED73 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		4D202BE21B088967007DED73 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		4D202BE41B088970007DED73 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4D202BE61B088977007DED73 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		4D202BE81B089A03007DED73 /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = mapapi.bundle; sourceTree = "<group>"; };
 		4D34E9171B05FD1D00AE04F7 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		4D34E9181B05FD1D00AE04F7 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		4D34E9191B05FD1D00AE04F7 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -101,7 +117,7 @@
 		BB9A04A01B01F28F007DFDC8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BB9A04A21B01F28F007DFDC8 /* UtilsMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilsMacro.h; sourceTree = "<group>"; };
 		BB9A04A51B01F28F007DFDC8 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		BB9A04A61B01F28F007DFDC8 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BB9A04A61B01F28F007DFDC8 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		BB9A04A81B01F28F007DFDC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		BB9A04AB1B01F28F007DFDC8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB9A04AC1B01F28F007DFDC8 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -112,6 +128,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D202BE71B088977007DED73 /* Security.framework in Frameworks */,
+				4D202BE51B088970007DED73 /* CoreGraphics.framework in Frameworks */,
+				4D202BE31B088967007DED73 /* SystemConfiguration.framework in Frameworks */,
+				4D202BE11B08895E007DED73 /* OpenGLES.framework in Frameworks */,
+				4D202BDF1B088956007DED73 /* QuartzCore.framework in Frameworks */,
+				4D202BDD1B08894D007DED73 /* CoreLocation.framework in Frameworks */,
+				4D202BDB1B088884007DED73 /* BaiduMapAPI.framework in Frameworks */,
 				7AE8302AB035A0F6C58184D7 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -119,6 +142,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D202BD91B088884007DED73 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				4D202BDA1B088884007DED73 /* BaiduMapAPI.framework */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
 		4D34E9151B05FD1D00AE04F7 /* Controlls */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +231,7 @@
 		84D4D1CB1B018FA400E67D9C /* LePats */ = {
 			isa = PBXGroup;
 			children = (
+				4D202BD91B088884007DED73 /* General */,
 				4D34E9151B05FD1D00AE04F7 /* Controlls */,
 				843EA8931B04520D004B9BC1 /* Views */,
 				BB9A04A01B01F28F007DFDC8 /* Images.xcassets */,
@@ -286,8 +318,9 @@
 		BB9A04A41B01F28F007DFDC8 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				4D202BE81B089A03007DED73 /* mapapi.bundle */,
 				BB9A04A51B01F28F007DFDC8 /* AppDelegate.h */,
-				BB9A04A61B01F28F007DFDC8 /* AppDelegate.m */,
+				BB9A04A61B01F28F007DFDC8 /* AppDelegate.mm */,
 				843EA89E1B0452AF004B9BC1 /* Main.storyboard */,
 				BB9A04A71B01F28F007DFDC8 /* LaunchScreen.xib */,
 				BB9A04AB1B01F28F007DFDC8 /* Info.plist */,
@@ -319,6 +352,12 @@
 		CC7EBB73573971DED49E0533 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4D202BE61B088977007DED73 /* Security.framework */,
+				4D202BE41B088970007DED73 /* CoreGraphics.framework */,
+				4D202BE21B088967007DED73 /* SystemConfiguration.framework */,
+				4D202BE01B08895E007DED73 /* OpenGLES.framework */,
+				4D202BDE1B088956007DED73 /* QuartzCore.framework */,
+				4D202BDC1B08894D007DED73 /* CoreLocation.framework */,
 				3BF811F65411D3FCD44EA091 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -393,6 +432,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB9A04BA1B01F28F007DFDC8 /* Info.plist in Resources */,
+				4D202BE91B089A03007DED73 /* mapapi.bundle in Resources */,
 				BB9A04B81B01F28F007DFDC8 /* LaunchScreen.xib in Resources */,
 				BB9A04B61B01F28F007DFDC8 /* Images.xcassets in Resources */,
 				843EA89F1B0452AF004B9BC1 /* Main.storyboard in Resources */,
@@ -455,7 +495,7 @@
 				4D34E92E1B05FD1D00AE04F7 /* MainViewController.m in Sources */,
 				BB588F931B047F690095337C /* HttpUploadManager.m in Sources */,
 				BB088E4E1B034C8500F5E092 /* DelPetService.m in Sources */,
-				BB9A04B71B01F28F007DFDC8 /* AppDelegate.m in Sources */,
+				BB9A04B71B01F28F007DFDC8 /* AppDelegate.mm in Sources */,
 				843EA8981B04521E004B9BC1 /* HomeItemCollectionCell.m in Sources */,
 				BB088E411B03453900F5E092 /* HttpManager.m in Sources */,
 				BB088E421B03453900F5E092 /* LoginService.m in Sources */,
@@ -569,6 +609,10 @@
 			baseConfigurationReference = 635FBA24F678FB40B37ED093 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/LePats/General",
+				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "${SRCROOT}/LePats/Others/LePats-Prefix.pch";
@@ -585,6 +629,10 @@
 			baseConfigurationReference = 279CFB6916D8141457E3072A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/LePats/General",
+				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "${SRCROOT}/LePats/Others/LePats-Prefix.pch";

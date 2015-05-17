@@ -22,12 +22,12 @@
     [self sendRequest:strUrl];
 }
 
--(void)reciveInfo:(int *)nStatus data:(NSData *)data
+-(void)reciveDic:(int *)nStatus dic:(NSDictionary *)dic
 {
-    if (*nStatus!=200) {
+    if (*nStatus!=200)
+    {
         return ;
     }
-    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
     DLog(@"dic:%@",dic);
 }
 

@@ -51,12 +51,17 @@
     model2.tag=103;
     model2.img=@"my";
     
+    HomeItemModel *model5 = [[HomeItemModel alloc] init];
+    model5.title = @"地图";
+    model5.tag = 105;
+    model5.img = @"my";
+    
     self.itemList=[NSMutableArray array];
     [self.itemList addObject:model];
     [self.itemList addObject:model1];
     [self.itemList addObject:model2];
     [self.itemList addObject:model];
-    [self.itemList addObject:model1];
+    [self.itemList addObject:model5];
     [self.itemList addObject:model2];
     [self.itemList addObject:model];
     [self.itemList addObject:model1];
@@ -126,9 +131,15 @@
             info.hidesBottomBarWhenPushed=YES;
             [self.navigationController pushViewController:info animated:YES];
         }break;
-        case 102:{
+        case 102:
+        {
             
         }break;
+        case 105:
+        {
+                
+        }
+        break;
         default:
             break;
     }

@@ -20,14 +20,19 @@
     [self sendRequest:strUrl];
 }
 
--(void)reciveInfo:(int *)nStatus data:(NSData *)data
+-(void)reciveDic:(int *)nStatus dic:(NSDictionary *)dic
 {
     if (*nStatus!=200)
     {
         DLog(@"获取宠物分类错误");
         return ;
     }
-    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
     DLog(@"dic:%@",dic);
 }
+
+
+
+
+
+
 @end

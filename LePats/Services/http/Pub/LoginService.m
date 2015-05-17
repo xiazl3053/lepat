@@ -12,22 +12,17 @@
 
 @implementation LoginService
 
--(void)reciveInfo:(int *)nStatus data:(NSData *)data
+-(void)reciveDic:(int *)nStatus dic:(NSDictionary *)dict
 {
-    DLog(@"nStatus:%d",*nStatus);
-    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
-    if (*nStatus==200)
+    if (*nStatus == 200)
     {
-        if([dic objectForKey:@"token"])
+        if([dict objectForKey:@"token"])
         {
-            NSDictionary *dicInfo = [dic objectForKey:@"loginuser"];
+            NSDictionary *dicInfo = [dict objectForKey:@"loginuser"];
             [[UserInfo sharedUserInfo] setLoginUser:dicInfo];
-            [UserInfo sharedUserInfo].strToken = [dic objectForKey:@"token"];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"QUERY_PET_INFO" object:nil];
-        }
-    }
-    else
-    {
+            [UserInfo sharedUserInfo].strToken = [dict objectForKey:@"token"];
+            [[NSNotificationCenter defaultCenter] postNotificationName:MESSAGE_LOGIN_SUC_VC object:nil];
+        }  
         return ;
     }
 }

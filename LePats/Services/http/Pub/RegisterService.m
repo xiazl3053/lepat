@@ -26,11 +26,10 @@
     [self sendRequest:strUrl];
 }
 
--(void)reciveInfo:(int *)nStatus data:(NSData *)data
+-(void)reciveDic:(int *)nStatus dic:(NSDictionary *)dic
 {
     if(*nStatus==200)
     {
-        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
         int status = [[dic objectForKey:@"return_code"] intValue];
         DLog(@"status:%d",status);
         if (status==10000)
@@ -59,21 +58,18 @@
                     
                     UpdUserService *updService = [[UpdUserService alloc] init];
                     [updService updReqUserInfo];
-//
                 }
             }
         }
         else
         {
-            DLog(@"dic:%@",dic);
+            DLog(@"错误--dic:%@",dic);
         }
     }
     else
     {
         
     }
-    
-    
 }
 
 
