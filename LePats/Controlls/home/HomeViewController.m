@@ -127,11 +127,12 @@
     switch (tag) {
         case 101:
         {
-            UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            LoginViewController *info=[story instantiateViewControllerWithIdentifier:@"LoginViewController"];
-            info.view.backgroundColor=[UIColor yellowColor];
-            info.hidesBottomBarWhenPushed=YES;
-            [self.navigationController pushViewController:info animated:YES];
+//            UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//            LoginViewController *info=[story instantiateViewControllerWithIdentifier:@"LoginViewController"];
+//            info.view.backgroundColor=[UIColor yellowColor];
+//            info.hidesBottomBarWhenPushed=YES;
+            LoginViewController *loginView = [[LoginViewController alloc] init];
+            [self.navigationController pushViewController:loginView animated:YES];
         }break;
         case 102:
         {

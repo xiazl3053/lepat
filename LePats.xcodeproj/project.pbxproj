@@ -16,6 +16,9 @@
 		4D202BF11B08B610007DED73 /* MapFriendViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4D202BF01B08B610007DED73 /* MapFriendViewController.mm */; };
 		4D202C331B08F09F007DED73 /* libbaidumapapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D202C311B08F09F007DED73 /* libbaidumapapi.a */; };
 		4D202C341B08F09F007DED73 /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4D202C321B08F09F007DED73 /* mapapi.bundle */; };
+		4D202C371B08F9D9007DED73 /* LogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D202C361B08F9D9007DED73 /* LogView.m */; };
+		4D202C3A1B0900F7007DED73 /* RegFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D202C391B0900F7007DED73 /* RegFirstViewController.m */; };
+		4D202C3D1B09054B007DED73 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D202C3C1B09054B007DED73 /* UIView+Extension.m */; };
 		4D34E92B1B05FD1D00AE04F7 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D34E9181B05FD1D00AE04F7 /* BaseViewController.m */; };
 		4D34E92C1B05FD1D00AE04F7 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D34E91A1B05FD1D00AE04F7 /* HomeViewController.m */; };
 		4D34E92D1B05FD1D00AE04F7 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D34E91C1B05FD1D00AE04F7 /* LeftViewController.m */; };
@@ -124,6 +127,12 @@
 		4D202C301B08F09F007DED73 /* BMKVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKVersion.h; sourceTree = "<group>"; };
 		4D202C311B08F09F007DED73 /* libbaidumapapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libbaidumapapi.a; sourceTree = "<group>"; };
 		4D202C321B08F09F007DED73 /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = mapapi.bundle; sourceTree = "<group>"; };
+		4D202C351B08F9D9007DED73 /* LogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogView.h; sourceTree = "<group>"; };
+		4D202C361B08F9D9007DED73 /* LogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogView.m; sourceTree = "<group>"; };
+		4D202C381B0900F7007DED73 /* RegFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegFirstViewController.h; sourceTree = "<group>"; };
+		4D202C391B0900F7007DED73 /* RegFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegFirstViewController.m; sourceTree = "<group>"; };
+		4D202C3B1B09054B007DED73 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		4D202C3C1B09054B007DED73 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		4D34E9171B05FD1D00AE04F7 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		4D34E9181B05FD1D00AE04F7 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		4D34E9191B05FD1D00AE04F7 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -336,6 +345,8 @@
 			children = (
 				4D34E9241B05FD1D00AE04F7 /* LoginViewController.h */,
 				4D34E9251B05FD1D00AE04F7 /* LoginViewController.m */,
+				4D202C381B0900F7007DED73 /* RegFirstViewController.h */,
+				4D202C391B0900F7007DED73 /* RegFirstViewController.m */,
 			);
 			path = login;
 			sourceTree = "<group>";
@@ -354,10 +365,14 @@
 		843EA8931B04520D004B9BC1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4D202C3B1B09054B007DED73 /* UIView+Extension.h */,
+				4D202C3C1B09054B007DED73 /* UIView+Extension.m */,
 				843EA8941B04521E004B9BC1 /* HomeItemCollectionCell.h */,
 				843EA8951B04521E004B9BC1 /* HomeItemCollectionCell.m */,
 				843EA8961B04521E004B9BC1 /* HomeItemButton.h */,
 				843EA8971B04521E004B9BC1 /* HomeItemButton.m */,
+				4D202C351B08F9D9007DED73 /* LogView.h */,
+				4D202C361B08F9D9007DED73 /* LogView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -630,6 +645,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D202C3D1B09054B007DED73 /* UIView+Extension.m in Sources */,
 				BB088E341B032B1D00F5E092 /* UserInfo.m in Sources */,
 				BB088E581B03565000F5E092 /* PetSortService.m in Sources */,
 				4D34E9331B05FD1D00AE04F7 /* UserInfoViewController.m in Sources */,
@@ -639,12 +655,14 @@
 				4D34E92F1B05FD1D00AE04F7 /* RightViewController.m in Sources */,
 				BB088E511B034CDC00F5E092 /* AddPetService.m in Sources */,
 				4D34E9311B05FD1D00AE04F7 /* LoginViewController.m in Sources */,
+				4D202C371B08F9D9007DED73 /* LogView.m in Sources */,
 				843EA8801B044EDE004B9BC1 /* HomeItemModel.m in Sources */,
 				BB088E481B03456100F5E092 /* MyPetService.m in Sources */,
 				4D34E92B1B05FD1D00AE04F7 /* BaseViewController.m in Sources */,
 				BB088E441B03453900F5E092 /* UpdUserService.m in Sources */,
 				BB088E431B03453900F5E092 /* RegisterService.m in Sources */,
 				4D34E92E1B05FD1D00AE04F7 /* MainViewController.m in Sources */,
+				4D202C3A1B0900F7007DED73 /* RegFirstViewController.m in Sources */,
 				BB588F931B047F690095337C /* HttpUploadManager.m in Sources */,
 				BB088E4E1B034C8500F5E092 /* DelPetService.m in Sources */,
 				BB9A04B71B01F28F007DFDC8 /* AppDelegate.mm in Sources */,
