@@ -34,6 +34,29 @@
     [_txtPwd setSecureTextEntry:YES];
     [_txtPwd setPlaceholder:@"输入密码"];
     [self addViewLine];
+    _txtUser.autocorrectionType = UITextAutocapitalizationTypeNone;
+    _txtUser.autocapitalizationType = UITextAutocapitalizationTypeNone;
+   
+    UIView *viewUser = [[UIView alloc] initWithFrame:Rect(0, 0, 32, 44)];
+    UIImageView *imgUser = [[UIImageView alloc] initWithFrame:Rect(0, 10, 22, 22)];
+    [imgUser setImage:[UIImage imageNamed:@"login_user_img"]];
+    [viewUser addSubview:imgUser];
+    _txtUser.leftView = viewUser;
+    _txtUser.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    _txtUser.leftViewMode = UITextFieldViewModeAlways;
+    _txtUser.keyboardType = UIKeyboardTypePhonePad;
+    
+    UIView *viewPwd = [[UIView alloc] initWithFrame:Rect(0, 0, 32, 44)];
+    UIImageView *imgPwd = [[UIImageView alloc] initWithFrame:Rect(0, 11, 22, 22)];
+    [imgPwd setImage:[UIImage imageNamed:@"login_pwd_img"]];
+    [viewPwd addSubview:imgPwd];
+    _txtPwd.leftView = viewPwd;
+    _txtPwd.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    _txtPwd.leftViewMode = UITextFieldViewModeAlways;
+    _txtPwd.keyboardType = UIKeyboardTypePhonePad;
+    [_txtUser setFont:XCFONT(10)];
+    [_txtPwd setFont:XCFONT(10)];
+    
 }
 
 -(void)addViewLine

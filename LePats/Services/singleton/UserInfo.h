@@ -19,6 +19,7 @@ DEFINE_SINGLETON_FOR_HEADER(UserInfo);
 @property (nonatomic,strong) NSString *strUserId;
 @property (nonatomic,strong) NSString *strBirthday;
 @property (nonatomic,assign) int  nSex;
+@property (nonatomics,strong ) NSString *strCode;
 
 
 -(void)setLoginUser:(NSDictionary *)strInfo;

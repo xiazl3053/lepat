@@ -12,6 +12,7 @@
 @interface BaseViewController ()
 {
     UILabel *lblTitle;
+    UIButton *btnRight;
 }
 @end
 
@@ -40,13 +41,12 @@
     [back addTarget:self action:@selector(popviewcontroller) forControlEvents:UIControlEventTouchUpInside];
     [bgView addSubview:back];
     
-    lblTitle = [[UILabel alloc] initWithFrame:Rect(50, 10,self.view.frame.size.width-100, 30)];
+    lblTitle = [[UILabel alloc] initWithFrame:Rect(50, 10,self.view.frame.size.width-100, 20)];
     [lblTitle setTextAlignment:NSTextAlignmentCenter];
-    [lblTitle setFont:XCFONT(15)];
-    [lblTitle setTextColor:RGB(145,143,144)];
+    [lblTitle setFont:XCFONT(16)];
+    [lblTitle setTextColor:RGB(51,51,51)];
     
     [bgView addSubview:lblTitle];
-    
     
     UILabel *sLine1 = [[UILabel alloc] initWithFrame:CGRectMake(0,43,self.view.width,0.5)];
     sLine1.backgroundColor = [UIColor colorWithRed:227/255.0
@@ -57,8 +57,8 @@
     sLine2.backgroundColor = [UIColor whiteColor];
     [bgView addSubview:sLine1];
     [bgView addSubview:sLine2];
-    
-    
+   
+    bgView.tag = 10001;
     
     [self.view addSubview:bgView];
 }
@@ -78,6 +78,32 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)setRightHidden:(BOOL)bHidden
+{
+    if (!bHidden)
+    {
+        btnRight = [UIButton buttonWithType:UIButtonTypeCustom];
+        UIView *bgView = [self.view viewWithTag:10001];
+        btnRight.frame = Rect(self.view.width-60, 10, 44, 20);
+        [btnRight setTitleColor:RGB(51,51,51) forState:UIControlStateNormal];
+        btnRight.titleLabel.font = XCFONT(16);
+        [bgView addSubview:btnRight];
+    }
+}
+
+-(void)setRightTitle:(NSString *)strTitle
+{
+    [btnRight setTitle:strTitle forState:UIControlStateNormal];
+}
+
+
+-(void)addRightEvent:(void (^)(id sender))handler
+{
+    [btnRight bk_addEventHandler:handler forControlEvents:UIControlEventTouchUpInside];
+}
+
+
 
 /*
 #pragma mark - Navigation

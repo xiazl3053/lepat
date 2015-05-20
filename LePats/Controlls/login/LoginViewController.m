@@ -8,9 +8,10 @@
 
 #import "LoginViewController.h"
 #import "LogView.h"
+#import "Toast+UIView.h"
 #import "LoginService.h"
 #import "UIView+Extension.h"
-
+#import "RegFirstViewController.h"
 
 @interface LoginViewController()
 {
@@ -38,10 +39,18 @@
     [self.view addSubview:loginView];
 
     self.title = @"登录";
-    
+    [self setRightHidden:NO];
+    [self setRightTitle:@"注册"];
+    __weak LoginViewController *__self = self;
+    [self addRightEvent:^(id sender){
+        RegFirstViewController *regFirst = [[RegFirstViewController alloc] init];
+        [__self.navigationController pushViewController:regFirst animated:YES];
+    }];
     UILabel *lblName = [[UILabel alloc] initWithFrame:Rect(50, 64, kScreenSourchWidth-100, 20)];
     [lblName setTextAlignment:NSTextAlignmentCenter];
-    [lblName setFont:XCFONT(15)];
+    [lblName setFont:XCFONT(14)];
+    [lblName setTextColor:RGB(102, 102, 102)];
+    
     [lblName setText:@"乐水族账号登录"];
     [self.view addSubview:lblName];
     
@@ -52,6 +61,7 @@
     btnLogin.frame = Rect(10,loginView.y+loginView.height+20,kScreenSourchWidth-20,40);
     [btnLogin.layer setMasksToBounds:YES];
     btnLogin.layer.cornerRadius = 3.0f;
+    btnLogin.titleLabel.font = XCFONT(17);
     [self.view addSubview:btnLogin];
 }
 
@@ -64,21 +74,24 @@
     NSString *strUser = loginView.txtUser.text;
     NSString *strPwd = loginView.txtPwd.text;
     
-    if ([strUser isEqualToString:@""]) {
-        
+    if ([strUser isEqualToString:@""])
+    {
+        [self.view makeToast:@"用户名不能为空"];
         return ;
     }
-    if ([strPwd isEqualToString:@""]) {
-        
+    if ([strPwd isEqualToString:@""])
+    {
+        [self.view makeToast:@"密码不能为空"];
         return ;
     }
-    
+    __weak LoginViewController *__self = self;
     loginSer.httpBlock = ^(int nStatus)
     {
         switch (nStatus) {
             case 200:
             {
                 DLog(@"登录成功");
+                [__self.view makeToast:@"登录成功"];
             }
             break;
             case 50001:

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface RegFirstViewController : UIViewController
+@interface RegFirstViewController : BaseViewController
+
+
 
 @end

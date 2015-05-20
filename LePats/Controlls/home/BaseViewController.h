@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIControl+BlocksKit.h"
 
 @interface BaseViewController : UIViewController
 @property(assign,nonatomic)NSInteger returnType;
@@ -14,4 +15,11 @@
 @property(assign,nonatomic)UILabel *lable;//标题栏的标题
 @property(assign,nonatomic)UIView *topLine;//top的底部分割线
 @property(assign,nonatomic)UIButton *returnBtn;//返回键
+
+-(void)setRightHidden:(BOOL)bHidden;
+
+-(void)setRightTitle:(NSString *)strTitle;
+
+-(void)addRightEvent:(void (^)(id sender))handler;
+//-(void)addTag:
 @end

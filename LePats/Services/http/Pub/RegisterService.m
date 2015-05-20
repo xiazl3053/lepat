@@ -39,8 +39,15 @@
             {
                 //验证码
                 NSString *strInfo = [NSString stringWithFormat:@"%@%@%@%@",aryInfo[0],aryInfo[1],aryInfo[2],aryInfo[3]];
-                DLog(@"验证码是:%@",strInfo);
-                [self requestReg:strInfo mobile:@"13912345678"];
+//                DLog(@"验证码是:%@",strInfo);
+//                [self requestReg:strInfo mobile:@"13912345678"];
+                if (_httpCode)
+                {
+                    _httpCode(1,@"right");
+                    return ;
+                }
+                [UserInfo sharedUserInfo].strCode = strInfo;
+                
             }
             else
             {
