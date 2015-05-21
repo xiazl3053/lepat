@@ -12,8 +12,6 @@
 
 DEFINE_SINGLETON_FOR_CLASS(UserInfo);
 
-
-
 -(void)setLoginUser:(NSDictionary *)dicInfo
 {
     _strUserId = [dicInfo objectForKey:@"userid"];

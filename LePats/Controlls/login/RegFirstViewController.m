@@ -8,6 +8,8 @@
 
 #import "RegFirstViewController.h"
 #import "UIView+Extension.h"
+#import "RegSecondVIewController.h"
+
 #import "ProgressHUD.h"
 #import "Toast+UIView.h"
 #import "RegisterService.h"
@@ -47,11 +49,23 @@
     if (regServer==nil) {
         regServer = [[RegisterService alloc] init];
     }
-    
-    
-      
-    
-    
+    __weak RegFirstViewController *__self = self;
+    regServer.httpCode = ^(int nStatus,NSString *strCode)
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [ProgressHUD dismiss];
+        });
+        switch (nStatus) {
+            case 1:
+            {
+                RegSecondViewController *regSecond = [[RegSecondViewController alloc] init];
+                [__self presentViewController:regSecond animated:YES completion:nil];
+            }
+            break;
+            default:
+                break;
+        }
+    };
     [regServer requestRegCode:[txtNumber text]];
     
 }
@@ -67,7 +81,7 @@
     
     [self.view addSubview:lblContent];
     txtAddress =[[UITextField alloc] initWithFrame:Rect(10,lblContent.y+lblContent.height+15, self.view.width-20, 44)];
-    [txtAddress setText:@"国家或地区"];
+    [txtAddress setText:@"中国"];
     [txtAddress setBackgroundColor:RGB(253, 251, 251)];
     
     UIView *viewAddr = [[UIView alloc] initWithFrame:Rect(0, 0, 20, 20)];

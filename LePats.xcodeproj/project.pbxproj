@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D12351C1B0C6A67006C1E76 /* RegSecondVIewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D12351B1B0C6A67006C1E76 /* RegSecondVIewController.m */; };
 		4D202BDD1B08894D007DED73 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D202BDC1B08894D007DED73 /* CoreLocation.framework */; };
 		4D202BDF1B088956007DED73 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D202BDE1B088956007DED73 /* QuartzCore.framework */; };
 		4D202BE11B08895E007DED73 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D202BE01B08895E007DED73 /* OpenGLES.framework */; };
@@ -60,6 +61,8 @@
 		279CFB6916D8141457E3072A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		3BF811F65411D3FCD44EA091 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D052AA21B0747F2002AAF1D /* PubNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PubNotification.h; sourceTree = "<group>"; };
+		4D12351A1B0C6A67006C1E76 /* RegSecondVIewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegSecondVIewController.h; sourceTree = "<group>"; };
+		4D12351B1B0C6A67006C1E76 /* RegSecondVIewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegSecondVIewController.m; sourceTree = "<group>"; };
 		4D202BDC1B08894D007DED73 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4D202BDE1B088956007DED73 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4D202BE01B08895E007DED73 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -360,6 +363,8 @@
 				4D34E9251B05FD1D00AE04F7 /* LoginViewController.m */,
 				4D202C381B0900F7007DED73 /* RegFirstViewController.h */,
 				4D202C391B0900F7007DED73 /* RegFirstViewController.m */,
+				4D12351A1B0C6A67006C1E76 /* RegSecondVIewController.h */,
+				4D12351B1B0C6A67006C1E76 /* RegSecondVIewController.m */,
 			);
 			path = login;
 			sourceTree = "<group>";
@@ -705,6 +710,7 @@
 				BB9A04B71B01F28F007DFDC8 /* AppDelegate.mm in Sources */,
 				843EA8981B04521E004B9BC1 /* HomeItemCollectionCell.m in Sources */,
 				BB088E411B03453900F5E092 /* HttpManager.m in Sources */,
+				4D12351C1B0C6A67006C1E76 /* RegSecondVIewController.m in Sources */,
 				4DED53CD1B09A19100577B1C /* Toast+UIView.m in Sources */,
 				BB088E421B03453900F5E092 /* LoginService.m in Sources */,
 				4D34E9321B05FD1D00AE04F7 /* UserDetailViewController.m in Sources */,

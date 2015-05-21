@@ -10,13 +10,14 @@
 
 
 typedef void(^HttpRequestCode)(int nStatus,NSString *strCode);
+typedef void(^HttpReg)(int nStatus);
 
 
 @interface RegisterService : HttpManager
 
 
 @property (nonatomic,copy) HttpRequestCode httpCode;
-
+@property (nonatomic,copy) HttpReg httpReg;
 
 -(void)requestReg:(NSString *)strCode mobile:(NSString *)strMobile;
 

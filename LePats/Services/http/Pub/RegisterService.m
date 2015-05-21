@@ -21,8 +21,8 @@
 
 -(void)requestRegCode:(NSString *)strMobile
 {
-     NSString *strUrl = [NSString stringWithFormat:@"%@pub/getMobileCheckMsg.do?mobile=%@%@",LEPAT_HTTP_HOST,strMobile,LEPAT_VERSION_INFO];
-    
+    NSString *strUrl = [NSString stringWithFormat:@"%@pub/getMobileCheckMsg.do?mobile=%@%@",LEPAT_HTTP_HOST,strMobile,LEPAT_VERSION_INFO];
+    [UserInfo sharedUserInfo].strMobile = strMobile;
     [self sendRequest:strUrl];
 }
 
@@ -39,7 +39,7 @@
             {
                 //验证码
                 NSString *strInfo = [NSString stringWithFormat:@"%@%@%@%@",aryInfo[0],aryInfo[1],aryInfo[2],aryInfo[3]];
-//                DLog(@"验证码是:%@",strInfo);
+                DLog(@"验证码是:%@",strInfo);
 //                [self requestReg:strInfo mobile:@"13912345678"];
                 if (_httpCode)
                 {
@@ -47,7 +47,6 @@
                     return ;
                 }
                 [UserInfo sharedUserInfo].strCode = strInfo;
-                
             }
             else
             {
@@ -58,13 +57,24 @@
                     [UserInfo sharedUserInfo].strToken = [dic objectForKey:@"token"];
                     DLog(@"注册成功:%@",[dicInfo objectForKey:@"userid"]);
                     //修改帐号信息
+                    if (_httpReg)
+                    {
+                        _httpReg(1);
+                    }
+//                    [UserInfo sharedUserInfo].strPassword = @"123456";
+//                    [UserInfo sharedUserInfo].strNickName = @"test";
+//                    [UserInfo sharedUserInfo].strBirthday = @"1970-1-1";
+//                    
+//                    UpdUserService *updService = [[UpdUserService alloc] init];
+//                    [updService updReqUserInfo];
                     
-                    [UserInfo sharedUserInfo].strPassword = @"123456";
-                    [UserInfo sharedUserInfo].strNickName = @"test";
-                    [UserInfo sharedUserInfo].strBirthday = @"1970-1-1";
-                    
-                    UpdUserService *updService = [[UpdUserService alloc] init];
-                    [updService updReqUserInfo];
+                }
+                else
+                {
+                    if(_httpReg)
+                    {
+                        _httpReg(status);
+                    }
                 }
             }
         }

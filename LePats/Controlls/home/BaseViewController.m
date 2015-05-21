@@ -69,9 +69,17 @@
 }
 
 
--(void)popviewcontroller{
-    [self.navigationController popViewControllerAnimated:YES];
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
+-(void)popviewcontroller
+{
+    if(self.navigationController)
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+        [self.navigationController setNavigationBarHidden:NO animated:NO];
+    }
+    else
+    {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -85,7 +93,7 @@
     {
         btnRight = [UIButton buttonWithType:UIButtonTypeCustom];
         UIView *bgView = [self.view viewWithTag:10001];
-        btnRight.frame = Rect(self.view.width-60, 10, 44, 20);
+        btnRight.frame = Rect(self.view.width-80, 10, 66, 20);
         [btnRight setTitleColor:RGB(51,51,51) forState:UIControlStateNormal];
         btnRight.titleLabel.font = XCFONT(16);
         [bgView addSubview:btnRight];
