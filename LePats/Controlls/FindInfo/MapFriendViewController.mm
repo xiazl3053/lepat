@@ -18,7 +18,8 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    _mapView = [[BMKMapView alloc] initWithFrame:Rect(0, 64, kScreenSourchWidth, kScreenSourchHeight-64)];
+    _mapView = [[BMKMapView alloc] initWithFrame:Rect(0, 44, kScreenSourchWidth, kScreenSourchHeight-64)];
+    self.title = @"地图";
     [self.view addSubview:_mapView];
 }
 
@@ -36,11 +37,13 @@
     _mapView.delegate = nil;
 }
 
-- (void)mapView:(BMKMapView *)mapView onClickedMapBlank:(CLLocationCoordinate2D)coordinate {
+- (void)mapView:(BMKMapView *)mapView onClickedMapBlank:(CLLocationCoordinate2D)coordinate
+{
     NSLog(@"map view: click blank");
 }
 
-- (void)mapview:(BMKMapView *)mapView onDoubleClick:(CLLocationCoordinate2D)coordinate {
+- (void)mapview:(BMKMapView *)mapView onDoubleClick:(CLLocationCoordinate2D)coordinate
+{
     NSLog(@"map view: double click");
 }
 
@@ -48,6 +51,5 @@
 {
     DLog(@"Map view Finish Loading");
 }
-
 
 @end

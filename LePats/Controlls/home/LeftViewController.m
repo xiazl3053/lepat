@@ -61,7 +61,8 @@
     
 }
 
--(void)initViews{
+-(void)initViews
+{
     [self initTableView];
 }
 
@@ -88,9 +89,10 @@
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     HomeItemModel *model=[self.itemList objectAtIndex:indexPath.row];
-    [[NSNotificationCenter defaultCenter]postNotificationName:KShowMainViewController object:model];
+    [[NSNotificationCenter defaultCenter] postNotificationName:KShowMainViewController object:model];
 }
 
 - (void)didReceiveMemoryWarning

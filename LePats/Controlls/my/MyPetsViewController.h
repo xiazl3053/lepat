@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface MyPetsViewController : UIViewController
+@interface MyPetsViewController : BaseViewController
 
 @end

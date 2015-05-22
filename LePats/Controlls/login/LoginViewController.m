@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "LogView.h"
+#import "ProgressHUD.h"
 #import "Toast+UIView.h"
 #import "LoginService.h"
 #import "UIView+Extension.h"
@@ -84,26 +85,44 @@
         [self.view makeToast:@"密码不能为空"];
         return ;
     }
+    [ProgressHUD show:@"正在登录..."];
     __weak LoginViewController *__self = self;
     loginSer.httpBlock = ^(int nStatus)
     {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [ProgressHUD dismiss];
+        });
+        NSString *strMsg = nil;
         switch (nStatus) {
             case 200:
             {
-                DLog(@"登录成功");
-                [__self.view makeToast:@"登录成功"];
+                strMsg = @"登录成功";
             }
             break;
             case 50001:
             {
                 DLog(@"登录失败，用户名或者密码错误");
+                strMsg = @"登录失败，用户名或者密码错误";
             }
             break;
             default:
             {
                 DLog(@"连接服务器错误");
+                strMsg = @"连接服务器错误";
             }
             break;
+        }
+        __strong LoginViewController *__strongSelf = __self;
+        dispatch_async(dispatch_get_main_queue(),
+        ^{
+             [__strongSelf.view makeToast:strMsg];
+        });
+        if(nStatus==200)
+        {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2.0*NSEC_PER_SEC), dispatch_get_main_queue(),
+            ^{
+                  [__strongSelf.navigationController popViewControllerAnimated:YES];
+            });
         }
     };
     [loginSer requestLogin:strUser password:strPwd];

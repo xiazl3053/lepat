@@ -8,13 +8,16 @@
 
 // 版权属于原作者
 // http://code4app.com (cn) http://code4app.net (en)
-// 发布代码于最专业的源码分享网站: Code4App.com
 
+// 发布代码于最专业的源码分享网站: Code4App.com
 #import "WWSideslipViewController.h"
 #import "Common.h"
 #import "UserInfoViewController.h"
 #import "MainViewController.h"
 #import "LoginViewController.h"
+#import "UserInfo.h"
+
+
 @interface WWSideslipViewController ()
 
 @end
@@ -175,9 +178,15 @@
 -(void)gotoInfoView{
     MainViewController *tabbar=(MainViewController*)mainControl;
     UIViewController *vc=tabbar.selectedViewController;
+    UserInfo *info = [UserInfo sharedUserInfo];
+    if (info.strMobile != nil  && info.strToken != nil )
+    {
+        //如果存在登录信息则取消
+        return ;
+    }
     LoginViewController *login=[[LoginViewController alloc]init];
     login.hidesBottomBarWhenPushed=YES;
-    login.view.backgroundColor=[UIColor redColor];
+//    login.view.backgroundColor=[UIColor redColor];
     [((UINavigationController*)vc) pushViewController:login animated:YES];
     switch (0) {
         case 0:

@@ -8,6 +8,6 @@
 
 #import "BaseViewController.h"
 
-@interface MyPetsViewController : BaseViewController
+@interface AddPetViewController : BaseViewController
 
 @end
