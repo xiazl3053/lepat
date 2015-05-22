@@ -35,6 +35,10 @@
 		4DED53D11B09A24600577B1C /* UIControl+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DED53D01B09A24600577B1C /* UIControl+BlocksKit.m */; };
 		4DED53D31B09B23C00577B1C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DED53D21B09B23C00577B1C /* Images.xcassets */; };
 		7AE8302AB035A0F6C58184D7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF811F65411D3FCD44EA091 /* libPods.a */; };
+		8436E93C1B0F0094001E8EBE /* GetPetSortService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436E93B1B0F0094001E8EBE /* GetPetSortService.m */; };
+		843DB3191B0DC72C00312383 /* AddPetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843DB3181B0DC72C00312383 /* AddPetViewController.m */; };
+		843DB31C1B0DCD8C00312383 /* Pet.m in Sources */ = {isa = PBXBuildFile; fileRef = 843DB31B1B0DCD8C00312383 /* Pet.m */; };
+		843DB31F1B0DD16D00312383 /* MyPetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843DB31E1B0DD16D00312383 /* MyPetsViewController.m */; };
 		843EA8801B044EDE004B9BC1 /* HomeItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EA87F1B044EDE004B9BC1 /* HomeItemModel.m */; };
 		843EA8981B04521E004B9BC1 /* HomeItemCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EA8951B04521E004B9BC1 /* HomeItemCollectionCell.m */; };
 		843EA8991B04521E004B9BC1 /* HomeItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EA8971B04521E004B9BC1 /* HomeItemButton.m */; };
@@ -167,6 +171,14 @@
 		4DED53D01B09A24600577B1C /* UIControl+BlocksKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+BlocksKit.m"; sourceTree = "<group>"; };
 		4DED53D21B09B23C00577B1C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = LePats/Images.xcassets; sourceTree = "<group>"; };
 		635FBA24F678FB40B37ED093 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		8436E93A1B0F0094001E8EBE /* GetPetSortService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPetSortService.h; sourceTree = "<group>"; };
+		8436E93B1B0F0094001E8EBE /* GetPetSortService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPetSortService.m; sourceTree = "<group>"; };
+		843DB3171B0DC72C00312383 /* AddPetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPetViewController.h; sourceTree = "<group>"; };
+		843DB3181B0DC72C00312383 /* AddPetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPetViewController.m; sourceTree = "<group>"; };
+		843DB31A1B0DCD8C00312383 /* Pet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pet.h; sourceTree = "<group>"; };
+		843DB31B1B0DCD8C00312383 /* Pet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pet.m; sourceTree = "<group>"; };
+		843DB31D1B0DD16D00312383 /* MyPetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPetsViewController.h; sourceTree = "<group>"; };
+		843DB31E1B0DD16D00312383 /* MyPetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPetsViewController.m; sourceTree = "<group>"; };
 		843EA87E1B044EDE004B9BC1 /* HomeItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeItemModel.h; sourceTree = "<group>"; };
 		843EA87F1B044EDE004B9BC1 /* HomeItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeItemModel.m; sourceTree = "<group>"; };
 		843EA8941B04521E004B9BC1 /* HomeItemCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeItemCollectionCell.h; sourceTree = "<group>"; };
@@ -376,6 +388,10 @@
 				4D34E9281B05FD1D00AE04F7 /* UserDetailViewController.m */,
 				4D34E9291B05FD1D00AE04F7 /* UserInfoViewController.h */,
 				4D34E92A1B05FD1D00AE04F7 /* UserInfoViewController.m */,
+				843DB3171B0DC72C00312383 /* AddPetViewController.h */,
+				843DB3181B0DC72C00312383 /* AddPetViewController.m */,
+				843DB31D1B0DD16D00312383 /* MyPetsViewController.h */,
+				843DB31E1B0DD16D00312383 /* MyPetsViewController.m */,
 			);
 			path = my;
 			sourceTree = "<group>";
@@ -486,6 +502,8 @@
 				BB088E501B034CDC00F5E092 /* AddPetService.m */,
 				BB088E561B03565000F5E092 /* PetSortService.h */,
 				BB088E571B03565000F5E092 /* PetSortService.m */,
+				8436E93A1B0F0094001E8EBE /* GetPetSortService.h */,
+				8436E93B1B0F0094001E8EBE /* GetPetSortService.m */,
 			);
 			path = Pats;
 			sourceTree = "<group>";
@@ -517,6 +535,8 @@
 				BB088E541B034D0700F5E092 /* LePetInfo.m */,
 				843EA87E1B044EDE004B9BC1 /* HomeItemModel.h */,
 				843EA87F1B044EDE004B9BC1 /* HomeItemModel.m */,
+				843DB31A1B0DCD8C00312383 /* Pet.h */,
+				843DB31B1B0DCD8C00312383 /* Pet.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -694,10 +714,12 @@
 				BB088E551B034D0700F5E092 /* LePetInfo.m in Sources */,
 				4D34E92F1B05FD1D00AE04F7 /* RightViewController.m in Sources */,
 				BB088E511B034CDC00F5E092 /* AddPetService.m in Sources */,
+				843DB31F1B0DD16D00312383 /* MyPetsViewController.m in Sources */,
 				4DED53D11B09A24600577B1C /* UIControl+BlocksKit.m in Sources */,
 				4D34E9311B05FD1D00AE04F7 /* LoginViewController.m in Sources */,
 				4D202C371B08F9D9007DED73 /* LogView.m in Sources */,
 				843EA8801B044EDE004B9BC1 /* HomeItemModel.m in Sources */,
+				8436E93C1B0F0094001E8EBE /* GetPetSortService.m in Sources */,
 				BB088E481B03456100F5E092 /* MyPetService.m in Sources */,
 				4D34E92B1B05FD1D00AE04F7 /* BaseViewController.m in Sources */,
 				4DED53CC1B09A19100577B1C /* ProgressHUD.m in Sources */,
@@ -706,10 +728,12 @@
 				4D34E92E1B05FD1D00AE04F7 /* MainViewController.m in Sources */,
 				4D202C3A1B0900F7007DED73 /* RegFirstViewController.m in Sources */,
 				BB588F931B047F690095337C /* HttpUploadManager.m in Sources */,
+				843DB31C1B0DCD8C00312383 /* Pet.m in Sources */,
 				BB088E4E1B034C8500F5E092 /* DelPetService.m in Sources */,
 				BB9A04B71B01F28F007DFDC8 /* AppDelegate.mm in Sources */,
 				843EA8981B04521E004B9BC1 /* HomeItemCollectionCell.m in Sources */,
 				BB088E411B03453900F5E092 /* HttpManager.m in Sources */,
+				843DB3191B0DC72C00312383 /* AddPetViewController.m in Sources */,
 				4D12351C1B0C6A67006C1E76 /* RegSecondVIewController.m in Sources */,
 				4DED53CD1B09A19100577B1C /* Toast+UIView.m in Sources */,
 				BB088E421B03453900F5E092 /* LoginService.m in Sources */,
