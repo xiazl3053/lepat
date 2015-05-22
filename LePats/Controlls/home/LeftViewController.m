@@ -44,12 +44,14 @@
 -(void)initParams{
     self.itemList=[NSMutableArray array];
     HomeItemModel *model=[[HomeItemModel alloc]init];
-    model.title=@"我的QQ会员";
-    model.img=@"my";
+    model.title=@"我的宠物";
+    model.img=@"myPets";
+    model.tag=10001;
     
     HomeItemModel *model1=[[HomeItemModel alloc]init];
-    model1.title=@"QQ钱包";
-    model1.img=@"my";
+    model1.title=@"添加宠物";
+    model1.img=@"addPet";
+    model1.tag=10002;
     
     HomeItemModel *model2=[[HomeItemModel alloc]init];
     model2.title=@"网上营业厅";
@@ -61,8 +63,7 @@
     
 }
 
--(void)initViews
-{
+-(void)initViews{
     [self initTableView];
 }
 
@@ -89,10 +90,9 @@
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     HomeItemModel *model=[self.itemList objectAtIndex:indexPath.row];
-    [[NSNotificationCenter defaultCenter] postNotificationName:KShowMainViewController object:model];
+    [[NSNotificationCenter defaultCenter]postNotificationName:KShowMainViewController object:model];
 }
 
 - (void)didReceiveMemoryWarning

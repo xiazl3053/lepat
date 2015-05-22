@@ -28,4 +28,6 @@ sex：性别
 @property (nonatomic,assign) int nPhotoId;
 
 
+-(id)initWithNSDictionary:(NSDictionary *)dic;
+
 @end

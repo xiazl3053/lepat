@@ -33,7 +33,7 @@
 
 -(void)initData{
     LePetInfo *pet=[[LePetInfo alloc]init];
-    pet.strName=@"啊黄";
+    pet.strName=@"啊黑";
     pet.strBirthday=@"5";
     pet.nSex=1;
     pet.strDescription=@"漂亮的小宝贝";

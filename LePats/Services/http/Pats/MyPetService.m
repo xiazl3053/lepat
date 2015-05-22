@@ -29,6 +29,9 @@
         return ;
     }
     DLog(@"dic:%@",dic);
+    if (self.myPetsBlock) {
+        self.myPetsBlock(nil,[dic objectForKey:@"petByUList"]);
+    }
 }
 
 @end

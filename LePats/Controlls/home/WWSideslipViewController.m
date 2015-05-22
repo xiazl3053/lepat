@@ -8,14 +8,16 @@
 
 // 版权属于原作者
 // http://code4app.com (cn) http://code4app.net (en)
-
 // 发布代码于最专业的源码分享网站: Code4App.com
+
 #import "WWSideslipViewController.h"
 #import "Common.h"
 #import "UserInfoViewController.h"
 #import "MainViewController.h"
 #import "LoginViewController.h"
-#import "UserInfo.h"
+#import "MyPetsViewController.h"
+#import "AddPetViewController.h"
+#import "HomeItemModel.h"
 
 
 @interface WWSideslipViewController ()
@@ -171,27 +173,29 @@
 -(void)gotoMyInfoViewCotroller:(NSNotification *)notification{
     NSLog(@"notification.object=%@",notification.object);
     [self showMainView];
-    [self gotoInfoView];
+    HomeItemModel *model=notification.object;
+    [self gotoInfoViewWithTag:model.tag];
     
 }
 
--(void)gotoInfoView{
+-(void)gotoInfoViewWithTag:(NSInteger)tag{
     MainViewController *tabbar=(MainViewController*)mainControl;
     UIViewController *vc=tabbar.selectedViewController;
-    UserInfo *info = [UserInfo sharedUserInfo];
-    if (info.strMobile != nil  && info.strToken != nil )
-    {
-        //如果存在登录信息则取消
-        return ;
-    }
-    LoginViewController *login=[[LoginViewController alloc]init];
-    login.hidesBottomBarWhenPushed=YES;
-//    login.view.backgroundColor=[UIColor redColor];
-    [((UINavigationController*)vc) pushViewController:login animated:YES];
-    switch (0) {
-        case 0:
+    
+    
+    switch (tag) {
+        case 10001:
         {
-           
+            MyPetsViewController *myPets=[[MyPetsViewController alloc]init];
+            myPets.hidesBottomBarWhenPushed=YES;
+            [((UINavigationController*)vc) pushViewController:myPets animated:YES];
+            
+        }break;
+        case 10002:{
+            AddPetViewController *addPet=[[AddPetViewController alloc]init];
+            addPet.hidesBottomBarWhenPushed=YES;
+            [((UINavigationController*)vc) pushViewController:addPet animated:YES];
+        
         }break;
             
         default:

@@ -10,4 +10,15 @@
 
 @implementation LePetInfo
 
+-(id)initWithNSDictionary:(NSDictionary *)dic{
+    if (self=[super init]) {
+        self.strBirthday=[dic objectForKey:@"birthday"];
+        self.strDescription=[dic objectForKey:@"description"];
+        self.strName=[dic objectForKey:@"petName"];
+        self.nSex=[[dic objectForKey:@"sex"]intValue];
+        self.nSortId=[[dic objectForKey:@"sortId"]intValue];
+    }
+    return self;
+}
+
 @end

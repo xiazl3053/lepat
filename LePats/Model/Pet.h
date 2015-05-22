@@ -10,4 +10,10 @@
 
 @interface Pet : NSObject
 
+@property (nonatomic,copy) NSString *nickName;
+@property (nonatomic,copy) NSString *type;
+@property (nonatomic,copy) NSString *age;
+@property (nonatomic,copy) NSString *sex;
+@property (nonatomic,copy) NSString *desc;
+
 @end
