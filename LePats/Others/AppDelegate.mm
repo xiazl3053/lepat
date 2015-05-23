@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "WWSideslipViewController.h"
+#import "FindService.h"
 #import "LeftViewController.h"
 #import "RightViewController.h"
 #import "MainViewController.h"
@@ -66,6 +67,9 @@
 {
     MyPetService *myPet = [[MyPetService alloc] init];
     [myPet requestPetInfo:1];
+
+    FindService *findService = [[FindService alloc] init];
+    [findService requestFindNear:113.2759952545166 lng:23.117055306224895];
     
 //    HttpUploadManager *httpUpload = [[HttpUploadManager alloc] init];
 //    [httpUpload uploadPerson:[UIImage imageNamed:@"my"]];

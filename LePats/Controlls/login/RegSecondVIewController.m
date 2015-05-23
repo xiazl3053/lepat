@@ -52,7 +52,7 @@
     txtMobile.leftView = viewNumber;
     txtMobile.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     txtMobile.leftViewMode = UITextFieldViewModeAlways;
-    txtMobile.keyboardType = UIKeyboardTypePhonePad;
+    txtMobile.keyboardType = UIKeyboardTypeDefault;
     [txtMobile setBorderStyle:UITextBorderStyleNone];
     
     UIButton *btnSender = [UIButton buttonWithType:UIButtonTypeCustom];

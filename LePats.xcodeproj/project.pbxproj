@@ -30,6 +30,7 @@
 		4D34E9321B05FD1D00AE04F7 /* UserDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D34E9281B05FD1D00AE04F7 /* UserDetailViewController.m */; };
 		4D34E9331B05FD1D00AE04F7 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D34E92A1B05FD1D00AE04F7 /* UserInfoViewController.m */; };
 		4D61CA5A1B100EA00092D232 /* RegSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D61CA591B100EA00092D232 /* RegSettingViewController.m */; };
+		4D61CA5E1B1084E70092D232 /* FindService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D61CA5D1B1084E70092D232 /* FindService.m */; };
 		4DED53CB1B09A19100577B1C /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4DED53C61B09A19100577B1C /* ProgressHUD.bundle */; };
 		4DED53CC1B09A19100577B1C /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DED53C81B09A19100577B1C /* ProgressHUD.m */; };
 		4DED53CD1B09A19100577B1C /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DED53CA1B09A19100577B1C /* Toast+UIView.m */; };
@@ -165,6 +166,8 @@
 		4D34E92A1B05FD1D00AE04F7 /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
 		4D61CA581B100EA00092D232 /* RegSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegSettingViewController.h; sourceTree = "<group>"; };
 		4D61CA591B100EA00092D232 /* RegSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegSettingViewController.m; sourceTree = "<group>"; };
+		4D61CA5C1B1084E70092D232 /* FindService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindService.h; sourceTree = "<group>"; };
+		4D61CA5D1B1084E70092D232 /* FindService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindService.m; sourceTree = "<group>"; };
 		4DED53C61B09A19100577B1C /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
 		4DED53C71B09A19100577B1C /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		4DED53C81B09A19100577B1C /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
@@ -401,6 +404,15 @@
 			path = my;
 			sourceTree = "<group>";
 		};
+		4D61CA5B1B1083FB0092D232 /* Find */ = {
+			isa = PBXGroup;
+			children = (
+				4D61CA5C1B1084E70092D232 /* FindService.h */,
+				4D61CA5D1B1084E70092D232 /* FindService.m */,
+			);
+			path = Find;
+			sourceTree = "<group>";
+		};
 		4DED53C51B09A19100577B1C /* Toast */ = {
 			isa = PBXGroup;
 			children = (
@@ -572,6 +584,7 @@
 		BB9A04BC1B02031C007DFDC8 /* http */ = {
 			isa = PBXGroup;
 			children = (
+				4D61CA5B1B1083FB0092D232 /* Find */,
 				BB588F901B047EE00095337C /* upload */,
 				BB088E451B03454900F5E092 /* Pats */,
 				BB088E381B03453900F5E092 /* Pub */,
@@ -712,6 +725,7 @@
 			files = (
 				4D202C3D1B09054B007DED73 /* UIView+Extension.m in Sources */,
 				BB088E341B032B1D00F5E092 /* UserInfo.m in Sources */,
+				4D61CA5E1B1084E70092D232 /* FindService.m in Sources */,
 				4D61CA5A1B100EA00092D232 /* RegSettingViewController.m in Sources */,
 				BB088E581B03565000F5E092 /* PetSortService.m in Sources */,
 				4D34E9331B05FD1D00AE04F7 /* UserInfoViewController.m in Sources */,

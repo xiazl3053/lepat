@@ -152,7 +152,7 @@
     txtInfo.leftView = viewUser;
     txtInfo.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     txtInfo.leftViewMode = UITextFieldViewModeAlways;
-    txtInfo.keyboardType = UIKeyboardTypePhonePad;
+    txtInfo.keyboardType = UIKeyboardTypeDefault;
     
     [txtInfo.layer setMasksToBounds:YES];
     [txtInfo.layer setCornerRadius:3.0f];

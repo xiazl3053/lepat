@@ -44,7 +44,7 @@
     _txtUser.leftView = viewUser;
     _txtUser.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     _txtUser.leftViewMode = UITextFieldViewModeAlways;
-    _txtUser.keyboardType = UIKeyboardTypePhonePad;
+    _txtUser.keyboardType = UIKeyboardTypeDefault;
     
     UIView *viewPwd = [[UIView alloc] initWithFrame:Rect(0, 0, 32, 44)];
     UIImageView *imgPwd = [[UIImageView alloc] initWithFrame:Rect(0, 11, 22, 22)];
@@ -53,7 +53,7 @@
     _txtPwd.leftView = viewPwd;
     _txtPwd.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     _txtPwd.leftViewMode = UITextFieldViewModeAlways;
-    _txtPwd.keyboardType = UIKeyboardTypePhonePad;
+    _txtPwd.keyboardType = UIKeyboardTypeDefault;
     [_txtUser setFont:XCFONT(10)];
     [_txtPwd setFont:XCFONT(10)];
     

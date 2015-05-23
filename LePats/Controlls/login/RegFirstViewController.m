@@ -96,7 +96,7 @@
     txtAddress.leftView = viewAddr;
     txtAddress.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     txtAddress.leftViewMode = UITextFieldViewModeAlways;
-    txtAddress.keyboardType = UIKeyboardTypePhonePad;
+    txtAddress.keyboardType = UIKeyboardTypeDefault;
     [txtAddress setBorderStyle:UITextBorderStyleNone];
  
     txtNumber = [[UITextField alloc] initWithFrame:Rect(10,txtAddress.y+txtAddress.height+13,self.view.width-20, 44)];
@@ -108,7 +108,7 @@
     txtNumber.leftView = viewNumber;
     txtNumber.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     txtNumber.leftViewMode = UITextFieldViewModeAlways;
-    txtNumber.keyboardType = UIKeyboardTypePhonePad;
+    txtNumber.keyboardType = UIKeyboardTypeDefault;
     [txtNumber setBorderStyle:UITextBorderStyleNone];
  
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(regOKBack) name:MESSAGE_UPDATE_USER_T_VC object:nil];

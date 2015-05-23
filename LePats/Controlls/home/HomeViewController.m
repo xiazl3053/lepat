@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "HomeItemCollectionCell.h"
+#import "UserInfo.h"
 #import "HomeItemModel.h"
 #import "HomeItemButton.h"
 #import "UserInfoViewController.h"
@@ -131,8 +132,11 @@
 //            LoginViewController *info=[story instantiateViewControllerWithIdentifier:@"LoginViewController"];
 //            info.view.backgroundColor=[UIColor yellowColor];
 //            info.hidesBottomBarWhenPushed=YES;
-            LoginViewController *loginView = [[LoginViewController alloc] init];
-            [self.navigationController pushViewController:loginView animated:YES];
+            if([UserInfo sharedUserInfo].strMobile ==nil || [[UserInfo sharedUserInfo].strMobile isEqualToString:@""])
+            {
+                LoginViewController *loginView = [[LoginViewController alloc] init];
+                [self.navigationController pushViewController:loginView animated:YES];
+            }
         }break;
         case 102:
         {
