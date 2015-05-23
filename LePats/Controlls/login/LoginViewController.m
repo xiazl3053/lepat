@@ -32,18 +32,25 @@
     return self;
 }
 
+-(void)backRegSucc
+{
+    [self.navigationController popViewControllerAnimated:NO];
+}
+
+
 -(void)viewDidLoad
 {
     [super viewDidLoad];
     [self.view setBackgroundColor:RGB(250, 250, 250)];
     loginView = [[LogView alloc] initWithFrame:Rect(10, 120,self.view.frame.size.width-20, 100)];
     [self.view addSubview:loginView];
-
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backRegSucc) name:MESSAGE_UPDATE_USER_TH_VC object:nil];
     self.title = @"登录";
     [self setRightHidden:NO];
     [self setRightTitle:@"注册"];
     __weak LoginViewController *__self = self;
-    [self addRightEvent:^(id sender){
+    [self addRightEvent:^(id sender)
+    {
         RegFirstViewController *regFirst = [[RegFirstViewController alloc] init];
         [__self.navigationController pushViewController:regFirst animated:YES];
     }];

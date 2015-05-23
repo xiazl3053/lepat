@@ -8,7 +8,13 @@
 
 #import "HttpManager.h"
 
+typedef void(^HttpUpdUser)(int nStatus);
+
+
 @interface UpdUserService : HttpManager
+
+@property (nonatomic,copy ) HttpUpdUser httpBlock;
+
 
 -(void)updReqUserInfo;
 

@@ -56,14 +56,22 @@
             [ProgressHUD dismiss];
         });
         switch (nStatus) {
-            case 1:
+            case 200:
             {
                 RegSecondViewController *regSecond = [[RegSecondViewController alloc] init];
                 [__self presentViewController:regSecond animated:YES completion:nil];
             }
             break;
+            case 50001:
+            {
+                [__self.view makeToast:@"已经注册"];
+            }
+            break;
             default:
-                break;
+            {
+                
+            }
+            break;
         }
     };
     [regServer requestRegCode:[txtNumber text]];
@@ -103,7 +111,7 @@
     txtNumber.keyboardType = UIKeyboardTypePhonePad;
     [txtNumber setBorderStyle:UITextBorderStyleNone];
  
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(regOKBack) name:MESSAGE_UPDATE_USER_T_VC object:nil];
     
     [self.view addSubview:txtAddress];
     [self.view addSubview:txtNumber];
@@ -131,8 +139,17 @@
     
     btnAuth.frame = Rect(10,txtNumber.y+txtNumber.height+18,self.view.width-20,40);
     [self.view addSubview:btnAuth];
-    
 }
 
+-(void)regOKBack
+{
+    [self.navigationController popViewControllerAnimated:NO];
+    [[NSNotificationCenter defaultCenter] postNotificationName:MESSAGE_UPDATE_USER_TH_VC object:nil];
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 @end

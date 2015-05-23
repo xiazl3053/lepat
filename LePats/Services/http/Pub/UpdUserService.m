@@ -26,9 +26,26 @@
 {
     if (*nStatus!=200)
     {
+        if (_httpBlock) {
+            _httpBlock(*nStatus);
+        }
         return ;
     }
     DLog(@"dic:%@",dic);
+    int nReturnCode = [[dic objectForKey:@"return_code"] intValue];
+    if (nReturnCode == 10000) {
+        if (_httpBlock)
+        {
+            _httpBlock(200);
+        }
+    }
+    else
+    {
+        if (_httpBlock)
+        {
+            _httpBlock(nReturnCode);
+        }
+    }
 }
 
 @end

@@ -41,12 +41,11 @@
                 NSString *strInfo = [NSString stringWithFormat:@"%@%@%@%@",aryInfo[0],aryInfo[1],aryInfo[2],aryInfo[3]];
                 DLog(@"验证码是:%@",strInfo);
 //                [self requestReg:strInfo mobile:@"13912345678"];
+                [UserInfo sharedUserInfo].strCode = strInfo;
                 if (_httpCode)
                 {
-                    _httpCode(1,@"right");
-                    return ;
+                    _httpCode(200,@"right");
                 }
-                [UserInfo sharedUserInfo].strCode = strInfo;
             }
             else
             {
@@ -59,7 +58,7 @@
                     //修改帐号信息
                     if (_httpReg)
                     {
-                        _httpReg(1);
+                        _httpReg(200);
                     }
 //                    [UserInfo sharedUserInfo].strPassword = @"123456";
 //                    [UserInfo sharedUserInfo].strNickName = @"test";
@@ -81,11 +80,18 @@
         else
         {
             DLog(@"错误--dic:%@",dic);
+            
+            int nReg = [[dic objectForKey:@"return_code"] intValue];
+            if (_httpReg) {
+                _httpReg(nReg);
+            }
         }
     }
     else
     {
-        
+        if (_httpReg) {
+            _httpReg(*nStatus);
+        }
     }
 }
 
