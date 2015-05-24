@@ -14,7 +14,10 @@
 -(void)requestAddPet:(LePetInfo*)lePet
 {
     UserInfo *user = [UserInfo sharedUserInfo];
-    NSString *strUrl = [NSString stringWithFormat:@"%@pats/pet/doAdd.do?petName=%@&petCount=%d&birthday=%@&sortId=%d&photoid=%d&description=%@&sex=%d&userid=%@&token=%@%@",LEPAT_HTTP_HOST,lePet.strName,lePet.nPetCount,lePet.strBirthday,lePet.nSortId,lePet.nPhotoId,lePet.strDescription,lePet.nSex,
+    NSString *strName = [NSString stringWithUTF8String:"ting"];
+    NSString *strDecription = [NSString stringWithUTF8String:"ting"];
+    
+    NSString *strUrl = [NSString stringWithFormat:@"%@pats/pet/doAdd.do?petName=%@&petCount=%d&birthday=%@&sortId=%d&photoid=%d&description=%@&sex=%d&userid=%@&token=%@%@",LEPAT_HTTP_HOST,strName,lePet.nPetCount,lePet.strBirthday,lePet.nSortId,lePet.nPhotoId,strDecription,lePet.nSex,
                         user.strUserId,user.strToken,LEPAT_VERSION_INFO];
     [self sendRequest:strUrl];
 }

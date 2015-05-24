@@ -57,7 +57,7 @@
     }
     
     LoginService *login = [[LoginService alloc] init];
-    [login requestLogin:@"13912345678" password:@"123456"];
+   // [login requestLogin:@"15013273670" password:@"123456"];
     
     [self.window setRootViewController:slide];
     [self.window makeKeyAndVisible];

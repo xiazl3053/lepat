@@ -83,10 +83,10 @@
 
 -(void)submit{
     LePetInfo *pet=[[LePetInfo alloc]init];
-    pet.strName=@"黄黄";
+    pet.strName=@"掐";
     pet.strBirthday=@"2015-03-03";
     pet.nSex=0;
-    pet.strDescription=@"小小";
+    pet.strDescription=@"啊啊黑";
     pet.nSortId=3;
     
     AddPetService *service=[[AddPetService alloc]init];

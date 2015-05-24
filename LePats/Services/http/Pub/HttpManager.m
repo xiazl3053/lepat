@@ -13,7 +13,7 @@
 -(void)sendRequest:(NSString *)strPath
 {
 //    [NSString stringWithUTF8String:[strPath UTF8String]]
-    NSURL *url=[NSURL URLWithString:[NSString stringWithUTF8String:[strPath UTF8String]]];
+    NSURL *url=[NSURL URLWithString:strPath];
     NSMutableURLRequest *request=[[NSMutableURLRequest alloc] initWithURL:url];//通过URL创建网络请求
     [request setTimeoutInterval:XC_HTTP_TIMEOUT];//设置超时时间
     [request setHTTPMethod:@"POST"];//设置请求方式

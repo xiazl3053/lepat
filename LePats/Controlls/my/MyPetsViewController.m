@@ -99,6 +99,9 @@
     return self.pets.count;
 }
 
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"%s",__FUNCTION__);
+}
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     LePetInfo *pet=[self.pets objectAtIndex:indexPath.row];
