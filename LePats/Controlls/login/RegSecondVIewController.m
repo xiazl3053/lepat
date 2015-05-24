@@ -61,7 +61,6 @@
     btnSender.frame = Rect(220,120,self.view.width-231,40);
     [btnSender setTitleColor:RGB(0, 0, 0) forState:UIControlStateNormal];
     btnSender.layer.borderWidth = 1;
-//    btnSender.layer.borderColor = RGB(230, 230, 230).CGColor;
     [btnSender.layer setMasksToBounds:YES];
     btnSender.layer.cornerRadius = 2.0f;
     

@@ -132,7 +132,7 @@
 //            LoginViewController *info=[story instantiateViewControllerWithIdentifier:@"LoginViewController"];
 //            info.view.backgroundColor=[UIColor yellowColor];
 //            info.hidesBottomBarWhenPushed=YES;
-            if([UserInfo sharedUserInfo].strMobile ==nil || [[UserInfo sharedUserInfo].strMobile isEqualToString:@""])
+            if([UserInfo sharedUserInfo].strMobile ==nil)
             {
                 LoginViewController *loginView = [[LoginViewController alloc] init];
                 [self.navigationController pushViewController:loginView animated:YES];

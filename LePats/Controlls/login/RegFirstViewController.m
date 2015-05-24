@@ -115,7 +115,6 @@
     
     [self.view addSubview:txtAddress];
     [self.view addSubview:txtNumber];
-   
     
     //UITextField layer 设置
     txtNumber.layer.borderWidth = 1;
