@@ -8,6 +8,12 @@
 
 #import "BaseViewController.h"
 
-@interface AddPetViewController : BaseViewController
+typedef enum : NSUInteger {
+    PetType_ADD,
+    PetType_EDIT,
+} PetType;
 
+@interface AddPetViewController : BaseViewController
+@property (nonatomic,assign) PetType type;
+@property (nonatomic,assign) NSInteger nPetId;
 @end

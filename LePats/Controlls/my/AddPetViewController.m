@@ -10,10 +10,13 @@
 #import "LePetInfo.h"
 #import "AddPetService.h"
 #import "HttpUploadManager.h"
+#import "AddPetCellTableViewCell.h"
+#import "PetInfoService.h"
 
 
 @interface AddPetViewController ()<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
     LePetInfo *_pet;
+    UITableView *_tableView;
 }
 
 @end
@@ -29,6 +32,9 @@
 
 -(void)initParams{
     [self initData];
+    if (self.type==PetType_EDIT) {
+        [self queryPet];
+    }
 }
 
 -(void)initData{
@@ -40,6 +46,20 @@
     pet.nSortId=0;
     _pet=pet;
     
+}
+
+-(void)queryPet{
+    PetInfoService *pet=[[PetInfoService alloc]init];
+    pet.petInfoBlock=^(NSString *error,NSDictionary *dic){
+        if (error) {
+            
+        }else{
+            _pet=[[LePetInfo alloc]initWithNSDictionary:[dic objectForKey:@"pet"]];
+            self.title=_pet.strName;
+            [_tableView reloadData];
+        }
+    };
+    [pet requestPetInfo:56];
 }
 
 -(void)initViews{
@@ -83,43 +103,83 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *identifier=@"ADDPETCELL";
-    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:identifier];
+    AddPetCellTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
-        cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier];
+        cell=[[AddPetCellTableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier];
         cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     }
-    switch (indexPath.row) {
-        case 0:
-        {
-            cell.textLabel.text=@"宠物昵称:";
-            cell.detailTextLabel.text=_pet.strName;
-        }break;
-        case 1:
-        {
-            cell.textLabel.text=@"宠物类型:";
-            cell.detailTextLabel.text=[NSString stringWithFormat:@"%i",_pet.nSortId];
-        }break;
-        case 2:
-        {
-            cell.textLabel.text=@"宠物年龄:";
-            cell.detailTextLabel.text=_pet.strBirthday;
-        }break;
-        case 3:
-        {
-            cell.textLabel.text=@"宠物性别:";
-            cell.detailTextLabel.text=[NSString stringWithFormat:@"%i",_pet.nSex];
-;
-        }break;
-        case 4:
-        {
-            cell.textLabel.text=@"宠物描述:";
-            cell.detailTextLabel.text=_pet.strDescription;
-        }break;
+    switch (self.type) {
+        case PetType_ADD:{
+            switch (indexPath.row) {
+                case 0:
+                {
+                    cell.title.text=@"宠物昵称:";
+                    //cell.detailTextLabel.text=_pet.strName;
+                }break;
+                case 1:
+                {
+                    cell.title.text=@"宠物类型:";
+                    //cell.detailTextLabel.text=[NSString stringWithFormat:@"%i",_pet.nSortId];
+                }break;
+                case 2:
+                {
+                    cell.title.text=@"宠物年龄:";
+                    //cell.detailTextLabel.text=_pet.strBirthday;
+                }break;
+                case 3:
+                {
+                    cell.title.text=@"宠物性别:";
+                    //cell.detailTextLabel.text=[NSString stringWithFormat:@"%i",_pet.nSex];
+                    ;
+                }break;
+                case 4:
+                {
+                    cell.title.text=@"宠物描述:";
+                    //cell.detailTextLabel.text=_pet.strDescription;
+                }break;
+                    
+                default:
+                    break;
+            }
             
+        }break;
+        case PetType_EDIT:{
+            switch (indexPath.row) {
+                case 0:
+                {
+                    cell.title.text=@"宠物昵称:";
+                    cell.content.text=_pet.strName;
+                }break;
+                case 1:
+                {
+                    cell.title.text=@"宠物类型:";
+                    cell.content.text=[NSString stringWithFormat:@"%i",_pet.nSortId];
+                }break;
+                case 2:
+                {
+                    cell.title.text=@"宠物年龄:";
+                    cell.content.text=_pet.strBirthday;
+                }break;
+                case 3:
+                {
+                    cell.title.text=@"宠物性别:";
+                    cell.content.text=[NSString stringWithFormat:@"%i",_pet.nSex];
+                    ;
+                }break;
+                case 4:
+                {
+                    cell.title.text=@"宠物描述:";
+                    cell.content.text=_pet.strDescription;
+                }break;
+                    
+                default:
+                    break;
+            }
+        
+        }break;
         default:
             break;
     }
-    
     return cell;
 }
 
@@ -224,7 +284,7 @@
 
 -(void)upDateImage:(UIImage *)image{
     HttpUploadManager *upload=[[HttpUploadManager alloc]init];
-    [upload uploadPetHead:image petId:@""];
+    [upload uploadPetHead:image petId:@"-1"];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -27,7 +27,9 @@
         return ;
     }
     DLog(@"dic:%@",dic);
-    
+    if (self.petInfoBlock) {
+        self.petInfoBlock(nil,dic);
+    }
 }
 
 @end

@@ -9,6 +9,7 @@
 #import "MyPetsViewController.h"
 #import "LePetInfo.h"
 #import "MyPetService.h"
+#import "AddPetViewController.h"
 
 @interface MyPetsViewController ()<UITableViewDataSource,UITableViewDelegate>{
     UITableView *_tableView;
@@ -98,6 +99,14 @@
     return self.pets.count;
 }
 
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    LePetInfo *pet=[self.pets objectAtIndex:indexPath.row];
+    AddPetViewController *edit=[[AddPetViewController alloc]init];
+    edit.nPetId=pet.nPetId;
+    edit.type=PetType_EDIT;
+    [self.navigationController pushViewController:edit animated:YES];
+}
 
 /*
 #pragma mark - Navigation

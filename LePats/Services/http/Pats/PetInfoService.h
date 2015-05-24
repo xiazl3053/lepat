@@ -8,8 +8,12 @@
 
 #import "HttpManager.h"
 
+typedef void(^PetInfoBlock)(NSString *error,NSDictionary *dic);
+
 @interface PetInfoService : HttpManager
 
 -(void)requestPetInfo:(int)nPetId;
+
+@property (nonatomic,copy) PetInfoBlock petInfoBlock;
 
 @end

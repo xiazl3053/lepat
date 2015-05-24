@@ -20,20 +20,6 @@
                ReferencedContainer = "container:LePats.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "84D4D1E11B018FA400E67D9C"
-               BuildableName = "LePatsTests.xctest"
-               BlueprintName = "LePatsTests"
-               ReferencedContainer = "container:LePats.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -42,16 +28,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "84D4D1E11B018FA400E67D9C"
-               BuildableName = "LePatsTests.xctest"
-               BlueprintName = "LePatsTests"
-               ReferencedContainer = "container:LePats.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
