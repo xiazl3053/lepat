@@ -43,9 +43,13 @@
 		843EA8981B04521E004B9BC1 /* HomeItemCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EA8951B04521E004B9BC1 /* HomeItemCollectionCell.m */; };
 		843EA8991B04521E004B9BC1 /* HomeItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EA8971B04521E004B9BC1 /* HomeItemButton.m */; };
 		843EA89F1B0452AF004B9BC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843EA89E1B0452AF004B9BC1 /* Main.storyboard */; };
+		8464DCFF1B135AED00BCC733 /* UIView+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 8464DCFE1B135AED00BCC733 /* UIView+Add.m */; };
+		8464DD021B135C1F00BCC733 /* LeftTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8464DD011B135C1F00BCC733 /* LeftTableViewCell.m */; };
+		8464DD051B1361E300BCC733 /* MyPetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8464DD041B1361E200BCC733 /* MyPetTableViewCell.m */; };
 		84DB2EC81B11B32000A264C6 /* AddPetCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DB2EC71B11B32000A264C6 /* AddPetCellTableViewCell.m */; };
 		84DB2F091B11BABB00A264C6 /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84DB2F081B11BABB00A264C6 /* mapapi.bundle */; };
 		84DB2F0B1B11BAF200A264C6 /* libbaidumapapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DB2F0A1B11BAF200A264C6 /* libbaidumapapi.a */; };
+		84E9D2701B1368C90078FD76 /* PetInfoEditService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E9D26F1B1368C90078FD76 /* PetInfoEditService.m */; };
 		BB088E341B032B1D00F5E092 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB088E331B032B1D00F5E092 /* UserInfo.m */; };
 		BB088E411B03453900F5E092 /* HttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB088E3A1B03453900F5E092 /* HttpManager.m */; };
 		BB088E421B03453900F5E092 /* LoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = BB088E3C1B03453900F5E092 /* LoginService.m */; };
@@ -131,6 +135,12 @@
 		843EA8971B04521E004B9BC1 /* HomeItemButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeItemButton.m; sourceTree = "<group>"; };
 		843EA89A1B04522C004B9BC1 /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		843EA89E1B0452AF004B9BC1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		8464DCFD1B135AED00BCC733 /* UIView+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Add.h"; sourceTree = "<group>"; };
+		8464DCFE1B135AED00BCC733 /* UIView+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Add.m"; sourceTree = "<group>"; };
+		8464DD001B135C1F00BCC733 /* LeftTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftTableViewCell.h; sourceTree = "<group>"; };
+		8464DD011B135C1F00BCC733 /* LeftTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftTableViewCell.m; sourceTree = "<group>"; };
+		8464DD031B1361E200BCC733 /* MyPetTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPetTableViewCell.h; sourceTree = "<group>"; };
+		8464DD041B1361E200BCC733 /* MyPetTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPetTableViewCell.m; sourceTree = "<group>"; };
 		84D4D1C91B018FA400E67D9C /* LePats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LePats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84DB2EC61B11B32000A264C6 /* AddPetCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPetCellTableViewCell.h; sourceTree = "<group>"; };
 		84DB2EC71B11B32000A264C6 /* AddPetCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPetCellTableViewCell.m; sourceTree = "<group>"; };
@@ -197,6 +207,8 @@
 		84DB2F071B11BABB00A264C6 /* BMKVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKVersion.h; sourceTree = "<group>"; };
 		84DB2F081B11BABB00A264C6 /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = mapapi.bundle; sourceTree = "<group>"; };
 		84DB2F0A1B11BAF200A264C6 /* libbaidumapapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libbaidumapapi.a; sourceTree = "<group>"; };
+		84E9D26E1B1368C90078FD76 /* PetInfoEditService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PetInfoEditService.h; sourceTree = "<group>"; };
+		84E9D26F1B1368C90078FD76 /* PetInfoEditService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetInfoEditService.m; sourceTree = "<group>"; };
 		BB088E281B02D72D00F5E092 /* LePats-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LePats-Prefix.pch"; sourceTree = "<group>"; };
 		BB088E291B02D7F800F5E092 /* PubDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PubDefine.h; sourceTree = "<group>"; };
 		BB088E321B032B1D00F5E092 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
@@ -364,6 +376,10 @@
 			children = (
 				84DB2EC61B11B32000A264C6 /* AddPetCellTableViewCell.h */,
 				84DB2EC71B11B32000A264C6 /* AddPetCellTableViewCell.m */,
+				8464DD001B135C1F00BCC733 /* LeftTableViewCell.h */,
+				8464DD011B135C1F00BCC733 /* LeftTableViewCell.m */,
+				8464DD031B1361E200BCC733 /* MyPetTableViewCell.h */,
+				8464DD041B1361E200BCC733 /* MyPetTableViewCell.m */,
 				4D202C3B1B09054B007DED73 /* UIView+Extension.h */,
 				4D202C3C1B09054B007DED73 /* UIView+Extension.m */,
 				843EA8941B04521E004B9BC1 /* HomeItemCollectionCell.h */,
@@ -374,6 +390,15 @@
 				4D202C361B08F9D9007DED73 /* LogView.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		8464DCFC1B135AE100BCC733 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				8464DCFD1B135AED00BCC733 /* UIView+Add.h */,
+				8464DCFE1B135AED00BCC733 /* UIView+Add.m */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		84D4D1C01B018FA400E67D9C = {
@@ -398,6 +423,7 @@
 		84D4D1CB1B018FA400E67D9C /* LePats */ = {
 			isa = PBXGroup;
 			children = (
+				8464DCFC1B135AE100BCC733 /* Category */,
 				4D202BD91B088884007DED73 /* General */,
 				4D34E9151B05FD1D00AE04F7 /* Controlls */,
 				843EA8931B04520D004B9BC1 /* Views */,
@@ -522,6 +548,8 @@
 				BB088E4D1B034C8500F5E092 /* DelPetService.m */,
 				BB088E4F1B034CDC00F5E092 /* AddPetService.h */,
 				BB088E501B034CDC00F5E092 /* AddPetService.m */,
+				84E9D26E1B1368C90078FD76 /* PetInfoEditService.h */,
+				84E9D26F1B1368C90078FD76 /* PetInfoEditService.m */,
 				BB088E561B03565000F5E092 /* PetSortService.h */,
 				BB088E571B03565000F5E092 /* PetSortService.m */,
 				8436E93A1B0F0094001E8EBE /* GetPetSortService.h */,
@@ -744,10 +772,13 @@
 				4D34E9311B05FD1D00AE04F7 /* LoginViewController.m in Sources */,
 				4D202C371B08F9D9007DED73 /* LogView.m in Sources */,
 				843EA8801B044EDE004B9BC1 /* HomeItemModel.m in Sources */,
+				8464DCFF1B135AED00BCC733 /* UIView+Add.m in Sources */,
+				8464DD051B1361E300BCC733 /* MyPetTableViewCell.m in Sources */,
 				8436E93C1B0F0094001E8EBE /* GetPetSortService.m in Sources */,
 				BB088E481B03456100F5E092 /* MyPetService.m in Sources */,
 				4D34E92B1B05FD1D00AE04F7 /* BaseViewController.m in Sources */,
 				4DED53CC1B09A19100577B1C /* ProgressHUD.m in Sources */,
+				8464DD021B135C1F00BCC733 /* LeftTableViewCell.m in Sources */,
 				84DB2EC81B11B32000A264C6 /* AddPetCellTableViewCell.m in Sources */,
 				BB088E441B03453900F5E092 /* UpdUserService.m in Sources */,
 				BB088E431B03453900F5E092 /* RegisterService.m in Sources */,
@@ -763,6 +794,7 @@
 				4D12351C1B0C6A67006C1E76 /* RegSecondVIewController.m in Sources */,
 				4DED53CD1B09A19100577B1C /* Toast+UIView.m in Sources */,
 				BB088E421B03453900F5E092 /* LoginService.m in Sources */,
+				84E9D2701B1368C90078FD76 /* PetInfoEditService.m in Sources */,
 				4D34E9321B05FD1D00AE04F7 /* UserDetailViewController.m in Sources */,
 				843EA8991B04521E004B9BC1 /* HomeItemButton.m in Sources */,
 				4D34E92C1B05FD1D00AE04F7 /* HomeViewController.m in Sources */,
