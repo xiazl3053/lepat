@@ -15,6 +15,7 @@
 #import "Common.h"
 #import "UserInfoViewController.h"
 #import "LeftTableViewCell.h"
+#import "LoginViewController.h"
 
 @interface LeftViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -112,14 +113,31 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 80;
+    return 120;
 }
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    UIView *my=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 260, 80)];
+    UIView *my=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 260, 120)];
+    
+    UIImageView *icon=[[UIImageView alloc]initWithFrame:CGRectMake((200-60)*.5, 10, 60, 60)];
+    icon.image=[UIImage imageNamed:@"left_icon_noraml"];
+    [my addSubview:icon];
+    
+    UIButton *login=[[UIButton alloc]initWithFrame:CGRectMake((200-100)*.5, icon.bottom+15, 100, 25)];
+    [login setTitle:@"登录" forState:UIControlStateNormal];
+    login.titleLabel.font=[UIFont systemFontOfSize:14];
+    login.layer.borderColor=[UIColor whiteColor].CGColor;
+    login.layer.borderWidth=.5;
+    [login addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
+    [my addSubview:login];
+    
     return my;
 }
 
+-(void)login:(UIButton *)aBtn{
+    LoginViewController *login=[[LoginViewController alloc]init];
+    [self.navigationController pushViewController:login animated:YES];
+}
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

@@ -9,8 +9,11 @@
 #import "HttpManager.h"
 
 #import "LePetInfo.h"
+
+typedef void(^AddPetBlock)(NSString *error);
 @interface AddPetService : HttpManager
 
 -(void)requestAddPet:(LePetInfo*)lePet;
+@property (nonatomic,copy) AddPetBlock addPetBlock;
 
 @end

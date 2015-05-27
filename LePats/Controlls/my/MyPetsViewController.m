@@ -11,6 +11,7 @@
 #import "MyPetService.h"
 #import "PetDetailViewController.h"
 #import "PetDetailViewController.h"
+#import "MyPetTableViewCell.h"
 
 @interface MyPetsViewController ()<UITableViewDataSource,UITableViewDelegate>{
     UITableView *_tableView;
@@ -98,14 +99,13 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *identifier=@"MyPetSCELL";
-    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:identifier];
+    MyPetTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
-        cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier];
-        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+        cell=[[MyPetTableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier];
+       // cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     }
     LePetInfo *pet=[self.pets objectAtIndex:indexPath.row];
-    cell.textLabel.text=pet.strName;
-    cell.detailTextLabel.text=pet.strBirthday;
+    [cell setValueWithPetInfo:pet];
     return cell;
 }
 
@@ -123,6 +123,10 @@
     edit.nPetId=pet.nPetId;
     edit.type=PetType_EDIT;
     [self.navigationController pushViewController:edit animated:YES];
+}
+
+-(void)dealloc{
+    NSLog(@"%s",__FUNCTION__);
 }
 
 /*

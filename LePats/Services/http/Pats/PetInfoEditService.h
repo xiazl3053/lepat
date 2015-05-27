@@ -7,7 +7,10 @@
 //
 
 #import "HttpManager.h"
+#import "LePetInfo.h"
+typedef void(^EditPetBlock)(NSString *error);
 
 @interface PetInfoEditService : HttpManager
-
+@property (nonatomic,copy) EditPetBlock editPetBlock;
+-(void)requestEditPet:(LePetInfo*)lePet;
 @end

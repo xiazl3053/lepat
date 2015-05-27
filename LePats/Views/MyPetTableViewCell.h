@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "LePetInfo.h"
 @interface MyPetTableViewCell : UITableViewCell
-
+-(void)setValueWithPetInfo:(LePetInfo *)pet;
 @end

@@ -31,8 +31,8 @@
     if (self.getPetSortBlock) {
         if ([[dic objectForKey:KServiceResponseCode]intValue]==KServiceResponseSuccess) {
             NSMutableArray *data=[NSMutableArray array];
-            for (NSDictionary *dic in [dic objectForKey:@"petList"]) {
-                PetSortModel *model=[[PetSortModel alloc]initWithNSDictionary:dic];
+            for (NSDictionary *obj in [dic objectForKey:@"petList"]) {
+                PetSortModel *model=[[PetSortModel alloc]initWithNSDictionary:obj];
                 [data addObject:model];
             }
             self.getPetSortBlock(nil,data);
