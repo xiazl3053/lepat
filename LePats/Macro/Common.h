@@ -11,5 +11,7 @@
 
 #define KShowMainViewController @"KShowMainViewController"
 
+#define KServiceResponseCode @"return_code"
+#define KServiceResponseMsg @"result_msg"
 
 #endif

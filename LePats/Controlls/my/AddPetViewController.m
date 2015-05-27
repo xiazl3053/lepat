@@ -124,7 +124,17 @@
 }
 
 -(void)initSelfView{
-    self.title=@"添加宠物";
+    if (self.type==PetType_EDIT) {
+        [self setRightHidden:NO];
+        [self setRightTitle:@"保存"];
+        __weak AddPetViewController *__self = self;
+        [self addRightEvent:^(id sender)
+         {
+         
+         }];
+    }else{
+      self.title=@"添加宠物";
+    }
     self.view.backgroundColor=[UIColor groupTableViewBackgroundColor];
 }
 
