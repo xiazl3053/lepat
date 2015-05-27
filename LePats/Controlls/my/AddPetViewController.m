@@ -81,12 +81,17 @@
     [self.view addSubview:submit];
 }
 
--(void)submit{
+-(void)submit
+{
     LePetInfo *pet=[[LePetInfo alloc]init];
-    pet.strName=@"黄黄";
-    pet.strBirthday=@"2015-03-03";
+    NSString *strName = @"猫-2";
+    NSString *strDescription = @"描述-1";
+//  stringByAddingPercentEscapesUsingEncoding
+    NSStringEncoding gbkEncoding =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+    pet.strName=[strName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    pet.strBirthday=@"2015-05-27";
     pet.nSex=0;
-    pet.strDescription=@"小小";
+    pet.strDescription=[strDescription stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     pet.nSortId=3;
     
     AddPetService *service=[[AddPetService alloc]init];

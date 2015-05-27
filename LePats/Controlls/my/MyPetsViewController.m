@@ -32,12 +32,15 @@
     [self queryPets];
 }
 
--(void)queryPets{
+-(void)queryPets
+{
     __block MyPetsViewController *weakSelf = self;
     MyPetService *service=[[MyPetService alloc]init];
-    service.myPetsBlock=^(NSString *error,NSArray *pets){
-        for (NSDictionary *dic in pets) {
-            LePetInfo *info=[[LePetInfo alloc]initWithNSDictionary:dic];
+    service.myPetsBlock=^(NSString *error,NSArray *pets)
+    {
+        for (NSDictionary *dic in pets)
+        {
+            LePetInfo *info=[[LePetInfo alloc] initWithNSDictionary:dic];
             [self.pets addObject:info];
             [weakSelf->_tableView reloadData];
             NSLog(@"info.strBirthday=%@",info.strBirthday);
@@ -99,6 +102,9 @@
     return self.pets.count;
 }
 
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"%s",__FUNCTION__);
+}
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     LePetInfo *pet=[self.pets objectAtIndex:indexPath.row];

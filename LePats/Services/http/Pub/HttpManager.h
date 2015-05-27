@@ -14,5 +14,6 @@
 
 -(void)reciveDic:(int*)nStatus dic:(NSDictionary*)dict;
 
+-(void)sendRequestData:(NSData*)data url:(NSString *)strUrl;
 
 @end

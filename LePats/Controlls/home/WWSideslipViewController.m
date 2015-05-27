@@ -86,7 +86,7 @@
         sideslipTapGes= [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handeTap:)];
         [sideslipTapGes setNumberOfTapsRequired:1];
         
-        [mainControl.view addGestureRecognizer:sideslipTapGes];
+       // [mainControl.view addGestureRecognizer:sideslipTapGes];
         
         leftControl.view.hidden = YES;
         righControl.view.hidden = YES;

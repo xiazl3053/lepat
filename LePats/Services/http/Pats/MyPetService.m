@@ -16,7 +16,7 @@
 -(void)requestPetInfo:(int)nCur
 {
     UserInfo *user = [UserInfo sharedUserInfo];
-    NSString *strUrl = [NSString stringWithFormat:@"%@pats/pet/getPetByUser.do?pageNum=%d&pageSize=20&userid=%@&token=%@%@",
+    NSString *strUrl = [NSString stringWithFormat:@"%@pats/pet/getPetByUser.do?pageNum=%d&pageSize=30&userid=%@&token=%@%@",
                         LEPAT_HTTP_HOST,nCur,user.strUserId,user.strToken,LEPAT_VERSION_INFO];
     [self sendRequest:strUrl];
 }
@@ -29,7 +29,11 @@
         return ;
     }
     DLog(@"dic:%@",dic);
-    if (self.myPetsBlock) {
+//    NSString *N = [dic objectForKey:@"petByUList"];
+//    NSString *newStrInfo = [strInfo stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//    DLog(@"newStrInfo:%@",newStrInfo);
+    if (self.myPetsBlock)
+    {
         self.myPetsBlock(nil,[dic objectForKey:@"petByUList"]);
     }
 }

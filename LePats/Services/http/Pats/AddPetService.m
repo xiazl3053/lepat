@@ -14,9 +14,18 @@
 -(void)requestAddPet:(LePetInfo*)lePet
 {
     UserInfo *user = [UserInfo sharedUserInfo];
-    NSString *strUrl = [NSString stringWithFormat:@"%@pats/pet/doAdd.do?petName=%@&petCount=%d&birthday=%@&sortId=%d&photoid=%d&description=%@&sex=%d&userid=%@&token=%@%@",LEPAT_HTTP_HOST,lePet.strName,lePet.nPetCount,lePet.strBirthday,lePet.nSortId,lePet.nPhotoId,lePet.strDescription,lePet.nSex,
-                        user.strUserId,user.strToken,LEPAT_VERSION_INFO];
-    [self sendRequest:strUrl];
+//    NSString *strName = [NSString stringWithUTF8String:"ting"];
+//    NSString *strDecription = [NSString stringWithUTF8String:"ting"];
+    NSString *strUrl = [NSString stringWithFormat:@"%@pats/pet/doAdd.do",LEPAT_HTTP_HOST];
+    
+//    NSString *strUrl = [NSString stringWithFormat:@"%@pats/pet/doAdd.do?petName=%@&petCount=%d&birthday=%@&sortId=%d&photoid=%d&description=%@&sex=%d&userid=%@&token=%@%@",LEPAT_HTTP_HOST,lePet.strName,lePet.nPetCount,lePet.strBirthday,lePet.nSortId,lePet.nPhotoId,lePet.strDescription,lePet.nSex,
+//                        user.strUserId,user.strToken,LEPAT_VERSION_INFO];
+    
+    NSString *post = [NSString stringWithFormat:@"petName=%@&petCount=%d&birthday=%@&sortId=%d&photoid=%d&description=%@&sex=%d&userid=%@&token=%@%@",lePet.strName,lePet.nPetCount,lePet.strBirthday,lePet.nSortId,lePet.nPhotoId,lePet.strDescription,lePet.nSex,user.strUserId,user.strToken,LEPAT_VERSION_INFO];
+    NSData *data = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
+    [self sendRequestData:data url:strUrl];
+    
+//    [self sendRequest:strUrl];
 }
 
 -(void)reciveDic:(int *)nStatus dic:(NSDictionary *)dic
