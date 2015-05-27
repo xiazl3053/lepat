@@ -8,8 +8,11 @@
 
 #import "HttpManager.h"
 
+typedef void(^GetPetSortBlock)(NSString *error,NSArray *data);
+
 @interface PetSortService : HttpManager
 
 -(void)requestPetSort;
+@property (nonatomic,copy) GetPetSortBlock getPetSortBlock;
 
 @end

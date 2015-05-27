@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum : NSUInteger {
+    PET_SEX_MALE,
+    PET_SEX_FEMALE,
+} PET_SEX;
+
 @interface LePetInfo : NSObject
 /*
 petId:宠物ID

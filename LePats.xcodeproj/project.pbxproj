@@ -38,7 +38,7 @@
 		7AE8302AB035A0F6C58184D7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF811F65411D3FCD44EA091 /* libPods.a */; };
 		8436E93C1B0F0094001E8EBE /* GetPetSortService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436E93B1B0F0094001E8EBE /* GetPetSortService.m */; };
 		843DB3191B0DC72C00312383 /* AddPetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843DB3181B0DC72C00312383 /* AddPetViewController.m */; };
-		843DB31C1B0DCD8C00312383 /* Pet.m in Sources */ = {isa = PBXBuildFile; fileRef = 843DB31B1B0DCD8C00312383 /* Pet.m */; };
+		843DB31C1B0DCD8C00312383 /* PetSortModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 843DB31B1B0DCD8C00312383 /* PetSortModel.m */; };
 		843DB31F1B0DD16D00312383 /* MyPetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843DB31E1B0DD16D00312383 /* MyPetsViewController.m */; };
 		843EA8801B044EDE004B9BC1 /* HomeItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EA87F1B044EDE004B9BC1 /* HomeItemModel.m */; };
 		843EA8981B04521E004B9BC1 /* HomeItemCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EA8951B04521E004B9BC1 /* HomeItemCollectionCell.m */; };
@@ -126,8 +126,8 @@
 		8436E93B1B0F0094001E8EBE /* GetPetSortService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPetSortService.m; sourceTree = "<group>"; };
 		843DB3171B0DC72C00312383 /* AddPetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPetViewController.h; sourceTree = "<group>"; };
 		843DB3181B0DC72C00312383 /* AddPetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPetViewController.m; sourceTree = "<group>"; };
-		843DB31A1B0DCD8C00312383 /* Pet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pet.h; sourceTree = "<group>"; };
-		843DB31B1B0DCD8C00312383 /* Pet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pet.m; sourceTree = "<group>"; };
+		843DB31A1B0DCD8C00312383 /* PetSortModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PetSortModel.h; sourceTree = "<group>"; };
+		843DB31B1B0DCD8C00312383 /* PetSortModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetSortModel.m; sourceTree = "<group>"; };
 		843DB31D1B0DD16D00312383 /* MyPetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPetsViewController.h; sourceTree = "<group>"; };
 		843DB31E1B0DD16D00312383 /* MyPetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPetsViewController.m; sourceTree = "<group>"; };
 		843EA87E1B044EDE004B9BC1 /* HomeItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeItemModel.h; sourceTree = "<group>"; };
@@ -599,8 +599,8 @@
 				BB088E541B034D0700F5E092 /* LePetInfo.m */,
 				843EA87E1B044EDE004B9BC1 /* HomeItemModel.h */,
 				843EA87F1B044EDE004B9BC1 /* HomeItemModel.m */,
-				843DB31A1B0DCD8C00312383 /* Pet.h */,
-				843DB31B1B0DCD8C00312383 /* Pet.m */,
+				843DB31A1B0DCD8C00312383 /* PetSortModel.h */,
+				843DB31B1B0DCD8C00312383 /* PetSortModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -800,7 +800,7 @@
 				4D34E92E1B05FD1D00AE04F7 /* MainViewController.m in Sources */,
 				4D202C3A1B0900F7007DED73 /* RegFirstViewController.m in Sources */,
 				BB588F931B047F690095337C /* HttpUploadManager.m in Sources */,
-				843DB31C1B0DCD8C00312383 /* Pet.m in Sources */,
+				843DB31C1B0DCD8C00312383 /* PetSortModel.m in Sources */,
 				BB088E4E1B034C8500F5E092 /* DelPetService.m in Sources */,
 				BB9A04B71B01F28F007DFDC8 /* AppDelegate.mm in Sources */,
 				843EA8981B04521E004B9BC1 /* HomeItemCollectionCell.m in Sources */,

@@ -7,8 +7,8 @@
 //
 
 #import "PetSortService.h"
-
 #import "UserInfo.h"
+#import "PetSortModel.h"
 
 @implementation PetSortService
 
@@ -28,6 +28,14 @@
         return ;
     }
     DLog(@"dic:%@",dic);
+    NSMutableArray *data=[NSMutableArray array];
+    for (NSDictionary *dic in [dic objectForKey:@"petList"]) {
+        PetSortModel *model=[[PetSortModel alloc]initWithNSDictionary:dic];
+        [data addObject:model];
+    }
+    if (self.getPetSortBlock) {
+        self.getPetSortBlock(nil,data);
+    }
 }
 
 
