@@ -16,4 +16,5 @@
 
 -(void)sendRequestData:(NSData*)data url:(NSString *)strUrl;
 
+-(void)sendRequestString:(NSString *)strInfo url:(NSString *)strUrl;
 @end

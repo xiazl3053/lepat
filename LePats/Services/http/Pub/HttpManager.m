@@ -83,5 +83,27 @@
      }];
 }
 
+-(void)sendRequestString:(NSString *)strInfo url:(NSString *)strUrl
+{
+    NSURL *url=[NSURL URLWithString:strUrl];
+    NSMutableURLRequest *request=[[NSMutableURLRequest alloc] initWithURL:url];//通过URL创建网络请求
+    [request setTimeoutInterval:XC_HTTP_TIMEOUT];//设置超时时间
+    [request setHTTPMethod:@"POST"];//设置请求方式
+    NSData *data = [strInfo dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
+    [request setHTTPBody:data];
+    __block HttpManager *weakSelf = self;
+    
+    DLog(@"strPath:%@",strUrl);
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:
+     ^(NSURLResponse* response, NSData* data, NSError* connectionError){
+         HttpManager *strongLogin = weakSelf;
+         if (strongLogin)
+         {
+             [strongLogin reciveHttp:response data:data error:connectionError];
+         }
+     }];
+}
+
 
 @end

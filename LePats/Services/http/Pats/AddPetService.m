@@ -22,9 +22,9 @@
 //                        user.strUserId,user.strToken,LEPAT_VERSION_INFO];
     
     NSString *post = [NSString stringWithFormat:@"petName=%@&petCount=%d&birthday=%@&sortId=%d&photoid=%d&description=%@&sex=%d&userid=%@&token=%@%@",lePet.strName,lePet.nPetCount,lePet.strBirthday,lePet.nSortId,lePet.nPhotoId,lePet.strDescription,lePet.nSex,user.strUserId,user.strToken,LEPAT_VERSION_INFO];
-    NSData *data = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
-    [self sendRequestData:data url:strUrl];
-    
+//    NSData *data = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
+//    [self sendRequestData:data url:strUrl];
+    [self sendRequestString:post url:strUrl];
 //    [self sendRequest:strUrl];
 }
 
