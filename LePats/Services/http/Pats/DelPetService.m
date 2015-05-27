@@ -28,6 +28,13 @@
         return ;
     }
     DLog(@"dic:%@",dic);
+    if (self.delPetBlock) {
+        if ([[dic objectForKey:KServiceResponseCode]intValue]==KServiceResponseSuccess) {
+            self.delPetBlock(nil);
+        }else{
+            self.delPetBlock([dic objectForKey:KServiceResponseMsg]);
+        }
+    }
 }
 
 

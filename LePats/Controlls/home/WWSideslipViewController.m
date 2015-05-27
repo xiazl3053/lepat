@@ -16,7 +16,7 @@
 #import "MainViewController.h"
 #import "LoginViewController.h"
 #import "MyPetsViewController.h"
-#import "AddPetViewController.h"
+#import "PetDetailViewController.h"
 #import "HomeItemModel.h"
 
 
@@ -192,7 +192,7 @@
             
         }break;
         case 10002:{
-            AddPetViewController *addPet=[[AddPetViewController alloc]init];
+            PetDetailViewController *addPet=[[PetDetailViewController alloc]init];
             addPet.hidesBottomBarWhenPushed=YES;
             [((UINavigationController*)vc) pushViewController:addPet animated:YES];
         

@@ -9,6 +9,7 @@
 #import "MyPetService.h"
 
 #import "UserInfo.h"
+#import "LePetInfo.h"
 
 @implementation MyPetService
 
@@ -32,9 +33,18 @@
 //    NSString *N = [dic objectForKey:@"petByUList"];
 //    NSString *newStrInfo = [strInfo stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 //    DLog(@"newStrInfo:%@",newStrInfo);
-    if (self.myPetsBlock)
-    {
-        self.myPetsBlock(nil,[dic objectForKey:@"petByUList"]);
+    
+    if (self.myPetsBlock) {
+        if ([[dic objectForKey:KServiceResponseCode]intValue]==KServiceResponseSuccess) {
+            NSMutableArray *data=[NSMutableArray array];
+            for (NSDictionary *obj in [dic objectForKey:@"petByUList"]) {
+                LePetInfo *info=[[LePetInfo alloc] initWithNSDictionary:obj];
+                [data addObject:info];
+            }
+            self.myPetsBlock(nil,data);
+        }else{
+            self.myPetsBlock([dic objectForKey:KServiceResponseMsg],nil);
+        }
     }
 }
 

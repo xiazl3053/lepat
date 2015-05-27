@@ -8,8 +8,11 @@
 
 #import "HttpManager.h"
 
+typedef void(^DelPetBlock)(NSString *error);
+
 @interface DelPetService : HttpManager
 
 -(void)requestDelPetInfo:(int)nPetId;
+@property (nonatomic,copy) DelPetBlock delPetBlock;
 
 @end

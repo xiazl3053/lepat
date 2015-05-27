@@ -14,6 +14,7 @@
 #import "HomeItemModel.h"
 #import "Common.h"
 #import "UserInfoViewController.h"
+#import "LeftTableViewCell.h"
 
 @interface LeftViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -43,37 +44,83 @@
 
 -(void)initParams{
     self.itemList=[NSMutableArray array];
+    
     HomeItemModel *model=[[HomeItemModel alloc]init];
     model.title=@"我的宠物";
-    model.img=@"myPets";
+    model.img=@"left_myfish";
     model.tag=10001;
     
     HomeItemModel *model1=[[HomeItemModel alloc]init];
-    model1.title=@"添加宠物";
-    model1.img=@"addPet";
+    model1.title=@"微宠社区";
+    model1.img=@"left_bbs";
     model1.tag=10002;
     
     HomeItemModel *model2=[[HomeItemModel alloc]init];
-    model2.title=@"网上营业厅";
-    model2.img=@"my";
+    model2.title=@"知识库";
+    model2.img=@"left_knowledge";
+    model2.tag=10003;
+    
+    HomeItemModel *model3=[[HomeItemModel alloc]init];
+    model3.title=@"活动专区";
+    model3.img=@"left_active";
+    model3.tag=10004;
+    
+    HomeItemModel *model4=[[HomeItemModel alloc]init];
+    model4.title=@"鱼友圈";
+    model4.img=@"left_fishman";
+    model4.tag=10005;
+    
+    HomeItemModel *model5=[[HomeItemModel alloc]init];
+    model5.title=@"鱼友签到";
+    model5.img=@"left_date";
+    model5.tag=10006;
+    
+    HomeItemModel *model6=[[HomeItemModel alloc]init];
+    model6.title=@"优惠券";
+    model6.img=@"left_money";
+    model6.tag=10007;
     
     [self.itemList addObject:model];
     [self.itemList addObject:model1];
     [self.itemList addObject:model2];
+    [self.itemList addObject:model3];
+    [self.itemList addObject:model4];
+    [self.itemList addObject:model5];
+    [self.itemList addObject:model6];
     
 }
 
 -(void)initViews{
+    [self initBgView];
     [self initTableView];
+    
+}
+
+-(void)initBgView{
+    UIImageView *bgView=[[UIImageView alloc]initWithFrame:self.view.bounds];
+    bgView.image=[UIImage imageNamed:@"left_Bgview"];
+    [self.view addSubview:bgView];
 }
 
 -(void)initTableView{
-    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 80, 260, self.view.frame.size.height-80) style:UITableViewStylePlain];
+    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, KMainScreenSize.width, KMainScreenSize.height) style:UITableViewStylePlain];
     tableView.delegate=self;
     tableView.dataSource=self;
-    tableView.backgroundColor=[UIColor redColor];
+    tableView.backgroundColor=[UIColor clearColor];
+    tableView.separatorColor=[UIColor clearColor];
     [self.view addSubview:tableView];
 }
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 80;
+}
+
+-(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView *my=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 260, 80)];
+    return my;
+}
+
+
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.itemList.count;
@@ -81,16 +128,17 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *identifier=@"CELL";
-    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:identifier];
+    LeftTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell==nil) {
-        cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+        cell=[[LeftTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
     }
     HomeItemModel *model=[self.itemList objectAtIndex:indexPath.row];
-    cell.textLabel.text=model.title;
+    [cell setValueWithHomeItemModel:model];
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     HomeItemModel *model=[self.itemList objectAtIndex:indexPath.row];
     [[NSNotificationCenter defaultCenter]postNotificationName:KShowMainViewController object:model];
 }

@@ -19,6 +19,8 @@
 #import "PubDefine.h"
 #import "UtilsMacro.h"
 #import "PubNotification.h"
+#import "Common.h"
+#import "UIView+Add.h"
 
 #define XCLocalized(x) NSLocalizedString(x, "")
 #define XCFONT(x) [UIFont fontWithName:@"Helvetica" size:x]

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HomeItemModel.h"
 
 @interface LeftTableViewCell : UITableViewCell
+-(void)setValueWithHomeItemModel:(HomeItemModel *)model;
 
 @end

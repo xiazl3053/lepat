@@ -9,7 +9,8 @@
 #import "MyPetsViewController.h"
 #import "LePetInfo.h"
 #import "MyPetService.h"
-#import "AddPetViewController.h"
+#import "PetDetailViewController.h"
+#import "PetDetailViewController.h"
 
 @interface MyPetsViewController ()<UITableViewDataSource,UITableViewDelegate>{
     UITableView *_tableView;
@@ -27,9 +28,13 @@
     // Do any additional setup after loading the view.
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    [self queryPets];
+}
+
 -(void)initParams{
     [self initData];
-    [self queryPets];
 }
 
 -(void)queryPets
@@ -38,13 +43,9 @@
     MyPetService *service=[[MyPetService alloc]init];
     service.myPetsBlock=^(NSString *error,NSArray *pets)
     {
-        for (NSDictionary *dic in pets)
-        {
-            LePetInfo *info=[[LePetInfo alloc] initWithNSDictionary:dic];
-            [self.pets addObject:info];
-            [weakSelf->_tableView reloadData];
-            NSLog(@"info.strBirthday=%@",info.strBirthday);
-        }
+        weakSelf.pets=pets;
+        [weakSelf->_tableView reloadData];
+
     };
     [service requestPetInfo:0];
 }
@@ -68,6 +69,16 @@
 
 -(void)initSelfView{
     self.title=@"我的宠物";
+    [self setRightHidden:NO];
+    [self setRightTitle:@"添加"];
+    __weak MyPetsViewController *__self = self;
+    [self addRightEvent:^(id sender)
+     {
+         PetDetailViewController *add=[[PetDetailViewController alloc]init];
+         add.type=PetType_ADD;
+         [__self.navigationController pushViewController:add animated:YES];
+         
+     }];
 }
 
 
@@ -108,7 +119,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     LePetInfo *pet=[self.pets objectAtIndex:indexPath.row];
-    AddPetViewController *edit=[[AddPetViewController alloc]init];
+    PetDetailViewController *edit=[[PetDetailViewController alloc]init];
     edit.nPetId=pet.nPetId;
     edit.type=PetType_EDIT;
     [self.navigationController pushViewController:edit animated:YES];

@@ -27,8 +27,13 @@
         return ;
     }
     DLog(@"dic:%@",dic);
-    if (self.petInfoBlock) {
-        self.petInfoBlock(nil,dic);
+    if (self.getPetInfoBlock) {
+        if ([[dic objectForKey:KServiceResponseCode]intValue]==KServiceResponseSuccess) {
+            LePetInfo *info=[[LePetInfo alloc]initWithNSDictionary:[dic objectForKey:@"pet"]];
+            self.getPetInfoBlock(nil,info);
+        }else{
+            self.getPetInfoBlock([dic objectForKey:KServiceResponseMsg],nil);
+        }
     }
 }
 

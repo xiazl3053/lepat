@@ -7,13 +7,14 @@
 //
 
 #import "HttpManager.h"
+#import "LePetInfo.h"
 
-typedef void(^PetInfoBlock)(NSString *error,NSDictionary *dic);
+typedef void(^GetPetInfoBlock)(NSString *error,LePetInfo *pet);
 
 @interface PetInfoService : HttpManager
 
 -(void)requestPetInfo:(int)nPetId;
 
-@property (nonatomic,copy) PetInfoBlock petInfoBlock;
+@property (nonatomic,copy) GetPetInfoBlock getPetInfoBlock;
 
 @end

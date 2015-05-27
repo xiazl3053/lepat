@@ -13,7 +13,7 @@ typedef enum : NSUInteger {
     PetType_EDIT,
 } PetType;
 
-@interface AddPetViewController : BaseViewController
+@interface PetDetailViewController : BaseViewController
 @property (nonatomic,assign) PetType type;
 @property (nonatomic,assign) int nPetId;
 @end

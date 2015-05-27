@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 admin. All rights reserved.
 //
 
-#import "AddPetViewController.h"
+#import "PetDetailViewController.h"
 #import "LePetInfo.h"
 #import "AddPetService.h"
 #import "HttpUploadManager.h"
@@ -14,8 +14,9 @@
 #import "PetInfoService.h"
 #import "PetSortModel.h"
 #import "PetSortService.h"
+#import "DelPetService.h"
 
-@interface AddPetViewController ()<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate>{
+@interface PetDetailViewController ()<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate>{
     LePetInfo *_pet;
     UITableView *_tableView;
     UIPickerView *_sortPickerView;
@@ -31,7 +32,7 @@
 
 @end
 
-@implementation AddPetViewController
+@implementation PetDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,10 +42,6 @@
 }
 
 -(void)initParams{
-    //[self initData];
-    
-    self.sexList=[NSArray arrayWithObjects:@"男",@"女",nil];
-    
     if (self.type==PetType_EDIT) {
         [self getPetInfo];
     }else{
@@ -52,6 +49,7 @@
     }
     
     [self getPetSort];
+    [self initData];
 }
 
 -(void)getPetSort{
@@ -63,23 +61,24 @@
 }
 
 -(void)initData{
-    LePetInfo *pet=[[LePetInfo alloc]init];
-    pet.strName=@"啊黑";
-    pet.strBirthday=@"5";
-    pet.nSex=1;
-    pet.strDescription=@"漂亮的小宝贝";
-    pet.nSortId=0;
-    _pet=pet;
+    self.sexList=[NSArray arrayWithObjects:@"男",@"女",nil];
+//    LePetInfo *pet=[[LePetInfo alloc]init];
+//    pet.strName=@"啊黑";
+//    pet.strBirthday=@"5";
+//    pet.nSex=1;
+//    pet.strDescription=@"漂亮的小宝贝";
+//    pet.nSortId=0;
+//    _pet=pet;
     
 }
 
 -(void)getPetInfo{
     PetInfoService *pet=[[PetInfoService alloc]init];
-    pet.petInfoBlock=^(NSString *error,NSDictionary *dic){
+    pet.getPetInfoBlock=^(NSString *error,LePetInfo *pet){
         if (error) {
             
         }else{
-            _pet=[[LePetInfo alloc]initWithNSDictionary:[dic objectForKey:@"pet"]];
+            _pet=pet;
             self.title=_pet.strName;
             [_tableView reloadData];
         }
@@ -127,7 +126,7 @@
     if (self.type==PetType_EDIT) {
         [self setRightHidden:NO];
         [self setRightTitle:@"保存"];
-        __weak AddPetViewController *__self = self;
+        __weak PetDetailViewController *__self = self;
         [self addRightEvent:^(id sender)
          {
          
@@ -141,9 +140,15 @@
 -(void)submitPetInfoView{
     UIButton *submit=[[UIButton alloc]initWithFrame:CGRectMake((self.view.frame.size.width-200)*.5, self.view.frame.size.height-80, 200, 40)];
     submit.backgroundColor=[UIColor blueColor];
-    [submit setTitle:@"确定" forState:UIControlStateNormal];
-    [submit addTarget:self action:@selector(submit) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:submit];
+    
+    if (self.type==PetType_EDIT) {
+        [submit setTitle:@"删除" forState:UIControlStateNormal];
+        [submit addTarget:self action:@selector(del) forControlEvents:UIControlEventTouchUpInside];
+    }else{
+        [submit setTitle:@"确定" forState:UIControlStateNormal];
+        [submit addTarget:self action:@selector(submit) forControlEvents:UIControlEventTouchUpInside];
+    }
 }
 
 -(void)dataPickerValueChange:(UIDatePicker *)picker{
@@ -174,6 +179,19 @@
         AddPetService *service=[[AddPetService alloc]init];
         [service requestAddPet:_pet];
     }
+}
+
+-(void)del{
+    DelPetService *service=[[DelPetService alloc]init];
+    __block PetDetailViewController *__self=self;
+    service.delPetBlock=^(NSString *error){
+        if (error) {
+            
+        }else{
+            [__self.navigationController popViewControllerAnimated:YES];
+        }
+    };
+    [service requestDelPetInfo:self.nPetId];
 }
 
 -(BOOL)completa{
@@ -213,6 +231,7 @@
     tableView.delegate=self;
     tableView.dataSource=self;
     tableView.backgroundColor=[UIColor whiteColor];
+    _tableView=tableView;
     [self.view addSubview:tableView];
 }
 
@@ -222,6 +241,7 @@
     if (!cell) {
         cell=[[AddPetCellTableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier];
         cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
     }
     switch (self.type) {
         case PetType_ADD:{
@@ -271,17 +291,24 @@
                 case 1:
                 {
                     cell.title.text=@"宠物类型:";
-                    cell.content.text=[NSString stringWithFormat:@"%i",_pet.nSortId];
+                    cell.content.inputView=_sortPickerView;
+                    for (PetSortModel *model in _sortList) {
+                        if ([model.iD intValue]==_pet.nSortId) {
+                            cell.content.text=[NSString stringWithFormat:@"%@",model.name];
+                        }
+                    }
                 }break;
                 case 2:
                 {
                     cell.title.text=@"宠物年龄:";
                     cell.content.text=_pet.strBirthday;
+                    cell.content.inputView=_datePickerView;
                 }break;
                 case 3:
                 {
                     cell.title.text=@"宠物性别:";
-                    cell.content.text=[NSString stringWithFormat:@"%i",_pet.nSex];
+                    cell.content.inputView=_sexPickerView;
+                    cell.content.text=[NSString stringWithFormat:@"%@",_pet.nSex==PET_SEX_MALE?@"男":@"女"];
                     ;
                 }break;
                 case 4:
