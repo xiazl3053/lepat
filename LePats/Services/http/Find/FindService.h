@@ -8,11 +8,13 @@
 
 #import "HttpManager.h"
 
-typedef void(^HttpRequestNear)(int nStatus);
+typedef void(^HttpRequestNear)(int nStatus,NSArray *aryInfo);
 
 
 
 @interface FindService : HttpManager
+
+@property (nonatomic,copy) HttpRequestNear httpBlock;
 
 -(void)requestFindNear:(CGFloat)fLat lng:(CGFloat)fLng;
 

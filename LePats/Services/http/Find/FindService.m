@@ -29,6 +29,15 @@
     }
     DLog(@"dic:%@",dict);
     
+    int nType = [[dict objectForKey:@"return_code"] intValue];
+    if (nType == 10000)
+    {
+        if (_httpBlock)
+        {
+            _httpBlock(1,[dict objectForKey:@"userInfo"]);
+        }
+    }
+    
 }
 
 @end

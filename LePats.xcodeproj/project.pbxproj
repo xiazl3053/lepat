@@ -66,6 +66,9 @@
 		BB9A04B81B01F28F007DFDC8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB9A04A71B01F28F007DFDC8 /* LaunchScreen.xib */; };
 		BB9A04BA1B01F28F007DFDC8 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB9A04AB1B01F28F007DFDC8 /* Info.plist */; };
 		BB9A04BB1B01F28F007DFDC8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9A04AC1B01F28F007DFDC8 /* main.m */; };
+		BBDAC77D1B1706230009A3DA /* FrindListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDAC77C1B1706230009A3DA /* FrindListViewController.m */; };
+		BBDAC7811B170EE40009A3DA /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDAC7801B170EE40009A3DA /* FriendCell.m */; };
+		BBDAC7841B171E880009A3DA /* NearInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDAC7831B171E880009A3DA /* NearInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -241,6 +244,12 @@
 		BB9A04A81B01F28F007DFDC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		BB9A04AB1B01F28F007DFDC8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB9A04AC1B01F28F007DFDC8 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BBDAC77B1B1706230009A3DA /* FrindListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrindListViewController.h; sourceTree = "<group>"; };
+		BBDAC77C1B1706230009A3DA /* FrindListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrindListViewController.m; sourceTree = "<group>"; };
+		BBDAC77F1B170EE40009A3DA /* FriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendCell.h; sourceTree = "<group>"; };
+		BBDAC7801B170EE40009A3DA /* FriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendCell.m; sourceTree = "<group>"; };
+		BBDAC7821B171E880009A3DA /* NearInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearInfo.h; sourceTree = "<group>"; };
+		BBDAC7831B171E880009A3DA /* NearInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +287,8 @@
 			children = (
 				4D202BEF1B08B610007DED73 /* MapFriendViewController.h */,
 				4D202BF01B08B610007DED73 /* MapFriendViewController.mm */,
+				BBDAC77B1B1706230009A3DA /* FrindListViewController.h */,
+				BBDAC77C1B1706230009A3DA /* FrindListViewController.m */,
 			);
 			path = FindInfo;
 			sourceTree = "<group>";
@@ -384,6 +395,7 @@
 		843EA8931B04520D004B9BC1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BBDAC77E1B170EC00009A3DA /* cell */,
 				84DB2EC61B11B32000A264C6 /* AddPetCellTableViewCell.h */,
 				84DB2EC71B11B32000A264C6 /* AddPetCellTableViewCell.m */,
 				8464DD001B135C1F00BCC733 /* LeftTableViewCell.h */,
@@ -596,6 +608,8 @@
 				843EA87F1B044EDE004B9BC1 /* HomeItemModel.m */,
 				843DB31A1B0DCD8C00312383 /* PetSortModel.h */,
 				843DB31B1B0DCD8C00312383 /* PetSortModel.m */,
+				BBDAC7821B171E880009A3DA /* NearInfo.h */,
+				BBDAC7831B171E880009A3DA /* NearInfo.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -632,6 +646,15 @@
 				BB088E381B03453900F5E092 /* Pub */,
 			);
 			path = http;
+			sourceTree = "<group>";
+		};
+		BBDAC77E1B170EC00009A3DA /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				BBDAC77F1B170EE40009A3DA /* FriendCell.h */,
+				BBDAC7801B170EE40009A3DA /* FriendCell.m */,
+			);
+			name = cell;
 			sourceTree = "<group>";
 		};
 		CC7EBB73573971DED49E0533 /* Frameworks */ = {
@@ -797,11 +820,14 @@
 				843DB31C1B0DCD8C00312383 /* PetSortModel.m in Sources */,
 				BB088E4E1B034C8500F5E092 /* DelPetService.m in Sources */,
 				BB9A04B71B01F28F007DFDC8 /* AppDelegate.mm in Sources */,
+				BBDAC77D1B1706230009A3DA /* FrindListViewController.m in Sources */,
 				843EA8981B04521E004B9BC1 /* HomeItemCollectionCell.m in Sources */,
+				BBDAC7811B170EE40009A3DA /* FriendCell.m in Sources */,
 				BB088E411B03453900F5E092 /* HttpManager.m in Sources */,
 				843DB3191B0DC72C00312383 /* PetDetailViewController.m in Sources */,
 				4D12351C1B0C6A67006C1E76 /* RegSecondVIewController.m in Sources */,
 				4DED53CD1B09A19100577B1C /* Toast+UIView.m in Sources */,
+				BBDAC7841B171E880009A3DA /* NearInfo.m in Sources */,
 				BB088E421B03453900F5E092 /* LoginService.m in Sources */,
 				84E9D2701B1368C90078FD76 /* PetInfoEditService.m in Sources */,
 				4D34E9321B05FD1D00AE04F7 /* UserDetailViewController.m in Sources */,
@@ -914,6 +940,7 @@
 			baseConfigurationReference = 635FBA24F678FB40B37ED093 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LePats/General",
@@ -939,6 +966,7 @@
 			baseConfigurationReference = 279CFB6916D8141457E3072A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LePats/General",

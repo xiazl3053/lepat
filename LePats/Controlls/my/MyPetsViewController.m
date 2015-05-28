@@ -46,7 +46,6 @@
     {
         weakSelf.pets=pets;
         [weakSelf->_tableView reloadData];
-
     };
     [service requestPetInfo:0];
 }
