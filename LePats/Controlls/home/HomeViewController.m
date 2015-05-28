@@ -14,7 +14,7 @@
 #import "UserInfoViewController.h"
 #import "LoginViewController.h"
 #import "MapFriendViewController.h"
-
+#import "FriendListViewController.h"
 
 @interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,HomeItemCollectionCellDelegate>
 @property (nonatomic,strong) NSMutableArray *itemList;
@@ -59,11 +59,16 @@
     model5.tag = 105;
     model5.img = @"my";
     
+    HomeItemModel *model4 = [[HomeItemModel alloc] init];
+    model4.title = @"上传";
+    model4.tag = 104;
+    model4.img = @"my";
+    
     self.itemList=[NSMutableArray array];
     [self.itemList addObject:model];
     [self.itemList addObject:model1];
     [self.itemList addObject:model2];
-    [self.itemList addObject:model];
+    [self.itemList addObject:model4];
     [self.itemList addObject:model5];
     [self.itemList addObject:model2];
     [self.itemList addObject:model];
@@ -128,10 +133,7 @@
     switch (tag) {
         case 101:
         {
-//            UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//            LoginViewController *info=[story instantiateViewControllerWithIdentifier:@"LoginViewController"];
-//            info.view.backgroundColor=[UIColor yellowColor];
-//            info.hidesBottomBarWhenPushed=YES;
+
             if([UserInfo sharedUserInfo].strMobile ==nil)
             {
                 LoginViewController *loginView = [[LoginViewController alloc] init];
@@ -146,6 +148,17 @@
         {
             MapFriendViewController *mapFriend = [[MapFriendViewController alloc] init];
             [self.navigationController pushViewController:mapFriend animated:YES];
+        }
+        break;
+        case 104:
+        {
+            FriendListViewController *friend = [[FriendListViewController alloc] init];
+            [self.navigationController pushViewController:friend animated:YES];
+        }
+        break;
+        case 103:
+        {
+            
         }
         break;
         default:

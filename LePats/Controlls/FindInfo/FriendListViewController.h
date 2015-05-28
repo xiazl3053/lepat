@@ -8,6 +8,6 @@
 
 #import "BaseViewController.h"
 
-@interface FrindListViewController : BaseViewController
+@interface FriendListViewController : BaseViewController
 
 @end

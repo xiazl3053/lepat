@@ -54,8 +54,8 @@
     _txtPwd.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     _txtPwd.leftViewMode = UITextFieldViewModeAlways;
     _txtPwd.keyboardType = UIKeyboardTypeDefault;
-    [_txtUser setFont:XCFONT(10)];
-    [_txtPwd setFont:XCFONT(10)];
+    [_txtUser setFont:XCFONT(12)];
+    [_txtPwd setFont:XCFONT(12)];
     
 }
 

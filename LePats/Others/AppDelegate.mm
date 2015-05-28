@@ -20,6 +20,7 @@
 #import "MyPetService.h"
 #import "PetSortService.h"
 #import "HttpUploadManager.h"
+#import "UploadService.h"
 
 @interface AppDelegate ()
 
@@ -56,8 +57,8 @@
         NSLog(@"manager start failed!");
     }
     
-    LoginService *login = [[LoginService alloc] init];
-    [login requestLogin:@"13887654321" password:@"123456"];
+//    LoginService *login = [[LoginService alloc] init];
+//    [login requestLogin:@"13888888888" password:@"123456"];
     
     [self.window setRootViewController:slide];
     [self.window makeKeyAndVisible];
@@ -65,14 +66,18 @@
 }
 -(void)requestInfo
 {
-    MyPetService *myPet = [[MyPetService alloc] init];
-    [myPet requestPetInfo:1];
-
-    FindService *findService = [[FindService alloc] init];
-    [findService requestFindNear:113.2759952545166 lng:23.117055306224895];
-    
+//    MyPetService *myPet = [[MyPetService alloc] init];
+//    [myPet requestPetInfo:1];
+//
 //    HttpUploadManager *httpUpload = [[HttpUploadManager alloc] init];
 //    [httpUpload uploadPerson:[UIImage imageNamed:@"my"]];
+    UploadService *upload = [[UploadService alloc] init];
+    [upload requestUploadLocation:113.2759952545136 lng:23.117055306224895];
+    //113.275991
+    
+//    FindService *findService = [[FindService alloc] init];
+//    [findService requestFindNear:113.2759952545136 lng:23.117055306224895];
+//    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

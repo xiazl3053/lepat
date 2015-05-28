@@ -9,6 +9,7 @@
 #import "UploadService.h"
 
 #import "UserInfo.h"
+#import "FindService.h"
 
 @implementation UploadService
 
@@ -18,7 +19,7 @@
 -(void)requestUploadLocation:(CGFloat)fLat lng:(CGFloat)fLng
 {
     UserInfo *user = [UserInfo sharedUserInfo];
-    NSString *strUrl = [NSString stringWithFormat:@"%@pats/user/getNear.do?lat=%f&lng=%f&userid=%@&token=%@%@",LEPAT_HTTP_HOST,
+    NSString *strUrl = [NSString stringWithFormat:@"%@pats/user/setPosition.do?lat=%f&lng=%f&userid=%@&token=%@%@",LEPAT_HTTP_HOST,
                         fLat,fLng,user.strUserId,user.strToken,LEPAT_VERSION_INFO];
     [self sendRequest:strUrl];
     
@@ -30,7 +31,16 @@
         DLog(@"连接失败");
         return ;
     }
-    DLog(@"");
+    DLog(@"dic:%@",dict);
+    
+    FindService *findService = [[FindService alloc] init];
+    [findService requestFindNear:113.2759952545136 lng:23.117055306224895];
+    
+    
 }
+
+
+
+
 
 @end

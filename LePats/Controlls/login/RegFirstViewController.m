@@ -82,7 +82,7 @@
 {
     [super viewDidLoad];
     self.title = @"注册";
-    UILabel *lblContent = [[UILabel alloc] initWithFrame:Rect(30, 60,self.view.width-60, 15)];
+    UILabel *lblContent = [[UILabel alloc] initWithFrame:Rect(10, 60,self.view.width-60, 15)];
     [lblContent setTextColor:RGB(101, 101, 101)];
     [lblContent setText:@"请确保您的手机畅通,用于接受验证码短信"];
     [lblContent setFont:XCFONT(12)];
@@ -110,7 +110,9 @@
     txtNumber.leftViewMode = UITextFieldViewModeAlways;
     txtNumber.keyboardType = UIKeyboardTypeDefault;
     [txtNumber setBorderStyle:UITextBorderStyleNone];
- 
+    [txtNumber setFont:XCFONT(12)];
+    [txtAddress setFont:XCFONT(12)];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(regOKBack) name:MESSAGE_UPDATE_USER_T_VC object:nil];
     
     [self.view addSubview:txtAddress];
@@ -132,7 +134,7 @@
     [btnAuth setTitle:@"获取手机验证码" forState:UIControlStateNormal];
     [btnAuth setTitleColor:RGB(255, 255, 255) forState:UIControlStateNormal];
     [btnAuth setBackgroundColor:RGB(0, 146, 255)];
-    btnAuth.titleLabel.font = XCFONT(17);
+    btnAuth.titleLabel.font = XCFONT(14);
     [btnAuth.layer setMasksToBounds:YES];
     btnAuth.layer.cornerRadius = 3.0f;
     

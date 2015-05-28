@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D027D7D1B1758A20019ABB9 /* FindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D027D7A1B1758A20019ABB9 /* FindViewController.m */; };
+		4D027D7E1B1758A20019ABB9 /* UploadLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D027D7C1B1758A20019ABB9 /* UploadLocationViewController.m */; };
 		4D12351C1B0C6A67006C1E76 /* RegSecondVIewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D12351B1B0C6A67006C1E76 /* RegSecondVIewController.m */; };
 		4D202BDD1B08894D007DED73 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D202BDC1B08894D007DED73 /* CoreLocation.framework */; };
 		4D202BDF1B088956007DED73 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D202BDE1B088956007DED73 /* QuartzCore.framework */; };
@@ -67,7 +69,7 @@
 		BB9A04B81B01F28F007DFDC8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB9A04A71B01F28F007DFDC8 /* LaunchScreen.xib */; };
 		BB9A04BA1B01F28F007DFDC8 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB9A04AB1B01F28F007DFDC8 /* Info.plist */; };
 		BB9A04BB1B01F28F007DFDC8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9A04AC1B01F28F007DFDC8 /* main.m */; };
-		BBDAC77D1B1706230009A3DA /* FrindListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDAC77C1B1706230009A3DA /* FrindListViewController.m */; };
+		BBDAC77D1B1706230009A3DA /* FriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDAC77C1B1706230009A3DA /* FriendListViewController.m */; };
 		BBDAC7811B170EE40009A3DA /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDAC7801B170EE40009A3DA /* FriendCell.m */; };
 		BBDAC7841B171E880009A3DA /* NearInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDAC7831B171E880009A3DA /* NearInfo.m */; };
 /* End PBXBuildFile section */
@@ -75,6 +77,10 @@
 /* Begin PBXFileReference section */
 		279CFB6916D8141457E3072A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		3BF811F65411D3FCD44EA091 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D027D791B1758A20019ABB9 /* FindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindViewController.h; sourceTree = "<group>"; };
+		4D027D7A1B1758A20019ABB9 /* FindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindViewController.m; sourceTree = "<group>"; };
+		4D027D7B1B1758A20019ABB9 /* UploadLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadLocationViewController.h; sourceTree = "<group>"; };
+		4D027D7C1B1758A20019ABB9 /* UploadLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadLocationViewController.m; sourceTree = "<group>"; };
 		4D052AA21B0747F2002AAF1D /* PubNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PubNotification.h; sourceTree = "<group>"; };
 		4D12351A1B0C6A67006C1E76 /* RegSecondVIewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegSecondVIewController.h; sourceTree = "<group>"; };
 		4D12351B1B0C6A67006C1E76 /* RegSecondVIewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegSecondVIewController.m; sourceTree = "<group>"; };
@@ -247,8 +253,8 @@
 		BB9A04A81B01F28F007DFDC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		BB9A04AB1B01F28F007DFDC8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB9A04AC1B01F28F007DFDC8 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		BBDAC77B1B1706230009A3DA /* FrindListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrindListViewController.h; sourceTree = "<group>"; };
-		BBDAC77C1B1706230009A3DA /* FrindListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrindListViewController.m; sourceTree = "<group>"; };
+		BBDAC77B1B1706230009A3DA /* FriendListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListViewController.h; sourceTree = "<group>"; };
+		BBDAC77C1B1706230009A3DA /* FriendListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendListViewController.m; sourceTree = "<group>"; };
 		BBDAC77F1B170EE40009A3DA /* FriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendCell.h; sourceTree = "<group>"; };
 		BBDAC7801B170EE40009A3DA /* FriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendCell.m; sourceTree = "<group>"; };
 		BBDAC7821B171E880009A3DA /* NearInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearInfo.h; sourceTree = "<group>"; };
@@ -288,10 +294,14 @@
 		4D202BEE1B08B5F7007DED73 /* FindInfo */ = {
 			isa = PBXGroup;
 			children = (
+				4D027D791B1758A20019ABB9 /* FindViewController.h */,
+				4D027D7A1B1758A20019ABB9 /* FindViewController.m */,
+				4D027D7B1B1758A20019ABB9 /* UploadLocationViewController.h */,
+				4D027D7C1B1758A20019ABB9 /* UploadLocationViewController.m */,
 				4D202BEF1B08B610007DED73 /* MapFriendViewController.h */,
 				4D202BF01B08B610007DED73 /* MapFriendViewController.mm */,
-				BBDAC77B1B1706230009A3DA /* FrindListViewController.h */,
-				BBDAC77C1B1706230009A3DA /* FrindListViewController.m */,
+				BBDAC77B1B1706230009A3DA /* FriendListViewController.h */,
+				BBDAC77C1B1706230009A3DA /* FriendListViewController.m */,
 			);
 			path = FindInfo;
 			sourceTree = "<group>";
@@ -817,6 +827,7 @@
 				4D34E9311B05FD1D00AE04F7 /* LoginViewController.m in Sources */,
 				4DFF07461B149D05006BAEED /* UploadService.m in Sources */,
 				4D202C371B08F9D9007DED73 /* LogView.m in Sources */,
+				4D027D7E1B1758A20019ABB9 /* UploadLocationViewController.m in Sources */,
 				843EA8801B044EDE004B9BC1 /* HomeItemModel.m in Sources */,
 				840D6EB71B16FD2A00C3097A /* MyInfoService.m in Sources */,
 				8464DCFF1B135AED00BCC733 /* UIView+Add.m in Sources */,
@@ -834,10 +845,11 @@
 				843DB31C1B0DCD8C00312383 /* PetSortModel.m in Sources */,
 				BB088E4E1B034C8500F5E092 /* DelPetService.m in Sources */,
 				BB9A04B71B01F28F007DFDC8 /* AppDelegate.mm in Sources */,
-				BBDAC77D1B1706230009A3DA /* FrindListViewController.m in Sources */,
+				BBDAC77D1B1706230009A3DA /* FriendListViewController.m in Sources */,
 				843EA8981B04521E004B9BC1 /* HomeItemCollectionCell.m in Sources */,
 				BBDAC7811B170EE40009A3DA /* FriendCell.m in Sources */,
 				BB088E411B03453900F5E092 /* HttpManager.m in Sources */,
+				4D027D7D1B1758A20019ABB9 /* FindViewController.m in Sources */,
 				843DB3191B0DC72C00312383 /* PetDetailViewController.m in Sources */,
 				4D12351C1B0C6A67006C1E76 /* RegSecondVIewController.m in Sources */,
 				4DED53CD1B09A19100577B1C /* Toast+UIView.m in Sources */,

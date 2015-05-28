@@ -6,12 +6,11 @@
 //  Copyright (c) 2015年 admin. All rights reserved.
 //
 
-#import "FrindListViewController.h"
+#import "FreindListViewController.h"
 #import "UIView+Extension.h"
 #import "FindService.h"
 
-
-@interface FrindListViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface FriendListViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     NSMutableArray *aryData;
     FindService *findSer;

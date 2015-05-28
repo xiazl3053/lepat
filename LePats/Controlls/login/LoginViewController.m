@@ -69,7 +69,7 @@
     btnLogin.frame = Rect(10,loginView.y+loginView.height+20,kScreenSourchWidth-20,40);
     [btnLogin.layer setMasksToBounds:YES];
     btnLogin.layer.cornerRadius = 3.0f;
-    btnLogin.titleLabel.font = XCFONT(17);
+    btnLogin.titleLabel.font = XCFONT(14);
     [self.view addSubview:btnLogin];
 }
 
