@@ -36,6 +36,7 @@
 		4DED53D31B09B23C00577B1C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DED53D21B09B23C00577B1C /* Images.xcassets */; };
 		4DFF07461B149D05006BAEED /* UploadService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFF07451B149D05006BAEED /* UploadService.m */; };
 		7AE8302AB035A0F6C58184D7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF811F65411D3FCD44EA091 /* libPods.a */; };
+		840D6EB71B16FD2A00C3097A /* MyInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 840D6EB61B16FD2A00C3097A /* MyInfoService.m */; };
 		843DB3191B0DC72C00312383 /* PetDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843DB3181B0DC72C00312383 /* PetDetailViewController.m */; };
 		843DB31C1B0DCD8C00312383 /* PetSortModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 843DB31B1B0DCD8C00312383 /* PetSortModel.m */; };
 		843DB31F1B0DD16D00312383 /* MyPetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843DB31E1B0DD16D00312383 /* MyPetsViewController.m */; };
@@ -124,6 +125,8 @@
 		4DFF07441B149D05006BAEED /* UploadService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadService.h; sourceTree = "<group>"; };
 		4DFF07451B149D05006BAEED /* UploadService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadService.m; sourceTree = "<group>"; };
 		635FBA24F678FB40B37ED093 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		840D6EB51B16FD2A00C3097A /* MyInfoService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInfoService.h; sourceTree = "<group>"; };
+		840D6EB61B16FD2A00C3097A /* MyInfoService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInfoService.m; sourceTree = "<group>"; };
 		843DB3171B0DC72C00312383 /* PetDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PetDetailViewController.h; sourceTree = "<group>"; };
 		843DB3181B0DC72C00312383 /* PetDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetDetailViewController.m; sourceTree = "<group>"; };
 		843DB31A1B0DCD8C00312383 /* PetSortModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PetSortModel.h; sourceTree = "<group>"; };
@@ -392,6 +395,15 @@
 			name = "New Group";
 			sourceTree = "<group>";
 		};
+		840D6EB41B16FD0D00C3097A /* My */ = {
+			isa = PBXGroup;
+			children = (
+				840D6EB51B16FD2A00C3097A /* MyInfoService.h */,
+				840D6EB61B16FD2A00C3097A /* MyInfoService.m */,
+			);
+			path = My;
+			sourceTree = "<group>";
+		};
 		843EA8931B04520D004B9BC1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -640,6 +652,7 @@
 		BB9A04BC1B02031C007DFDC8 /* http */ = {
 			isa = PBXGroup;
 			children = (
+				840D6EB41B16FD0D00C3097A /* My */,
 				4D61CA5B1B1083FB0092D232 /* Find */,
 				BB588F901B047EE00095337C /* upload */,
 				BB088E451B03454900F5E092 /* Pats */,
@@ -805,6 +818,7 @@
 				4DFF07461B149D05006BAEED /* UploadService.m in Sources */,
 				4D202C371B08F9D9007DED73 /* LogView.m in Sources */,
 				843EA8801B044EDE004B9BC1 /* HomeItemModel.m in Sources */,
+				840D6EB71B16FD2A00C3097A /* MyInfoService.m in Sources */,
 				8464DCFF1B135AED00BCC733 /* UIView+Add.m in Sources */,
 				8464DD051B1361E300BCC733 /* MyPetTableViewCell.m in Sources */,
 				BB088E481B03456100F5E092 /* MyPetService.m in Sources */,

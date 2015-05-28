@@ -12,6 +12,7 @@
 #import "PetDetailViewController.h"
 #import "PetDetailViewController.h"
 #import "MyPetTableViewCell.h"
+#import "MyInfoService.h"
 
 @interface MyPetsViewController ()<UITableViewDataSource,UITableViewDelegate>{
     UITableView *_tableView;
@@ -26,6 +27,10 @@
     [super viewDidLoad];
     [self initParams];
     [self initViews];
+    
+    MyInfoService *service=[[MyInfoService alloc]init];
+    [service requestUserId:0];
+    
     // Do any additional setup after loading the view.
 }
 
