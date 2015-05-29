@@ -373,10 +373,12 @@
     bgView.image=[UIImage imageNamed:@"headView_bg"];
     [headView addSubview:bgView];
     
-    UIButton *addIcon=[[UIButton alloc]initWithFrame:CGRectMake((headView.frame.size.width-80)*.5, (headView.frame.size.height-80)*.5, 80, 80)];
-    addIcon.backgroundColor=[UIColor redColor];
-    [addIcon addTarget:self action:@selector(addIcon:) forControlEvents:UIControlEventTouchUpInside];
-    [headView addSubview:addIcon];
+    UIImageView *add=[[UIImageView alloc]initWithFrame:CGRectMake((headView.frame.size.width-80)*.5, (headView.frame.size.height-80)*.5, 80, 80)];
+    add.image=[UIImage imageNamed:@"adView_bg"];
+    add.layer.cornerRadius=add.width*.5;
+    add.layer.masksToBounds=YES;
+    //[addIcon addTarget:self action:@selector(addIcon:) forControlEvents:UIControlEventTouchUpInside];
+    [headView addSubview:add];
     
     return headView;
 }

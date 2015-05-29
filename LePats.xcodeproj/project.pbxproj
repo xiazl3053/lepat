@@ -26,8 +26,6 @@
 		4D34E92F1B05FD1D00AE04F7 /* RightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D34E9201B05FD1D00AE04F7 /* RightViewController.m */; };
 		4D34E9301B05FD1D00AE04F7 /* WWSideslipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D34E9221B05FD1D00AE04F7 /* WWSideslipViewController.m */; };
 		4D34E9311B05FD1D00AE04F7 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D34E9251B05FD1D00AE04F7 /* LoginViewController.m */; };
-		4D34E9321B05FD1D00AE04F7 /* UserDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D34E9281B05FD1D00AE04F7 /* UserDetailViewController.m */; };
-		4D34E9331B05FD1D00AE04F7 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D34E92A1B05FD1D00AE04F7 /* UserInfoViewController.m */; };
 		4D61CA5A1B100EA00092D232 /* RegSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D61CA591B100EA00092D232 /* RegSettingViewController.m */; };
 		4D61CA5E1B1084E70092D232 /* FindService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D61CA5D1B1084E70092D232 /* FindService.m */; };
 		4DED53CB1B09A19100577B1C /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4DED53C61B09A19100577B1C /* ProgressHUD.bundle */; };
@@ -37,9 +35,11 @@
 		4DFF07461B149D05006BAEED /* UploadService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFF07451B149D05006BAEED /* UploadService.m */; };
 		7AE8302AB035A0F6C58184D7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF811F65411D3FCD44EA091 /* libPods.a */; };
 		840D6EB71B16FD2A00C3097A /* MyInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 840D6EB61B16FD2A00C3097A /* MyInfoService.m */; };
-		843DB3191B0DC72C00312383 /* PetDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843DB3181B0DC72C00312383 /* PetDetailViewController.m */; };
 		843DB31C1B0DCD8C00312383 /* PetSortModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 843DB31B1B0DCD8C00312383 /* PetSortModel.m */; };
-		843DB31F1B0DD16D00312383 /* MyPetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843DB31E1B0DD16D00312383 /* MyPetsViewController.m */; };
+		843E9BE71B17FFC500ADC457 /* MyPetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843E9BE01B17FFC500ADC457 /* MyPetsViewController.m */; };
+		843E9BE81B17FFC500ADC457 /* PetDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843E9BE21B17FFC500ADC457 /* PetDetailViewController.m */; };
+		843E9BE91B17FFC500ADC457 /* UserDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843E9BE41B17FFC500ADC457 /* UserDetailViewController.m */; };
+		843E9BEA1B17FFC500ADC457 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843E9BE61B17FFC500ADC457 /* UserInfoViewController.m */; };
 		843EA8801B044EDE004B9BC1 /* HomeItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EA87F1B044EDE004B9BC1 /* HomeItemModel.m */; };
 		843EA8981B04521E004B9BC1 /* HomeItemCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EA8951B04521E004B9BC1 /* HomeItemCollectionCell.m */; };
 		843EA8991B04521E004B9BC1 /* HomeItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EA8971B04521E004B9BC1 /* HomeItemButton.m */; };
@@ -56,6 +56,7 @@
 		84F3B9201B17FE1A000233A5 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3B91F1B17FE1A000233A5 /* HomeViewController.m */; };
 		84F3B9251B17FE55000233A5 /* myDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3B9221B17FE55000233A5 /* myDetailViewController.m */; };
 		84F3B9261B17FE55000233A5 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3B9241B17FE55000233A5 /* MyViewController.m */; };
+		84F3B9291B17FEFF000233A5 /* NSString+LineHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3B9281B17FEFF000233A5 /* NSString+LineHeight.m */; };
 		BB088E341B032B1D00F5E092 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB088E331B032B1D00F5E092 /* UserInfo.m */; };
 		BB088E411B03453900F5E092 /* HttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB088E3A1B03453900F5E092 /* HttpManager.m */; };
 		BB088E421B03453900F5E092 /* LoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = BB088E3C1B03453900F5E092 /* LoginService.m */; };
@@ -112,10 +113,6 @@
 		4D34E9221B05FD1D00AE04F7 /* WWSideslipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWSideslipViewController.m; sourceTree = "<group>"; };
 		4D34E9241B05FD1D00AE04F7 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		4D34E9251B05FD1D00AE04F7 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		4D34E9271B05FD1D00AE04F7 /* UserDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDetailViewController.h; sourceTree = "<group>"; };
-		4D34E9281B05FD1D00AE04F7 /* UserDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailViewController.m; sourceTree = "<group>"; };
-		4D34E9291B05FD1D00AE04F7 /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
-		4D34E92A1B05FD1D00AE04F7 /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
 		4D61CA581B100EA00092D232 /* RegSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegSettingViewController.h; sourceTree = "<group>"; };
 		4D61CA591B100EA00092D232 /* RegSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegSettingViewController.m; sourceTree = "<group>"; };
 		4D61CA5C1B1084E70092D232 /* FindService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindService.h; sourceTree = "<group>"; };
@@ -132,12 +129,16 @@
 		635FBA24F678FB40B37ED093 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		840D6EB51B16FD2A00C3097A /* MyInfoService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInfoService.h; sourceTree = "<group>"; };
 		840D6EB61B16FD2A00C3097A /* MyInfoService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInfoService.m; sourceTree = "<group>"; };
-		843DB3171B0DC72C00312383 /* PetDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PetDetailViewController.h; sourceTree = "<group>"; };
-		843DB3181B0DC72C00312383 /* PetDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetDetailViewController.m; sourceTree = "<group>"; };
 		843DB31A1B0DCD8C00312383 /* PetSortModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PetSortModel.h; sourceTree = "<group>"; };
 		843DB31B1B0DCD8C00312383 /* PetSortModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetSortModel.m; sourceTree = "<group>"; };
-		843DB31D1B0DD16D00312383 /* MyPetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPetsViewController.h; sourceTree = "<group>"; };
-		843DB31E1B0DD16D00312383 /* MyPetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPetsViewController.m; sourceTree = "<group>"; };
+		843E9BDF1B17FFC500ADC457 /* MyPetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPetsViewController.h; sourceTree = "<group>"; };
+		843E9BE01B17FFC500ADC457 /* MyPetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPetsViewController.m; sourceTree = "<group>"; };
+		843E9BE11B17FFC500ADC457 /* PetDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PetDetailViewController.h; sourceTree = "<group>"; };
+		843E9BE21B17FFC500ADC457 /* PetDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetDetailViewController.m; sourceTree = "<group>"; };
+		843E9BE31B17FFC500ADC457 /* UserDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDetailViewController.h; sourceTree = "<group>"; };
+		843E9BE41B17FFC500ADC457 /* UserDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailViewController.m; sourceTree = "<group>"; };
+		843E9BE51B17FFC500ADC457 /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
+		843E9BE61B17FFC500ADC457 /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
 		843EA87E1B044EDE004B9BC1 /* HomeItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeItemModel.h; sourceTree = "<group>"; };
 		843EA87F1B044EDE004B9BC1 /* HomeItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeItemModel.m; sourceTree = "<group>"; };
 		843EA8941B04521E004B9BC1 /* HomeItemCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeItemCollectionCell.h; sourceTree = "<group>"; };
@@ -229,6 +230,8 @@
 		84F3B9221B17FE55000233A5 /* myDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myDetailViewController.m; sourceTree = "<group>"; };
 		84F3B9231B17FE55000233A5 /* MyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
 		84F3B9241B17FE55000233A5 /* MyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
+		84F3B9271B17FEF6000233A5 /* NSString+LineHeight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+LineHeight.h"; sourceTree = "<group>"; };
+		84F3B9281B17FEFF000233A5 /* NSString+LineHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LineHeight.m"; sourceTree = "<group>"; };
 		BB088E281B02D72D00F5E092 /* LePats-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LePats-Prefix.pch"; sourceTree = "<group>"; };
 		BB088E291B02D7F800F5E092 /* PubDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PubDefine.h; sourceTree = "<group>"; };
 		BB088E321B032B1D00F5E092 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
@@ -315,10 +318,10 @@
 		4D34E9151B05FD1D00AE04F7 /* Controlls */ = {
 			isa = PBXGroup;
 			children = (
+				843E9BDE1B17FFC500ADC457 /* my */,
 				4D202BEE1B08B5F7007DED73 /* FindInfo */,
 				4D34E9161B05FD1D00AE04F7 /* home */,
 				4D34E9231B05FD1D00AE04F7 /* login */,
-				4D34E9261B05FD1D00AE04F7 /* my */,
 			);
 			path = Controlls;
 			sourceTree = "<group>";
@@ -359,21 +362,6 @@
 				4D61CA591B100EA00092D232 /* RegSettingViewController.m */,
 			);
 			path = login;
-			sourceTree = "<group>";
-		};
-		4D34E9261B05FD1D00AE04F7 /* my */ = {
-			isa = PBXGroup;
-			children = (
-				4D34E9271B05FD1D00AE04F7 /* UserDetailViewController.h */,
-				4D34E9281B05FD1D00AE04F7 /* UserDetailViewController.m */,
-				4D34E9291B05FD1D00AE04F7 /* UserInfoViewController.h */,
-				4D34E92A1B05FD1D00AE04F7 /* UserInfoViewController.m */,
-				843DB3171B0DC72C00312383 /* PetDetailViewController.h */,
-				843DB3181B0DC72C00312383 /* PetDetailViewController.m */,
-				843DB31D1B0DD16D00312383 /* MyPetsViewController.h */,
-				843DB31E1B0DD16D00312383 /* MyPetsViewController.m */,
-			);
-			path = my;
 			sourceTree = "<group>";
 		};
 		4D61CA5B1B1083FB0092D232 /* Find */ = {
@@ -424,6 +412,21 @@
 			path = My;
 			sourceTree = "<group>";
 		};
+		843E9BDE1B17FFC500ADC457 /* my */ = {
+			isa = PBXGroup;
+			children = (
+				843E9BDF1B17FFC500ADC457 /* MyPetsViewController.h */,
+				843E9BE01B17FFC500ADC457 /* MyPetsViewController.m */,
+				843E9BE11B17FFC500ADC457 /* PetDetailViewController.h */,
+				843E9BE21B17FFC500ADC457 /* PetDetailViewController.m */,
+				843E9BE31B17FFC500ADC457 /* UserDetailViewController.h */,
+				843E9BE41B17FFC500ADC457 /* UserDetailViewController.m */,
+				843E9BE51B17FFC500ADC457 /* UserInfoViewController.h */,
+				843E9BE61B17FFC500ADC457 /* UserInfoViewController.m */,
+			);
+			path = my;
+			sourceTree = "<group>";
+		};
 		843EA8931B04520D004B9BC1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -449,6 +452,8 @@
 		8464DCFC1B135AE100BCC733 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				84F3B9271B17FEF6000233A5 /* NSString+LineHeight.h */,
+				84F3B9281B17FEFF000233A5 /* NSString+LineHeight.m */,
 				8464DCFD1B135AED00BCC733 /* UIView+Add.h */,
 				8464DCFE1B135AED00BCC733 /* UIView+Add.m */,
 			);
@@ -828,14 +833,14 @@
 				84F3B9191B17FBE8000233A5 /* FriendListViewController.m in Sources */,
 				4D61CA5A1B100EA00092D232 /* RegSettingViewController.m in Sources */,
 				BB088E581B03565000F5E092 /* PetSortService.m in Sources */,
-				4D34E9331B05FD1D00AE04F7 /* UserInfoViewController.m in Sources */,
+				843E9BE81B17FFC500ADC457 /* PetDetailViewController.m in Sources */,
 				BB088E4B1B034A4200F5E092 /* PetInfoService.m in Sources */,
 				84F3B9201B17FE1A000233A5 /* HomeViewController.m in Sources */,
 				4D202BF11B08B610007DED73 /* MapFriendViewController.mm in Sources */,
 				BB088E551B034D0700F5E092 /* LePetInfo.m in Sources */,
 				4D34E92F1B05FD1D00AE04F7 /* RightViewController.m in Sources */,
 				BB088E511B034CDC00F5E092 /* AddPetService.m in Sources */,
-				843DB31F1B0DD16D00312383 /* MyPetsViewController.m in Sources */,
+				843E9BE91B17FFC500ADC457 /* UserDetailViewController.m in Sources */,
 				4DED53D11B09A24600577B1C /* UIControl+BlocksKit.m in Sources */,
 				4D34E9311B05FD1D00AE04F7 /* LoginViewController.m in Sources */,
 				4DFF07461B149D05006BAEED /* UploadService.m in Sources */,
@@ -856,6 +861,7 @@
 				4D34E92E1B05FD1D00AE04F7 /* MainViewController.m in Sources */,
 				4D202C3A1B0900F7007DED73 /* RegFirstViewController.m in Sources */,
 				BB588F931B047F690095337C /* HttpUploadManager.m in Sources */,
+				843E9BEA1B17FFC500ADC457 /* UserInfoViewController.m in Sources */,
 				843DB31C1B0DCD8C00312383 /* PetSortModel.m in Sources */,
 				BB088E4E1B034C8500F5E092 /* DelPetService.m in Sources */,
 				BB9A04B71B01F28F007DFDC8 /* AppDelegate.mm in Sources */,
@@ -863,16 +869,16 @@
 				BBDAC7811B170EE40009A3DA /* FriendCell.m in Sources */,
 				BB088E411B03453900F5E092 /* HttpManager.m in Sources */,
 				4D027D7D1B1758A20019ABB9 /* FindViewController.m in Sources */,
-				843DB3191B0DC72C00312383 /* PetDetailViewController.m in Sources */,
+				84F3B9291B17FEFF000233A5 /* NSString+LineHeight.m in Sources */,
 				4D12351C1B0C6A67006C1E76 /* RegSecondVIewController.m in Sources */,
 				4DED53CD1B09A19100577B1C /* Toast+UIView.m in Sources */,
 				BBDAC7841B171E880009A3DA /* NearInfo.m in Sources */,
 				BB088E421B03453900F5E092 /* LoginService.m in Sources */,
 				84E9D2701B1368C90078FD76 /* PetInfoEditService.m in Sources */,
-				4D34E9321B05FD1D00AE04F7 /* UserDetailViewController.m in Sources */,
 				843EA8991B04521E004B9BC1 /* HomeItemButton.m in Sources */,
 				4D34E92D1B05FD1D00AE04F7 /* LeftViewController.m in Sources */,
 				4D34E9301B05FD1D00AE04F7 /* WWSideslipViewController.m in Sources */,
+				843E9BE71B17FFC500ADC457 /* MyPetsViewController.m in Sources */,
 				BB9A04BB1B01F28F007DFDC8 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
