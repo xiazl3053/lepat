@@ -20,6 +20,8 @@ DEFINE_SINGLETON_FOR_CLASS(UserInfo);
     _strNickName = [dicInfo objectForKey:@"nickname"];
     _nSex = [[dicInfo objectForKey:@"sex"] intValue];
     _strBirthday = [dicInfo objectForKey:@"birthday"];
+    _strSignature=[dicInfo objectForKey:@"signature"];
+    _strUserIcon=[dicInfo objectForKey:@"userIcon"];
 }
 
 @end

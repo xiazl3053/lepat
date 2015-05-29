@@ -7,18 +7,76 @@
 //
 
 #import "myDetailViewController.h"
+#import "HomeItemModel.h"
+#import "MyInfoService.h"
 
-@interface myDetailViewController ()
-
+@interface myDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
+@property (nonatomic,strong) NSMutableArray *itemList;
 @end
 
 @implementation myDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor=[UIColor greenColor];
+    [self initParams];
     // Do any additional setup after loading the view.
 }
+
+-(void)initParams{
+    [self getUserInfo];
+
+}
+
+-(void)getUserInfo{
+    MyInfoService *service=[[MyInfoService alloc]init];
+    service.getMyInfoBlock=^(NSString *error){
+        
+    };
+    [service requestUserId:0];
+}
+
+-(void)initData{
+
+
+}
+
+-(void)initViews{
+
+
+}
+
+-(void)initTableView{
+    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, KMainScreenSize.width, KMainScreenSize.height) style:UITableViewStylePlain];
+    tableView.delegate=self;
+    tableView.dataSource=self;
+    [self.view addSubview:tableView];
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 3;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    switch (section) {
+        case 0:
+        {
+            return 5;
+        }break;
+        case 1:
+        {
+            return 3;
+        }break;
+        case 2:
+        {
+            return 2;
+        }break;
+        default:
+            return 0;
+            break;
+    }
+}
+    
+    
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

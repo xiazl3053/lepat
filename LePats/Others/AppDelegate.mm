@@ -57,8 +57,8 @@
         NSLog(@"manager start failed!");
     }
     
-//    LoginService *login = [[LoginService alloc] init];
-//    [login requestLogin:@"13888888888" password:@"123456"];
+    LoginService *login = [[LoginService alloc] init];
+    [login requestLogin:@"15013273670" password:@"123456"];
     
     [self.window setRootViewController:slide];
     [self.window makeKeyAndVisible];
