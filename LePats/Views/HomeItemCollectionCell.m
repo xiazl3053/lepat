@@ -30,6 +30,7 @@
     btn.layer.borderWidth=1.0;
     [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     btn.titleLabel.font=[UIFont systemFontOfSize:14];
+    
     [btn addTarget:self action:@selector(userClickCell:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:btn];
     _btn=btn;
@@ -38,6 +39,8 @@
 -(void)setItemModel:(HomeItemModel *)model{
     [_btn setImage:[UIImage imageNamed:model.img] forState:UIControlStateNormal];
     _btn.tag=model.tag;
+    UIImage *image=[UIImage imageNamed:@"home_head"];
+    [_btn setBackgroundImage:[UIImage imageNamed:@"home_head"] forState:UIControlStateNormal];
     [_btn setTitle:model.title forState:UIControlStateNormal];
 }
 

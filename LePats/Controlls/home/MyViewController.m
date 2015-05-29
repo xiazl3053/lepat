@@ -8,6 +8,7 @@
 
 #import "MyViewController.h"
 #import "MyDetailViewController.h"
+#import "UserInfo.h"
 
 @interface MyViewController (){
     UIImageView *_headView;
@@ -52,6 +53,45 @@
     detail.backgroundColor=[UIColor whiteColor];
     detail.layer.borderColor=[UIColor blackColor].CGColor;
     detail.layer.borderWidth=0.5;
+    
+    UILabel *nick=[[UILabel alloc]initWithFrame:CGRectMake(0, 30, KMainScreenSize.width, 20)];
+    nick.text=[UserInfo sharedUserInfo].strNickName;
+    nick.textAlignment=NSTextAlignmentCenter;
+    [detail addSubview:nick];
+    
+    UILabel *sign=[[UILabel alloc]initWithFrame:CGRectMake(0, nick.bottom+10, KMainScreenSize.width, 20)];
+    sign.text=[UserInfo sharedUserInfo].strSignature;
+    sign.textColor=[UIColor grayColor];
+    sign.font=[UIFont systemFontOfSize:14];
+    if ([[UserInfo sharedUserInfo].strSignature isEqualToString:@""]) {
+        sign.text=@"这个人很懒,什么都没有留下.";
+    }
+    sign.textAlignment=NSTextAlignmentCenter;
+    [detail addSubview:sign];
+
+    
+    UILabel *focus=[[UILabel alloc]initWithFrame:CGRectMake(0, sign.bottom+10, KMainScreenSize.width*.5, 20)];
+    focus.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFocusNum];
+    focus.textAlignment=NSTextAlignmentCenter;
+    [detail addSubview:focus];
+    
+    UILabel *focusTitle=[[UILabel alloc]initWithFrame:CGRectMake(0, focus.bottom+5, KMainScreenSize.width*.5, 20)];
+    focusTitle.text=@"关注";
+    focusTitle.textAlignment=NSTextAlignmentCenter;
+    [detail addSubview:focusTitle];
+    
+    
+    UILabel *fans=[[UILabel alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.5, sign.bottom+10, KMainScreenSize.width*.5, 20)];
+    fans.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFansNum];
+    fans.textAlignment=NSTextAlignmentCenter;
+    [detail addSubview:fans];
+    
+    UILabel *fansTitle=[[UILabel alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.5, fans.bottom+5, KMainScreenSize.width*.5, 20)];
+    fansTitle.text=@"粉丝";
+    fansTitle.textAlignment=NSTextAlignmentCenter;
+    [detail addSubview:fansTitle];
+    
+    
     [self.view addSubview:detail];
     _detailView=detail;
 }

@@ -100,6 +100,11 @@
     tableView.backgroundColor=[UIColor whiteColor];
     _tableView=tableView;
     [self.view addSubview:tableView];
+    
+    //1.设置tableview清除多余的分割线
+    UIView *line = [UIView new];
+    line.backgroundColor = [UIColor clearColor];
+    [tableView setTableFooterView:line];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

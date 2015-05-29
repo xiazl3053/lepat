@@ -46,17 +46,17 @@
     HomeItemModel *model=[[HomeItemModel alloc]init];
     model.title=@"每日签到";
     model.tag=101;
-    model.img=@"my";
+    model.img=@"home_sign";
     
     HomeItemModel *model1=[[HomeItemModel alloc]init];
     model1.title=@"我要寻宝";
     model1.tag=102;
-    model1.img=@"my";
+    model1.img=@"home_find";
     
     HomeItemModel *model2=[[HomeItemModel alloc]init];
     model2.title=@"我要砸蛋";
     model2.tag=103;
-    model2.img=@"my";
+    model2.img=@"home_egg";
     
     [section addObject:model];
     [section addObject:model1];
@@ -65,27 +65,27 @@
     HomeItemModel *model4 = [[HomeItemModel alloc] init];
     model4.title = @"大礼包";
     model4.tag = 105;
-    model4.img = @"my";
+    model4.img = @"home_temp";
     
     HomeItemModel *model5 = [[HomeItemModel alloc] init];
     model5.title = @"大礼包";
     model5.tag = 105;
-    model5.img = @"my";
+    model5.img = @"home_temp";
     
     HomeItemModel *model6 = [[HomeItemModel alloc] init];
     model6.title = @"大礼包";
     model6.tag = 105;
-    model6.img = @"my";
+    model6.img = @"home_temp";
     
     HomeItemModel *model7 = [[HomeItemModel alloc] init];
     model7.title = @"大礼包";
     model7.tag = 105;
-    model7.img = @"my";
+    model7.img = @"home_temp";
     
     HomeItemModel *model8 = [[HomeItemModel alloc] init];
     model8.title = @"大礼包";
     model8.tag = 105;
-    model8.img = @"my";
+    model8.img = @"home_temp";
     
     [section1 addObject:model4];
     [section1 addObject:model5];
@@ -97,22 +97,22 @@
     HomeItemModel *model9 = [[HomeItemModel alloc] init];
     model9.title = @"礼品兑换";
     model9.tag = 105;
-    model9.img = @"my";
+    model9.img = @"home_convert";
     
     HomeItemModel *model10 = [[HomeItemModel alloc] init];
     model10.title = @"鱼你同行";
     model10.tag = 105;
-    model10.img = @"my";
+    model10.img = @"home_withfish";
     
     HomeItemModel *model11 = [[HomeItemModel alloc] init];
     model11.title = @"寻找鱼友";
     model11.tag = 105;
-    model11.img = @"my";
+    model11.img = @"home_findfish";
     
     HomeItemModel *model12 = [[HomeItemModel alloc] init];
     model12.title = @"邀请好友";
     model12.tag = 105;
-    model12.img = @"my";
+    model12.img = @"home_ invite";
     
     [section2 addObject:model9];
     [section2 addObject:model10];

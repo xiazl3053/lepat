@@ -19,7 +19,7 @@
  password:密码"
  */
 
--(void)requestUserId:(int)nUserId
+-(void)requestEditMyInfo
 {
     UserInfo *user = [UserInfo sharedUserInfo];
     NSString *strUrl = [NSString stringWithFormat:@"%@pats/user/setInfo.do?nickname=%@&sex=%d&birthday=%@&signature=%@&password=%@&token=%@%@",

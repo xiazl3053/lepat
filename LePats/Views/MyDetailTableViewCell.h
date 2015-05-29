@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MyDetailTableViewCell : UITableViewCell
+-(void)setValueWithNSDictionay:(NSDictionary *)dic;
 
 @end
