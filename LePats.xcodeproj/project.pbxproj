@@ -42,6 +42,7 @@
 		843E9BEA1B17FFC500ADC457 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843E9BE61B17FFC500ADC457 /* UserInfoViewController.m */; };
 		843E9BED1B185D1100ADC457 /* EditMyInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 843E9BEC1B185D1100ADC457 /* EditMyInfoService.m */; };
 		843E9BF01B18636800ADC457 /* MyDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 843E9BEF1B18636800ADC457 /* MyDetailTableViewCell.m */; };
+		843E9BF41B18BD1800ADC457 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 843E9BF31B18BD1800ADC457 /* Images.xcassets */; };
 		843EA8801B044EDE004B9BC1 /* HomeItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EA87F1B044EDE004B9BC1 /* HomeItemModel.m */; };
 		843EA8981B04521E004B9BC1 /* HomeItemCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EA8951B04521E004B9BC1 /* HomeItemCollectionCell.m */; };
 		843EA8991B04521E004B9BC1 /* HomeItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EA8971B04521E004B9BC1 /* HomeItemButton.m */; };
@@ -53,7 +54,6 @@
 		84DB2F0B1B11BAF200A264C6 /* libbaidumapapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DB2F0A1B11BAF200A264C6 /* libbaidumapapi.a */; };
 		84E9D2701B1368C90078FD76 /* PetInfoEditService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E9D26F1B1368C90078FD76 /* PetInfoEditService.m */; };
 		84F3B9191B17FBE8000233A5 /* FriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3B9171B17FBE8000233A5 /* FriendListViewController.m */; };
-		84F3B91B1B17FDD4000233A5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84F3B91A1B17FDD4000233A5 /* Images.xcassets */; };
 		84F3B91D1B17FDF1000233A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F3B91C1B17FDF1000233A5 /* Main.storyboard */; };
 		84F3B9201B17FE1A000233A5 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3B91F1B17FE1A000233A5 /* HomeViewController.m */; };
 		84F3B9251B17FE55000233A5 /* MyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3B9221B17FE55000233A5 /* MyDetailViewController.m */; };
@@ -145,6 +145,7 @@
 		843E9BEC1B185D1100ADC457 /* EditMyInfoService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditMyInfoService.m; sourceTree = "<group>"; };
 		843E9BEE1B18636800ADC457 /* MyDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDetailTableViewCell.h; sourceTree = "<group>"; };
 		843E9BEF1B18636800ADC457 /* MyDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDetailTableViewCell.m; sourceTree = "<group>"; };
+		843E9BF31B18BD1800ADC457 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		843EA87E1B044EDE004B9BC1 /* HomeItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeItemModel.h; sourceTree = "<group>"; };
 		843EA87F1B044EDE004B9BC1 /* HomeItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeItemModel.m; sourceTree = "<group>"; };
 		843EA8941B04521E004B9BC1 /* HomeItemCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeItemCollectionCell.h; sourceTree = "<group>"; };
@@ -228,7 +229,6 @@
 		84E9D26F1B1368C90078FD76 /* PetInfoEditService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetInfoEditService.m; sourceTree = "<group>"; };
 		84F3B9161B17FBE8000233A5 /* FriendListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListViewController.h; sourceTree = "<group>"; };
 		84F3B9171B17FBE8000233A5 /* FriendListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendListViewController.m; sourceTree = "<group>"; };
-		84F3B91A1B17FDD4000233A5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		84F3B91C1B17FDF1000233A5 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		84F3B91E1B17FE1A000233A5 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		84F3B91F1B17FE1A000233A5 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
@@ -471,7 +471,6 @@
 		84D4D1C01B018FA400E67D9C = {
 			isa = PBXGroup;
 			children = (
-				84F3B91A1B17FDD4000233A5 /* Images.xcassets */,
 				84D4D1CB1B018FA400E67D9C /* LePats */,
 				84D4D1CA1B018FA400E67D9C /* Products */,
 				F80509BFA34C652EEF599230 /* Pods */,
@@ -491,6 +490,7 @@
 		84D4D1CB1B018FA400E67D9C /* LePats */ = {
 			isa = PBXGroup;
 			children = (
+				843E9BF31B18BD1800ADC457 /* Images.xcassets */,
 				8464DCFC1B135AE100BCC733 /* Category */,
 				4D202BD91B088884007DED73 /* General */,
 				4D34E9151B05FD1D00AE04F7 /* Controlls */,
@@ -790,8 +790,8 @@
 				BB9A04BA1B01F28F007DFDC8 /* Info.plist in Resources */,
 				4DED53CB1B09A19100577B1C /* ProgressHUD.bundle in Resources */,
 				84DB2F091B11BABB00A264C6 /* mapapi.bundle in Resources */,
+				843E9BF41B18BD1800ADC457 /* Images.xcassets in Resources */,
 				84F3B91D1B17FDF1000233A5 /* Main.storyboard in Resources */,
-				84F3B91B1B17FDD4000233A5 /* Images.xcassets in Resources */,
 				BB9A04B81B01F28F007DFDC8 /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

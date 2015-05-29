@@ -28,6 +28,8 @@
     HomeItemButton *btn=[[HomeItemButton alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     btn.layer.borderColor=[UIColor yellowColor].CGColor;
     btn.layer.borderWidth=1.0;
+    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    btn.titleLabel.font=[UIFont systemFontOfSize:14];
     [btn addTarget:self action:@selector(userClickCell:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:btn];
     _btn=btn;
