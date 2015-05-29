@@ -14,7 +14,7 @@
 #import "UserInfoViewController.h"
 #import "LoginViewController.h"
 #import "MapFriendViewController.h"
-#import "FriendListViewController.h"
+
 
 @interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,HomeItemCollectionCellDelegate>
 @property (nonatomic,strong) NSMutableArray *itemList;
@@ -39,47 +39,100 @@
 }
 
 -(void)initTestData{
+    
+    NSMutableArray *section=[NSMutableArray array];
+    NSMutableArray *section1=[NSMutableArray array];
+    NSMutableArray *section2=[NSMutableArray array];
     HomeItemModel *model=[[HomeItemModel alloc]init];
-    model.title=@"水族";
+    model.title=@"每日签到";
     model.tag=101;
     model.img=@"my";
     
     HomeItemModel *model1=[[HomeItemModel alloc]init];
-    model1.title=@"人族";
+    model1.title=@"我要寻宝";
     model1.tag=102;
     model1.img=@"my";
     
     HomeItemModel *model2=[[HomeItemModel alloc]init];
-    model2.title=@"兽族";
+    model2.title=@"我要砸蛋";
     model2.tag=103;
     model2.img=@"my";
     
+    [section addObject:model];
+    [section addObject:model1];
+    [section addObject:model2];
+    
+    HomeItemModel *model4 = [[HomeItemModel alloc] init];
+    model4.title = @"大礼包";
+    model4.tag = 105;
+    model4.img = @"my";
+    
     HomeItemModel *model5 = [[HomeItemModel alloc] init];
-    model5.title = @"地图";
+    model5.title = @"大礼包";
     model5.tag = 105;
     model5.img = @"my";
     
-    HomeItemModel *model4 = [[HomeItemModel alloc] init];
-    model4.title = @"上传";
-    model4.tag = 104;
-    model4.img = @"my";
+    HomeItemModel *model6 = [[HomeItemModel alloc] init];
+    model6.title = @"大礼包";
+    model6.tag = 105;
+    model6.img = @"my";
+    
+    HomeItemModel *model7 = [[HomeItemModel alloc] init];
+    model7.title = @"大礼包";
+    model7.tag = 105;
+    model7.img = @"my";
+    
+    HomeItemModel *model8 = [[HomeItemModel alloc] init];
+    model8.title = @"大礼包";
+    model8.tag = 105;
+    model8.img = @"my";
+    
+    [section1 addObject:model4];
+    [section1 addObject:model5];
+    [section1 addObject:model6];
+    [section1 addObject:model7];
+    [section1 addObject:model8];
+    
+    
+    HomeItemModel *model9 = [[HomeItemModel alloc] init];
+    model9.title = @"礼品兑换";
+    model9.tag = 105;
+    model9.img = @"my";
+    
+    HomeItemModel *model10 = [[HomeItemModel alloc] init];
+    model10.title = @"鱼你同行";
+    model10.tag = 105;
+    model10.img = @"my";
+    
+    HomeItemModel *model11 = [[HomeItemModel alloc] init];
+    model11.title = @"寻找鱼友";
+    model11.tag = 105;
+    model11.img = @"my";
+    
+    HomeItemModel *model12 = [[HomeItemModel alloc] init];
+    model12.title = @"邀请好友";
+    model12.tag = 105;
+    model12.img = @"my";
+    
+    [section2 addObject:model9];
+    [section2 addObject:model10];
+    [section2 addObject:model11];
+    [section2 addObject:model12];
     
     self.itemList=[NSMutableArray array];
-    [self.itemList addObject:model];
-    [self.itemList addObject:model1];
-    [self.itemList addObject:model2];
-    [self.itemList addObject:model4];
-    [self.itemList addObject:model5];
-    [self.itemList addObject:model2];
-    [self.itemList addObject:model];
-    [self.itemList addObject:model1];
-    [self.itemList addObject:model2];
-    
+    [self.itemList addObject:section];
+    [self.itemList addObject:section1];
+    [self.itemList addObject:section2];
     
 }
 
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    return 3;
+}
+
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 9;
+    NSArray *rows=[self.itemList objectAtIndex:section];
+    return rows.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -89,8 +142,8 @@
     //重用cell
     HomeItemCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     cell.delegate=self;
-    HomeItemModel *model=[self.itemList objectAtIndex:indexPath.row];
-    
+    NSArray *section=[self.itemList objectAtIndex:indexPath.section];
+    HomeItemModel *model=[section objectAtIndex:indexPath.row];
     [cell setItemModel:model];
     
     return cell;
@@ -99,7 +152,24 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(self.view.frame.size.width/3.0, self.view.frame.size.width/3.0);
+    switch (indexPath.section) {
+        case 0:
+        {
+            return CGSizeMake(self.view.frame.size.width/3.0, self.view.frame.size.width/3.0);
+        }break;
+        case 1:
+        {
+            return CGSizeMake(self.view.frame.size.width/5.0, self.view.frame.size.width/5.0);
+        }break;
+        case 2:
+        {
+            return CGSizeMake(self.view.frame.size.width/2.0, self.view.frame.size.width/2.0);
+        }break;
+            
+        default:{
+            return CGSizeMake(0, 0);
+        }break;
+    }
 }
 
 //定义每个Section 的 margin
@@ -133,7 +203,10 @@
     switch (tag) {
         case 101:
         {
-
+//            UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//            LoginViewController *info=[story instantiateViewControllerWithIdentifier:@"LoginViewController"];
+//            info.view.backgroundColor=[UIColor yellowColor];
+//            info.hidesBottomBarWhenPushed=YES;
             if([UserInfo sharedUserInfo].strMobile ==nil)
             {
                 LoginViewController *loginView = [[LoginViewController alloc] init];
@@ -148,17 +221,6 @@
         {
             MapFriendViewController *mapFriend = [[MapFriendViewController alloc] init];
             [self.navigationController pushViewController:mapFriend animated:YES];
-        }
-        break;
-        case 104:
-        {
-            FriendListViewController *friend = [[FriendListViewController alloc] init];
-            [self.navigationController pushViewController:friend animated:YES];
-        }
-        break;
-        case 103:
-        {
-            
         }
         break;
         default:
