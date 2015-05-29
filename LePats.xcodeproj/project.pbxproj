@@ -53,6 +53,7 @@
 		84DB2F091B11BABB00A264C6 /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84DB2F081B11BABB00A264C6 /* mapapi.bundle */; };
 		84DB2F0B1B11BAF200A264C6 /* libbaidumapapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DB2F0A1B11BAF200A264C6 /* libbaidumapapi.a */; };
 		84E9D2701B1368C90078FD76 /* PetInfoEditService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E9D26F1B1368C90078FD76 /* PetInfoEditService.m */; };
+		84F3B9191B17FBE8000233A5 /* FriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3B9171B17FBE8000233A5 /* FriendListViewController.m */; };
 		BB088E341B032B1D00F5E092 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB088E331B032B1D00F5E092 /* UserInfo.m */; };
 		BB088E411B03453900F5E092 /* HttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB088E3A1B03453900F5E092 /* HttpManager.m */; };
 		BB088E421B03453900F5E092 /* LoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = BB088E3C1B03453900F5E092 /* LoginService.m */; };
@@ -69,7 +70,6 @@
 		BB9A04B81B01F28F007DFDC8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB9A04A71B01F28F007DFDC8 /* LaunchScreen.xib */; };
 		BB9A04BA1B01F28F007DFDC8 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB9A04AB1B01F28F007DFDC8 /* Info.plist */; };
 		BB9A04BB1B01F28F007DFDC8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9A04AC1B01F28F007DFDC8 /* main.m */; };
-		BBDAC77D1B1706230009A3DA /* FriendListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDAC77C1B1706230009A3DA /* FriendListViewController.m */; };
 		BBDAC7811B170EE40009A3DA /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDAC7801B170EE40009A3DA /* FriendCell.m */; };
 		BBDAC7841B171E880009A3DA /* NearInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDAC7831B171E880009A3DA /* NearInfo.m */; };
 /* End PBXBuildFile section */
@@ -221,6 +221,8 @@
 		84DB2F0A1B11BAF200A264C6 /* libbaidumapapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libbaidumapapi.a; sourceTree = "<group>"; };
 		84E9D26E1B1368C90078FD76 /* PetInfoEditService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PetInfoEditService.h; sourceTree = "<group>"; };
 		84E9D26F1B1368C90078FD76 /* PetInfoEditService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetInfoEditService.m; sourceTree = "<group>"; };
+		84F3B9161B17FBE8000233A5 /* FriendListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListViewController.h; sourceTree = "<group>"; };
+		84F3B9171B17FBE8000233A5 /* FriendListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendListViewController.m; sourceTree = "<group>"; };
 		BB088E281B02D72D00F5E092 /* LePats-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LePats-Prefix.pch"; sourceTree = "<group>"; };
 		BB088E291B02D7F800F5E092 /* PubDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PubDefine.h; sourceTree = "<group>"; };
 		BB088E321B032B1D00F5E092 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
@@ -253,8 +255,6 @@
 		BB9A04A81B01F28F007DFDC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		BB9A04AB1B01F28F007DFDC8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB9A04AC1B01F28F007DFDC8 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		BBDAC77B1B1706230009A3DA /* FriendListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListViewController.h; sourceTree = "<group>"; };
-		BBDAC77C1B1706230009A3DA /* FriendListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendListViewController.m; sourceTree = "<group>"; };
 		BBDAC77F1B170EE40009A3DA /* FriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendCell.h; sourceTree = "<group>"; };
 		BBDAC7801B170EE40009A3DA /* FriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendCell.m; sourceTree = "<group>"; };
 		BBDAC7821B171E880009A3DA /* NearInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearInfo.h; sourceTree = "<group>"; };
@@ -300,8 +300,8 @@
 				4D027D7C1B1758A20019ABB9 /* UploadLocationViewController.m */,
 				4D202BEF1B08B610007DED73 /* MapFriendViewController.h */,
 				4D202BF01B08B610007DED73 /* MapFriendViewController.mm */,
-				BBDAC77B1B1706230009A3DA /* FriendListViewController.h */,
-				BBDAC77C1B1706230009A3DA /* FriendListViewController.m */,
+				84F3B9161B17FBE8000233A5 /* FriendListViewController.h */,
+				84F3B9171B17FBE8000233A5 /* FriendListViewController.m */,
 			);
 			path = FindInfo;
 			sourceTree = "<group>";
@@ -814,6 +814,7 @@
 				4D202C3D1B09054B007DED73 /* UIView+Extension.m in Sources */,
 				BB088E341B032B1D00F5E092 /* UserInfo.m in Sources */,
 				4D61CA5E1B1084E70092D232 /* FindService.m in Sources */,
+				84F3B9191B17FBE8000233A5 /* FriendListViewController.m in Sources */,
 				4D61CA5A1B100EA00092D232 /* RegSettingViewController.m in Sources */,
 				BB088E581B03565000F5E092 /* PetSortService.m in Sources */,
 				4D34E9331B05FD1D00AE04F7 /* UserInfoViewController.m in Sources */,
@@ -845,7 +846,6 @@
 				843DB31C1B0DCD8C00312383 /* PetSortModel.m in Sources */,
 				BB088E4E1B034C8500F5E092 /* DelPetService.m in Sources */,
 				BB9A04B71B01F28F007DFDC8 /* AppDelegate.mm in Sources */,
-				BBDAC77D1B1706230009A3DA /* FriendListViewController.m in Sources */,
 				843EA8981B04521E004B9BC1 /* HomeItemCollectionCell.m in Sources */,
 				BBDAC7811B170EE40009A3DA /* FriendCell.m in Sources */,
 				BB088E411B03453900F5E092 /* HttpManager.m in Sources */,

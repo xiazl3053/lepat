@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 admin. All rights reserved.
 //
 
-#import "FreindListViewController.h"
+#import "FriendListViewController.h"
 #import "UIView+Extension.h"
 #import "FindService.h"
 
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation FrindListViewController
+@implementation FriendListViewController
 
 - (void)viewDidLoad
 {
@@ -29,7 +29,7 @@
     self.title = @"附近鱼友列表";
     [self setRightHidden:NO];
     [self setRightTitle:@"地图"];
-    __weak FrindListViewController *__self = self;
+    __weak FriendListViewController *__self = self;
     findSer = [[FindService alloc] init];
     
     [self addRightEvent:^(id sender)
