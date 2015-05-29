@@ -8,6 +8,8 @@
 
 #import "FindService.h"
 #import "UserInfo.h"
+#import "NearInfo.h"
+
 
 @implementation FindService
 
@@ -32,9 +34,15 @@
     int nType = [[dict objectForKey:@"return_code"] intValue];
     if (nType == 10000)
     {
+        NSMutableArray *data=[NSMutableArray array];
+        for (NSDictionary *obj in [dict objectForKey:@"userList"])
+        {
+            NearInfo *info=[[NearInfo alloc] initWithDic:obj];
+            [data addObject:info];
+        }
         if (_httpBlock)
         {
-            _httpBlock(1,[dict objectForKey:@"userInfo"]);
+            _httpBlock(1,data);
         }
     }
     

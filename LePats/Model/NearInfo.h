@@ -13,9 +13,11 @@
 @property (nonatomic,strong) NSString *strName;
 @property (nonatomic,strong) NSString *strPet;
 @property (nonatomic,strong) NSString *strContent;
-@property (nonatomic,assign) CGFloat fAtti;
+@property (nonatomic,strong) NSString *strFile;
+@property (nonatomic,assign) CGFloat fDistan;
 
 -(id)initWithItems:(NSArray *)items;
 
+-(id)initWithDic:(NSDictionary *)dict;
 
 @end
