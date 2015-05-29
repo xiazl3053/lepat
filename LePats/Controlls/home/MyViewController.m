@@ -7,7 +7,7 @@
 //
 
 #import "MyViewController.h"
-#import "myDetailViewController.h"
+#import "MyDetailViewController.h"
 
 @interface MyViewController (){
     UIImageView *_headView;
@@ -113,7 +113,7 @@
 }
 
 -(void)myDetail:(UITapGestureRecognizer *)tap{
-    myDetailViewController *detail=[[myDetailViewController alloc]init];
+    MyDetailViewController *detail=[[MyDetailViewController alloc]init];
     detail.hidesBottomBarWhenPushed=YES;
     [self.navigationController pushViewController:detail animated:YES];
     NSLog(@"%s",__FUNCTION__);

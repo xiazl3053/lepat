@@ -41,6 +41,7 @@
 		843E9BE91B17FFC500ADC457 /* UserDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843E9BE41B17FFC500ADC457 /* UserDetailViewController.m */; };
 		843E9BEA1B17FFC500ADC457 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843E9BE61B17FFC500ADC457 /* UserInfoViewController.m */; };
 		843E9BED1B185D1100ADC457 /* EditMyInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 843E9BEC1B185D1100ADC457 /* EditMyInfoService.m */; };
+		843E9BF01B18636800ADC457 /* MyDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 843E9BEF1B18636800ADC457 /* MyDetailTableViewCell.m */; };
 		843EA8801B044EDE004B9BC1 /* HomeItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EA87F1B044EDE004B9BC1 /* HomeItemModel.m */; };
 		843EA8981B04521E004B9BC1 /* HomeItemCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EA8951B04521E004B9BC1 /* HomeItemCollectionCell.m */; };
 		843EA8991B04521E004B9BC1 /* HomeItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EA8971B04521E004B9BC1 /* HomeItemButton.m */; };
@@ -55,7 +56,7 @@
 		84F3B91B1B17FDD4000233A5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84F3B91A1B17FDD4000233A5 /* Images.xcassets */; };
 		84F3B91D1B17FDF1000233A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F3B91C1B17FDF1000233A5 /* Main.storyboard */; };
 		84F3B9201B17FE1A000233A5 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3B91F1B17FE1A000233A5 /* HomeViewController.m */; };
-		84F3B9251B17FE55000233A5 /* myDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3B9221B17FE55000233A5 /* myDetailViewController.m */; };
+		84F3B9251B17FE55000233A5 /* MyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3B9221B17FE55000233A5 /* MyDetailViewController.m */; };
 		84F3B9261B17FE55000233A5 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3B9241B17FE55000233A5 /* MyViewController.m */; };
 		84F3B9291B17FEFF000233A5 /* NSString+LineHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3B9281B17FEFF000233A5 /* NSString+LineHeight.m */; };
 		BB088E341B032B1D00F5E092 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB088E331B032B1D00F5E092 /* UserInfo.m */; };
@@ -142,6 +143,8 @@
 		843E9BE61B17FFC500ADC457 /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
 		843E9BEB1B185D1100ADC457 /* EditMyInfoService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditMyInfoService.h; sourceTree = "<group>"; };
 		843E9BEC1B185D1100ADC457 /* EditMyInfoService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditMyInfoService.m; sourceTree = "<group>"; };
+		843E9BEE1B18636800ADC457 /* MyDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDetailTableViewCell.h; sourceTree = "<group>"; };
+		843E9BEF1B18636800ADC457 /* MyDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDetailTableViewCell.m; sourceTree = "<group>"; };
 		843EA87E1B044EDE004B9BC1 /* HomeItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeItemModel.h; sourceTree = "<group>"; };
 		843EA87F1B044EDE004B9BC1 /* HomeItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeItemModel.m; sourceTree = "<group>"; };
 		843EA8941B04521E004B9BC1 /* HomeItemCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeItemCollectionCell.h; sourceTree = "<group>"; };
@@ -229,8 +232,8 @@
 		84F3B91C1B17FDF1000233A5 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		84F3B91E1B17FE1A000233A5 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		84F3B91F1B17FE1A000233A5 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		84F3B9211B17FE55000233A5 /* myDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myDetailViewController.h; sourceTree = "<group>"; };
-		84F3B9221B17FE55000233A5 /* myDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myDetailViewController.m; sourceTree = "<group>"; };
+		84F3B9211B17FE55000233A5 /* MyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDetailViewController.h; sourceTree = "<group>"; };
+		84F3B9221B17FE55000233A5 /* MyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDetailViewController.m; sourceTree = "<group>"; };
 		84F3B9231B17FE55000233A5 /* MyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
 		84F3B9241B17FE55000233A5 /* MyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
 		84F3B9271B17FEF6000233A5 /* NSString+LineHeight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+LineHeight.h"; sourceTree = "<group>"; };
@@ -332,8 +335,8 @@
 		4D34E9161B05FD1D00AE04F7 /* home */ = {
 			isa = PBXGroup;
 			children = (
-				84F3B9211B17FE55000233A5 /* myDetailViewController.h */,
-				84F3B9221B17FE55000233A5 /* myDetailViewController.m */,
+				84F3B9211B17FE55000233A5 /* MyDetailViewController.h */,
+				84F3B9221B17FE55000233A5 /* MyDetailViewController.m */,
 				84F3B9231B17FE55000233A5 /* MyViewController.h */,
 				84F3B9241B17FE55000233A5 /* MyViewController.m */,
 				84F3B91E1B17FE1A000233A5 /* HomeViewController.h */,
@@ -694,6 +697,8 @@
 		BBDAC77E1B170EC00009A3DA /* cell */ = {
 			isa = PBXGroup;
 			children = (
+				843E9BEE1B18636800ADC457 /* MyDetailTableViewCell.h */,
+				843E9BEF1B18636800ADC457 /* MyDetailTableViewCell.m */,
 				BBDAC77F1B170EE40009A3DA /* FriendCell.h */,
 				BBDAC7801B170EE40009A3DA /* FriendCell.m */,
 			);
@@ -833,8 +838,9 @@
 			files = (
 				4D202C3D1B09054B007DED73 /* UIView+Extension.m in Sources */,
 				BB088E341B032B1D00F5E092 /* UserInfo.m in Sources */,
+				843E9BF01B18636800ADC457 /* MyDetailTableViewCell.m in Sources */,
 				4D61CA5E1B1084E70092D232 /* FindService.m in Sources */,
-				84F3B9251B17FE55000233A5 /* myDetailViewController.m in Sources */,
+				84F3B9251B17FE55000233A5 /* MyDetailViewController.m in Sources */,
 				84F3B9191B17FBE8000233A5 /* FriendListViewController.m in Sources */,
 				4D61CA5A1B100EA00092D232 /* RegSettingViewController.m in Sources */,
 				BB088E581B03565000F5E092 /* PetSortService.m in Sources */,

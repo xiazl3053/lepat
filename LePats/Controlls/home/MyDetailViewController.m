@@ -6,15 +6,16 @@
 //  Copyright (c) 2015年 admin. All rights reserved.
 //
 
-#import "myDetailViewController.h"
+#import "MyDetailViewController.h"
 #import "HomeItemModel.h"
 #import "MyInfoService.h"
+#import "MyDetailTableViewCell.h"
 
-@interface myDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface MyDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong) NSMutableArray *itemList;
 @end
 
-@implementation myDetailViewController
+@implementation MyDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -52,8 +53,25 @@
     [self.view addSubview:tableView];
 }
 
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *identifer=@"MyDetailCell";
+    MyDetailTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:identifer];
+    if (!cell) {
+        cell=[[MyDetailTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
+    }
+    return cell;
+}
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 3;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section==0) {
+        return 60;
+    }else{
+        return 40;
+    }
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
