@@ -40,6 +40,7 @@
 		843E9BE81B17FFC500ADC457 /* PetDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843E9BE21B17FFC500ADC457 /* PetDetailViewController.m */; };
 		843E9BE91B17FFC500ADC457 /* UserDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843E9BE41B17FFC500ADC457 /* UserDetailViewController.m */; };
 		843E9BEA1B17FFC500ADC457 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843E9BE61B17FFC500ADC457 /* UserInfoViewController.m */; };
+		843E9BED1B185D1100ADC457 /* EditMyInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 843E9BEC1B185D1100ADC457 /* EditMyInfoService.m */; };
 		843EA8801B044EDE004B9BC1 /* HomeItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EA87F1B044EDE004B9BC1 /* HomeItemModel.m */; };
 		843EA8981B04521E004B9BC1 /* HomeItemCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EA8951B04521E004B9BC1 /* HomeItemCollectionCell.m */; };
 		843EA8991B04521E004B9BC1 /* HomeItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EA8971B04521E004B9BC1 /* HomeItemButton.m */; };
@@ -139,6 +140,8 @@
 		843E9BE41B17FFC500ADC457 /* UserDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailViewController.m; sourceTree = "<group>"; };
 		843E9BE51B17FFC500ADC457 /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
 		843E9BE61B17FFC500ADC457 /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
+		843E9BEB1B185D1100ADC457 /* EditMyInfoService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditMyInfoService.h; sourceTree = "<group>"; };
+		843E9BEC1B185D1100ADC457 /* EditMyInfoService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditMyInfoService.m; sourceTree = "<group>"; };
 		843EA87E1B044EDE004B9BC1 /* HomeItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeItemModel.h; sourceTree = "<group>"; };
 		843EA87F1B044EDE004B9BC1 /* HomeItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeItemModel.m; sourceTree = "<group>"; };
 		843EA8941B04521E004B9BC1 /* HomeItemCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeItemCollectionCell.h; sourceTree = "<group>"; };
@@ -408,6 +411,8 @@
 			children = (
 				840D6EB51B16FD2A00C3097A /* MyInfoService.h */,
 				840D6EB61B16FD2A00C3097A /* MyInfoService.m */,
+				843E9BEB1B185D1100ADC457 /* EditMyInfoService.h */,
+				843E9BEC1B185D1100ADC457 /* EditMyInfoService.m */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -855,6 +860,7 @@
 				4DED53CC1B09A19100577B1C /* ProgressHUD.m in Sources */,
 				8464DD021B135C1F00BCC733 /* LeftTableViewCell.m in Sources */,
 				84DB2EC81B11B32000A264C6 /* AddPetCellTableViewCell.m in Sources */,
+				843E9BED1B185D1100ADC457 /* EditMyInfoService.m in Sources */,
 				BB088E441B03453900F5E092 /* UpdUserService.m in Sources */,
 				BB088E431B03453900F5E092 /* RegisterService.m in Sources */,
 				84F3B9261B17FE55000233A5 /* MyViewController.m in Sources */,
