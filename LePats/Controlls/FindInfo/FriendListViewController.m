@@ -29,7 +29,8 @@
     [super viewDidLoad];
     self.title = @"附近鱼友列表";
     [self setRightHidden:NO];
-    [self setRightTitle:@"地图"];
+//    [self setRightTitle:@"地图"];
+    [self setRightImg:@"position" high:nil select:nil];
     __weak FriendListViewController *__self = self;
     findSer = [[FindService alloc] init];
     _aryNear = [NSMutableArray array];
@@ -59,6 +60,7 @@
             [__self.tableView reloadData];
         });
     };
+    //纬度＋经度
     [findSer requestFindNear:23.1170550 lng:113.275999];
 }
 

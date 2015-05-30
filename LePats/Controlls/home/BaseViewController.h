@@ -16,9 +16,14 @@
 @property(assign,nonatomic)UIView *topLine;//top的底部分割线
 @property(assign,nonatomic)UIButton *returnBtn;//返回键
 
+
+-(void)setLeftHidden:(BOOL)bHidden;
+
 -(void)setRightHidden:(BOOL)bHidden;
 
 -(void)setRightTitle:(NSString *)strTitle;
+
+-(void)setRightImg:(NSString *)strNor high:(NSString *)strHigh select:(NSString *)strSelect;
 
 -(void)addRightEvent:(void (^)(id sender))handler;
 //-(void)addTag:
