@@ -17,6 +17,8 @@
     int _sex;
     UITextField *_brithDay;
     UIDatePicker *_datePickerView;
+    UIButton *_male;
+    UIButton *_female;
 }
 
 @end
@@ -124,16 +126,22 @@
 
 -(void)initSexView{
     UIButton *male=[[UIButton alloc]initWithFrame:CGRectMake(0, 44, KMainScreenSize.width, 40)];
-    male.backgroundColor=[UIColor redColor];
+    [male setTitle:@"男" forState:UIControlStateNormal];
+    [male setTitleColor:[UIColor redColor]  forState:UIControlStateSelected];
+    [male setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     male.tag=100;
     [male addTarget:self action:@selector(changeSex:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:male];
+    _male=male;
     
     UIButton *female=[[UIButton alloc]initWithFrame:CGRectMake(0, male.bottom, KMainScreenSize.width, 40)];
     female.tag=200;
-    female.backgroundColor=[UIColor greenColor];
+    [female setTitle:@"女" forState:UIControlStateNormal];
+    [female setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [female setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
     [female addTarget:self action:@selector(changeSex:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:female];
+    _female=female;
 }
 
 -(void)initBrithdayView{
@@ -176,9 +184,14 @@
 }
 
 -(void)changeSex:(UIButton *)aBtn{
+   
     if (aBtn.tag==100) {
+        [_male setSelected:YES];
+        [_female setSelected:NO];
         _sex=1;
     }else{
+        [_male setSelected:NO];
+        [_female setSelected:YES];
         _sex=0;
     }
 }
