@@ -7,7 +7,7 @@
 //
 
 #import "HomeHeadReusableView.h"
-#import "HomeItemButton.m"
+#import "HomeItemButton.h"
 #import "HomeItemModel.h"
 
 @implementation HomeHeadReusableView
