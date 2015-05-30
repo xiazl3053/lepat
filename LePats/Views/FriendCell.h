@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NearInfo.h"
 
 @interface FriendCell : UITableViewCell
 
@@ -17,5 +18,9 @@
 @property (nonatomic,strong) UILabel *lblDistance;
 @property (nonatomic,strong) UIButton *btnAttention;
 @property (nonatomic,strong) UIButton *btnPriLet;
+@property (nonatomic,strong) UIImageView *imgHead;
+
+-(void)setNearInfo:(NearInfo *)info;
+
 
 @end

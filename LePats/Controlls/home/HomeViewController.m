@@ -26,8 +26,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initParams];
+    [self initViews];
     self.title=@"主页";
     // Do any additional setup after loading the view.
+}
+
+
+-(void)initViews{
+    UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,34,30)];
+    [rightButton  setImage:[UIImage imageNamed:@"home_left"]forState:UIControlStateNormal];
+    [rightButton addTarget:self action:@selector(showLeftView)forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
+    self.navigationItem.leftBarButtonItem= rightItem;
 }
 
 -(void)initParams{
@@ -226,6 +236,11 @@
         default:
             break;
     }
+}
+
+-(void)showLeftView{
+    [[NSNotificationCenter defaultCenter]postNotificationName:KShowLeftViewController object:nil];
+
 }
 
 /*

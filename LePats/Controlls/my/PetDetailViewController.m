@@ -16,6 +16,7 @@
 #import "PetSortService.h"
 #import "DelPetService.h"
 #import "PetInfoEditService.h"
+#import "UserInfo.h"
 
 @interface PetDetailViewController ()<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate>{
     UITableView *_tableView;
@@ -26,6 +27,7 @@
     AddPetCellTableViewCell *_sexCell;
     AddPetCellTableViewCell *_dateCell;
     PetSortModel *_selectSortModel;
+    NSInteger _photoId;
 }
 
 @property (nonatomic,strong) NSArray *sortList;
@@ -377,7 +379,10 @@
     add.image=[UIImage imageNamed:@"adView_bg"];
     add.layer.cornerRadius=add.width*.5;
     add.layer.masksToBounds=YES;
-    //[addIcon addTarget:self action:@selector(addIcon:) forControlEvents:UIControlEventTouchUpInside];
+    UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(addIcon:)];
+    //[add addTarget:self action:@selector(addIcon:) forControlEvents:UIControlEventTouchUpInside];
+    [add addGestureRecognizer:tap];
+    add.userInteractionEnabled=YES;
     [headView addSubview:add];
     
     return headView;
@@ -518,6 +523,15 @@
 
 -(void)upDateImage:(UIImage *)image{
     HttpUploadManager *upload=[[HttpUploadManager alloc]init];
+    upload.uploadImgBlock=^(NSString *error,NSDictionary *dic){
+        if (error) {
+            
+        }else{
+            NSDictionary *data=[dic objectForKey:@"photobj"];
+            _photoId=[[data objectForKey:@"id"]intValue];
+            _pet.nPhotoId=[[data objectForKey:@"id"]intValue];
+        }
+    };
     [upload uploadPetHead:image petId:@"-1"];
 }
 

@@ -20,7 +20,9 @@
 #import "HomeItemModel.h"
 
 
-@interface WWSideslipViewController ()
+@interface WWSideslipViewController (){
+    NSInteger _index;
+}
 
 @end
 
@@ -51,6 +53,7 @@
 
 -(void)initRegisterNotification{
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(gotoMyInfoViewCotroller:) name:KShowMainViewController object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showLeftViewFromSetting) name:KShowLeftViewController object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -209,6 +212,17 @@
     mainControl.view.transform = CGAffineTransformScale(CGAffineTransformIdentity,0.8,0.8);
     mainControl.view.center = CGPointMake(340,[UIScreen mainScreen].bounds.size.height/2);
     [UIView commitAnimations];
+}
+
+-(void)showLeftViewFromSetting{
+    
+    leftControl.view.hidden = NO;
+    if (_index%2==0) {
+        [self showLeftView];
+    }else{
+        [self showMainView];
+    }
+    _index++;
 }
 
 //显示右视图

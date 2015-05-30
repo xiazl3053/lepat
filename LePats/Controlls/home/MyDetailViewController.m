@@ -47,7 +47,8 @@
     
     NSMutableDictionary *dic=[NSMutableDictionary dictionary];
     [dic setValue:@"头像" forKey:@"title"];
-    [dic setValue:@"" forKey:@"content"];
+    [dic setValue:@"101" forKey:@"tag"];
+    [dic setValue:user.strUserIcon forKey:@"content"];
     
     NSMutableDictionary *dic1=[NSMutableDictionary dictionary];
     [dic1 setValue:@"账号" forKey:@"title"];
@@ -69,6 +70,7 @@
     
     NSMutableDictionary *dic4=[NSMutableDictionary dictionary];
     [dic4 setValue:@"出生年月" forKey:@"title"];
+    [dic4 setValue:@"105" forKey:@"tag"];
     [dic4 setValue:user.strBirthday forKey:@"content"];
     
     NSMutableArray *section=[NSMutableArray array];
@@ -111,7 +113,12 @@
 }
 
 -(void)initViews{
+    [self initSelfView];
     [self initTableView];
+}
+
+-(void)initSelfView{
+    self.title=@"我的信息";
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -138,6 +145,14 @@
     }
     NSArray *rows=[self.itemList objectAtIndex:indexPath.section];
     NSDictionary *dic=[rows objectAtIndex:indexPath.row];
+    if (indexPath.section==0) {
+        if (indexPath.row==0) {
+            UIImageView *icon=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@""]];
+            icon.frame=CGRectMake(KMainScreenSize.width-80, 5, 50, 50);
+            icon.backgroundColor=[UIColor redColor];
+            [cell addSubview:icon];
+        }
+    }
     [cell setValueWithNSDictionay:dic];
     return cell;
 }
@@ -169,6 +184,12 @@
     NSDictionary *dic=[rows objectAtIndex:indexPath.row];
     NSInteger tag=[[dic objectForKey:@"tag"]intValue];
     switch (tag) {
+        case 101:
+        {
+            EditMyInfoViewController *edit=[[EditMyInfoViewController alloc]init];
+            edit.editType=MYInfoEdit_TYPE_Icon;
+            [self.navigationController pushViewController:edit animated:YES];
+        }break;
         case 103:
         {
             EditMyInfoViewController *edit=[[EditMyInfoViewController alloc]init];
@@ -179,6 +200,12 @@
         {
             EditMyInfoViewController *edit=[[EditMyInfoViewController alloc]init];
             edit.editType=MYInfoEdit_TYPE_Sex;
+            [self.navigationController pushViewController:edit animated:YES];
+        }break;
+        case 105:
+        {
+            EditMyInfoViewController *edit=[[EditMyInfoViewController alloc]init];
+            edit.editType=MYInfoEdit_TYPE_Brithday;
             [self.navigationController pushViewController:edit animated:YES];
         }break;
         case 108:{

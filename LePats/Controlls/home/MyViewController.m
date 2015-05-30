@@ -121,13 +121,25 @@
 
 -(void)initContentView{
     UIView *view1=[[UIView alloc]initWithFrame:CGRectMake(0, _segmentedView.bottom, KMainScreenSize.width, 200)];
-    view1.backgroundColor=[UIColor redColor];
+    view1.backgroundColor=[UIColor groupTableViewBackgroundColor];
+    
+    UIImageView *push=[[UIImageView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-134)*.5, 20, 134, 134)];
+    push.image=[UIImage imageNamed:@"home_push"];
+    [view1 addSubview:push];
+    
     _leftView=view1;
     [self.view addSubview:view1];
     
     UIView *view2=[[UIView alloc]initWithFrame:CGRectMake(0, _segmentedView.bottom, KMainScreenSize.width, 200)];
-    view2.backgroundColor=[UIColor greenColor];
+    view2.backgroundColor=[UIColor groupTableViewBackgroundColor];
     view2.hidden=YES;
+    
+    
+    UIImageView *like=[[UIImageView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-134)*.5, 20, 134, 134)];
+    like.image=[UIImage imageNamed:@"home_like"];
+    [view2 addSubview:like];
+    
+    
     _rightView=view2;
     [self.view addSubview:view2];
 

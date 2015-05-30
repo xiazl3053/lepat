@@ -12,6 +12,8 @@ typedef enum : NSUInteger {
     MYInfoEdit_TYPE_NickName,
     MYInfoEdit_TYPE_Signture,
     MYInfoEdit_TYPE_Sex,
+    MYInfoEdit_TYPE_Brithday,
+    MYInfoEdit_TYPE_Icon,
 } MYInfoEdit_TYPE;
 
 @interface EditMyInfoViewController : BaseViewController

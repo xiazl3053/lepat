@@ -22,7 +22,6 @@
     NSString *strUrl = [NSString stringWithFormat:@"%@pats/user/setPosition.do?lat=%f&lng=%f&userid=%@&token=%@%@",LEPAT_HTTP_HOST,
                         fLat,fLng,user.strUserId,user.strToken,LEPAT_VERSION_INFO];
     [self sendRequest:strUrl];
-    
 }
 
 -(void)reciveDic:(int *)nStatus dic:(NSDictionary *)dict
@@ -34,7 +33,7 @@
     DLog(@"dic:%@",dict);
     
     FindService *findService = [[FindService alloc] init];
-    [findService requestFindNear:113.2759952545136 lng:23.117055306224895];
+    [findService requestFindNear:23.117055 lng:113.275995];
     
     
 }

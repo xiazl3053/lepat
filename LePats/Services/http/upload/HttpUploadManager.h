@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void(^UpLoadImgBlock)(NSString *error,NSDictionary *data);
+
 @interface HttpUploadManager : NSObject
 
 -(void)uploadPersonHome:(UIImage *)image;
@@ -15,7 +17,7 @@
 -(void)uploadPersonHead:(UIImage *)image;
 -(void)uploadPet:(UIImage *)image petId:(NSString *)strId;
 -(void)uploadPetHead:(UIImage*)image petId:(NSString *)strId;
-
+@property (nonatomic,copy) UpLoadImgBlock uploadImgBlock;
 
 @end
 

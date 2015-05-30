@@ -136,7 +136,9 @@
 
 -(void)login:(UIButton *)aBtn{
     LoginViewController *login=[[LoginViewController alloc]init];
-    [self.navigationController pushViewController:login animated:YES];
+    [self presentViewController:login animated:YES completion:^{
+        
+    }];
 }
 
 

@@ -9,16 +9,17 @@
 #import "FriendListViewController.h"
 #import "UIView+Extension.h"
 #import "FindService.h"
+#import "FriendCell.h"
+#import "NearInfo.h"
 
 @interface FriendListViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
-    NSMutableArray *aryData;
     FindService *findSer;
 }
 
 
 @property (nonatomic,strong) UITableView *tableView;
-
+@property (nonatomic,strong) NSMutableArray *aryNear;
 @end
 
 @implementation FriendListViewController
@@ -31,12 +32,13 @@
     [self setRightTitle:@"地图"];
     __weak FriendListViewController *__self = self;
     findSer = [[FindService alloc] init];
-    
+    _aryNear = [NSMutableArray array];
     [self addRightEvent:^(id sender)
     {
         [__self comeToMap];
     }];
     [self initView];
+    [self findData];
 }
 
 -(void)comeToMap
@@ -46,18 +48,23 @@
 
 -(void)findData
 {
-    
-    
-    
-    
-    
-    [findSer requestFindNear:0 lng:0];
+    __weak FriendListViewController *__self =self;
+    findSer.httpBlock = ^(int nStatus,NSArray *aryInfo)
+    {
+        DLog(@"aryData_length:%lu",aryInfo.count);
+        [__self.aryNear removeAllObjects];
+        [__self.aryNear addObjectsFromArray:aryInfo];
+        dispatch_async(dispatch_get_main_queue(),
+        ^{
+            [__self.tableView reloadData];
+        });
+    };
+    [findSer requestFindNear:23.1170550 lng:113.275999];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    
 }
 
 -(void)initView
@@ -71,13 +78,29 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-     return [aryData count];
+    if(!_aryNear)
+    {
+        return 0;
+    }
+    return [_aryNear count];
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    static NSString *strFriendIdentifier = @"friendCellIdentifier";
 //    UITableViewCell
-    return  nil;
+    FriendCell *friend = [tableView dequeueReusableCellWithIdentifier:strFriendIdentifier];
+    if (friend==nil)
+    {
+        friend = [[FriendCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:strFriendIdentifier];
+        NearInfo *near = [_aryNear objectAtIndex:indexPath.row];
+        [friend setNearInfo:near];
+        UIView *bkView = [[UIView alloc] init];
+        [bkView setBackgroundColor:[UIColor whiteColor]];
+        [friend setSelectedBackgroundView:bkView];
+    }
+    
+    return friend;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

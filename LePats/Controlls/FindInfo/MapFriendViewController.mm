@@ -8,6 +8,12 @@
 
 #import "MapFriendViewController.h"
 
+#ifdef __LP64__
+typedef unsigned int U_int32;
+#else
+typedef unsigned long U_int32;
+#endif
+
 @interface MapFriendViewController()<BMKMapViewDelegate>
 
 @end
@@ -18,6 +24,7 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    DLog(@"length:%li\n",sizeof(U_int32));
     _mapView = [[BMKMapView alloc] initWithFrame:Rect(0, 44, kScreenSourchWidth, kScreenSourchHeight-64)];
     self.title = @"地图";
     [self.view addSubview:_mapView];

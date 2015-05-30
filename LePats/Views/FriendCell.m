@@ -31,14 +31,24 @@
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    _btnPriLet.frame = Rect(self.contentView.width-50,60, 44,44);
-    _btnAttention.frame = Rect(self.contentView.width-100,60, 44, 44);
-    _lblDistance.frame = Rect(self.contentView.width-100,30,80, 15);
-    
-    
-    
+
+//    [self addViewLine];
 }
 
+-(void)addViewLine
+{
+    UILabel *sLine1 = [[UILabel alloc] initWithFrame:CGRectMake(0,0.1,self.contentView.frame.size.width,0.5)];
+    sLine1.backgroundColor = [UIColor colorWithRed:237/255.0
+                                             green:237/255.0
+                                              blue:237/255.0
+                                             alpha:1.0];
+    UILabel *sLine2 = [[UILabel alloc] initWithFrame:CGRectMake(0,0.6,self.contentView.frame.size.width, 0.5)] ;
+    sLine2.backgroundColor = [UIColor whiteColor];
+    
+    [self.contentView addSubview:sLine1];
+    [self.contentView addSubview:sLine2];
+    
+}
 /*
 @property (nonatomic,strong) UILabel *lblName;
 @property (nonatomic,strong) UILabel *lblPet;
@@ -52,12 +62,16 @@ imgView
 -(void)initView
 {
     _imgView = [[UIImageView alloc] initWithFrame:Rect(10, 10, 64,64)];
+    [_imgView.layer setMasksToBounds:YES];
+    _imgView.layer.cornerRadius = 32.0f;
     
-    _lblName = [[UILabel alloc] initWithFrame:Rect(60, 10, 160, 15)];
+    
+    
+    _lblName = [[UILabel alloc] initWithFrame:Rect(84, 10, 160, 15)];
     
     _lblPet = [[UILabel alloc] initWithFrame:Rect(_lblName.x, 35, 160, 13)];
     
-    _lblInfo = [[UILabel alloc] initWithFrame:Rect(_lblInfo.x, 60, 180, 13)];
+    _lblInfo = [[UILabel alloc] initWithFrame:Rect(_lblName.x, 60, 180, 13)];
     
     _lblDistance = [[UILabel alloc] initWithFrame:Rect(250,20,60, 13)];
     
@@ -75,23 +89,65 @@ imgView
     [_btnPriLet setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _btnPriLet.titleLabel.font = XCFONT(12);
     _btnAttention.titleLabel.font = XCFONT(12);
+    [_lblName setFont:XCFONT(15)];
+    [_lblName setTextColor:RGB(254, 153, 0)];
+    [_lblPet setFont:XCFONT(14)];
+    [_lblInfo setFont:XCFONT(13)];
+    [_lblDistance setFont:XCFONT(12)];
+    
+    _btnPriLet.frame = Rect(kScreenSourchWidth-50,40, 44,24);
+    _btnAttention.frame = Rect(kScreenSourchWidth-100,40, 44, 24);
+    _lblDistance.frame = Rect(self.contentView.width-100,15,80, 15);
     
     [self.contentView addSubview:_imgView];
     [self.contentView addSubview:_lblName];
     [self.contentView addSubview:_lblPet];
     [self.contentView addSubview:_lblInfo];
-    
     [self.contentView addSubview:_lblDistance];
     
     [self.contentView addSubview:_btnAttention];
-    
     [self.contentView addSubview:_btnPriLet];
     
+    [self addViewLine];
 }
 
--(void)setNearInfo
+-(void)setNearInfo:(NearInfo *)nearInfo
 {
-    
+    _lblName.text = nearInfo.strName;
+    _lblInfo.text = nearInfo.strContent;
+    _lblPet.text = [NSString stringWithFormat:@"TA的宠物:"];
+    [_lblDistance setText:[NSString stringWithFormat:@"%.02f m",nearInfo.fDistan]];
+    [self setImageInfo:nearInfo.strFile];
+}
+
+-(void)setImageInfo:(NSString *)strImage
+{
+    if ([strImage isEqualToString:@""]) {
+        
+        [_imgView setImage:[UIImage imageNamed:@""]];
+        return ;
+    }
+    __block NSString *__strImg = strImage;
+    __weak FriendCell *__self = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIImage *imgDest = nil;
+        NSURL *url = [NSURL URLWithString:__strImg];
+        NSData *responseData = [NSData dataWithContentsOfURL:url];
+        imgDest = [UIImage imageWithData:responseData];
+        if (imgDest)
+        {
+            __strong UIImage *__imageDest = imgDest;
+            __strong FriendCell *__strongSelf = __self;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [__strongSelf thread_setImgView:__imageDest];
+            });
+        }
+    });
+}
+
+-(void)thread_setImgView:(UIImage *)image
+{
+    _imgView.image = image;
 }
 
 

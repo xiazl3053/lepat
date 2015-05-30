@@ -24,5 +24,15 @@
     return self;
 }
 
+-(id)initWithDic:(NSDictionary *)dict
+{
+    self = [super init];
+    _strContent = [dict objectForKey:@"signature"];
+    _fDistan = [[dict objectForKey:@"distan"] floatValue];
+    _strName = [dict objectForKey:@"nickname"];
+    _strFile = [dict objectForKey:@"userIcon"];
+    return self;
+    
+}
 
 @end
