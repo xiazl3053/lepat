@@ -14,6 +14,7 @@
 #import "UserInfoViewController.h"
 #import "LoginViewController.h"
 #import "MapFriendViewController.h"
+#import "HomeHeadReusableView.h"
 
 
 @interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,HomeItemCollectionCellDelegate>
@@ -43,6 +44,7 @@
 -(void)initParams{
     self.collectView.dataSource=self;
     self.collectView.delegate=self;
+    [self.collectView registerClass:[HomeHeadReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HEAD_VIEW"];
     [self.collectView registerClass:[HomeItemCollectionCell class]
          forCellWithReuseIdentifier:@"MainHomeCell"];
     [self initTestData];
@@ -134,6 +136,28 @@
     [self.itemList addObject:section1];
     [self.itemList addObject:section2];
     
+}
+
+-(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    
+    UICollectionReusableView *reusable=nil;
+    
+    if ([kind isEqualToString:UICollectionElementKindSectionFooter]) {
+        
+
+    }else{
+        reusable=[collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HEAD_VIEW" forIndexPath:indexPath];
+    }
+    return reusable;
+}
+
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
+    if (section==0) {
+        return CGSizeMake(320, 200);
+    }else{
+        return CGSizeMake(0, 0);
+    }
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{

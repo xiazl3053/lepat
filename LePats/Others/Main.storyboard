@@ -155,14 +155,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="adView_bg" translatesAutoresizingMaskIntoConstraints="NO" id="3Bm-FZ-ZEu">
-                                <rect key="frame" x="0.0" y="64" width="414" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="Zbm-cy-GWB"/>
-                                </constraints>
-                            </imageView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FG5-RM-Xlm">
-                                <rect key="frame" x="0.0" y="263" width="414" height="424"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FG5-RM-Xlm">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                                 <color key="backgroundColor" red="0.094117647060000004" green="0.70588235290000001" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="424" id="p6Y-vd-igb"/>
@@ -264,15 +258,6 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.87577635643449825" blue="0.29259794420769025" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="h9A-2a-cyK" firstAttribute="top" secondItem="FG5-RM-Xlm" secondAttribute="bottom" id="4hy-yP-OKH"/>
-                            <constraint firstItem="3Bm-FZ-ZEu" firstAttribute="leading" secondItem="SJl-01-20G" secondAttribute="leading" id="Arh-JC-NCG"/>
-                            <constraint firstItem="FG5-RM-Xlm" firstAttribute="leading" secondItem="SJl-01-20G" secondAttribute="leading" id="B7f-Fa-aZd"/>
-                            <constraint firstAttribute="trailing" secondItem="FG5-RM-Xlm" secondAttribute="trailing" id="BRQ-U8-kBK"/>
-                            <constraint firstItem="FG5-RM-Xlm" firstAttribute="top" secondItem="3Bm-FZ-ZEu" secondAttribute="bottom" constant="-1" id="FDS-Xc-kEV"/>
-                            <constraint firstAttribute="trailing" secondItem="3Bm-FZ-ZEu" secondAttribute="trailing" id="M6e-7S-gdg"/>
-                            <constraint firstItem="3Bm-FZ-ZEu" firstAttribute="top" secondItem="u8A-Pc-rDh" secondAttribute="bottom" id="wcp-9i-XXG"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Keb-Mm-QVk"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
@@ -434,6 +419,5 @@
         <image name="Tabbar_home_noraml" width="25" height="25"/>
         <image name="Tabbar_my_normal" width="25" height="25"/>
         <image name="Tabbar_service_normal" width="25" height="25"/>
-        <image name="adView_bg" width="400" height="300"/>
     </resources>
 </document>
