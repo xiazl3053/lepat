@@ -47,41 +47,11 @@
 }
 
 -(void)setValueWithPetInfo:(LePetInfo *)pet{
-    [_icon setImage:[UIImage imageNamed:@"left_icon_noraml"]];
-    [self setImageInfo:pet.strIconUrl];
+    [_icon sd_setImageWithURL:[NSURL URLWithString:pet.strIconUrl] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
+    //[_icon setImage:[UIImage imageNamed:@"left_icon_noraml"]];
     _name.text=[NSString stringWithFormat:@"%@",pet.strName];
     _age.text=[NSString stringWithFormat:@"%d %@",pet.nSortId,pet.strBirthday];
 }
-
--(void)setImageInfo:(NSString *)strImage
-{
-    if ([strImage isEqualToString:@""]) {
-        return ;
-    }
-    __block NSString *__strImg = strImage;
-    __weak MyPetTableViewCell *__self = self;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        UIImage *imgDest = nil;
-        NSURL *url = [NSURL URLWithString:__strImg];
-        NSData *responseData = [NSData dataWithContentsOfURL:url];
-        imgDest = [UIImage imageWithData:responseData];
-        if (imgDest)
-        {
-            __strong UIImage *__imageDest = imgDest;
-            __strong MyPetTableViewCell *__strongSelf = __self;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [__strongSelf thread_setImgView:__imageDest];
-            });
-        }
-    });
-}
-
--(void)thread_setImgView:(UIImage *)image
-{
-    _icon.image = image;
-}
-
-
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

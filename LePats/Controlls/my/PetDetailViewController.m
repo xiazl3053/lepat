@@ -89,7 +89,7 @@
             
         }else{
             __self.pet=pet;
-            [__self setImageInfo:pet.strIconUrl];
+            [_imgView sd_setImageWithURL:[NSURL URLWithString:pet.strIconUrl] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
             __self.title=_pet.strName;
             [_tableView reloadData];
         }
@@ -378,7 +378,7 @@
     [headView addSubview:bgView];
     
     UIImageView *add=[[UIImageView alloc]initWithFrame:CGRectMake((headView.frame.size.width-80)*.5, (headView.frame.size.height-80)*.5, 80, 80)];
-    add.image=[UIImage imageNamed:@"home_convert"];
+    [add sd_setImageWithURL:[NSURL URLWithString:_pet.strIconUrl] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
     add.layer.cornerRadius=add.width*.5;
     add.layer.masksToBounds=YES;
     UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(addIcon:)];
@@ -390,37 +390,6 @@
     [headView addSubview:add];
     
     return headView;
-}
-
-
--(void)setImageInfo:(NSString *)strImage
-{
-    if ([strImage isEqualToString:@""]) {
-        
-        [_imgView setImage:[UIImage imageNamed:@""]];
-        return ;
-    }
-    __block NSString *__strImg = strImage;
-    __weak PetDetailViewController *__self = self;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        UIImage *imgDest = nil;
-        NSURL *url = [NSURL URLWithString:__strImg];
-        NSData *responseData = [NSData dataWithContentsOfURL:url];
-        imgDest = [UIImage imageWithData:responseData];
-        if (imgDest)
-        {
-            __strong UIImage *__imageDest = imgDest;
-            __strong PetDetailViewController *__strongSelf = __self;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [__strongSelf thread_setImgView:__imageDest];
-            });
-        }
-    });
-}
-
--(void)thread_setImgView:(UIImage *)image
-{
-    _imgView.image = image;
 }
 
 

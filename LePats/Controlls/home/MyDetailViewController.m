@@ -38,8 +38,7 @@
 -(void)getUserInfo{
     MyInfoService *service=[[MyInfoService alloc]init];
     service.getMyInfoBlock=^(NSString *error){
-        
-        [self setImageInfo:[UserInfo sharedUserInfo].strUserIcon];
+        [_icon sd_setImageWithURL:[NSURL URLWithString:[UserInfo sharedUserInfo].strUserIcon] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
     };
     [service requestUserId:0];
 }
@@ -150,8 +149,8 @@
     NSDictionary *dic=[rows objectAtIndex:indexPath.row];
     if (indexPath.section==0) {
         if (indexPath.row==0) {
-            UIImageView *icon=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"left_icon_noraml"]];
-            icon.frame=CGRectMake(KMainScreenSize.width-80, 5, 50, 50);
+            UIImageView *icon=[[UIImageView alloc]initWithFrame:CGRectMake(KMainScreenSize.width-80, 5, 50, 50)];
+            [icon sd_setImageWithURL:[NSURL URLWithString:[UserInfo sharedUserInfo].strUserIcon] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
             _icon=icon;
             [cell addSubview:icon];
         }
@@ -221,35 +220,6 @@
             break;
     }
 }
-
--(void)setImageInfo:(NSString *)strImage
-{
-    if ([strImage isEqualToString:@""]) {
-        return ;
-    }
-    __block NSString *__strImg = strImage;
-    __weak MyDetailViewController *__self = self;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        UIImage *imgDest = nil;
-        NSURL *url = [NSURL URLWithString:__strImg];
-        NSData *responseData = [NSData dataWithContentsOfURL:url];
-        imgDest = [UIImage imageWithData:responseData];
-        if (imgDest)
-        {
-            __strong UIImage *__imageDest = imgDest;
-            __strong MyDetailViewController *__strongSelf = __self;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [__strongSelf thread_setImgView:__imageDest];
-            });
-        }
-    });
-}
-
--(void)thread_setImgView:(UIImage *)image
-{
-    _icon.image = image;
-}
-
 
 
 - (void)didReceiveMemoryWarning {

@@ -127,8 +127,7 @@
     [my addSubview:icon];
     _imgView=icon;
     
-    
-    [self setImageInfo:[UserInfo sharedUserInfo].strUserIcon];
+    [icon sd_setImageWithURL:[NSURL URLWithString:[UserInfo sharedUserInfo].strUserIcon] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
     
     UIButton *login=[[UIButton alloc]initWithFrame:CGRectMake((200-100)*.5, icon.bottom+15, 100, 25)];
     [login setTitle:@"登录" forState:UIControlStateNormal];
@@ -147,38 +146,6 @@
         
     }];
 }
-
--(void)setImageInfo:(NSString *)strImage
-{
-    if ([strImage isEqualToString:@""]) {
-        
-        [_imgView setImage:[UIImage imageNamed:@""]];
-        return ;
-    }
-    __block NSString *__strImg = strImage;
-    __weak LeftViewController *__self = self;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        UIImage *imgDest = nil;
-        NSURL *url = [NSURL URLWithString:__strImg];
-        NSData *responseData = [NSData dataWithContentsOfURL:url];
-        imgDest = [UIImage imageWithData:responseData];
-        if (imgDest)
-        {
-            __strong UIImage *__imageDest = imgDest;
-            __strong LeftViewController *__strongSelf = __self;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [__strongSelf thread_setImgView:__imageDest];
-            });
-        }
-    });
-}
-
--(void)thread_setImgView:(UIImage *)image
-{
-    _imgView.image = image;
-}
-
-
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.itemList.count;
