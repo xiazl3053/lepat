@@ -15,6 +15,7 @@
 #import "LoginViewController.h"
 #import "MapFriendViewController.h"
 #import "HomeHeadReusableView.h"
+#import "HomeGiftItemButton.h"
 
 
 @interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,HomeItemCollectionCellDelegate>
@@ -29,6 +30,17 @@
     [self initParams];
     [self initViews];
     self.title=@"主页";
+    
+//    HomeGiftItemButton *btn=[[HomeGiftItemButton alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+//    btn.layer.borderColor=[UIColor groupTableViewBackgroundColor].CGColor;
+//    btn.layer.borderWidth=1.0;
+//    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    btn.titleLabel.font=[UIFont systemFontOfSize:14];
+//    
+//    [btn addTarget:self action:@selector(userClickCell:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:btn];
+
+    
     // Do any additional setup after loading the view.
 }
 
@@ -42,12 +54,17 @@
 }
 
 -(void)initParams{
+    [self initTestData];
+    
+    UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc]init];
+    self.collectView=[[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) collectionViewLayout:layout];
     self.collectView.dataSource=self;
     self.collectView.delegate=self;
+    self.collectView.backgroundColor=[UIColor whiteColor];
     [self.collectView registerClass:[HomeHeadReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HEAD_VIEW"];
     [self.collectView registerClass:[HomeItemCollectionCell class]
          forCellWithReuseIdentifier:@"MainHomeCell"];
-    [self initTestData];
+    [self.view addSubview:self.collectView];
 }
 
 -(void)initTestData{
@@ -132,8 +149,8 @@
     [section2 addObject:model12];
     
     self.itemList=[NSMutableArray array];
-    [self.itemList addObject:section];
-    [self.itemList addObject:section1];
+    //[self.itemList addObject:section];
+    //[self.itemList addObject:section1];
     [self.itemList addObject:section2];
     
 }
@@ -154,14 +171,14 @@
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     if (section==0) {
-        return CGSizeMake(320, 200);
+        return CGSizeMake(320, 616*.5);
     }else{
         return CGSizeMake(0, 0);
     }
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    return 3;
+    return self.itemList.count;
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -189,17 +206,12 @@
     switch (indexPath.section) {
         case 0:
         {
-            return CGSizeMake(self.view.frame.size.width/3.0, self.view.frame.size.width/3.0);
+            return CGSizeMake(self.view.frame.size.width/2.0, 135);
         }break;
         case 1:
         {
-            return CGSizeMake(self.view.frame.size.width/5.0, self.view.frame.size.width/5.0);
-        }break;
-        case 2:
-        {
             return CGSizeMake(self.view.frame.size.width/2.0, self.view.frame.size.width/2.0);
         }break;
-            
         default:{
             return CGSizeMake(0, 0);
         }break;

@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface HomeViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UICollectionView *collectView;
+@property (strong, nonatomic)  UICollectionView *collectView;
 
 @end

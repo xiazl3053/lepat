@@ -26,7 +26,7 @@
 
 -(void)initViews{
     HomeItemButton *btn=[[HomeItemButton alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-    btn.layer.borderColor=[UIColor yellowColor].CGColor;
+    btn.layer.borderColor=[UIColor groupTableViewBackgroundColor].CGColor;
     btn.layer.borderWidth=1.0;
     [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     btn.titleLabel.font=[UIFont systemFontOfSize:14];
@@ -39,7 +39,6 @@
 -(void)setItemModel:(HomeItemModel *)model{
     [_btn setImage:[UIImage imageNamed:model.img] forState:UIControlStateNormal];
     _btn.tag=model.tag;
-    UIImage *image=[UIImage imageNamed:@"home_head"];
     [_btn setBackgroundImage:[UIImage imageNamed:@"home_head"] forState:UIControlStateNormal];
     [_btn setTitle:model.title forState:UIControlStateNormal];
 }
