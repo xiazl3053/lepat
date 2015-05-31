@@ -129,12 +129,28 @@
             
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2.0*NSEC_PER_SEC), dispatch_get_main_queue(),
             ^{
-                  [__strongSelf.navigationController popViewControllerAnimated:YES];
-                  [__strongSelf.navigationController setNavigationBarHidden:NO animated:NO];
+//                  [__strongSelf.navigationController popViewControllerAnimated:YES];
+//                  [__strongSelf.navigationController setNavigationBarHidden:NO animated:NO];
+                [__strongSelf login_BackView];
+                
             });
         }
     };
     [loginSer requestLogin:strUser password:strPwd];
 }
+
+-(void)login_BackView
+{
+    if (self.navigationController)
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+        [self.navigationController setNavigationBarHidden:NO animated:NO];
+    }
+    else
+    {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
 
 @end
