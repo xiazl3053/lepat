@@ -89,14 +89,15 @@
     }
     if (indexPath.section==0)
     {
-        cell.imageView.image = [UIImage imageNamed:@"login_user_img"];
+        cell.imageView.image = [UIImage imageNamed:@"wechat_friend"];
         cell.textLabel.text = @"寻找鱼友";
     }
     else if(indexPath.section == 1)
     {
-        cell.imageView.image = [UIImage imageNamed:@"login_pwd_img"];
+        cell.imageView.image = [UIImage imageNamed:@"RichScan"];
         cell.textLabel.text = @"扫一扫";
     }
+    cell.textLabel.textColor = RGB(15, 173, 225);
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }

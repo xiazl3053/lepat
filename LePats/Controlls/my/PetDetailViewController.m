@@ -18,7 +18,7 @@
 #import "PetInfoEditService.h"
 #import "UserInfo.h"
 
-@interface PetDetailViewController ()<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate>{
+@interface PetDetailViewController ()<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate>{
     UITableView *_tableView;
     UIPickerView *_sortPickerView;
     UIPickerView *_sexPickerView;
@@ -59,7 +59,8 @@
     }
 }
 
--(void)getPetSort{
+-(void)getPetSort
+{
     PetSortService *service=[[PetSortService alloc]init];
     __weak PetDetailViewController *__self=self;
     service.getPetSortBlock=^(NSString *error,NSArray *data){
@@ -70,14 +71,6 @@
 
 -(void)initData{
     self.sexList=[NSArray arrayWithObjects:@"男",@"女",nil];
-//    LePetInfo *pet=[[LePetInfo alloc]init];
-//    pet.strName=@"啊黑";
-//    pet.strBirthday=@"5";
-//    pet.nSex=1;
-//    pet.strDescription=@"漂亮的小宝贝";
-//    pet.nSortId=0;
-//    _pet=pet;
-    
 }
 
 -(void)queryPetInfo{
@@ -95,7 +88,8 @@
     [pet requestPetInfo:self.nPetId];
 }
 
--(void)initViews{
+-(void)initViews
+{
     [self initSelfView];
     [self initTableView];
     [self submitPetInfoView];
@@ -256,7 +250,7 @@
 }
 
 -(void)initTableView{
-    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 44, self.view.frame.size.width, 5*44+100) style:UITableViewStylePlain];
+    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, [self barSize].height, self.view.frame.size.width, 5*44+100) style:UITableViewStylePlain];
     tableView.delegate=self;
     tableView.dataSource=self;
     tableView.backgroundColor=[UIColor whiteColor];
@@ -272,13 +266,15 @@
         cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
     }
-    switch (self.type) {
+    switch (self.type)
+    {
         case PetType_ADD:{
             switch (indexPath.row) {
                 case 0:
                 {
                     cell.title.text=@"宠物昵称:";
                     //cell.detailTextLabel.text=_pet.strName;
+                    cell.content.delegate = self;
                 }break;
                 case 1:
                 {
@@ -305,7 +301,8 @@
                 case 4:
                 {
                     cell.title.text=@"宠物描述:";
-                    //cell.detailTextLabel.text=_pet.strDescription;
+//                    cell.detailTextLabel.text=_pet.strDescription;
+                    cell.content.delegate = self;
                 }break;
                     
                 default:
@@ -319,6 +316,7 @@
                 {
                     cell.title.text=@"宠物昵称:";
                     cell.content.text=_pet.strName;
+                    cell.content.delegate = self;
                 }break;
                 case 1:
                 {
@@ -350,12 +348,11 @@
                 {
                     cell.title.text=@"宠物描述:";
                     cell.content.text=_pet.strDescription;
+                    cell.content.delegate = self;
                 }break;
-                    
                 default:
                     break;
             }
-        
         }break;
         default:
             break;
@@ -402,8 +399,10 @@
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSLog(@"buttonIndex=%li",buttonIndex);
-    switch (buttonIndex) {
-        case 0:{
+    switch (buttonIndex)
+    {
+        case 0:
+        {
             [self initCamera];
         }break;
         case 1:{
@@ -415,7 +414,8 @@
 }
 
 
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
     return 100;
 }
 
@@ -437,12 +437,10 @@
     //sourceType = UIImagePickerControllerSourceTypeCamera; //照相机
     //sourceType = UIImagePickerControllerSourceTypePhotoLibrary; //图片库
     //sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum; //保存的相片
-    
-    
 }
 
--(void)initPhotoLibrary{
-    
+-(void)initPhotoLibrary
+{
     UIImagePickerController *pickerImage = [[UIImagePickerController alloc] init];
     if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
         pickerImage.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
@@ -460,7 +458,8 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     NSLog(@"image=%@",[info objectForKey:UIImagePickerControllerEditedImage]);
     [self upDateImage:[info objectForKey:UIImagePickerControllerEditedImage]];
-    [self dismissViewControllerAnimated:YES completion:^{
+    [self dismissViewControllerAnimated:YES completion:
+    ^{
         
     }];
 }
@@ -540,9 +539,17 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)dealloc{
+-(void)dealloc
+{
     NSLog(@"%s",__FUNCTION__);
 }
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+// called when 'return' key pressed. return NO to ignore.
 
 /*
 #pragma mark - Navigation

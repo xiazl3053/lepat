@@ -10,7 +10,8 @@
 
 @implementation AddPetCellTableViewCell
 
-- (void)awakeFromNib {
+- (void)awakeFromNib
+{
     // Initialization code
 }
 
@@ -21,7 +22,8 @@
     return self;
 }
 
--(void)initViews{
+-(void)initViews
+{
     self.title=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 100, 44)];
     self.title.text=@"宠物名称:";
     [self addSubview:self.title];

@@ -28,6 +28,7 @@
     _txtUser = [[UITextField  alloc] initWithFrame:Rect(20, 10,self.frame.size.width-40, 30)];
     [self addSubview:_txtUser];
     [_txtUser setPlaceholder:@"输入昵称/手机/邮箱"];
+    [_txtUser setKeyboardType:UIKeyboardTypeNumberPad];
     
     _txtPwd = [[UITextField alloc] initWithFrame:Rect(20, 60, self.frame.size.width-40, 30)];
     [self addSubview:_txtPwd];

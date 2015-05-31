@@ -36,7 +36,8 @@
     // Do any additional setup after loading the view.
 }
 
--(void)initViews{
+-(void)initViews
+{
    // [self initVC];
 }
 
