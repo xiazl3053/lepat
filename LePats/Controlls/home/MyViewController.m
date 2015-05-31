@@ -16,6 +16,7 @@
     UISegmentedControl *_segmentedView;
     UIView *_leftView;
     UIView *_rightView;
+    UIImageView *_icon;
 }
 
 @end
@@ -38,18 +39,19 @@
 }
 
 -(void)initSelfView{
+    self.title=@"我的";
     self.view.backgroundColor=[UIColor whiteColor];
 }
 
 -(void)initHeadView{
     UIImageView *head=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, KMainScreenSize.width, 200)];
-    head.image=[UIImage imageNamed:@"adView_bg"];
+    head.image=[UIImage imageNamed:@"headView_bg"];
     _headView=head;
     [self.view addSubview:head];
 }
 
 -(void)initDetailView{
-    UIView *detail=[[UIView alloc]initWithFrame:CGRectMake(0, _headView.bottom, KMainScreenSize.width, 200)];
+    UIView *detail=[[UIView alloc]initWithFrame:CGRectMake(0, _headView.bottom, KMainScreenSize.width, 160)];
     detail.backgroundColor=[UIColor whiteColor];
     detail.layer.borderColor=[UIColor blackColor].CGColor;
     detail.layer.borderWidth=0.5;
@@ -70,26 +72,54 @@
     [detail addSubview:sign];
 
     
-    UILabel *focus=[[UILabel alloc]initWithFrame:CGRectMake(0, sign.bottom+10, KMainScreenSize.width*.5, 20)];
+    UILabel *focus=[[UILabel alloc]initWithFrame:CGRectMake(0, sign.bottom+10, KMainScreenSize.width*.25, 20)];
     focus.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFocusNum];
     focus.textAlignment=NSTextAlignmentCenter;
     [detail addSubview:focus];
     
-    UILabel *focusTitle=[[UILabel alloc]initWithFrame:CGRectMake(0, focus.bottom+5, KMainScreenSize.width*.5, 20)];
-    focusTitle.text=@"关注";
-    focusTitle.textAlignment=NSTextAlignmentCenter;
+    UIButton *focusTitle=[[UIButton alloc]initWithFrame:CGRectMake(0, focus.bottom+5, KMainScreenSize.width*.25, 20)];
+    [focusTitle setTitle:@"关注" forState:UIControlStateNormal];
+    [focusTitle setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [focusTitle addTarget:self action:@selector(gotoOther:) forControlEvents:UIControlEventTouchUpInside];
+    focusTitle.tag=100;
     [detail addSubview:focusTitle];
     
     
-    UILabel *fans=[[UILabel alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.5, sign.bottom+10, KMainScreenSize.width*.5, 20)];
+    UILabel *fans=[[UILabel alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.25, sign.bottom+10, KMainScreenSize.width*.25, 20)];
     fans.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFansNum];
     fans.textAlignment=NSTextAlignmentCenter;
     [detail addSubview:fans];
     
-    UILabel *fansTitle=[[UILabel alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.5, fans.bottom+5, KMainScreenSize.width*.5, 20)];
-    fansTitle.text=@"粉丝";
-    fansTitle.textAlignment=NSTextAlignmentCenter;
+    UIButton *fansTitle=[[UIButton alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.25, fans.bottom+5, KMainScreenSize.width*.25, 20)];
+    [fansTitle setTitle:@"粉丝" forState:UIControlStateNormal];
+    [fansTitle setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [fansTitle addTarget:self action:@selector(gotoOther:) forControlEvents:UIControlEventTouchUpInside];
+    fansTitle.tag=200;
     [detail addSubview:fansTitle];
+    
+    UILabel *fans1=[[UILabel alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.5, sign.bottom+10, KMainScreenSize.width*.25, 20)];
+    fans1.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFansNum];
+    fans1.textAlignment=NSTextAlignmentCenter;
+    [detail addSubview:fans1];
+    
+    UIButton *fansTitle1=[[UIButton alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.5, fans.bottom+5, KMainScreenSize.width*.25, 20)];
+    [fansTitle1 setTitle:@"其他" forState:UIControlStateNormal];
+    [fansTitle1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [fansTitle1 addTarget:self action:@selector(gotoOther:) forControlEvents:UIControlEventTouchUpInside];
+    fansTitle1.tag=300;
+    [detail addSubview:fansTitle1];
+    
+    UILabel *fans2=[[UILabel alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.75, sign.bottom+10, KMainScreenSize.width*.25, 20)];
+    fans2.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFansNum];
+    fans2.textAlignment=NSTextAlignmentCenter;
+    [detail addSubview:fans2];
+    
+    UIButton *fansTitle2=[[UIButton alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.75, fans.bottom+5, KMainScreenSize.width*.25, 20)];
+    [fansTitle2 setTitle:@"其他" forState:UIControlStateNormal];
+    [fansTitle2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [fansTitle2 addTarget:self action:@selector(gotoOther:) forControlEvents:UIControlEventTouchUpInside];
+    fansTitle2.tag=400;
+    [detail addSubview:fansTitle2];
     
     
     [self.view addSubview:detail];
@@ -105,6 +135,9 @@
     icon.userInteractionEnabled=YES;
     UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(myDetail:)];
     [icon addGestureRecognizer:tap];
+    [icon setImage:[UIImage imageNamed:@"left_icon_noraml"]];
+    _icon=icon;
+    [self setImageInfo:[UserInfo sharedUserInfo].strUserIcon];
     [self.view addSubview:icon];
 }
 
@@ -164,6 +197,20 @@
     }
 }
 
+
+-(void)gotoOther:(UIButton *)aBtn{
+    switch (aBtn.tag) {
+        case 100:
+        {
+            MyViewController *other=[[MyViewController alloc]init];
+            [self.navigationController pushViewController:other animated:YES];
+        }break;
+            
+        default:
+            break;
+    }
+}
+
 -(void)myDetail:(UITapGestureRecognizer *)tap{
     MyDetailViewController *detail=[[MyDetailViewController alloc]init];
     detail.hidesBottomBarWhenPushed=YES;
@@ -174,6 +221,34 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+-(void)setImageInfo:(NSString *)strImage
+{
+    if ([strImage isEqualToString:@""]) {
+        
+        return ;
+    }
+    __block NSString *__strImg = strImage;
+    __weak MyViewController *__self = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIImage *imgDest = nil;
+        NSURL *url = [NSURL URLWithString:__strImg];
+        NSData *responseData = [NSData dataWithContentsOfURL:url];
+        imgDest = [UIImage imageWithData:responseData];
+        if (imgDest)
+        {
+            __strong UIImage *__imageDest = imgDest;
+            __strong MyViewController *__strongSelf = __self;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [__strongSelf thread_setImgView:__imageDest];
+            });
+        }
+    });
+}
+
+-(void)thread_setImgView:(UIImage *)image
+{
+    _icon.image = image;
 }
 
 /*

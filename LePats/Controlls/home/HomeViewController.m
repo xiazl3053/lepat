@@ -249,13 +249,13 @@
     switch (tag) {
         case 101:
         {
-//            UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 //            LoginViewController *info=[story instantiateViewControllerWithIdentifier:@"LoginViewController"];
 //            info.view.backgroundColor=[UIColor yellowColor];
-//            info.hidesBottomBarWhenPushed=YES;
             if([UserInfo sharedUserInfo].strMobile ==nil)
             {
                 LoginViewController *loginView = [[LoginViewController alloc] init];
+                loginView.hidesBottomBarWhenPushed=YES;
                 [self.navigationController pushViewController:loginView animated:YES];
             }
         }break;

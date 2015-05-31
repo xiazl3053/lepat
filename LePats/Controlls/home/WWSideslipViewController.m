@@ -210,7 +210,7 @@
 {
     [UIView beginAnimations:nil context:nil];
     mainControl.view.transform = CGAffineTransformScale(CGAffineTransformIdentity,0.8,0.8);
-    mainControl.view.center = CGPointMake(340,[UIScreen mainScreen].bounds.size.height/2);
+    mainControl.view.center = CGPointMake([UIScreen mainScreen].bounds.size.width*1.2,[UIScreen mainScreen].bounds.size.height/2);
     [UIView commitAnimations];
 }
 
@@ -236,7 +236,7 @@
 
 - (BOOL)prefersStatusBarHidden
 {
-    return YES; //返回NO表示要显示，返回YES将hiden
+    return NO; //返回NO表示要显示，返回YES将hiden
 }
 
 @end

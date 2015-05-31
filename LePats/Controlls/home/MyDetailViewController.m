@@ -13,7 +13,9 @@
 #import "UserInfo.h"
 #import "editmyinfoViewController.h"
 
-@interface MyDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface MyDetailViewController ()<UITableViewDataSource,UITableViewDelegate>{
+    UIImageView *_icon;
+}
 @property (nonatomic,strong) NSMutableArray *itemList;
 @end
 
@@ -37,6 +39,7 @@
     MyInfoService *service=[[MyInfoService alloc]init];
     service.getMyInfoBlock=^(NSString *error){
         
+        [self setImageInfo:[UserInfo sharedUserInfo].strUserIcon];
     };
     [service requestUserId:0];
 }
@@ -126,7 +129,7 @@
 }
 
 -(void)initTableView{
-    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 44, KMainScreenSize.width, KMainScreenSize.height) style:UITableViewStylePlain];
+    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, [self barSize].height, KMainScreenSize.width, KMainScreenSize.height) style:UITableViewStylePlain];
     tableView.delegate=self;
     tableView.dataSource=self;
     [self.view addSubview:tableView];
@@ -147,9 +150,9 @@
     NSDictionary *dic=[rows objectAtIndex:indexPath.row];
     if (indexPath.section==0) {
         if (indexPath.row==0) {
-            UIImageView *icon=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@""]];
+            UIImageView *icon=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"left_icon_noraml"]];
             icon.frame=CGRectMake(KMainScreenSize.width-80, 5, 50, 50);
-            icon.backgroundColor=[UIColor redColor];
+            _icon=icon;
             [cell addSubview:icon];
         }
     }
@@ -218,6 +221,36 @@
             break;
     }
 }
+
+-(void)setImageInfo:(NSString *)strImage
+{
+    if ([strImage isEqualToString:@""]) {
+        return ;
+    }
+    __block NSString *__strImg = strImage;
+    __weak MyDetailViewController *__self = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIImage *imgDest = nil;
+        NSURL *url = [NSURL URLWithString:__strImg];
+        NSData *responseData = [NSData dataWithContentsOfURL:url];
+        imgDest = [UIImage imageWithData:responseData];
+        if (imgDest)
+        {
+            __strong UIImage *__imageDest = imgDest;
+            __strong MyDetailViewController *__strongSelf = __self;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [__strongSelf thread_setImgView:__imageDest];
+            });
+        }
+    });
+}
+
+-(void)thread_setImgView:(UIImage *)image
+{
+    _icon.image = image;
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

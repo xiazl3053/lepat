@@ -94,7 +94,7 @@
 }
 
 -(void)initTableView{
-    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 44, self.view.frame.size.width, self.view.frame.size.height-44) style:UITableViewStylePlain];
+    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, [self barSize].height, self.view.frame.size.width, self.view.frame.size.height-44) style:UITableViewStylePlain];
     tableView.delegate=self;
     tableView.dataSource=self;
     tableView.backgroundColor=[UIColor whiteColor];

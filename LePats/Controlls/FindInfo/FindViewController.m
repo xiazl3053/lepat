@@ -64,7 +64,7 @@
 //    [txtScan setText:@"扫一扫"];
 //    [txtScan setFont:XCFONT(12)];
     
-    _tableView = [[UITableView alloc] initWithFrame:Rect(0, 44,self.view.width, self.view.height-44) style:UITableViewStyleGrouped];
+    _tableView = [[UITableView alloc] initWithFrame:Rect(0, [self barSize].height,self.view.width, self.view.height-44) style:UITableViewStyleGrouped];
     [self.view addSubview:_tableView];
     _tableView.delegate = self;
     _tableView.dataSource = self;

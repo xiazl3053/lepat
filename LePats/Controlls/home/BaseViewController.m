@@ -37,35 +37,39 @@
     back.hidden = YES;
 }
 
+-(CGSize)barSize
+{
+     UIView *bgView = [self.view viewWithTag:10001];
+    return bgView.size;
+}
+
 -(void)initNavigationBar
 {
-    UIView *bgView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+    UIView *bgView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 64)];
     bgView.backgroundColor=RGB(253, 252, 250);
     
-    back=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+    back=[[UIButton alloc] initWithFrame:CGRectMake(0 , 20 , 44, 44)];
     [back setImage:[UIImage imageNamed:@"retrun"] forState:UIControlStateNormal];
     [back addTarget:self action:@selector(popviewcontroller) forControlEvents:UIControlEventTouchUpInside];
     [bgView addSubview:back];
     
-    lblTitle = [[UILabel alloc] initWithFrame:Rect(50, 10,self.view.frame.size.width-100, 20)];
+    lblTitle = [[UILabel alloc] initWithFrame:Rect(50, 30,self.view.frame.size.width-100, 20)];
     [lblTitle setTextAlignment:NSTextAlignmentCenter];
     [lblTitle setFont:XCFONT(16)];
     [lblTitle setTextColor:RGB(51,51,51)];
     
     [bgView addSubview:lblTitle];
     
-    UILabel *sLine1 = [[UILabel alloc] initWithFrame:CGRectMake(0,43,self.view.width,0.5)];
+    UILabel *sLine1 = [[UILabel alloc] initWithFrame:CGRectMake(0,63,self.view.width,0.5)];
     sLine1.backgroundColor = [UIColor colorWithRed:227/255.0
                                              green:227/255.0
                                               blue:227/255.0
                                              alpha:1.0];
-    UILabel *sLine2 = [[UILabel alloc] initWithFrame:CGRectMake(0,43.5,self.view.width, 0.5)] ;
+    UILabel *sLine2 = [[UILabel alloc] initWithFrame:CGRectMake(0,63.5,self.view.width, 0.5)] ;
     sLine2.backgroundColor = [UIColor whiteColor];
     [bgView addSubview:sLine1];
     [bgView addSubview:sLine2];
-   
     bgView.tag = 10001;
-    
     [self.view addSubview:bgView];
 }
 
@@ -99,7 +103,7 @@
     {
         btnRight = [UIButton buttonWithType:UIButtonTypeCustom];
         UIView *bgView = [self.view viewWithTag:10001];
-        btnRight.frame = Rect(self.view.width-60, 10, 66, 20);
+        btnRight.frame = Rect(self.view.width-60, 30, 66, 20);
         [btnRight setTitleColor:RGB(51,51,51) forState:UIControlStateNormal];
         btnRight.titleLabel.font = XCFONT(16);
         [bgView addSubview:btnRight];

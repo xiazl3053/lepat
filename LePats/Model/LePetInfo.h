@@ -31,6 +31,7 @@ sex：性别
 @property (nonatomic,strong) NSString *strDescription;
 @property (nonatomic,assign) int nSex;
 @property (nonatomic,assign) int nPhotoId;
+@property (nonatomic,copy)  NSString *strIconUrl;
 
 
 -(id)initWithNSDictionary:(NSDictionary *)dic;

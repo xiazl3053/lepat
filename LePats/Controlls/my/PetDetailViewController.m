@@ -28,6 +28,7 @@
     AddPetCellTableViewCell *_dateCell;
     PetSortModel *_selectSortModel;
     NSInteger _photoId;
+    UIImageView *_imgView;
 }
 
 @property (nonatomic,strong) NSArray *sortList;
@@ -88,6 +89,7 @@
             
         }else{
             __self.pet=pet;
+            [__self setImageInfo:pet.strIconUrl];
             __self.title=_pet.strName;
             [_tableView reloadData];
         }
@@ -256,7 +258,7 @@
 }
 
 -(void)initTableView{
-    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 44, self.view.frame.size.width, 5*44+100) style:UITableViewStylePlain];
+    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, [self barSize].height, self.view.frame.size.width, 5*44+100) style:UITableViewStylePlain];
     tableView.delegate=self;
     tableView.dataSource=self;
     tableView.backgroundColor=[UIColor whiteColor];
@@ -372,21 +374,56 @@
     UIView *headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
     
     UIImageView *bgView=[[UIImageView alloc]initWithFrame:headView.bounds];
-    bgView.image=[UIImage imageNamed:@"headView_bg"];
+    bgView.image=[UIImage imageNamed:@"adView_bg"];
     [headView addSubview:bgView];
     
     UIImageView *add=[[UIImageView alloc]initWithFrame:CGRectMake((headView.frame.size.width-80)*.5, (headView.frame.size.height-80)*.5, 80, 80)];
-    add.image=[UIImage imageNamed:@"adView_bg"];
+    add.image=[UIImage imageNamed:@"home_convert"];
     add.layer.cornerRadius=add.width*.5;
     add.layer.masksToBounds=YES;
     UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(addIcon:)];
     //[add addTarget:self action:@selector(addIcon:) forControlEvents:UIControlEventTouchUpInside];
     [add addGestureRecognizer:tap];
     add.userInteractionEnabled=YES;
+    _imgView=add;
+    
     [headView addSubview:add];
     
     return headView;
 }
+
+
+-(void)setImageInfo:(NSString *)strImage
+{
+    if ([strImage isEqualToString:@""]) {
+        
+        [_imgView setImage:[UIImage imageNamed:@""]];
+        return ;
+    }
+    __block NSString *__strImg = strImage;
+    __weak PetDetailViewController *__self = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIImage *imgDest = nil;
+        NSURL *url = [NSURL URLWithString:__strImg];
+        NSData *responseData = [NSData dataWithContentsOfURL:url];
+        imgDest = [UIImage imageWithData:responseData];
+        if (imgDest)
+        {
+            __strong UIImage *__imageDest = imgDest;
+            __strong PetDetailViewController *__strongSelf = __self;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [__strongSelf thread_setImgView:__imageDest];
+            });
+        }
+    });
+}
+
+-(void)thread_setImgView:(UIImage *)image
+{
+    _imgView.image = image;
+}
+
+
 
 -(void)addIcon:(UIButton *)aBtn{
     UIActionSheet *actionSheet = [[UIActionSheet alloc]

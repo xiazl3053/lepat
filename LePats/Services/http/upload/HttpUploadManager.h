@@ -10,6 +10,8 @@
 
 typedef void(^UpLoadImgBlock)(NSString *error,NSDictionary *data);
 
+typedef void(^UpDatePersonIconBlock)(NSString *error);
+
 @interface HttpUploadManager : NSObject
 
 -(void)uploadPersonHome:(UIImage *)image;
@@ -18,7 +20,7 @@ typedef void(^UpLoadImgBlock)(NSString *error,NSDictionary *data);
 -(void)uploadPet:(UIImage *)image petId:(NSString *)strId;
 -(void)uploadPetHead:(UIImage*)image petId:(NSString *)strId;
 @property (nonatomic,copy) UpLoadImgBlock uploadImgBlock;
-
+@property (nonatomic,copy) UpDatePersonIconBlock upDatePersonIconBlock;
 @end
 
 @interface FileDetail : NSObject

@@ -18,6 +18,7 @@
         self.nSex=[[dic objectForKey:@"sex"]intValue];
         self.nSortId=[[dic objectForKey:@"sortId"]intValue];
         self.nPetId=[[dic objectForKey:@"id"]intValue];
+        self.strIconUrl=[dic objectForKey:@"iconUrl"];
     }
     return self;
 }

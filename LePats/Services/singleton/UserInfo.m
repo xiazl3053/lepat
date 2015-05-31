@@ -24,6 +24,7 @@ DEFINE_SINGLETON_FOR_CLASS(UserInfo);
     _strUserIcon=[dicInfo objectForKey:@"userIcon"];
     _strFansNum=[dicInfo objectForKey:@"fansNum"];
     _strFocusNum=[dicInfo objectForKey:@"focusNum"];
+    _strUserIcon=[dicInfo objectForKey:@"userIcon"];
 }
 
 @end

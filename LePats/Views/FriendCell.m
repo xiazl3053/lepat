@@ -31,8 +31,6 @@
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-
-//    [self addViewLine];
 }
 
 -(void)addViewLine
@@ -65,13 +63,13 @@ imgView
     [_imgView.layer setMasksToBounds:YES];
     _imgView.layer.cornerRadius = 32.0f;
     
+    _imgHead = [[UIImageView alloc] initWithFrame:Rect(84, 6, 20, 20)];
     
+    _lblName = [[UILabel alloc] initWithFrame:Rect(106, 10, 160, 15)];
     
-    _lblName = [[UILabel alloc] initWithFrame:Rect(84, 10, 160, 15)];
+    _lblPet = [[UILabel alloc] initWithFrame:Rect(84, 40, 160, 13)];
     
-    _lblPet = [[UILabel alloc] initWithFrame:Rect(_lblName.x, 35, 160, 13)];
-    
-    _lblInfo = [[UILabel alloc] initWithFrame:Rect(_lblName.x, 60, 180, 13)];
+    _lblInfo = [[UILabel alloc] initWithFrame:Rect(84, 60, 180, 13)];
     
     _lblDistance = [[UILabel alloc] initWithFrame:Rect(250,20,60, 13)];
     
@@ -81,14 +79,23 @@ imgView
     
     _btnPriLet = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    [_btnAttention setBackgroundColor:RGB(13, 205, 253)];
-    [_btnPriLet setBackgroundColor:RGB(95, 202, 8)];
+    [_btnPriLet setBackgroundImage:[UIImage imageNamed:@"find_prilet"] forState:UIControlStateNormal];
+    [_btnAttention setBackgroundImage:[UIImage imageNamed:@"find_atten"] forState:UIControlStateNormal];
+    
     [_btnPriLet setTitle:@"私信" forState:UIControlStateNormal];
     [_btnAttention setTitle:@"关注" forState:UIControlStateNormal];
+    
     [_btnAttention setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_btnPriLet setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
+    [_btnAttention.layer setMasksToBounds:YES];
+    [_btnAttention.layer setCornerRadius:2.0f];
+    [_btnPriLet.layer setMasksToBounds:YES];
+    [_btnPriLet.layer setCornerRadius:2.0f];
+    
     _btnPriLet.titleLabel.font = XCFONT(12);
     _btnAttention.titleLabel.font = XCFONT(12);
+    
     [_lblName setFont:XCFONT(15)];
     [_lblName setTextColor:RGB(254, 153, 0)];
     [_lblPet setFont:XCFONT(14)];
@@ -100,6 +107,7 @@ imgView
     _lblDistance.frame = Rect(self.contentView.width-100,15,80, 15);
     
     [self.contentView addSubview:_imgView];
+    [self.contentView addSubview:_imgHead];
     [self.contentView addSubview:_lblName];
     [self.contentView addSubview:_lblPet];
     [self.contentView addSubview:_lblInfo];
@@ -117,6 +125,10 @@ imgView
     _lblInfo.text = nearInfo.strContent;
     _lblPet.text = [NSString stringWithFormat:@"TA的宠物:"];
     [_lblDistance setText:[NSString stringWithFormat:@"%.02f m",nearInfo.fDistan]];
+    
+    _imgHead.image = nearInfo.nSex ? [UIImage imageNamed:@"boy"] : [UIImage imageNamed:@"girl"];
+    
+    
     [self setImageInfo:nearInfo.strFile];
 }
 

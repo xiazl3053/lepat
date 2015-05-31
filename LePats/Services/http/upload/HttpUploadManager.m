@@ -153,11 +153,11 @@
     {
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
         DLog(@"dic:%@",dic);
-        if (self.uploadImgBlock) {
+        if (self.upDatePersonIconBlock) {
             if ([[dic objectForKey:KServiceResponseCode]intValue]==KServiceResponseSuccess) {
-                self.uploadImgBlock(nil,dic);
+                self.upDatePersonIconBlock(nil);
             }else{
-                self.uploadImgBlock([dic objectForKey:KServiceResponseMsg],nil);
+                self.upDatePersonIconBlock([dic objectForKey:KServiceResponseMsg]);
             }
         }
     }

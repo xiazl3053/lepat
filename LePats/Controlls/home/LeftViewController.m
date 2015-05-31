@@ -16,8 +16,11 @@
 #import "UserInfoViewController.h"
 #import "LeftTableViewCell.h"
 #import "LoginViewController.h"
+#import "UserInfo.h"
 
-@interface LeftViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface LeftViewController ()<UITableViewDataSource,UITableViewDelegate>{
+    UIImageView *_imgView;
+}
 
 @property (nonatomic,strong) NSMutableArray *itemList;
 @end
@@ -104,7 +107,7 @@
 }
 
 -(void)initTableView{
-    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, KMainScreenSize.width, KMainScreenSize.height) style:UITableViewStylePlain];
+    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 20, KMainScreenSize.width, KMainScreenSize.height) style:UITableViewStylePlain];
     tableView.delegate=self;
     tableView.dataSource=self;
     tableView.backgroundColor=[UIColor clearColor];
@@ -117,11 +120,15 @@
 }
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    UIView *my=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 260, 120)];
+    UIView *my=[[UIView alloc]initWithFrame:CGRectMake(0, 20, 260, 120)];
     
     UIImageView *icon=[[UIImageView alloc]initWithFrame:CGRectMake((200-60)*.5, 10, 60, 60)];
     icon.image=[UIImage imageNamed:@"left_icon_noraml"];
     [my addSubview:icon];
+    _imgView=icon;
+    
+    
+    [self setImageInfo:[UserInfo sharedUserInfo].strUserIcon];
     
     UIButton *login=[[UIButton alloc]initWithFrame:CGRectMake((200-100)*.5, icon.bottom+15, 100, 25)];
     [login setTitle:@"登录" forState:UIControlStateNormal];
@@ -140,6 +147,37 @@
         
     }];
 }
+
+-(void)setImageInfo:(NSString *)strImage
+{
+    if ([strImage isEqualToString:@""]) {
+        
+        [_imgView setImage:[UIImage imageNamed:@""]];
+        return ;
+    }
+    __block NSString *__strImg = strImage;
+    __weak LeftViewController *__self = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIImage *imgDest = nil;
+        NSURL *url = [NSURL URLWithString:__strImg];
+        NSData *responseData = [NSData dataWithContentsOfURL:url];
+        imgDest = [UIImage imageWithData:responseData];
+        if (imgDest)
+        {
+            __strong UIImage *__imageDest = imgDest;
+            __strong LeftViewController *__strongSelf = __self;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [__strongSelf thread_setImgView:__imageDest];
+            });
+        }
+    });
+}
+
+-(void)thread_setImgView:(UIImage *)image
+{
+    _imgView.image = image;
+}
+
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

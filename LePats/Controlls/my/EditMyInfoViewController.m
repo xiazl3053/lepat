@@ -10,6 +10,7 @@
 #import "EditMyInfoService.h"
 #import "UserInfo.h"
 #import "HttpUploadManager.h"
+#import "Toast+UIView.h"
 
 @interface EditMyInfoViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
     UITextField *_nickName;
@@ -19,6 +20,7 @@
     UIDatePicker *_datePickerView;
     UIButton *_male;
     UIButton *_female;
+    UIImage *_iconImg;
 }
 
 @end
@@ -41,40 +43,55 @@
 -(void)initSelfView{
     [self setRightHidden:NO];
     [self setRightTitle:@"完成"];
+    
     __block EditMyInfoViewController *__self = self;
     [self addRightEvent:^(id sender)
      {
-         EditMyInfoService *service=[[EditMyInfoService alloc]init];
+         
          switch (__self.editType) {
              case MYInfoEdit_TYPE_NickName:
              {
                  [UserInfo sharedUserInfo].strNickName=__self->_nickName.text;
+                 [__self updatePersonInfo];
              }break;
              case MYInfoEdit_TYPE_Signture:
              {
                  [UserInfo sharedUserInfo].strSignature=__self->_signTure.text;
+                 [__self updatePersonInfo];
              }break;
              case MYInfoEdit_TYPE_Sex:
              {
                  [UserInfo sharedUserInfo].nSex=__self->_sex;
+                 [__self updatePersonInfo];
              }break;
              case MYInfoEdit_TYPE_Brithday:
              {
                  [UserInfo sharedUserInfo].strBirthday=__self->_brithDay.text;
+                 [__self updatePersonInfo];
+             }break;
+             case MYInfoEdit_TYPE_Icon:
+             {
+                 [__self updateImage:__self->_iconImg];
              }break;
                  
              default:
                  break;
          }
-         service.editMyInfoBlock=^(NSString *error){
-             if (error) {
-                 
-             }else{
-                 [__self.navigationController popViewControllerAnimated:YES];
-             }
-         };
-         [service requestEditMyInfo];
+         
      }];
+}
+
+-(void)updatePersonInfo{
+    __block EditMyInfoViewController *__self = self;
+    EditMyInfoService *service=[[EditMyInfoService alloc]init];
+    service.editMyInfoBlock=^(NSString *error){
+        if (error) {
+            
+        }else{
+            [__self.navigationController popViewControllerAnimated:YES];
+        }
+    };
+    [service requestEditMyInfo];
 }
 
 -(void)initContentView{
@@ -109,7 +126,7 @@
 }
 
 -(void)initNickView{
-    UITextField *field=[[UITextField alloc]initWithFrame:CGRectMake(0, 44, KMainScreenSize.width, 40)];
+    UITextField *field=[[UITextField alloc]initWithFrame:CGRectMake(0, [self barSize].height, KMainScreenSize.width, 40)];
     field.backgroundColor=[UIColor groupTableViewBackgroundColor];
     [self.view addSubview:field];
     _nickName=field;
@@ -117,7 +134,7 @@
 
 -(void)initSigntureView{
     
-    UITextView *field=[[UITextView alloc]initWithFrame:CGRectMake(0, 44, KMainScreenSize.width, 160)];
+    UITextView *field=[[UITextView alloc]initWithFrame:CGRectMake(0, [self barSize].height, KMainScreenSize.width, 160)];
     field.backgroundColor=[UIColor groupTableViewBackgroundColor];
     [self.view addSubview:field];
     _signTure=field;
@@ -125,7 +142,7 @@
 }
 
 -(void)initSexView{
-    UIButton *male=[[UIButton alloc]initWithFrame:CGRectMake(0, 44, KMainScreenSize.width, 40)];
+    UIButton *male=[[UIButton alloc]initWithFrame:CGRectMake(0, [self barSize].height, KMainScreenSize.width, 40)];
     [male setTitle:@"男" forState:UIControlStateNormal];
     [male setTitleColor:[UIColor redColor]  forState:UIControlStateSelected];
     [male setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -152,7 +169,7 @@
     [picker addTarget:self action:@selector(dataPickerValueChange:) forControlEvents:UIControlEventValueChanged];
     _datePickerView=picker;
     
-    UITextField *field=[[UITextField alloc]initWithFrame:CGRectMake(0, 44, KMainScreenSize.width, 40)];
+    UITextField *field=[[UITextField alloc]initWithFrame:CGRectMake(0, [self barSize].height, KMainScreenSize.width, 40)];
     field.backgroundColor=[UIColor groupTableViewBackgroundColor];
     field.inputView=_datePickerView;
     [self.view addSubview:field];
@@ -161,15 +178,17 @@
 }
 
 -(void)initIconView{
-    UIButton *male=[[UIButton alloc]initWithFrame:CGRectMake(0, 44, KMainScreenSize.width, 40)];
+    UIButton *male=[[UIButton alloc]initWithFrame:CGRectMake(0, [self barSize].height, KMainScreenSize.width, 40)];
     male.tag=100;
     [male setTitle:@"拍照" forState:UIControlStateNormal];
+    [male setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [male addTarget:self action:@selector(initCamera) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:male];
     
     UIButton *female=[[UIButton alloc]initWithFrame:CGRectMake(0, male.bottom, KMainScreenSize.width, 40)];
     female.tag=200;
     [female setTitle:@"本地相册" forState:UIControlStateNormal];
+    [female setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [female addTarget:self action:@selector(initPhotoLibrary) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:female];
 }
@@ -236,7 +255,8 @@
 //点击相册中的图片后触发的方法
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
    // NSLog(@"image=%@",[info objectForKey:UIImagePickerControllerEditedImage]);
-    [self updateImage:[info objectForKey:UIImagePickerControllerEditedImage]];
+    //[self updateImage:[info objectForKey:UIImagePickerControllerEditedImage]];
+    _iconImg=[info objectForKey:UIImagePickerControllerEditedImage];
     [self dismissViewControllerAnimated:YES completion:^{
         
     }];
@@ -244,6 +264,13 @@
 
 -(void)updateImage:(UIImage *)img{
     HttpUploadManager *upload=[[HttpUploadManager alloc]init];
+    upload.upDatePersonIconBlock=^(NSString *error){
+        if (error) {
+            
+        }else{
+            [self.view makeToast:@"上传图片成功"];
+        }
+    };
     [upload uploadPerson:img];
 }
 

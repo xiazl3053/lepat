@@ -83,12 +83,11 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)createrView{
+-(void)createrView
+{
     UIImageView * imgView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"IMG_0233.png"]];
     [imgView setFrame:[UIScreen mainScreen].bounds];
-    
     [self.view addSubview:imgView];
 }
-
 
 @end
