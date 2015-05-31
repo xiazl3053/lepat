@@ -12,6 +12,7 @@
 @interface BaseViewController ()
 {
     UILabel *lblTitle;
+    UIButton *back;
     UIButton *btnRight;
 }
 @end
@@ -31,12 +32,17 @@
     [self initNavigationBar];
 }
 
+-(void)setLeftHidden:(BOOL)bHidden
+{
+    back.hidden = YES;
+}
+
 -(void)initNavigationBar
 {
     UIView *bgView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
     bgView.backgroundColor=RGB(253, 252, 250);
     
-    UIButton *back=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
+    back=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
     [back setImage:[UIImage imageNamed:@"retrun"] forState:UIControlStateNormal];
     [back addTarget:self action:@selector(popviewcontroller) forControlEvents:UIControlEventTouchUpInside];
     [bgView addSubview:back];
@@ -93,7 +99,7 @@
     {
         btnRight = [UIButton buttonWithType:UIButtonTypeCustom];
         UIView *bgView = [self.view viewWithTag:10001];
-        btnRight.frame = Rect(self.view.width-80, 10, 66, 20);
+        btnRight.frame = Rect(self.view.width-60, 10, 66, 20);
         [btnRight setTitleColor:RGB(51,51,51) forState:UIControlStateNormal];
         btnRight.titleLabel.font = XCFONT(16);
         [bgView addSubview:btnRight];
@@ -109,6 +115,18 @@
 -(void)addRightEvent:(void (^)(id sender))handler
 {
     [btnRight bk_addEventHandler:handler forControlEvents:UIControlEventTouchUpInside];
+}
+
+-(void)setRightImg:(NSString *)strNor high:(NSString *)strHigh select:(NSString *)strSelect
+{
+    [btnRight setImage:[UIImage imageNamed:strNor] forState:UIControlStateNormal];
+    [btnRight setImage:[UIImage imageNamed:strHigh] forState:UIControlStateHighlighted];
+    [btnRight setImage:[UIImage imageNamed:strSelect] forState:UIControlStateSelected];
+}
+
+-(void)setRightRect:(CGRect)frame
+{
+    btnRight.frame = frame;
 }
 
 
