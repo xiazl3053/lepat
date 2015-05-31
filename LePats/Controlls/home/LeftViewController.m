@@ -104,7 +104,7 @@
 }
 
 -(void)initTableView{
-    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, KMainScreenSize.width, KMainScreenSize.height) style:UITableViewStylePlain];
+    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 20, KMainScreenSize.width, KMainScreenSize.height) style:UITableViewStylePlain];
     tableView.delegate=self;
     tableView.dataSource=self;
     tableView.backgroundColor=[UIColor clearColor];
@@ -117,7 +117,7 @@
 }
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    UIView *my=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 260, 120)];
+    UIView *my=[[UIView alloc]initWithFrame:CGRectMake(0, 20, 260, 120)];
     
     UIImageView *icon=[[UIImageView alloc]initWithFrame:CGRectMake((200-60)*.5, 10, 60, 60)];
     icon.image=[UIImage imageNamed:@"left_icon_noraml"];

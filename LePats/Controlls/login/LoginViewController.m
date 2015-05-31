@@ -54,7 +54,7 @@
         RegFirstViewController *regFirst = [[RegFirstViewController alloc] init];
         [__self.navigationController pushViewController:regFirst animated:YES];
     }];
-    UILabel *lblName = [[UILabel alloc] initWithFrame:Rect(50, 64, kScreenSourchWidth-100, 20)];
+    UILabel *lblName = [[UILabel alloc] initWithFrame:Rect(50, 74, kScreenSourchWidth-100, 20)];
     [lblName setTextAlignment:NSTextAlignmentCenter];
     [lblName setFont:XCFONT(14)];
     [lblName setTextColor:RGB(102, 102, 102)];
@@ -126,9 +126,11 @@
         });
         if(nStatus==200)
         {
+            
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2.0*NSEC_PER_SEC), dispatch_get_main_queue(),
             ^{
                   [__strongSelf.navigationController popViewControllerAnimated:YES];
+                  [__strongSelf.navigationController setNavigationBarHidden:NO animated:NO];
             });
         }
     };

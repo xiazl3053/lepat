@@ -236,7 +236,7 @@
 
 - (BOOL)prefersStatusBarHidden
 {
-    return YES; //返回NO表示要显示，返回YES将hiden
+    return NO; //返回NO表示要显示，返回YES将hiden
 }
 
 @end

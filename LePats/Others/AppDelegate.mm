@@ -57,13 +57,23 @@
         NSLog(@"manager start failed!");
     }
     
-    LoginService *login = [[LoginService alloc] init];
-    [login requestLogin:@"13888888888" password:@"123456"];
+//    LoginService *login = [[LoginService alloc] init];
+//    [login requestLogin:@"13888888888" password:@"123456"];
     
     [self.window setRootViewController:slide];
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
+/*
+ lat = "23.108941";
+ lng = "113.455208";
+ */
+/*
+ lat = "23.108935";
+ lng = "113.455254";
+ */
+
 -(void)requestInfo
 {
 //    MyPetService *myPet = [[MyPetService alloc] init];
@@ -71,8 +81,8 @@
 //
 //    HttpUploadManager *httpUpload = [[HttpUploadManager alloc] init];
 //    [httpUpload uploadPerson:[UIImage imageNamed:@"my"]];
-    UploadService *upload = [[UploadService alloc] init];
-    [upload requestUploadLocation:113.2759952545136 lng:23.117055306224895];
+//    UploadService *upload = [[UploadService alloc] init];
+//    [upload requestUploadLocation:113.2759952545136 lng:23.117055306224895];
     //113.275991
     
 //    FindService *findService = [[FindService alloc] init];
