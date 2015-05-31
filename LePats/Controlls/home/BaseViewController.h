@@ -26,5 +26,8 @@
 -(void)setRightImg:(NSString *)strNor high:(NSString *)strHigh select:(NSString *)strSelect;
 
 -(void)addRightEvent:(void (^)(id sender))handler;
+
+-(void)setRightRect:(CGRect)frame;
+
 //-(void)addTag:
 @end

@@ -27,6 +27,7 @@ typedef unsigned long U_int32;
     DLog(@"length:%li\n",sizeof(U_int32));
     _mapView = [[BMKMapView alloc] initWithFrame:Rect(0, 44, kScreenSourchWidth, kScreenSourchHeight-64)];
     self.title = @"地图";
+    
     [self.view addSubview:_mapView];
 }
 

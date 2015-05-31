@@ -30,7 +30,9 @@
     self.title = @"附近鱼友列表";
     [self setRightHidden:NO];
 //    [self setRightTitle:@"地图"];
+    [self setRightRect:Rect(self.view.width-50,2, 36, 36)];
     [self setRightImg:@"position" high:nil select:nil];
+    
     __weak FriendListViewController *__self = self;
     findSer = [[FindService alloc] init];
     _aryNear = [NSMutableArray array];
