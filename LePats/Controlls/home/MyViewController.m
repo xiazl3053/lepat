@@ -156,8 +156,8 @@
     UIView *view1=[[UIView alloc]initWithFrame:CGRectMake(0, _segmentedView.bottom, KMainScreenSize.width, 300)];
     view1.backgroundColor=[UIColor groupTableViewBackgroundColor];
     
-    UIImageView *push=[[UIImageView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-134)*.5, 20, 134, 134)];
-    push.image=[UIImage imageNamed:@"home_push"];
+    UIImageView *push=[[UIImageView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-100)*.5, 20, 100, 100)];
+    push.image=[UIImage imageNamed:@"my_heart"];
     [view1 addSubview:push];
     
     _leftView=view1;
@@ -169,7 +169,7 @@
     
     
     UIImageView *like=[[UIImageView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-134)*.5, 20, 134, 134)];
-    like.image=[UIImage imageNamed:@"home_like"];
+    like.image=[UIImage imageNamed:@"my_camera"];
     [view2 addSubview:like];
     
     
