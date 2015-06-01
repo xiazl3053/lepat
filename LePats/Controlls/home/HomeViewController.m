@@ -16,6 +16,8 @@
 #import "MapFriendViewController.h"
 #import "HomeHeadReusableView.h"
 #import "HomeGiftItemButton.h"
+#import "PetSortService.h"
+#import "PetSort.h"
 
 
 @interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,HomeItemCollectionCellDelegate>
@@ -65,6 +67,7 @@
 
 -(void)initViews{
     [self initBar];
+    [self initCollectionView];
     
     UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,34,30)];
     [rightButton  setImage:[UIImage imageNamed:@"home_left"]forState:UIControlStateNormal];
@@ -73,9 +76,7 @@
     self.navigationItem.leftBarButtonItem= rightItem;
 }
 
--(void)initParams{
-    [self initTestData];
-    
+-(void)initCollectionView{
     UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc]init];
     self.collectView=[[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) collectionViewLayout:layout];
     self.collectView.dataSource=self;
@@ -86,6 +87,20 @@
          forCellWithReuseIdentifier:@"MainHomeCell"];
     [self.view addSubview:self.collectView];
 }
+
+-(void)initParams{
+    [self initTestData];
+    //[self getPetSort];
+}
+
+-(void)getPetSort{
+    PetSortService *service=[[PetSortService alloc]init];
+    service.getPetSortBlock=^(NSString *error,NSArray *data){
+        [[PetSort sharedPetSort]setPetListArr:data];
+    };
+    [service requestPetSort];
+}
+
 
 -(void)initTestData{
     
@@ -295,6 +310,8 @@
 }
 
 -(void)showLeftView{
+    [self getPetSort];
+    
     [[NSNotificationCenter defaultCenter]postNotificationName:KShowLeftViewController object:nil];
 
 }

@@ -14,7 +14,7 @@
 #import "MyPetTableViewCell.h"
 #import "MyInfoService.h"
 
-@interface MyPetsViewController ()<UITableViewDataSource,UITableViewDelegate>{
+@interface MyPetsViewController ()<UITableViewDataSource,UITableViewDelegate,MyPetTableViewCellDelegate>{
     UITableView *_tableView;
 }
 
@@ -116,6 +116,7 @@
     }
     LePetInfo *pet=[self.pets objectAtIndex:indexPath.row];
     [cell setValueWithPetInfo:pet];
+    cell.delegate=self;
     return cell;
 }
 
@@ -133,6 +134,10 @@
     edit.nPetId=pet.nPetId;
     edit.type=PetType_EDIT;
     [self.navigationController pushViewController:edit animated:YES];
+}
+
+-(void)MyPetTableViewCell:(MyPetTableViewCell *)cell clickMap:(UIButton *)aBut{
+    NSLog(@"%s",__FUNCTION__);
 }
 
 -(void)dealloc{

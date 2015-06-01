@@ -17,6 +17,7 @@
 #import "DelPetService.h"
 #import "PetInfoEditService.h"
 #import "UserInfo.h"
+#import "PetSort.h"
 
 @interface PetDetailViewController ()<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate>{
     UITableView *_tableView;
@@ -61,12 +62,15 @@
 }
 
 -(void)getPetSort{
-    PetSortService *service=[[PetSortService alloc]init];
-    __weak PetDetailViewController *__self=self;
-    service.getPetSortBlock=^(NSString *error,NSArray *data){
-        __self.sortList=data;
-    };
-    [service requestPetSort];
+
+    self.sortList=[PetSort sharedPetSort].petListArr;
+    
+//    PetSortService *service=[[PetSortService alloc]init];
+//    __weak PetDetailViewController *__self=self;
+//    service.getPetSortBlock=^(NSString *error,NSArray *data){
+//        __self.sortList=data;
+//    };
+//    [service requestPetSort];
 }
 
 -(void)initData{
@@ -425,6 +429,10 @@
     return 100;
 }
 
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    [scrollView endEditing:YES];
+}
+
 -(void)initCamera{
     //先设定sourceType为相机，然后判断相机是否可用（ipod）没相机，不可用将sourceType设定为相片库
     UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
@@ -536,9 +544,10 @@
             NSDictionary *data=[dic objectForKey:@"photobj"];
             _photoId=[[data objectForKey:@"id"]intValue];
             _pet.nPhotoId=[[data objectForKey:@"id"]intValue];
+            [self queryPetInfo];
         }
     };
-    [upload uploadPetHead:image petId:@"-1"];
+    [upload uploadPetHead:image petId:[NSString stringWithFormat:@"%d",_pet.nPetId]];
 }
 
 - (void)didReceiveMemoryWarning {

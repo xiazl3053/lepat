@@ -57,22 +57,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LePats/Controlls/my/PetDetailViewController.m"
-            timestampString = "454775831.52275"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "548"
-            endingLineNumber = "548"
-            landmarkName = "-dealloc"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "LePats/Services/http/Pats/PetInfoEditService.m"
             timestampString = "454429193.336603"
             startingColumnNumber = "9223372036854775807"
@@ -106,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LePats/Services/http/My/EditMyInfoService.m"
-            timestampString = "454612499.632618"
+            timestampString = "454844973.490179"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "-reciveDic:dic:"
             landmarkType = "5">
          </BreakpointContent>
@@ -121,28 +105,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LePats/Controlls/my/EditMyInfoViewController.m"
-            timestampString = "454771888.376703"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "-initContentView"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "LePats/Controlls/home/MyDetailViewController.m"
-            timestampString = "454775561.17389"
+            timestampString = "454843845.204976"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -154,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LePats/Controlls/home/MyDetailViewController.m"
-            timestampString = "454775561.17389"
+            timestampString = "454843845.204976"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -170,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LePats/Controlls/my/EditMyInfoViewController.m"
-            timestampString = "454771888.376703"
+            timestampString = "454843845.204976"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
             landmarkName = "-initSigntureView"
             landmarkType = "5">
          </BreakpointContent>
@@ -186,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LePats/Controlls/my/PetDetailViewController.m"
-            timestampString = "454769254.108663"
+            timestampString = "454838394.013282"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
             landmarkName = "-submit"
             landmarkType = "5">
          </BreakpointContent>
@@ -217,13 +185,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LePats/Controlls/home/MyViewController.m"
-            timestampString = "454772843.563865"
+            filePath = "LePats/Services/http/Pats/AddPetService.m"
+            timestampString = "454839948.423838"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
-            landmarkName = "-setImageInfo:"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "-requestAddPet:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -233,13 +201,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LePats/Controlls/home/LeftViewController.m"
-            timestampString = "454826146.33374"
+            filePath = "LePats/Services/http/Pats/PetInfoEditService.m"
+            timestampString = "454840001.499841"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "-viewWillAppear:"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "-requestEditPet:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -249,13 +217,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LePats/Controlls/home/LeftViewController.m"
-            timestampString = "454826146.33374"
+            filePath = "LePats/Views/SexButton.m"
+            timestampString = "454842120.032026"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "-getPersonInfo"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "-imageRectForContentRect:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -265,13 +233,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LePats/Controlls/home/LeftViewController.m"
-            timestampString = "454826146.33374"
+            filePath = "LePats/Controlls/my/EditMyInfoViewController.m"
+            timestampString = "454844099.252345"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "-getPersonInfo"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "-initSelfView"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -281,13 +249,45 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LePats/Controlls/home/LeftViewController.m"
-            timestampString = "454826146.33374"
+            filePath = "LePats/Controlls/my/EditMyInfoViewController.m"
+            timestampString = "454844118.858904"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "-getPersonInfo"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "-initSelfView"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LePats/Services/http/My/EditMyInfoService.m"
+            timestampString = "454844307.126837"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "-requestEditBrithday"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LePats/Services/http/My/EditMyInfoService.m"
+            timestampString = "454845002.840252"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "-requestEditSingture"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

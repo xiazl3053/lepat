@@ -37,6 +37,8 @@
 		840D6EB71B16FD2A00C3097A /* MyInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 840D6EB61B16FD2A00C3097A /* MyInfoService.m */; };
 		841E9D851B19D38800C985EA /* HomeHeadReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 841E9D841B19D38800C985EA /* HomeHeadReusableView.m */; };
 		841E9D881B1A155D00C985EA /* HomeHeadItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 841E9D871B1A155D00C985EA /* HomeHeadItemButton.m */; };
+		8434BF9D1B1C44780088CF4C /* PetSort.m in Sources */ = {isa = PBXBuildFile; fileRef = 8434BF9C1B1C44780088CF4C /* PetSort.m */; };
+		8434BFA01B1C551B0088CF4C /* SexButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8434BF9F1B1C551B0088CF4C /* SexButton.m */; };
 		843DB31C1B0DCD8C00312383 /* PetSortModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 843DB31B1B0DCD8C00312383 /* PetSortModel.m */; };
 		843E9BE71B17FFC500ADC457 /* MyPetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843E9BE01B17FFC500ADC457 /* MyPetsViewController.m */; };
 		843E9BE81B17FFC500ADC457 /* PetDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843E9BE21B17FFC500ADC457 /* PetDetailViewController.m */; };
@@ -155,6 +157,10 @@
 		841E9D841B19D38800C985EA /* HomeHeadReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeHeadReusableView.m; sourceTree = "<group>"; };
 		841E9D861B1A155D00C985EA /* HomeHeadItemButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeHeadItemButton.h; sourceTree = "<group>"; };
 		841E9D871B1A155D00C985EA /* HomeHeadItemButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeHeadItemButton.m; sourceTree = "<group>"; };
+		8434BF9B1B1C44780088CF4C /* PetSort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PetSort.h; sourceTree = "<group>"; };
+		8434BF9C1B1C44780088CF4C /* PetSort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetSort.m; sourceTree = "<group>"; };
+		8434BF9E1B1C551B0088CF4C /* SexButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SexButton.h; sourceTree = "<group>"; };
+		8434BF9F1B1C551B0088CF4C /* SexButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SexButton.m; sourceTree = "<group>"; };
 		843DB31A1B0DCD8C00312383 /* PetSortModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PetSortModel.h; sourceTree = "<group>"; };
 		843DB31B1B0DCD8C00312383 /* PetSortModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetSortModel.m; sourceTree = "<group>"; };
 		843E9BDF1B17FFC500ADC457 /* MyPetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPetsViewController.h; sourceTree = "<group>"; };
@@ -523,6 +529,8 @@
 				4D202C361B08F9D9007DED73 /* LogView.m */,
 				841E9D831B19D38800C985EA /* HomeHeadReusableView.h */,
 				841E9D841B19D38800C985EA /* HomeHeadReusableView.m */,
+				8434BF9E1B1C551B0088CF4C /* SexButton.h */,
+				8434BF9F1B1C551B0088CF4C /* SexButton.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -696,6 +704,8 @@
 			children = (
 				BB088E321B032B1D00F5E092 /* UserInfo.h */,
 				BB088E331B032B1D00F5E092 /* UserInfo.m */,
+				8434BF9B1B1C44780088CF4C /* PetSort.h */,
+				8434BF9C1B1C44780088CF4C /* PetSort.m */,
 			);
 			path = singleton;
 			sourceTree = "<group>";
@@ -953,6 +963,7 @@
 				4D61CA5E1B1084E70092D232 /* FindService.m in Sources */,
 				84F3B9251B17FE55000233A5 /* MyDetailViewController.m in Sources */,
 				84F3B9191B17FBE8000233A5 /* FriendListViewController.m in Sources */,
+				8434BFA01B1C551B0088CF4C /* SexButton.m in Sources */,
 				4D61CA5A1B100EA00092D232 /* RegSettingViewController.m in Sources */,
 				84F0296D1B1B501C007577C0 /* UIButton+WebCache.m in Sources */,
 				84F0296A1B1B501C007577C0 /* SDWebImageDownloaderOperation.m in Sources */,
@@ -996,6 +1007,7 @@
 				84F0296E1B1B501C007577C0 /* UIImage+GIF.m in Sources */,
 				4D202C3A1B0900F7007DED73 /* RegFirstViewController.m in Sources */,
 				84F029671B1B501C007577C0 /* SDWebImageCompat.m in Sources */,
+				8434BF9D1B1C44780088CF4C /* PetSort.m in Sources */,
 				BB588F931B047F690095337C /* HttpUploadManager.m in Sources */,
 				843E9BEA1B17FFC500ADC457 /* UserInfoViewController.m in Sources */,
 				843DB31C1B0DCD8C00312383 /* PetSortModel.m in Sources */,

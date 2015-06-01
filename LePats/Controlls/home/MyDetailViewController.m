@@ -35,6 +35,11 @@
 
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    [self initParams];
+}
+
 -(void)getUserInfo{
     MyInfoService *service=[[MyInfoService alloc]init];
     service.getMyInfoBlock=^(NSString *error){

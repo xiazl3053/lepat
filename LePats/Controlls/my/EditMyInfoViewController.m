@@ -11,6 +11,7 @@
 #import "UserInfo.h"
 #import "HttpUploadManager.h"
 #import "Toast+UIView.h"
+#import "SexButton.h"
 
 @interface EditMyInfoViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
     UITextField *_nickName;
@@ -52,22 +53,22 @@
              case MYInfoEdit_TYPE_NickName:
              {
                  [UserInfo sharedUserInfo].strNickName=__self->_nickName.text;
-                 [__self updatePersonInfo];
+                 [__self requestEditNickName];
              }break;
              case MYInfoEdit_TYPE_Signture:
              {
                  [UserInfo sharedUserInfo].strSignature=__self->_signTure.text;
-                 [__self updatePersonInfo];
+                 [__self requestEditSingture];
              }break;
              case MYInfoEdit_TYPE_Sex:
              {
                  [UserInfo sharedUserInfo].nSex=__self->_sex;
-                 [__self updatePersonInfo];
+                 [__self requestEditSex];
              }break;
              case MYInfoEdit_TYPE_Brithday:
              {
                  [UserInfo sharedUserInfo].strBirthday=__self->_brithDay.text;
-                 [__self updatePersonInfo];
+                 [__self requestEditBrithday];
              }break;
              case MYInfoEdit_TYPE_Icon:
              {
@@ -81,7 +82,7 @@
      }];
 }
 
--(void)updatePersonInfo{
+-(void)requestEditSex{
     __block EditMyInfoViewController *__self = self;
     EditMyInfoService *service=[[EditMyInfoService alloc]init];
     service.editMyInfoBlock=^(NSString *error){
@@ -91,7 +92,46 @@
             [__self.navigationController popViewControllerAnimated:YES];
         }
     };
-    [service requestEditMyInfo];
+    [service requestEditSex];
+}
+
+-(void)requestEditSingture{
+    __block EditMyInfoViewController *__self = self;
+    EditMyInfoService *service=[[EditMyInfoService alloc]init];
+    service.editMyInfoBlock=^(NSString *error){
+        if (error) {
+            
+        }else{
+            [__self.navigationController popViewControllerAnimated:YES];
+        }
+    };
+    [service requestEditSingture];
+}
+
+-(void)requestEditBrithday{
+    __block EditMyInfoViewController *__self = self;
+    EditMyInfoService *service=[[EditMyInfoService alloc]init];
+    service.editMyInfoBlock=^(NSString *error){
+        if (error) {
+            
+        }else{
+            [__self.navigationController popViewControllerAnimated:YES];
+        }
+    };
+    [service requestEditBrithday];
+}
+
+-(void)requestEditNickName{
+    __block EditMyInfoViewController *__self = self;
+    EditMyInfoService *service=[[EditMyInfoService alloc]init];
+    service.editMyInfoBlock=^(NSString *error){
+        if (error) {
+            
+        }else{
+            [__self.navigationController popViewControllerAnimated:YES];
+        }
+    };
+    [service requestEditNickName];
 }
 
 -(void)initContentView{
@@ -142,20 +182,24 @@
 }
 
 -(void)initSexView{
-    UIButton *male=[[UIButton alloc]initWithFrame:CGRectMake(0, [self barSize].height, KMainScreenSize.width, 40)];
+    SexButton *male=[[SexButton alloc]initWithFrame:CGRectMake(0, [self barSize].height, KMainScreenSize.width, 40)];
     [male setTitle:@"男" forState:UIControlStateNormal];
-    [male setTitleColor:[UIColor redColor]  forState:UIControlStateSelected];
     [male setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [male setImage:[UIImage imageNamed:@"mydetail_select"] forState:UIControlStateSelected];
+    male.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     male.tag=100;
+    [male setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
     [male addTarget:self action:@selector(changeSex:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:male];
     _male=male;
     
-    UIButton *female=[[UIButton alloc]initWithFrame:CGRectMake(0, male.bottom, KMainScreenSize.width, 40)];
+    SexButton *female=[[SexButton alloc]initWithFrame:CGRectMake(0, male.bottom, KMainScreenSize.width, 40)];
     female.tag=200;
+    female.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [female setTitle:@"女" forState:UIControlStateNormal];
+    [female setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
     [female setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [female setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
+    [female setImage:[UIImage imageNamed:@"mydetail_select"] forState:UIControlStateSelected];
     [female addTarget:self action:@selector(changeSex:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:female];
     _female=female;
@@ -207,11 +251,11 @@
     if (aBtn.tag==100) {
         [_male setSelected:YES];
         [_female setSelected:NO];
-        _sex=1;
+        _sex=0;
     }else{
         [_male setSelected:NO];
         [_female setSelected:YES];
-        _sex=0;
+        _sex=1;
     }
 }
 
