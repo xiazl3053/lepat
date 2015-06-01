@@ -29,7 +29,7 @@
     btn.layer.borderColor=[UIColor groupTableViewBackgroundColor].CGColor;
     btn.layer.borderWidth=1.0;
     [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    btn.titleLabel.font=[UIFont systemFontOfSize:14];
+    btn.titleLabel.font=[UIFont systemFontOfSize:12];
     
     [btn addTarget:self action:@selector(userClickCell:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:btn];

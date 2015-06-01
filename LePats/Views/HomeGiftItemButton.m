@@ -28,9 +28,9 @@
 -(CGRect)titleRectForContentRect:(CGRect)contentRect{
     UIImage *image=[self imageForState:UIControlStateNormal];
     NSString *title=[self titleForState:UIControlStateNormal];
-    CGSize size=[title boundingRectWithSize:CGSizeMake(280, 1000) withTextFont:[UIFont systemFontOfSize:14] withLineSpacing:5];
+    CGSize size=[title boundingRectWithSize:CGSizeMake(280, 1000) withTextFont:[UIFont systemFontOfSize:12] withLineSpacing:5];
     NSLog(@"NSStringFromCGSize=%@",NSStringFromCGSize(size));
-    return CGRectMake((contentRect.size.width-size.width)*.5 , image.size.height+5, self.frame.size.width, 20);
+    return CGRectMake((contentRect.size.width-size.width)*.5 , image.size.height, self.frame.size.width, 20);
 }
 
 @end

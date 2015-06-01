@@ -21,15 +21,15 @@
 
 -(CGRect)imageRectForContentRect:(CGRect)contentRect{
     UIImage *image=[self imageForState:UIControlStateNormal];
-    return CGRectMake((contentRect.size.width-image.size.width)*.5, 20, image.size.width, image.size.height);
+    return CGRectMake((contentRect.size.width-image.size.width)*.5, 8, image.size.width, image.size.height);
 }
 
 -(CGRect)titleRectForContentRect:(CGRect)contentRect{
     UIImage *image=[self imageForState:UIControlStateNormal];
     NSString *title=[self titleForState:UIControlStateNormal];
-    CGSize size=[title boundingRectWithSize:CGSizeMake(280, 1000) withTextFont:[UIFont systemFontOfSize:14] withLineSpacing:5];
+    CGSize size=[title boundingRectWithSize:CGSizeMake(280, 1000) withTextFont:[UIFont systemFontOfSize:12] withLineSpacing:5];
     //NSLog(@"NSStringFromCGSize=%@",NSStringFromCGSize(size));
-    return CGRectMake((contentRect.size.width-size.width)*.5, image.size.height+30, 130, 20);
+    return CGRectMake((contentRect.size.width-size.width)*.5, image.size.height+10, 130, 20);
 }
 
 

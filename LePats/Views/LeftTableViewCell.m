@@ -31,7 +31,7 @@
     _icon=icon;
     [self addSubview:icon];
     
-    UILabel *title=[[UILabel alloc]initWithFrame:CGRectMake(icon.right+10, 0, 100, 44)];
+    UILabel *title=[[UILabel alloc]initWithFrame:CGRectMake(icon.right+10, 0, 150, 44)];
     title.textColor=[UIColor whiteColor];
     _title=title;
     [self addSubview:title];
