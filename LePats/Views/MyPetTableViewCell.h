@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "LePetInfo.h"
+
+@protocol MyPetTableViewCellDelegate;
+
 @interface MyPetTableViewCell : UITableViewCell
 -(void)setValueWithPetInfo:(LePetInfo *)pet;
+@property (nonatomic,assign) id<MyPetTableViewCellDelegate> delegate;
+@end
+
+@protocol MyPetTableViewCellDelegate <NSObject>
+-(void)MyPetTableViewCell:(MyPetTableViewCell *)cell clickMap:(UIButton *)aBut;
+
 @end

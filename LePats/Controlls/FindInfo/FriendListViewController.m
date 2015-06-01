@@ -34,14 +34,14 @@
 -(id)init
 {
     self = [super init];
-    if([CLLocationManager locationServicesEnabled]) {
-        locationManager = [[CLLocationManager alloc] init];
-        locationManager.delegate = self;
-    }else {
-        //提示用户无法进行定位操作
-    }
-    // 开始定位
-    [locationManager startUpdatingLocation];
+//    if([CLLocationManager locationServicesEnabled]) {
+//        locationManager = [[CLLocationManager alloc] init];
+//        locationManager.delegate = self;
+//    }else {
+//        //提示用户无法进行定位操作
+//    }
+//    // 开始定位
+//    [locationManager startUpdatingLocation];
     return self;
 }
 

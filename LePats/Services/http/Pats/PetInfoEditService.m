@@ -22,7 +22,7 @@
     NSString *post = [NSString stringWithFormat:@"petId=%d&petName=%@&petCount=%d&birthday=%@&sortId=%d&description=%@&sex=%d&userid=%@&token=%@%@",lePet.nPetId,lePet.strName,lePet.nPetCount,lePet.strBirthday,lePet.nSortId,lePet.strDescription,lePet.nSex,user.strUserId,user.strToken,LEPAT_VERSION_INFO];
     //    NSData *data = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
     //    [self sendRequestData:data url:strUrl];
-    [self sendRequestString:post url:strUrl];
+//    [self sendRequestString:post url:strUrl];
     //    [self sendRequest:strUrl];
 }
 

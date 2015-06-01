@@ -160,6 +160,14 @@
                 self.upDatePersonIconBlock([dic objectForKey:KServiceResponseMsg]);
             }
         }
+        
+        if (self.uploadImgBlock) {
+            if ([[dic objectForKey:KServiceResponseCode]intValue]==KServiceResponseSuccess) {
+                self.uploadImgBlock(nil,dic);
+            }else{
+                self.uploadImgBlock([dic objectForKey:KServiceResponseMsg],nil);
+            }
+        }
     }
     else
     {

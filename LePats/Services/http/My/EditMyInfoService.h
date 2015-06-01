@@ -13,6 +13,10 @@ typedef void(^EditMyInfoBlock)(NSString *error);
 @interface EditMyInfoService : HttpManager
 @property (nonatomic,copy) EditMyInfoBlock editMyInfoBlock;
 
--(void)requestEditMyInfo;
+-(void)requestEditSex;
+-(void)requestEditNickName;
+-(void)requestEditPasssword;
+-(void)requestEditSingture;
+-(void)requestEditBrithday;
 
 @end

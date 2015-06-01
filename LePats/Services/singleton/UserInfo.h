@@ -23,8 +23,6 @@ DEFINE_SINGLETON_FOR_HEADER(UserInfo);
 @property (nonatomic,strong) NSString *strUserIcon;
 @property (nonatomic,copy) NSString *strFocusNum;
 @property (nonatomic,copy) NSString *strFansNum;
-
-
 @property (nonatomic,strong) NSString *strSignature;
 
 
