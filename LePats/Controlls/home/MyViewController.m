@@ -153,22 +153,22 @@
 }
 
 -(void)initContentView{
-    UIView *view1=[[UIView alloc]initWithFrame:CGRectMake(0, _segmentedView.bottom, KMainScreenSize.width, 300)];
+    UIView *view1=[[UIView alloc]initWithFrame:CGRectMake(0, _segmentedView.bottom, KMainScreenSize.width, self.view.frame.size.height-_segmentedView.bottom-44)];
     view1.backgroundColor=[UIColor groupTableViewBackgroundColor];
     
-    UIImageView *push=[[UIImageView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-100)*.5, 20, 100, 100)];
+    UIImageView *push=[[UIImageView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-100)*.5, 0, 100, 100)];
     push.image=[UIImage imageNamed:@"my_heart"];
     [view1 addSubview:push];
     
     _leftView=view1;
     [self.view addSubview:view1];
     
-    UIView *view2=[[UIView alloc]initWithFrame:CGRectMake(0, _segmentedView.bottom, KMainScreenSize.width, 300)];
+    UIView *view2=[[UIView alloc]initWithFrame:CGRectMake(0, _segmentedView.bottom, KMainScreenSize.width, self.view.frame.size.height-_segmentedView.bottom-44)];
     view2.backgroundColor=[UIColor groupTableViewBackgroundColor];
     view2.hidden=YES;
     
     
-    UIImageView *like=[[UIImageView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-134)*.5, 20, 134, 134)];
+    UIImageView *like=[[UIImageView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-100)*.5, 20, 134, 134)];
     like.image=[UIImage imageNamed:@"my_camera"];
     [view2 addSubview:like];
     
