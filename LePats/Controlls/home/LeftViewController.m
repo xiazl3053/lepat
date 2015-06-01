@@ -17,9 +17,12 @@
 #import "LeftTableViewCell.h"
 #import "LoginViewController.h"
 #import "UserInfo.h"
+#import "MyInfoService.h"
 
 @interface LeftViewController ()<UITableViewDataSource,UITableViewDelegate>{
     UIImageView *_imgView;
+    UIButton *_login;
+    UILabel *_nickName;
 }
 
 @property (nonatomic,strong) NSMutableArray *itemList;
@@ -42,11 +45,39 @@
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor redColor];
     [self initParams];
+    
     [self initViews];
+    
     // Do any additional setup after loading the view.
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    
+}
+
+-(void)initRegitster{
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getPersonInfo) name:KShowLeftViewController object:nil];
+}
+
+-(void)getPersonInfo{
+    MyInfoService *service=[[MyInfoService alloc]init];
+    service.getMyInfoBlock=^(NSString *error){
+        if (!error) {
+            [_imgView sd_setImageWithURL:[NSURL URLWithString:[UserInfo sharedUserInfo].strUserIcon] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
+            _nickName.text=[UserInfo sharedUserInfo].strNickName;
+            _login.hidden=YES;
+            _nickName.hidden=NO;
+        }else{
+        
+        }
+    };
+    [service requestUserId:0];
+}
+
 -(void)initParams{
+    [self initRegitster];
+    
     self.itemList=[NSMutableArray array];
     
     HomeItemModel *model=[[HomeItemModel alloc]init];
@@ -124,6 +155,8 @@
     
     UIImageView *icon=[[UIImageView alloc]initWithFrame:CGRectMake((200-60)*.5, 10, 60, 60)];
     icon.image=[UIImage imageNamed:@"left_icon_noraml"];
+    icon.layer.cornerRadius=icon.frame.size.width*.5;
+    icon.layer.masksToBounds=YES;
     [my addSubview:icon];
     _imgView=icon;
     
@@ -135,7 +168,22 @@
     login.layer.borderColor=[UIColor whiteColor].CGColor;
     login.layer.borderWidth=.5;
     [login addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
+    _login=login;
     [my addSubview:login];
+    
+    UILabel *title=[[UILabel alloc]initWithFrame:CGRectMake((200-100)*.5, icon.bottom+5, 100, 25)];
+    if ([UserInfo sharedUserInfo].strToken) {
+        login.hidden=YES;
+        title.text=[UserInfo sharedUserInfo].strNickName;
+    }else{
+        title.hidden=YES;
+        login.hidden=NO;
+    }
+    _nickName=title;
+    title.textAlignment=NSTextAlignmentCenter;
+    title.textColor=[UIColor whiteColor];
+    [my addSubview:title];
+    
     
     return my;
 }

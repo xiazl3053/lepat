@@ -35,6 +35,11 @@
 
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    [self initParams];
+}
+
 -(void)getUserInfo{
     MyInfoService *service=[[MyInfoService alloc]init];
     service.getMyInfoBlock=^(NSString *error){
@@ -149,9 +154,12 @@
     NSDictionary *dic=[rows objectAtIndex:indexPath.row];
     if (indexPath.section==0) {
         if (indexPath.row==0) {
-            UIImageView *icon=[[UIImageView alloc]initWithFrame:CGRectMake(KMainScreenSize.width-80, 5, 50, 50)];
+            UIImageView *icon=[[UIImageView alloc]initWithFrame:CGRectMake(KMainScreenSize.width-60, 5, 50, 50)];
             [icon sd_setImageWithURL:[NSURL URLWithString:[UserInfo sharedUserInfo].strUserIcon] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
             _icon=icon;
+            cell.content.hidden=YES;
+            cell.indicate.hidden=YES;
+            cell.title.frame=CGRectMake(30, 10, 200, 44);
             [cell addSubview:icon];
         }
     }

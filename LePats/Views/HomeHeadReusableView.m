@@ -47,10 +47,10 @@
 
 -(void)initTopView{
     
-    UIView *topView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, 100)];
+    UIView *topView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, 80)];
     topView.backgroundColor=[UIColor clearColor];
     
-    UILabel *title=[[UILabel alloc]initWithFrame:CGRectMake(0, 15, self.frame.size.width, 30)];
+    UILabel *title=[[UILabel alloc]initWithFrame:CGRectMake(0, 10, self.frame.size.width, 30)];
     title.text=@"我的积分";
     title.font=[UIFont systemFontOfSize:30];
     title.textAlignment=NSTextAlignmentCenter;
@@ -89,10 +89,10 @@
     [section addObject:model1];
     [section addObject:model2];
     
-    UIView *centerView=[[UIView alloc]initWithFrame:CGRectMake(0, _topView.bottom, self.frame.size.width, 200*.5)];
+    UIView *centerView=[[UIView alloc]initWithFrame:CGRectMake(0, _topView.bottom, self.frame.size.width, 80)];
     centerView.backgroundColor=[UIColor clearColor];
     
-    UIView *bgView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, 200*.5)];
+    UIView *bgView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, 80)];
     bgView.backgroundColor=UIColorFromRGB(0x000000);
     bgView.alpha=0.05;
     
@@ -100,9 +100,9 @@
     
     for (int i=0; i<section.count; i++) {
         HomeItemModel *obj=[section objectAtIndex:i];
-        HomeHeadItemButton *btn=[[HomeHeadItemButton alloc]initWithFrame:CGRectMake(i*KMainScreenSize.width/3.0, 0, KMainScreenSize.width/3.0, 200*.5)];
+        HomeHeadItemButton *btn=[[HomeHeadItemButton alloc]initWithFrame:CGRectMake(i*KMainScreenSize.width/3.0, 0, KMainScreenSize.width/3.0, 80*.5)];
         [btn setImage:[UIImage imageNamed:obj.img] forState:UIControlStateNormal];
-        [btn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+        [btn.titleLabel setFont:[UIFont systemFontOfSize:12]];
         [btn setTitle:obj.title forState:UIControlStateNormal];
         [centerView addSubview:btn];
     }

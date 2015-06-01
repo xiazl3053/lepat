@@ -63,7 +63,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "548"
             endingLineNumber = "548"
-            landmarkName = "-dealloc"
+            landmarkName = "-upDateImage:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

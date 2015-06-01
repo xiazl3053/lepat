@@ -19,12 +19,48 @@
  password:密码"
  */
 
--(void)requestEditMyInfo
+-(void)requestEditSex
 {
     UserInfo *user = [UserInfo sharedUserInfo];
-    NSString *strUrl = [NSString stringWithFormat:@"%@pats/user/setInfo.do?nickname=%@&sex=%d&birthday=%@&signature=%@&password=%@&token=%@%@",
-                        LEPAT_HTTP_HOST,user.strNickName,user.nSex,user.strBirthday,user.strSignature,user.strPassword,user.strToken,LEPAT_VERSION_INFO];
+    NSString *strUrl = [NSString stringWithFormat:@"%@pats/user/setInfo.do?sex=%d&userid=%@&token=%@%@",
+                        LEPAT_HTTP_HOST,user.nSex,user.strUserId,user.strToken,LEPAT_VERSION_INFO];
     [self sendRequest:strUrl];
+}
+
+-(void)requestEditBrithday
+{
+    UserInfo *user = [UserInfo sharedUserInfo];
+    NSString *strUrl = [NSString stringWithFormat:@"%@pats/user/setInfo.do?birthday=%@&userid=%@&token=%@%@",
+                        LEPAT_HTTP_HOST,user.strBirthday,user.strUserId,user.strToken,LEPAT_VERSION_INFO];
+    [self sendRequest:strUrl];
+}
+
+-(void)requestEditNickName
+{
+    UserInfo *user = [UserInfo sharedUserInfo];
+    NSString *strUrl = [NSString stringWithFormat:@"%@pats/user/setInfo.do?nickname=%@&userid=%@&token=%@%@",
+                        LEPAT_HTTP_HOST,user.strNickName,user.strUserId,user.strToken,LEPAT_VERSION_INFO];
+    //[self sendRequest:strUrl];
+    [self sendRequestString:LEPAT_HTTP_HOST url:strUrl];
+}
+
+-(void)requestEditPasssword{
+    UserInfo *user = [UserInfo sharedUserInfo];
+    NSString *strUrl = [NSString stringWithFormat:@"%@pats/user/setInfo.do?password=%@&userid=%@&token=%@%@",
+                        LEPAT_HTTP_HOST,user.strPassword,user.strUserId,user.strToken,LEPAT_VERSION_INFO];
+    [self sendRequest:strUrl];
+}
+
+-(void)requestEditSingture{
+    UserInfo *user = [UserInfo sharedUserInfo];
+    
+    NSString *strUrl = [NSString stringWithFormat:@"%@pats/user/setInfo.do",LEPAT_HTTP_HOST];
+
+    
+    NSString *post = [NSString stringWithFormat:@"signature=%@&userid=%@&token=%@%@",
+                        user.strSignature,user.strUserId,user.strToken,LEPAT_VERSION_INFO];
+    //[self sendRequest:strUrl];
+     [self sendRequestString:post  url:strUrl];
 }
 
 -(void)reciveDic:(int *)nStatus dic:(NSDictionary *)dic

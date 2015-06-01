@@ -16,6 +16,8 @@
 #import "MapFriendViewController.h"
 #import "HomeHeadReusableView.h"
 #import "HomeGiftItemButton.h"
+#import "PetSortService.h"
+#import "PetSort.h"
 
 
 @interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,HomeItemCollectionCellDelegate>
@@ -31,6 +33,8 @@
     [self initViews];
     self.title=@"主页";
     
+   
+    
 //    HomeGiftItemButton *btn=[[HomeGiftItemButton alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
 //    btn.layer.borderColor=[UIColor groupTableViewBackgroundColor].CGColor;
 //    btn.layer.borderWidth=1.0;
@@ -44,8 +48,27 @@
     // Do any additional setup after loading the view.
 }
 
+-(void)initBar{
+    //创建一个高20的假状态栏背景
+    
+    UIImageView *statusBarView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    
+    //将它的颜色设置成你所需要的，这里我选择了黑色，表示我很沉稳
+    
+    [statusBarView setImage:[UIImage imageNamed:@"Tabbar_adView"]];
+    
+    //这里我的思路是：之前不理想的状态是状态栏颜色也变成了导航栏的颜色，但根据这种情况，反而帮助我判断出此时的状态栏也是导航栏的一部分，而状态栏文字浮于上方，因此理论上直接在导航栏上添加一个subview就是他们中间的那一层了。
+    
+    //推得这样的代码：
+    
+    [self.navigationController.navigationBar addSubview:statusBarView];
+
+}
 
 -(void)initViews{
+    [self initBar];
+    [self initCollectionView];
+    
     UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,34,30)];
     [rightButton  setImage:[UIImage imageNamed:@"home_left"]forState:UIControlStateNormal];
     [rightButton addTarget:self action:@selector(showLeftView)forControlEvents:UIControlEventTouchUpInside];
@@ -53,9 +76,7 @@
     self.navigationItem.leftBarButtonItem= rightItem;
 }
 
--(void)initParams{
-    [self initTestData];
-    
+-(void)initCollectionView{
     UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc]init];
     self.collectView=[[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) collectionViewLayout:layout];
     self.collectView.dataSource=self;
@@ -66,6 +87,20 @@
          forCellWithReuseIdentifier:@"MainHomeCell"];
     [self.view addSubview:self.collectView];
 }
+
+-(void)initParams{
+    [self initTestData];
+    //[self getPetSort];
+}
+
+-(void)getPetSort{
+    PetSortService *service=[[PetSortService alloc]init];
+    service.getPetSortBlock=^(NSString *error,NSArray *data){
+        [[PetSort sharedPetSort]setPetListArr:data];
+    };
+    [service requestPetSort];
+}
+
 
 -(void)initTestData{
     
@@ -171,7 +206,7 @@
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     if (section==0) {
-        return CGSizeMake(320, 616*.5);
+        return CGSizeMake(320, (108+160));
     }else{
         return CGSizeMake(0, 0);
     }
@@ -206,7 +241,7 @@
     switch (indexPath.section) {
         case 0:
         {
-            return CGSizeMake(self.view.frame.size.width/2.0, 135);
+            return CGSizeMake(self.view.frame.size.width/2.0,95);
         }break;
         case 1:
         {
@@ -275,6 +310,8 @@
 }
 
 -(void)showLeftView{
+    [self getPetSort];
+    
     [[NSNotificationCenter defaultCenter]postNotificationName:KShowLeftViewController object:nil];
 
 }

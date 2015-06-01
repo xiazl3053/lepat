@@ -17,6 +17,7 @@
 #import "DelPetService.h"
 #import "PetInfoEditService.h"
 #import "UserInfo.h"
+#import "PetSort.h"
 
 @interface PetDetailViewController ()<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate>{
     UITableView *_tableView;
@@ -61,12 +62,15 @@
 }
 
 -(void)getPetSort{
-    PetSortService *service=[[PetSortService alloc]init];
-    __weak PetDetailViewController *__self=self;
-    service.getPetSortBlock=^(NSString *error,NSArray *data){
-        __self.sortList=data;
-    };
-    [service requestPetSort];
+
+    self.sortList=[PetSort sharedPetSort].petListArr;
+    
+//    PetSortService *service=[[PetSortService alloc]init];
+//    __weak PetDetailViewController *__self=self;
+//    service.getPetSortBlock=^(NSString *error,NSArray *data){
+//        __self.sortList=data;
+//    };
+//    [service requestPetSort];
 }
 
 -(void)initData{
@@ -374,7 +378,7 @@
     UIView *headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
     
     UIImageView *bgView=[[UIImageView alloc]initWithFrame:headView.bounds];
-    bgView.image=[UIImage imageNamed:@"adView_bg"];
+    bgView.image=[UIImage imageNamed:@"headView_bg"];
     [headView addSubview:bgView];
     
     UIImageView *add=[[UIImageView alloc]initWithFrame:CGRectMake((headView.frame.size.width-80)*.5, (headView.frame.size.height-80)*.5, 80, 80)];
@@ -423,6 +427,10 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 100;
+}
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    [scrollView endEditing:YES];
 }
 
 -(void)initCamera{
@@ -536,9 +544,10 @@
             NSDictionary *data=[dic objectForKey:@"photobj"];
             _photoId=[[data objectForKey:@"id"]intValue];
             _pet.nPhotoId=[[data objectForKey:@"id"]intValue];
+            [self queryPetInfo];
         }
     };
-    [upload uploadPetHead:image petId:@"-1"];
+    [upload uploadPetHead:image petId:[NSString stringWithFormat:@"%d",_pet.nPetId]];
 }
 
 - (void)didReceiveMemoryWarning {
