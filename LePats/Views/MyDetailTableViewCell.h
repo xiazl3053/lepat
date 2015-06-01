@@ -13,5 +13,6 @@
 
 @property (nonatomic,strong) UILabel *content;
 @property (nonatomic,strong) UIImageView *indicate;
+@property (nonatomic,strong) UILabel *title;
 
 @end

@@ -159,6 +159,7 @@
             _icon=icon;
             cell.content.hidden=YES;
             cell.indicate.hidden=YES;
+            cell.title.frame=CGRectMake(30, 10, 200, 44);
             [cell addSubview:icon];
         }
     }

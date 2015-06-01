@@ -10,7 +10,6 @@
 
 @interface MyDetailTableViewCell (){
     UIImageView *_icon;
-    UILabel *_title;
 }
 @end
 
@@ -26,13 +25,12 @@
 
 -(void)initViews{
     
-    UILabel *title=[[UILabel alloc]initWithFrame:CGRectMake(30, (self.frame.size.height-44)*.5, 80, 44)];
-    title.textColor=[UIColor blackColor];
-    title.font=[UIFont systemFontOfSize:14];
-    _title=title;
-    [self addSubview:title];
+    self.title=[[UILabel alloc]initWithFrame:CGRectMake(30, (self.frame.size.height-44)*.5, 80, 44)];
+    _title.textColor=[UIColor blackColor];
+    _title.font=[UIFont systemFontOfSize:14];
+    [self addSubview:_title];
     
-    self.content=[[UILabel alloc]initWithFrame:CGRectMake(title.right, 0, 200, 44)];
+    self.content=[[UILabel alloc]initWithFrame:CGRectMake(_title.right, 0, 200, 44)];
     _content.textColor=[UIColor blackColor];
     _content.font=[UIFont systemFontOfSize:14];
     [self addSubview:_content];

@@ -184,6 +184,8 @@
 -(void)initSexView{
     SexButton *male=[[SexButton alloc]initWithFrame:CGRectMake(0, [self barSize].height, KMainScreenSize.width, 40)];
     [male setTitle:@"男" forState:UIControlStateNormal];
+    male.layer.borderColor=[UIColor groupTableViewBackgroundColor].CGColor;
+    male.layer.borderWidth=1.0;
     [male setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [male setImage:[UIImage imageNamed:@"mydetail_select"] forState:UIControlStateSelected];
     male.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
