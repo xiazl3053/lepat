@@ -93,7 +93,8 @@
     //[self getPetSort];
 }
 
--(void)getPetSort{
+-(void)getPetSort
+{
     PetSortService *service=[[PetSortService alloc]init];
     service.getPetSortBlock=^(NSString *error,NSArray *data){
         [[PetSort sharedPetSort]setPetListArr:data];
@@ -309,9 +310,9 @@
     }
 }
 
--(void)showLeftView{
+-(void)showLeftView
+{
     [self getPetSort];
-    
     [[NSNotificationCenter defaultCenter]postNotificationName:KShowLeftViewController object:nil];
 
 }

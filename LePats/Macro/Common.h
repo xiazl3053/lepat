@@ -13,6 +13,7 @@
 #define KMainScreenSize [UIScreen mainScreen].bounds.size
 #define KShowMainViewController @"KShowMainViewController"
 #define KShowLeftViewController @"KShowLeftViewController"
+#define LOGIN_SUCESS_VC  @"LOGIN_SUCESS_VC"
 
 #define KServiceResponseCode @"return_code"
 #define KServiceResponseMsg @"result_msg"
