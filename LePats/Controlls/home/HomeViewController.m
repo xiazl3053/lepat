@@ -191,7 +191,7 @@
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     if (section==0) {
-        return CGSizeMake(320, (108+140));
+        return CGSizeMake(320, (108+160));
     }else{
         return CGSizeMake(0, 0);
     }
@@ -226,7 +226,7 @@
     switch (indexPath.section) {
         case 0:
         {
-            return CGSizeMake(self.view.frame.size.width/2.0,105);
+            return CGSizeMake(self.view.frame.size.width/2.0,95);
         }break;
         case 1:
         {
