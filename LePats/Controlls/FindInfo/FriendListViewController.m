@@ -97,7 +97,6 @@
             [__self.tableView reloadData];
         });
     };
-    //纬度＋经度
     [findSer requestFindNear:fLat lng:fLong];
 }
 
