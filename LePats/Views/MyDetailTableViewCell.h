@@ -11,4 +11,7 @@
 @interface MyDetailTableViewCell : UITableViewCell
 -(void)setValueWithNSDictionay:(NSDictionary *)dic;
 
+@property (nonatomic,strong) UILabel *content;
+@property (nonatomic,strong) UIImageView *indicate;
+
 @end

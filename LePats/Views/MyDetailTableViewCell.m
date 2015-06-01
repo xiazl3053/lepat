@@ -11,8 +11,6 @@
 @interface MyDetailTableViewCell (){
     UIImageView *_icon;
     UILabel *_title;
-    UILabel *_content;
-    UIImageView *_indicate;
 }
 @end
 
@@ -28,22 +26,20 @@
 
 -(void)initViews{
     
-    UILabel *title=[[UILabel alloc]initWithFrame:CGRectMake(30, 0, 80, 44)];
+    UILabel *title=[[UILabel alloc]initWithFrame:CGRectMake(30, (self.frame.size.height-44)*.5, 80, 44)];
     title.textColor=[UIColor blackColor];
     title.font=[UIFont systemFontOfSize:14];
     _title=title;
     [self addSubview:title];
     
-    UILabel *content=[[UILabel alloc]initWithFrame:CGRectMake(title.right, 0, 200, 44)];
-    content.textColor=[UIColor blackColor];
-    content.font=[UIFont systemFontOfSize:14];
-    _content=content;
-    [self addSubview:content];
+    self.content=[[UILabel alloc]initWithFrame:CGRectMake(title.right, 0, 200, 44)];
+    _content.textColor=[UIColor blackColor];
+    _content.font=[UIFont systemFontOfSize:14];
+    [self addSubview:_content];
     
-    UIImageView *indicate=[[UIImageView alloc]initWithFrame:CGRectMake(KMainScreenSize.width-30, 12, 20, 20)];
-    indicate.image=[UIImage imageNamed:@"left_indicate"];
-    _indicate=indicate;
-    [self addSubview:indicate];
+    self.indicate=[[UIImageView alloc]initWithFrame:CGRectMake(KMainScreenSize.width-30, 12, 20, 20)];
+    _indicate.image=[UIImage imageNamed:@"left_indicate"];
+    [self addSubview:_indicate];
 }
 
 -(void)setValueWithNSDictionay:(NSDictionary *)dic{

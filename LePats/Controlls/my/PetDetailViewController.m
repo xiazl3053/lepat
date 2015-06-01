@@ -378,7 +378,7 @@
     UIView *headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
     
     UIImageView *bgView=[[UIImageView alloc]initWithFrame:headView.bounds];
-    bgView.image=[UIImage imageNamed:@"adView_bg"];
+    bgView.image=[UIImage imageNamed:@"headView_bg"];
     [headView addSubview:bgView];
     
     UIImageView *add=[[UIImageView alloc]initWithFrame:CGRectMake((headView.frame.size.width-80)*.5, (headView.frame.size.height-80)*.5, 80, 80)];
