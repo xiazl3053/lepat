@@ -168,7 +168,7 @@
     view2.hidden=YES;
     
     
-    UIImageView *like=[[UIImageView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-100)*.5, 20, 134, 134)];
+    UIImageView *like=[[UIImageView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-100)*.5, 0, 100, 100)];
     like.image=[UIImage imageNamed:@"my_camera"];
     [view2 addSubview:like];
     
