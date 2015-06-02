@@ -18,6 +18,7 @@
 
 @interface MyDetailViewController ()<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
     UIImageView *_icon;
+    UITableView *_tableView;
 }
 @property (nonatomic,strong) NSMutableArray *itemList;
 @end
@@ -49,6 +50,7 @@
     MyInfoService *service=[[MyInfoService alloc]init];
     service.getMyInfoBlock=^(NSString *error){
         [_icon sd_setImageWithURL:[NSURL URLWithString:[UserInfo sharedUserInfo].strUserIcon] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
+        [_tableView reloadData];
     };
     [service requestUserId:0];
 }
@@ -129,6 +131,8 @@
     [self.itemList addObject:section2];
     [self.itemList addObject:section3];
     
+    [_tableView reloadData];
+    
 }
 
 -(void)initViews{
@@ -149,6 +153,7 @@
     tableView.delegate=self;
     tableView.dataSource=self;
     [self.view addSubview:tableView];
+    _tableView=tableView;
     
     //1.设置tableview清除多余的分割线
     UIView *line = [UIView new];

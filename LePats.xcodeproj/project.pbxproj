@@ -100,6 +100,7 @@
 		4D5FEDD61B1CB10200360323 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5FED7F1B1CB10200360323 /* UIView+Extension.m */; };
 		7AE8302AB035A0F6C58184D7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF811F65411D3FCD44EA091 /* libPods.a */; };
 		8416BBF01B1D6C990085FC33 /* MyFansService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8416BBEF1B1D6C990085FC33 /* MyFansService.m */; };
+		8416BBF31B1D6D6C0085FC33 /* MyFansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8416BBF21B1D6D6C0085FC33 /* MyFansViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -344,6 +345,8 @@
 		635FBA24F678FB40B37ED093 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8416BBEE1B1D6C990085FC33 /* MyFansService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFansService.h; sourceTree = "<group>"; };
 		8416BBEF1B1D6C990085FC33 /* MyFansService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFansService.m; sourceTree = "<group>"; };
+		8416BBF11B1D6D6C0085FC33 /* MyFansViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFansViewController.h; sourceTree = "<group>"; };
+		8416BBF21B1D6D6C0085FC33 /* MyFansViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFansViewController.m; sourceTree = "<group>"; };
 		84D4D1C91B018FA400E67D9C /* LePats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LePats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -448,6 +451,8 @@
 				4D5FECA81B1CB10200360323 /* EditMyInfoViewController.m */,
 				4D5FECA91B1CB10200360323 /* MyPetsViewController.h */,
 				4D5FECAA1B1CB10200360323 /* MyPetsViewController.m */,
+				8416BBF11B1D6D6C0085FC33 /* MyFansViewController.h */,
+				8416BBF21B1D6D6C0085FC33 /* MyFansViewController.m */,
 				4D5FECAB1B1CB10200360323 /* PetDetailViewController.h */,
 				4D5FECAC1B1CB10200360323 /* PetDetailViewController.m */,
 				4D5FECAD1B1CB10200360323 /* UserDetailViewController.h */,
@@ -1026,6 +1031,7 @@
 				4D5FEDAF1B1CB10200360323 /* LePetInfo.m in Sources */,
 				4D5FED9A1B1CB10200360323 /* MKAnnotationView+WebCache.m in Sources */,
 				4D5FEDA41B1CB10200360323 /* UIImage+GIF.m in Sources */,
+				8416BBF31B1D6D6C0085FC33 /* MyFansViewController.m in Sources */,
 				4D5FED8E1B1CB10200360323 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
