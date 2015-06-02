@@ -51,8 +51,9 @@
     __weak LoginViewController *__self = self;
     [self addRightEvent:^(id sender)
     {
-        RegFirstViewController *regFirst = [[RegFirstViewController alloc] init];
-        [__self presentViewController:regFirst animated:NO completion:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [__self comeToReg];
+        });
     }];
     UILabel *lblName = [[UILabel alloc] initWithFrame:Rect(50, 74, kScreenSourchWidth-100, 20)];
     [lblName setTextAlignment:NSTextAlignmentCenter];
@@ -72,6 +73,14 @@
     btnLogin.titleLabel.font = XCFONT(14);
     [self.view addSubview:btnLogin];
 }
+
+-(void)comeToReg
+{
+    RegFirstViewController *regFirst = [[RegFirstViewController alloc] init];
+//    [self.navigationController pushViewController:regFirst animated:NO];
+    [self presentViewController:regFirst animated:YES completion:nil];
+}
+
 
 -(void)loginServer
 {

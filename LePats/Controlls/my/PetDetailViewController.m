@@ -140,7 +140,6 @@
     [picker setDatePickerMode:UIDatePickerModeDate];
     [picker addTarget:self action:@selector(dataPickerValueChange:) forControlEvents:UIControlEventValueChanged];
     _datePickerView=picker;
-    
 }
 
 -(void)initSelfView{

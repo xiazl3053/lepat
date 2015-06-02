@@ -20,18 +20,17 @@
     UITextField *txtBirthday;
     UISegmentedControl *segSex;
     UpdUserService *updService;
+    UIDatePicker *_datePickerView;
 }
-
 @end
 
 @implementation RegSettingViewController
-
-
 
 -(void)viewDidLoad
 {
     [super viewDidLoad];
     self.title = @"个人信息设置";
+    [self.view setBackgroundColor:RGB(255, 255, 255)];
     [self createHeadView];
 }
 
@@ -46,6 +45,9 @@
     [self.view addSubview:txtNick];
     [self.view addSubview:txtPwd];
     [self.view addSubview:txtBirthday];
+    
+    [self initDatePickerView];
+    txtBirthday.inputView = _datePickerView;
     
     [self setTextStyle:[UIImage imageNamed:@"login_user_img"] txt:txtNick];
     
@@ -69,6 +71,7 @@
     [btnReg addTarget:self action:@selector(regSettingUserInfo) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btnReg];
     btnReg.frame = Rect(10, 300, self.view.width-20, 40);
+    
 }
 -(void)regSettingUserInfo
 {
@@ -79,7 +82,8 @@
     NSString *strNick = txtNick.text;
     NSString *strPwd = txtPwd.text;
     NSString *strBirthday = txtBirthday.text;
-    if ([strNick isEqualToString:@""]) {
+    if ([strNick isEqualToString:@""])
+    {
         [self.view makeToast:@"昵称不能为空"];
         return ;
     }
@@ -103,12 +107,10 @@
     {
         nSex = 2;
     }
-    
     [UserInfo sharedUserInfo].strBirthday = strBirthday;
     [UserInfo sharedUserInfo].strNickName = strNick;
     [UserInfo sharedUserInfo].strPassword = strPwd;
     [UserInfo sharedUserInfo].nSex = nSex;
-    
     __weak RegSettingViewController *__self = self;
     updService.httpBlock = ^(int nStatus)
     {
@@ -160,6 +162,23 @@
     txtInfo.layer.borderWidth = 1.0f;
     [txtInfo setBackgroundColor:RGB(253, 252, 250)];
     txtInfo.layer.borderColor = RGB(237, 237, 237).CGColor;
+}
+
+-(void)initDatePickerView{
+    UIDatePicker *picker=[[UIDatePicker alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height-100, self.view.frame.size.width, 100)];
+    [picker setDate:[NSDate date] animated:YES];
+    [picker setDatePickerMode:UIDatePickerModeDate];
+    [picker addTarget:self action:@selector(dataPickerValueChange:) forControlEvents:UIControlEventValueChanged];
+    _datePickerView=picker;
+}
+
+-(void)dataPickerValueChange:(UIDatePicker *)picker{
+    NSDateFormatter* fmt = [[NSDateFormatter alloc] init];
+    fmt.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+    fmt.dateFormat = @"yyyy-MM-dd";
+    NSString* dateString = [fmt stringFromDate:picker.date];
+    txtBirthday.text=dateString;
+    NSLog(@"%@",dateString);
 }
 
 @end

@@ -99,7 +99,8 @@
     [self initRigisterNotifcaion];
 }
 
--(void)initRigisterNotifcaion{
+-(void)initRigisterNotifcaion
+{
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(loginSuccess) name:LOGIN_SUCESS_VC object:nil];
 }
 
@@ -107,7 +108,7 @@
 {
     PetSortService *service=[[PetSortService alloc]init];
     service.getPetSortBlock=^(NSString *error,NSArray *data){
-        [[PetSort sharedPetSort]setPetListArr:data];
+        [[PetSort sharedPetSort] setPetListArr:data];
     };
     [service requestPetSort];
 }
@@ -327,11 +328,13 @@
     
 }
 
--(void)loginSuccess{
+-(void)loginSuccess
+{
     [self getPetSort];
 }
 
--(void)dealloc{
+-(void)dealloc
+{
     [[NSNotificationCenter defaultCenter]removeObserver:self name:LOGIN_SUCESS_VC object:nil];
 }
 

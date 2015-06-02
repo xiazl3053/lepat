@@ -81,6 +81,7 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.view setBackgroundColor:RGB(255, 255, 255)];
     self.title = @"注册";
     UILabel *lblContent = [[UILabel alloc] initWithFrame:Rect(10,70,self.view.width-60, 15)];
     [lblContent setTextColor:RGB(101, 101, 101)];
@@ -91,6 +92,7 @@
     txtAddress =[[UITextField alloc] initWithFrame:Rect(10,lblContent.y+lblContent.height+15, self.view.width-20, 44)];
     [txtAddress setText:@"中国"];
     [txtAddress setBackgroundColor:RGB(253, 251, 251)];
+    [txtAddress setUserInteractionEnabled:NO];
     
     UIView *viewAddr = [[UIView alloc] initWithFrame:Rect(0, 0, 20, 20)];
     txtAddress.leftView = viewAddr;

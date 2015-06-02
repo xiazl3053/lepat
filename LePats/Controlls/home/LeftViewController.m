@@ -53,13 +53,14 @@
     // Do any additional setup after loading the view.
 }
 
--(void)initRegitster{
-    
+-(void)initRegitster
+{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getLoginInfo) name:LOGIN_SUCESS_VC object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(userLogout) name:KUserLogout object:nil];
 }
 
--(void)userLogout{
+-(void)userLogout
+{
     _login.hidden=NO;
     _imgView.image=[UIImage imageNamed:@"left_icon_noraml"];
     _nickName.hidden=YES;
@@ -168,10 +169,10 @@
     [self.itemList addObject:model4];
     [self.itemList addObject:model5];
     [self.itemList addObject:model6];
-    
 }
 
--(void)initViews{
+-(void)initViews
+{
     [self initBgView];
     [self initTableView];
     
@@ -237,10 +238,8 @@
 
 -(void)login:(UIButton *)aBtn
 {
-    LoginViewController *login=[[LoginViewController alloc]init];
-    [self presentViewController:login animated:YES completion:^{
-        
-    }];
+   LoginViewController *login=[[LoginViewController alloc]init];
+   [self presentViewController:login animated:YES completion:nil];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -267,14 +266,11 @@
         [self.view makeToast:@"尚未登陆"];
         [self login:nil];
     }
-    
-    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 

@@ -14,9 +14,6 @@
 #import "Toast+UIView.h"
 #import "RegSettingViewController.h"
 
-
-
-
 @interface RegSecondViewController()
 {
     UITextField *txtMobile;
@@ -31,7 +28,7 @@
 {
     [super viewDidLoad];
     self.title = @"填写验证码";
-    
+    [self.view setBackgroundColor:RGB(255, 255, 255)];
     UILabel *lblInfo = [[UILabel alloc] initWithFrame:Rect(11, 80, 280, 20)];
     [lblInfo setFont:XCFONT(14)];
     NSString *strInfo = [NSString stringWithFormat:@"已经发送验证到:%@",[UserInfo sharedUserInfo].strMobile];

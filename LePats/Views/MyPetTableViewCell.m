@@ -26,8 +26,8 @@
     return self;
 }
 
--(void)initViews{
-    
+-(void)initViews
+{
     UIImageView *icon=[[UIImageView alloc]initWithFrame:CGRectMake(30, 7, 30, 30)];
     _icon=icon;
     [self addSubview:icon];
@@ -46,6 +46,14 @@
     [map setImage:[UIImage imageNamed:@"position"] forState:UIControlStateNormal];
     [map addTarget:self action:@selector(gotoMap:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:map];
+    map.tag = 10001;
+}
+
+-(void)layoutSubviews
+{
+    [super layoutSubviews];
+    DLog(@"width:%f",self.contentView.frame.size.width);
+    [self viewWithTag:10001].frame = Rect(self.contentView.frame.size.width-30, 12, 20, 20);
 }
 
 -(void)setValueWithPetInfo:(LePetInfo *)pet{
