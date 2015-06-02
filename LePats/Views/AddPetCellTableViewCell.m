@@ -24,10 +24,13 @@
 -(void)initViews{
     self.title=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 100, 44)];
     self.title.text=@"宠物名称:";
+    self.title.font=[UIFont systemFontOfSize:14];
     [self addSubview:self.title];
     
     self.content=[[UITextField alloc]initWithFrame:CGRectMake(110, 0, 200, 44)];
     self.content.placeholder=@"请输入信息";
+    self.content.font=[UIFont systemFontOfSize:14];
+    self.content.textColor=[UIColor grayColor];
     [self addSubview:self.content];
 }
 

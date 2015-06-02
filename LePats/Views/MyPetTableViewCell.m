@@ -28,7 +28,9 @@
 
 -(void)initViews
 {
-    UIImageView *icon=[[UIImageView alloc]initWithFrame:CGRectMake(30, 7, 30, 30)];
+    UIImageView *icon=[[UIImageView alloc]initWithFrame:CGRectMake(10, 7, 30, 30)];
+    icon.layer.cornerRadius=3.0;
+    icon.layer.masksToBounds=YES;
     _icon=icon;
     [self addSubview:icon];
     
@@ -40,6 +42,7 @@
     UILabel *age=[[UILabel alloc]initWithFrame:CGRectMake(icon.right+10, name.bottom, 150, 20)];
     age.font=[UIFont systemFontOfSize:14];
     _age=age;
+    _age.textColor=[UIColor grayColor];
     [self addSubview:age];
     
     UIButton *map=[[UIButton alloc]initWithFrame:CGRectMake(self.frame.size.width-30, 12, 20, 20)];
