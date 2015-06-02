@@ -18,6 +18,7 @@
 #import "LoginViewController.h"
 #import "UserInfo.h"
 #import "MyInfoService.h"
+#import "Toast+UIView.h"
 
 @interface LeftViewController ()<UITableViewDataSource,UITableViewDelegate>{
     UIImageView *_imgView;
@@ -259,8 +260,15 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    HomeItemModel *model=[self.itemList objectAtIndex:indexPath.row];
-    [[NSNotificationCenter defaultCenter]postNotificationName:KShowMainViewController object:model];
+    if ([UserInfo sharedUserInfo].strToken) {
+        HomeItemModel *model=[self.itemList objectAtIndex:indexPath.row];
+        [[NSNotificationCenter defaultCenter]postNotificationName:KShowMainViewController object:model];
+    }else{
+        [self.view makeToast:@"尚未登陆"];
+        [self login:nil];
+    }
+    
+    
 }
 
 - (void)didReceiveMemoryWarning

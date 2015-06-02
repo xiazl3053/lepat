@@ -109,6 +109,7 @@
 
 //滑动手势
 - (void) handlePan: (UIPanGestureRecognizer *)rec{
+    
     MainViewController *tabbar=(MainViewController*)mainControl;
     UINavigationController *nav=(UINavigationController *)tabbar.selectedViewController;
     if ([nav.topViewController isKindOfClass:[UserInfoViewController class]]) {
@@ -136,6 +137,7 @@
     //手势结束后修正位置
     if (rec.state == UIGestureRecognizerStateEnded) {
         if (scalef>140*speedf){
+            _index++;
             [self showLeftView];
         }
 //        else if (scalef<-140*speedf) {
@@ -143,6 +145,7 @@
 //        }
         else
         {
+            _index++;
             [self showMainView];
             scalef = 0;
         }

@@ -171,8 +171,10 @@
 
 -(void)submitPetInfoView{
     UIButton *submit=[[UIButton alloc]initWithFrame:CGRectMake((self.view.frame.size.width-200)*.5, self.view.frame.size.height-80, 200, 40)];
-    submit.backgroundColor=[UIColor blueColor];
     [self.view addSubview:submit];
+    [submit setBackgroundColor:RGB(0, 146, 255)];
+    [submit.layer setMasksToBounds:YES];
+    submit.layer.cornerRadius = 3.0f;
     
     if (self.type==PetType_EDIT) {
         [submit setTitle:@"删除" forState:UIControlStateNormal];

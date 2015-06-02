@@ -142,29 +142,29 @@
     fansTitle.tag=200;
     [detail addSubview:fansTitle];
     
-    UILabel *fans1=[[UILabel alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.5, sign.bottom+10, KMainScreenSize.width*.25, 20)];
-    fans1.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFansNum];
-    fans1.textAlignment=NSTextAlignmentCenter;
-    [detail addSubview:fans1];
+    UILabel *heart=[[UILabel alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.5, sign.bottom+10, KMainScreenSize.width*.25, 20)];
+    heart.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFansNum];
+    heart.textAlignment=NSTextAlignmentCenter;
+    [detail addSubview:heart];
     
-    UIButton *fansTitle1=[[UIButton alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.5, fans.bottom+5, KMainScreenSize.width*.25, 20)];
-    [fansTitle1 setTitle:@"其他" forState:UIControlStateNormal];
-    [fansTitle1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [fansTitle1 addTarget:self action:@selector(gotoOther:) forControlEvents:UIControlEventTouchUpInside];
-    fansTitle1.tag=300;
-    [detail addSubview:fansTitle1];
+    UIButton *heratTitle=[[UIButton alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.5, fans.bottom+5, KMainScreenSize.width*.25, 20)];
+    [heratTitle setTitle:@"赞" forState:UIControlStateNormal];
+    [heratTitle setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [heratTitle addTarget:self action:@selector(gotoOther:) forControlEvents:UIControlEventTouchUpInside];
+    heratTitle.tag=300;
+    [detail addSubview:heratTitle];
     
-    UILabel *fans2=[[UILabel alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.75, sign.bottom+10, KMainScreenSize.width*.25, 20)];
-    fans2.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFansNum];
-    fans2.textAlignment=NSTextAlignmentCenter;
-    [detail addSubview:fans2];
+    UILabel *commet=[[UILabel alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.75, sign.bottom+10, KMainScreenSize.width*.25, 20)];
+    commet.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFansNum];
+    commet.textAlignment=NSTextAlignmentCenter;
+    [detail addSubview:commet];
     
-    UIButton *fansTitle2=[[UIButton alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.75, fans.bottom+5, KMainScreenSize.width*.25, 20)];
-    [fansTitle2 setTitle:@"其他" forState:UIControlStateNormal];
-    [fansTitle2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [fansTitle2 addTarget:self action:@selector(gotoOther:) forControlEvents:UIControlEventTouchUpInside];
-    fansTitle2.tag=400;
-    [detail addSubview:fansTitle2];
+    UIButton *commetTitle=[[UIButton alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.75, fans.bottom+5, KMainScreenSize.width*.25, 20)];
+    [commetTitle setTitle:@"评论" forState:UIControlStateNormal];
+    [commetTitle setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [commetTitle addTarget:self action:@selector(gotoOther:) forControlEvents:UIControlEventTouchUpInside];
+    commetTitle.tag=400;
+    [detail addSubview:commetTitle];
     
     
     [self.view addSubview:detail];
