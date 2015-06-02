@@ -33,17 +33,17 @@
     [self initViews];
     self.title=@"主页";
     
-   
     
-//    HomeGiftItemButton *btn=[[HomeGiftItemButton alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-//    btn.layer.borderColor=[UIColor groupTableViewBackgroundColor].CGColor;
-//    btn.layer.borderWidth=1.0;
-//    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//    btn.titleLabel.font=[UIFont systemFontOfSize:14];
-//    
-//    [btn addTarget:self action:@selector(userClickCell:) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:btn];
-
+    
+    //    HomeGiftItemButton *btn=[[HomeGiftItemButton alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    //    btn.layer.borderColor=[UIColor groupTableViewBackgroundColor].CGColor;
+    //    btn.layer.borderWidth=1.0;
+    //    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    //    btn.titleLabel.font=[UIFont systemFontOfSize:14];
+    //
+    //    [btn addTarget:self action:@selector(userClickCell:) forControlEvents:UIControlEventTouchUpInside];
+    //    [self.view addSubview:btn];
+    
     
     // Do any additional setup after loading the view.
 }
@@ -62,7 +62,7 @@
     //推得这样的代码：
     
     [self.navigationController.navigationBar addSubview:statusBarView];
-
+    
 }
 
 -(void)initViews{
@@ -197,7 +197,7 @@
     
     if ([kind isEqualToString:UICollectionElementKindSectionFooter]) {
         
-
+        
     }else{
         reusable=[collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HEAD_VIEW" forIndexPath:indexPath];
     }
@@ -285,8 +285,8 @@
         case 101:
         {
             UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//            LoginViewController *info=[story instantiateViewControllerWithIdentifier:@"LoginViewController"];
-//            info.view.backgroundColor=[UIColor yellowColor];
+            //            LoginViewController *info=[story instantiateViewControllerWithIdentifier:@"LoginViewController"];
+            //            info.view.backgroundColor=[UIColor yellowColor];
             if([UserInfo sharedUserInfo].strMobile ==nil)
             {
                 LoginViewController *loginView = [[LoginViewController alloc] init];
@@ -303,7 +303,7 @@
             MapFriendViewController *mapFriend = [[MapFriendViewController alloc] init];
             [self.navigationController pushViewController:mapFriend animated:YES];
         }
-        break;
+            break;
         default:
             break;
     }
@@ -313,7 +313,7 @@
     [self getPetSort];
     
     [[NSNotificationCenter defaultCenter]postNotificationName:KShowLeftViewController object:nil];
-
+    
 }
 
 /*

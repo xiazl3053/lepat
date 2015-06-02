@@ -11,9 +11,12 @@
 #import "MyInfoService.h"
 #import "MyDetailTableViewCell.h"
 #import "UserInfo.h"
+#import "HttpUploadManager.h"
 #import "editmyinfoViewController.h"
+#import "Toast+UIView.h"
+#import "ProgressHUD.h"
 
-@interface MyDetailViewController ()<UITableViewDataSource,UITableViewDelegate>{
+@interface MyDetailViewController ()<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
     UIImageView *_icon;
 }
 @property (nonatomic,strong) NSMutableArray *itemList;
@@ -32,7 +35,9 @@
 -(void)initParams{
     [self getUserInfo];
     [self initData];
-
+    
+//    myFansService *fans=[[myFansService alloc]init];
+//    [fans requestPetInfo:100];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -112,11 +117,18 @@
     [section2 addObject:dic7];
     [section2 addObject:dic8];
     
+    NSMutableArray *section3=[NSMutableArray array];
+    
+    NSMutableDictionary *dic9=[NSMutableDictionary dictionary];
+    
+    [section3 addObject:dic9];
+    
     self.itemList=[NSMutableArray array];
     [self.itemList addObject:section];
     [self.itemList addObject:section1];
     [self.itemList addObject:section2];
-
+    [self.itemList addObject:section3];
+    
 }
 
 -(void)initViews{
@@ -133,7 +145,7 @@
 }
 
 -(void)initTableView{
-    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, [self barSize].height, KMainScreenSize.width, KMainScreenSize.height) style:UITableViewStylePlain];
+    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, [self barSize].height, KMainScreenSize.width, KMainScreenSize.height- [self barSize].height) style:UITableViewStylePlain];
     tableView.delegate=self;
     tableView.dataSource=self;
     [self.view addSubview:tableView];
@@ -163,8 +175,27 @@
             [cell addSubview:icon];
         }
     }
+    
+    NSLog(@"indexPath=%@",indexPath);
+    
+    if (indexPath.section==3) {
+        UIButton *logout=[[UIButton alloc]initWithFrame:CGRectMake((cell.frame.size.width-180)*.5, 10, 180, 25)];
+        [logout setTitle:@"退出" forState:UIControlStateNormal];
+        logout.backgroundColor=[UIColor blueColor];
+        [logout addTarget:self action:@selector(logout:) forControlEvents:UIControlEventTouchUpInside];
+        [cell addSubview:logout];
+        cell.indicate.hidden=YES;
+        cell.backgroundColor=[UIColor groupTableViewBackgroundColor];
+    }
+    
     [cell setValueWithNSDictionay:dic];
     return cell;
+}
+
+-(void)logout:(UIButton *)aBtn{
+    [UserInfo sharedUserInfo].strToken=nil;
+    [self.navigationController popViewControllerAnimated:YES];
+    [[NSNotificationCenter defaultCenter]postNotificationName:KUserLogout object:nil];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -176,10 +207,10 @@
         if (indexPath.row==0) {
             return 60;
         }else{
-            return 40;
+            return 44;
         }
     }else{
-        return 40;
+        return 44;
     }
 }
 
@@ -187,7 +218,7 @@
     NSArray *rows=[self.itemList objectAtIndex:section];
     return rows.count;
 }
-    
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSArray *rows=[self.itemList objectAtIndex:indexPath.section];
@@ -196,9 +227,10 @@
     switch (tag) {
         case 101:
         {
-            EditMyInfoViewController *edit=[[EditMyInfoViewController alloc]init];
-            edit.editType=MYInfoEdit_TYPE_Icon;
-            [self.navigationController pushViewController:edit animated:YES];
+            //            EditMyInfoViewController *edit=[[EditMyInfoViewController alloc]init];
+            //            edit.editType=MYInfoEdit_TYPE_Icon;
+            //            [self.navigationController pushViewController:edit animated:YES];
+            [self addIcon:nil];
         }break;
         case 103:
         {
@@ -229,6 +261,101 @@
     }
 }
 
+-(void)addIcon:(UIButton *)aBtn{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                  initWithTitle:nil
+                                  delegate:self
+                                  cancelButtonTitle:@"取消"
+                                  destructiveButtonTitle:nil
+                                  otherButtonTitles:@"拍照", @"本地相册",nil];
+    actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    [actionSheet showInView:self.view];
+    
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSLog(@"buttonIndex=%li",buttonIndex);
+    switch (buttonIndex) {
+        case 0:{
+            [self initCamera];
+        }break;
+        case 1:{
+            [self initPhotoLibrary];
+        }break;
+        default:
+            break;
+    }
+}
+-(void)initCamera{
+    //先设定sourceType为相机，然后判断相机是否可用（ipod）没相机，不可用将sourceType设定为相片库
+    UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
+    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]) {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];//初始化
+        picker.delegate = self;
+        picker.allowsEditing = YES;//设置可编辑
+        picker.sourceType = sourceType;
+        
+        [self presentViewController:picker animated:YES completion:^{
+            
+        }];//进入照相界面
+    }else{
+        NSLog(@"相机不可用");
+    }
+    //sourceType = UIImagePickerControllerSourceTypeCamera; //照相机
+    //sourceType = UIImagePickerControllerSourceTypePhotoLibrary; //图片库
+    //sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum; //保存的相片
+    
+    
+}
+
+-(void)initPhotoLibrary{
+    
+    UIImagePickerController *pickerImage = [[UIImagePickerController alloc] init];
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+        pickerImage.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        pickerImage.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:pickerImage.sourceType];
+    }
+    pickerImage.delegate = self;
+    pickerImage.allowsEditing = YES;
+    [self presentViewController:pickerImage animated:YES completion:^{
+        
+    }];
+    
+}
+
+-(void)updateImage:(UIImage *)img{
+    [ProgressHUD show:@"正在上传头像..."];
+    HttpUploadManager *upload=[[HttpUploadManager alloc]init];
+    upload.upDatePersonIconBlock=^(NSString *error){
+        [ProgressHUD dismiss];
+        if (error) {
+            [self.view makeToast:@"上传图片失败"];
+        }else{
+            [self getUserInfo];
+            [self.view makeToast:@"上传图片成功"];
+        }
+    };
+    [upload uploadPerson:img];
+}
+
+//点击相册中的图片后触发的方法
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    NSLog(@"image=%@",[info objectForKey:UIImagePickerControllerEditedImage]);
+    [self updateImage:[info objectForKey:UIImagePickerControllerEditedImage]];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
+
+//点击cancel 调用的方法
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    NSLog(@"cancel=%@",picker);
+    [self dismissViewControllerAnimated:YES completion:^{
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    }];
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -236,13 +363,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

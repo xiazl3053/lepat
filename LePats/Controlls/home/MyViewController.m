@@ -9,6 +9,9 @@
 #import "MyViewController.h"
 #import "MyDetailViewController.h"
 #import "UserInfo.h"
+#import "MyInfoService.h"
+#import "LoginViewController.h"
+#import "ProgressHUD.h"
 
 @interface MyViewController (){
     UIImageView *_headView;
@@ -36,6 +39,34 @@
     [self initIconView];
     [self initSegment];
     [self initContentView];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    if ([UserInfo sharedUserInfo].strToken) {
+        [self getUserInfo];
+        _detailView.hidden=NO;
+        //_headView.hidden=YES;
+        _leftView.hidden=NO;
+        _rightView.hidden=NO;
+        _segmentedView.hidden=NO;
+    }else{
+        _detailView.hidden=YES;
+        //_headView.hidden=YES;
+        _leftView.hidden=YES;
+        _rightView.hidden=YES;
+        _segmentedView.hidden=YES;
+    }
+    
+}
+
+-(void)getUserInfo{
+    MyInfoService *service=[[MyInfoService alloc]init];
+    service.getMyInfoBlock=^(NSString *error){
+        [_icon sd_setImageWithURL:[NSURL URLWithString:[UserInfo sharedUserInfo].strUserIcon] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
+    };
+    [service requestUserId:0];
 }
 
 -(void)initSelfView{
@@ -70,7 +101,7 @@
     }
     sign.textAlignment=NSTextAlignmentCenter;
     [detail addSubview:sign];
-
+    
     
     UILabel *focus=[[UILabel alloc]initWithFrame:CGRectMake(0, sign.bottom+10, KMainScreenSize.width*.25, 20)];
     focus.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFocusNum];
@@ -135,9 +166,8 @@
     icon.userInteractionEnabled=YES;
     UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(myDetail:)];
     [icon addGestureRecognizer:tap];
-    [icon setImage:[UIImage imageNamed:@"left_icon_noraml"]];
+    [_icon sd_setImageWithURL:[NSURL URLWithString:[UserInfo sharedUserInfo].strUserIcon] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
     _icon=icon;
-    [self setImageInfo:[UserInfo sharedUserInfo].strUserIcon];
     [self.view addSubview:icon];
 }
 
@@ -156,9 +186,15 @@
     UIView *view1=[[UIView alloc]initWithFrame:CGRectMake(0, _segmentedView.bottom, KMainScreenSize.width, self.view.frame.size.height-_segmentedView.bottom-44)];
     view1.backgroundColor=[UIColor groupTableViewBackgroundColor];
     
-    UIImageView *push=[[UIImageView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-100)*.5, 0, 100, 100)];
-    push.image=[UIImage imageNamed:@"my_heart"];
+    UIImageView *push=[[UIImageView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-80)*.5, (view1.height-80)*.5, 80, 80)];
+    push.image=[UIImage imageNamed:@"my_camera"];
     [view1 addSubview:push];
+    
+    UITextView *text=[[UITextView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-280)*.5,push.bottom-20, 280, 80)];
+    text.text=@"青春的时光很短，我们也过得匆忙。我们不能让时光的飞逝慢一点，只能用镜头记录每一个美好瞬间，留作纪念";
+    text.font=[UIFont systemFontOfSize:10];
+    text.backgroundColor=[UIColor clearColor];
+    [view1 addSubview:text];
     
     _leftView=view1;
     [self.view addSubview:view1];
@@ -168,14 +204,20 @@
     view2.hidden=YES;
     
     
-    UIImageView *like=[[UIImageView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-100)*.5, 0, 100, 100)];
-    like.image=[UIImage imageNamed:@"my_camera"];
+    UIImageView *like=[[UIImageView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-80)*.5, (view2.height-80)*.5, 80, 80)];
+    like.image=[UIImage imageNamed:@"my_heart"];
     [view2 addSubview:like];
     
+    UILabel *text1=[[UILabel alloc]initWithFrame:CGRectMake((KMainScreenSize.width-280)*.5,like.bottom, 280, 20)];
+    text1.text=@"您的喜欢还是空的！";
+    text1.textAlignment=NSTextAlignmentCenter;
+    text1.font=[UIFont systemFontOfSize:10];
+    text1.backgroundColor=[UIColor clearColor];
+    [view2 addSubview:text1];
     
     _rightView=view2;
     [self.view addSubview:view2];
-
+    
 }
 
 -(void)segmentedValueChange:(UISegmentedControl *)segmented{
@@ -212,53 +254,34 @@
 }
 
 -(void)myDetail:(UITapGestureRecognizer *)tap{
-    MyDetailViewController *detail=[[MyDetailViewController alloc]init];
-    detail.hidesBottomBarWhenPushed=YES;
-    [self.navigationController pushViewController:detail animated:YES];
-    NSLog(@"%s",__FUNCTION__);
+    if ([UserInfo sharedUserInfo].strToken) {
+        MyDetailViewController *detail=[[MyDetailViewController alloc]init];
+        detail.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:detail animated:YES];
+        NSLog(@"%s",__FUNCTION__);
+    }else{
+        
+        LoginViewController *login=[[LoginViewController alloc]init];
+        [self presentViewController:login animated:YES completion:^{
+            
+        }];
+        
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(void)setImageInfo:(NSString *)strImage
-{
-    if ([strImage isEqualToString:@""]) {
-        
-        return ;
-    }
-    __block NSString *__strImg = strImage;
-    __weak MyViewController *__self = self;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        UIImage *imgDest = nil;
-        NSURL *url = [NSURL URLWithString:__strImg];
-        NSData *responseData = [NSData dataWithContentsOfURL:url];
-        imgDest = [UIImage imageWithData:responseData];
-        if (imgDest)
-        {
-            __strong UIImage *__imageDest = imgDest;
-            __strong MyViewController *__strongSelf = __self;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [__strongSelf thread_setImgView:__imageDest];
-            });
-        }
-    });
-}
-
--(void)thread_setImgView:(UIImage *)image
-{
-    _icon.image = image;
-}
-
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

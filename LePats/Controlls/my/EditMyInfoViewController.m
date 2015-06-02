@@ -38,7 +38,7 @@
 -(void)initViews{
     [self initSelfView];
     [self initContentView];
-
+    
 }
 
 -(void)initSelfView{
@@ -178,7 +178,7 @@
     field.backgroundColor=[UIColor groupTableViewBackgroundColor];
     [self.view addSubview:field];
     _signTure=field;
-
+    
 }
 
 -(void)initSexView{
@@ -220,7 +220,7 @@
     field.inputView=_datePickerView;
     [self.view addSubview:field];
     _brithDay=field;
-
+    
 }
 
 -(void)initIconView{
@@ -249,7 +249,7 @@
 }
 
 -(void)changeSex:(UIButton *)aBtn{
-   
+    
     if (aBtn.tag==100) {
         [_male setSelected:YES];
         [_female setSelected:NO];
@@ -300,7 +300,7 @@
 
 //点击相册中的图片后触发的方法
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
-   // NSLog(@"image=%@",[info objectForKey:UIImagePickerControllerEditedImage]);
+    // NSLog(@"image=%@",[info objectForKey:UIImagePickerControllerEditedImage]);
     //[self updateImage:[info objectForKey:UIImagePickerControllerEditedImage]];
     _iconImg=[info objectForKey:UIImagePickerControllerEditedImage];
     [self dismissViewControllerAnimated:YES completion:^{
@@ -336,13 +336,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

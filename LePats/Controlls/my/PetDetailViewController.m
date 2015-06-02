@@ -18,6 +18,7 @@
 #import "PetInfoEditService.h"
 #import "UserInfo.h"
 #import "PetSort.h"
+#import "ProgressHUD.h"
 
 @interface PetDetailViewController ()<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate>{
     UITableView *_tableView;
@@ -55,33 +56,33 @@
 
 -(void)getPetInfo{
     if (self.type==PetType_EDIT) {
-         [self queryPetInfo];
+        [self queryPetInfo];
     }else{
         self.pet=[[LePetInfo alloc]init];
     }
 }
 
 -(void)getPetSort{
-
+    
     self.sortList=[PetSort sharedPetSort].petListArr;
     
-//    PetSortService *service=[[PetSortService alloc]init];
-//    __weak PetDetailViewController *__self=self;
-//    service.getPetSortBlock=^(NSString *error,NSArray *data){
-//        __self.sortList=data;
-//    };
-//    [service requestPetSort];
+    //    PetSortService *service=[[PetSortService alloc]init];
+    //    __weak PetDetailViewController *__self=self;
+    //    service.getPetSortBlock=^(NSString *error,NSArray *data){
+    //        __self.sortList=data;
+    //    };
+    //    [service requestPetSort];
 }
 
 -(void)initData{
     self.sexList=[NSArray arrayWithObjects:@"男",@"女",nil];
-//    LePetInfo *pet=[[LePetInfo alloc]init];
-//    pet.strName=@"啊黑";
-//    pet.strBirthday=@"5";
-//    pet.nSex=1;
-//    pet.strDescription=@"漂亮的小宝贝";
-//    pet.nSortId=0;
-//    _pet=pet;
+    //    LePetInfo *pet=[[LePetInfo alloc]init];
+    //    pet.strName=@"啊黑";
+    //    pet.strBirthday=@"5";
+    //    pet.nSex=1;
+    //    pet.strDescription=@"漂亮的小宝贝";
+    //    pet.nSortId=0;
+    //    _pet=pet;
     
 }
 
@@ -134,7 +135,7 @@
     [picker setDatePickerMode:UIDatePickerModeDate];
     [picker addTarget:self action:@selector(dataPickerValueChange:) forControlEvents:UIControlEventValueChanged];
     _datePickerView=picker;
-
+    
 }
 
 -(void)initSelfView{
@@ -156,9 +157,9 @@
             }else{
                 NSLog(@"信息错误");
             }
-         }];
+        }];
     }else{
-      self.title=@"添加宠物";
+        self.title=@"添加宠物";
     }
     self.view.backgroundColor=[UIColor groupTableViewBackgroundColor];
 }
@@ -189,16 +190,16 @@
 
 -(void)submit
 {
-//    LePetInfo *pet=[[LePetInfo alloc]init];
-//    NSString *strName = @"猫-2";
-//    NSString *strDescription = @"描述-1";
-////  stringByAddingPercentEscapesUsingEncoding
-//    NSStringEncoding gbkEncoding =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-//    pet.strName=[strName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//    pet.strBirthday=@"2015-05-27";
-//    pet.nSex=0;
-//    pet.strDescription=[strDescription stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//    pet.nSortId=3;
+    //    LePetInfo *pet=[[LePetInfo alloc]init];
+    //    NSString *strName = @"猫-2";
+    //    NSString *strDescription = @"描述-1";
+    ////  stringByAddingPercentEscapesUsingEncoding
+    //    NSStringEncoding gbkEncoding =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+    //    pet.strName=[strName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    //    pet.strBirthday=@"2015-05-27";
+    //    pet.nSex=0;
+    //    pet.strDescription=[strDescription stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    //    pet.nSortId=3;
     
     if ([self completa]) {
         AddPetService *service=[[AddPetService alloc]init];
@@ -211,7 +212,7 @@
         };
         [service requestAddPet:_pet];
     }else{
-       NSLog(@"信息错误"); 
+        NSLog(@"信息错误");
     }
 }
 
@@ -361,7 +362,7 @@
                 default:
                     break;
             }
-        
+            
         }break;
         default:
             break;
@@ -536,8 +537,10 @@
 }
 
 -(void)upDateImage:(UIImage *)image{
+    [ProgressHUD show:@"上传头像..."];
     HttpUploadManager *upload=[[HttpUploadManager alloc]init];
     upload.uploadImgBlock=^(NSString *error,NSDictionary *dic){
+        [ProgressHUD dismiss];
         if (error) {
             
         }else{
@@ -560,13 +563,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
