@@ -15,7 +15,7 @@
 -(void)requestPetSort
 {
     UserInfo *user = [UserInfo sharedUserInfo];
-    NSString *strUrl = [NSString stringWithFormat:@"%@pats/petsort/getPetSort.do?userid=%@&token=%@%@",LEPAT_HTTP_HOST,
+    NSString *strUrl = [NSString stringWithFormat:@"%@pets/petsort/getPetSort.do?userid=%@&token=%@%@",LEPAT_HTTP_HOST,
                         user.strUserId,user.strToken,LEPAT_VERSION_INFO];
     [self sendRequest:strUrl];
 }

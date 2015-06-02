@@ -60,9 +60,11 @@
         region.span.longitudeDelta = 0.2;
         _mapView.region = region;
         bmk_my = [[BMKPointAnnotation alloc] init];
-        CO
-        bmk_my.coordinate.latitude = fLat;
-        bmk_my.coordinate.longitude = fLong;
+        bmk_my.title = @"我的位置";
+        CLLocationCoordinate2D location2D;
+        location2D.latitude = fLat;
+        location2D.longitude = fLong;
+        bmk_my.coordinate = location2D;
         [_mapView addAnnotation:bmk_my];
     }
     
