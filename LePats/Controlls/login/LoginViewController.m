@@ -141,6 +141,7 @@
 
 -(void)login_BackView
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_SUCESS_VC object:nil];
     if (self.navigationController)
     {
         [self.navigationController popViewControllerAnimated:YES];

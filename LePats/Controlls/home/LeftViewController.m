@@ -48,26 +48,64 @@
     
     [self initViews];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getLoginInfo) name:LOGIN_SUCESS_VC object:nil];
     // Do any additional setup after loading the view.
 }
+
+-(void)getLoginInfo
+{
+    MyInfoService *service=[[MyInfoService alloc]init];
+    __weak UIImageView *__imgView = _imgView;
+    __weak UIButton *__login = _login;
+    __weak UILabel *__nickName = _nickName;
+    service.getMyInfoBlock=^(NSString *error)
+    {
+        if (!error)
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [__imgView sd_setImageWithURL:[NSURL URLWithString:[UserInfo sharedUserInfo].strUserIcon] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
+                __nickName.text=[UserInfo sharedUserInfo].strNickName;
+                if ([UserInfo sharedUserInfo].strToken)
+                {
+                    __login.hidden=YES;
+                    __nickName.hidden=NO;
+                }
+            });
+            
+        }else{
+            
+        }
+    };
+    [service requestUserId:0];
+}
+
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
     
 }
 
--(void)initRegitster{
+-(void)initRegitster
+{
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getPersonInfo) name:KShowLeftViewController object:nil];
 }
 
--(void)getPersonInfo{
+
+
+-(void)getPersonInfo
+{
     MyInfoService *service=[[MyInfoService alloc]init];
     service.getMyInfoBlock=^(NSString *error){
-        if (!error) {
+        if (!error)
+        {
             [_imgView sd_setImageWithURL:[NSURL URLWithString:[UserInfo sharedUserInfo].strUserIcon] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
             _nickName.text=[UserInfo sharedUserInfo].strNickName;
-            _login.hidden=YES;
-            _nickName.hidden=NO;
+            if ([UserInfo sharedUserInfo].strToken)
+            {
+                _login.hidden=YES;
+                _nickName.hidden=NO;
+            }
+
         }else{
         
         }
@@ -150,7 +188,8 @@
     return 120;
 }
 
--(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+-(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
     UIView *my=[[UIView alloc]initWithFrame:CGRectMake(0, 20, 260, 120)];
     
     UIImageView *icon=[[UIImageView alloc]initWithFrame:CGRectMake((200-60)*.5, 10, 60, 60)];
@@ -166,13 +205,14 @@
     [login setTitle:@"登录" forState:UIControlStateNormal];
     login.titleLabel.font=[UIFont systemFontOfSize:14];
     login.layer.borderColor=[UIColor whiteColor].CGColor;
-    login.layer.borderWidth=.5;
+    login.layer.borderWidth=1;
     [login addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
     _login=login;
     [my addSubview:login];
     
     UILabel *title=[[UILabel alloc]initWithFrame:CGRectMake((200-100)*.5, icon.bottom+5, 100, 25)];
-    if ([UserInfo sharedUserInfo].strToken) {
+    if ([UserInfo sharedUserInfo].strToken)
+    {
         login.hidden=YES;
         title.text=[UserInfo sharedUserInfo].strNickName;
     }else{
@@ -184,11 +224,11 @@
     title.textColor=[UIColor whiteColor];
     [my addSubview:title];
     
-    
     return my;
 }
 
--(void)login:(UIButton *)aBtn{
+-(void)login:(UIButton *)aBtn
+{
     LoginViewController *login=[[LoginViewController alloc]init];
     [self presentViewController:login animated:YES completion:^{
         
