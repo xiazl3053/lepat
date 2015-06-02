@@ -14,16 +14,14 @@
 -(void)requestUserId:(int)nUserId
 {
     UserInfo *user = [UserInfo sharedUserInfo];
+    
+    NSString *strUrl = [NSString stringWithFormat:@"%@pats/focus/getFocus.do?oper_user_id=%d&userid=%@&token=%@%@",
+                        LEPAT_HTTP_HOST,nUserId,user.strUserId,user.strToken,LEPAT_VERSION_INFO];
+    [self sendRequest:strUrl];
+    
     if (nUserId==0) {
-        NSString *strUrl = [NSString stringWithFormat:@"%@pats/user/getInfo.do?userid=%@&token=%@%@",
-                            LEPAT_HTTP_HOST,user.strUserId,user.strToken,LEPAT_VERSION_INFO];
-        [self sendRequest:strUrl];
-    }else{
-        NSString *strUrl = [NSString stringWithFormat:@"%@pats/user/getInfo.do?oper_user_id=%d&userid=%@&token=%@%@",
-                            LEPAT_HTTP_HOST,nUserId,user.strUserId,user.strToken,LEPAT_VERSION_INFO];
-        [self sendRequest:strUrl];
+       
     }
-    //[self sendRequest:strUrl];
 }
 
 -(void)reciveDic:(int *)nStatus dic:(NSDictionary *)dic

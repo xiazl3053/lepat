@@ -9,5 +9,5 @@
 #import "HttpManager.h"
 
 @interface MyFansService : HttpManager
-
+-(void)requestUserId:(int)nUserId;
 @end

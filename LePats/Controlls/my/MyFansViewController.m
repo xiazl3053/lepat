@@ -7,6 +7,8 @@
 //
 
 #import "MyFansViewController.h"
+#import "MyFansService.h"
+#import "UserInfo.h"
 
 @interface MyFansViewController ()
 
@@ -16,7 +18,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initParams];
+    [self initSelfView];
     // Do any additional setup after loading the view.
+}
+
+-(void)initViews{
+    [self initSelfView];
+}
+
+-(void)initSelfView{
+    self.view.backgroundColor=[UIColor whiteColor];
+}
+
+-(void)initParams{
+    MyFansService *service=[[MyFansService alloc]init];
+    int userID=[[UserInfo sharedUserInfo].strUserId intValue];
+    [service requestUserId:userID];
 }
 
 - (void)didReceiveMemoryWarning {

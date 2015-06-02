@@ -12,6 +12,7 @@
 #import "MyInfoService.h"
 #import "LoginViewController.h"
 #import "ProgressHUD.h"
+#import "MyFansViewController.h"
 
 @interface MyViewController (){
     UIImageView *_headView;
@@ -258,7 +259,7 @@
     switch (aBtn.tag) {
         case 100:
         {
-            MyViewController *other=[[MyViewController alloc]init];
+            MyFansViewController *other=[[MyFansViewController alloc]init];
             [self.navigationController pushViewController:other animated:YES];
         }break;
             
