@@ -53,7 +53,7 @@
     
     [self setTextStyle:[UIImage imageNamed:@"login_pwd_img"] txt:txtPwd];
     
-    [self setTextStyle:[UIImage imageNamed:@""] txt:txtBirthday];
+    [self setTextStyle:[UIImage imageNamed:@"register_date"] txt:txtBirthday];
     
     [txtNick setPlaceholder:@"请设置您的昵称"];
     [txtPwd setPlaceholder:@"请设置登录密码"];
