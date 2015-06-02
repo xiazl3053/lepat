@@ -8,6 +8,7 @@
 
 #import "FriendListViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "MapFriendViewController.h"
 #import "BMKLocationService.h"
 #import "UIView+Extension.h"
 #import "FindService.h"
@@ -50,8 +51,8 @@
     [BMKLocationService setLocationDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
     [BMKLocationService setLocationDistanceFilter:100.0f];
     _locService = [[BMKLocationService alloc]init];
-    _locService.delegate = self;
     [_locService startUserLocationService];
+    _locService.delegate = self;
 }
 
 -(void)initHeadView
@@ -76,12 +77,13 @@
     [self startLocation];
     [self initHeadView];
     [self initView];
-//    [self findData];
 }
 
 -(void)comeToMap
 {
-    
+    [_locService stopUserLocationService];
+    MapFriendViewController *map =[[MapFriendViewController alloc] initWithLat:fLat long:fLong];
+    [self presentViewController:map animated:YES completion:nil];
 }
 
 -(void)findData
@@ -108,18 +110,6 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-//    if([CLLocationManager locationServicesEnabled])
-//    {
-//        locationManager = [[CLLocationManager alloc] init];
-//        locationManager.delegate = self;
-//    }else
-//    {
-//        //提示用户无法进行定位操作
-//        [self.view makeToast:@"请在通用中设置定位服务开启"];
-//    }
-//    // 开始定位
-//    [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-//    [locationManager startUpdatingLocation];
 }
 
 

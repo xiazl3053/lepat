@@ -12,6 +12,7 @@
 #import "HomeItemModel.h"
 #import "HomeItemButton.h"
 #import "UserInfoViewController.h"
+#import "UIView+Extension.h"
 #import "LoginViewController.h"
 #import "MapFriendViewController.h"
 #import "HomeHeadReusableView.h"
@@ -52,10 +53,10 @@
     [super viewWillAppear:YES];
 }
 
--(void)initBar{
+-(void)initBar
+{
     //创建一个高20的假状态栏背景
-    
-    UIImageView *statusBarView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    UIImageView *statusBarView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,self.view.width, 44)];
     
     //将它的颜色设置成你所需要的，这里我选择了黑色，表示我很沉稳
     

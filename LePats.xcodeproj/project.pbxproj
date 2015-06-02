@@ -100,6 +100,7 @@
 		4D5FEDD61B1CB10200360323 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5FED7F1B1CB10200360323 /* UIView+Extension.m */; };
 		7AE8302AB035A0F6C58184D7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF811F65411D3FCD44EA091 /* libPods.a */; };
 		8416BBF01B1D6C990085FC33 /* MyFansService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8416BBEF1B1D6C990085FC33 /* MyFansService.m */; };
+		BB1FB2F21B1D792500A02CCD /* MyLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1FB2F11B1D792500A02CCD /* MyLocation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -345,6 +346,8 @@
 		8416BBEE1B1D6C990085FC33 /* MyFansService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFansService.h; sourceTree = "<group>"; };
 		8416BBEF1B1D6C990085FC33 /* MyFansService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFansService.m; sourceTree = "<group>"; };
 		84D4D1C91B018FA400E67D9C /* LePats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LePats.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB1FB2F01B1D792500A02CCD /* MyLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLocation.h; sourceTree = "<group>"; };
+		BB1FB2F11B1D792500A02CCD /* MyLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLocation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -744,6 +747,8 @@
 				4D5FED621B1CB10200360323 /* PetSort.m */,
 				4D5FED631B1CB10200360323 /* UserInfo.h */,
 				4D5FED641B1CB10200360323 /* UserInfo.m */,
+				BB1FB2F01B1D792500A02CCD /* MyLocation.h */,
+				BB1FB2F11B1D792500A02CCD /* MyLocation.m */,
 			);
 			path = singleton;
 			sourceTree = "<group>";
@@ -954,6 +959,7 @@
 				4D5FEDC71B1CB10200360323 /* HttpUploadManager.m in Sources */,
 				4D5FEDA11B1CB10200360323 /* SDWebImageManager.m in Sources */,
 				4D5FEDC01B1CB10200360323 /* PetInfoEditService.m in Sources */,
+				BB1FB2F21B1D792500A02CCD /* MyLocation.m in Sources */,
 				4D5FEDCA1B1CB10200360323 /* AddPetCellTableViewCell.m in Sources */,
 				4D5FEDC61B1CB10200360323 /* UpdUserService.m in Sources */,
 				4D5FEDC11B1CB10200360323 /* PetInfoService.m in Sources */,

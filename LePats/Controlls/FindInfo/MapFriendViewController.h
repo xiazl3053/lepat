@@ -13,4 +13,8 @@
 {
     BMKMapView *_mapView;
 }
+
+
+-(id)initWithLat:(CGFloat)fLatitude long:(CGFloat)fLongitude;
+
 @end
