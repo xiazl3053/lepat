@@ -48,8 +48,21 @@
     
     [self initViews];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getLoginInfo) name:LOGIN_SUCESS_VC object:nil];
+    
     // Do any additional setup after loading the view.
+}
+
+-(void)initRegitster{
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getLoginInfo) name:LOGIN_SUCESS_VC object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(userLogout) name:KUserLogout object:nil];
+}
+
+-(void)userLogout{
+    _login.hidden=NO;
+    _imgView.image=[UIImage imageNamed:@"left_icon_noraml"];
+    _nickName.hidden=YES;
+    
 }
 
 -(void)getLoginInfo
@@ -84,12 +97,6 @@
     [super viewWillAppear:YES];
     
 }
-
--(void)initRegitster
-{
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getPersonInfo) name:KShowLeftViewController object:nil];
-}
-
 
 
 -(void)getPersonInfo

@@ -91,6 +91,11 @@
 -(void)initParams{
     [self initTestData];
     //[self getPetSort];
+    [self initRigisterNotifcaion];
+}
+
+-(void)initRigisterNotifcaion{
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(loginSuccess) name:LOGIN_SUCESS_VC object:nil];
 }
 
 -(void)getPetSort
@@ -312,9 +317,17 @@
 
 -(void)showLeftView
 {
-    [self getPetSort];
+    
     [[NSNotificationCenter defaultCenter]postNotificationName:KShowLeftViewController object:nil];
     
+}
+
+-(void)loginSuccess{
+    [self getPetSort];
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:LOGIN_SUCESS_VC object:nil];
 }
 
 /*
