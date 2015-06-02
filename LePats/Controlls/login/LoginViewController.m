@@ -52,7 +52,7 @@
     [self addRightEvent:^(id sender)
     {
         RegFirstViewController *regFirst = [[RegFirstViewController alloc] init];
-        [__self.navigationController pushViewController:regFirst animated:YES];
+        [__self presentViewController:regFirst animated:NO completion:nil];//:regFirst animated:YES];
     }];
     UILabel *lblName = [[UILabel alloc] initWithFrame:Rect(50, 74, kScreenSourchWidth-100, 20)];
     [lblName setTextAlignment:NSTextAlignmentCenter];

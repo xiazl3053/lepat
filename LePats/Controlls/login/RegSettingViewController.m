@@ -60,6 +60,7 @@
     segSex = [[UISegmentedControl alloc] initWithItems:[[NSArray alloc] initWithObjects:@"男",@"女", nil]];
     segSex.frame = Rect(self.view.width/2-80, 240, 160,40);
     [self.view addSubview:segSex];
+    [segSex setSelectedSegmentIndex:0];
     
     UIButton *btnReg = [UIButton buttonWithType:UIButtonTypeCustom];
     [btnReg setTitle:@"注册" forState:UIControlStateNormal];
@@ -67,7 +68,7 @@
     [btnReg setTitleColor:RGB(255, 255, 255) forState:UIControlStateNormal];
     [btnReg addTarget:self action:@selector(regSettingUserInfo) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btnReg];
-    btnReg.frame = Rect(10, 300, self.view.width, 40);
+    btnReg.frame = Rect(10, 300, self.view.width-20, 40);
 }
 -(void)regSettingUserInfo
 {

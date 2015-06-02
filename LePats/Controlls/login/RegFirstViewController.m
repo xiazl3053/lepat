@@ -82,7 +82,7 @@
 {
     [super viewDidLoad];
     self.title = @"注册";
-    UILabel *lblContent = [[UILabel alloc] initWithFrame:Rect(10, 60,self.view.width-60, 15)];
+    UILabel *lblContent = [[UILabel alloc] initWithFrame:Rect(10,70,self.view.width-60, 15)];
     [lblContent setTextColor:RGB(101, 101, 101)];
     [lblContent setText:@"请确保您的手机畅通,用于接受验证码短信"];
     [lblContent setFont:XCFONT(12)];
@@ -144,7 +144,7 @@
 
 -(void)regOKBack
 {
-    [self.navigationController popViewControllerAnimated:NO];
+    [self dismissViewControllerAnimated:YES completion:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:MESSAGE_UPDATE_USER_TH_VC object:nil];
 }
 
