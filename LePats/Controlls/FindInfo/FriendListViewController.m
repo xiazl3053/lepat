@@ -8,6 +8,7 @@
 
 #import "FriendListViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "BMKGeoCodeSearch.h"
 #import "MapFriendViewController.h"
 #import "BMKLocationService.h"
 #import "UIView+Extension.h"
@@ -16,13 +17,15 @@
 #import "Toast+UIView.h"
 #import "NearInfo.h"
 
-@interface FriendListViewController ()<UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate,BMKLocationServiceDelegate>
+@interface FriendListViewController ()<UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate,BMKLocationServiceDelegate,BMKGeoCodeSearchDelegate>
 {
     FindService *findSer;
     UILabel *lblLocation;
     CLLocationManager *locationManager;
     BMKLocationService *_locService;
     CGFloat fLat,fLong;
+    BMKGeoCodeSearch *search;
+    BOOL bTrue;
 }
 
 
@@ -53,6 +56,7 @@
     _locService = [[BMKLocationService alloc]init];
     [_locService startUserLocationService];
     _locService.delegate = self;
+    bTrue = YES;
 }
 
 -(void)initHeadView
@@ -77,6 +81,8 @@
     [self startLocation];
     [self initHeadView];
     [self initView];
+    search = [[BMKGeoCodeSearch alloc] init];
+    search.delegate = self;
 }
 
 -(void)comeToMap
@@ -116,12 +122,12 @@
 -(void)initView
 {
    lblLocation = [[UILabel alloc] initWithFrame:Rect(0,[self barSize].height, self.view.width, 44)];
-   [lblLocation setFont:XCFONT(20)];
+   [lblLocation setFont:XCFONT(15)];
    [self.view addSubview:lblLocation];
    
    [lblLocation setBackgroundColor:RGB(173, 173, 173)];
    [lblLocation setTextColor:RGB(255, 255, 255)];
-    
+   [lblLocation setText:@"您当前的位置:"];
    _tableView = [[UITableView alloc] initWithFrame:Rect(0, lblLocation.height+lblLocation.y, self.view.width,self.view.height-lblLocation.height-lblLocation.y-44)];
    [self.view addSubview:_tableView];
    _tableView.delegate = self;
@@ -184,12 +190,29 @@
 - (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation
 {
     DLog(@"didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
-    fLat = userLocation.location.coordinate.latitude;
-    fLong = userLocation.location.coordinate.longitude;
-    [self findData];
+    if(fLat != userLocation.location.coordinate.latitude ||
+       fLong != userLocation.location.coordinate.longitude)
+    {
+        fLat = userLocation.location.coordinate.latitude;
+        fLong = userLocation.location.coordinate.longitude;
+        [self findData];
+        //BMKReverseGeoCodeOption
+        BMKReverseGeoCodeOption *reverseGeoCodeOption= [[BMKReverseGeoCodeOption alloc] init];
+        //需要逆地理编码的坐标位置
+        reverseGeoCodeOption.reverseGeoPoint = userLocation.location.coordinate;
+        [search reverseGeoCode:reverseGeoCodeOption];
+    }
 }
 
-
+- (void)onGetReverseGeoCodeResult:(BMKGeoCodeSearch *)searcher result:(BMKReverseGeoCodeResult *)result errorCode:(BMKSearchErrorCode)error
+{
+    DLog(@"result:%@",result.address);
+    dispatch_async(dispatch_get_main_queue(),
+    ^{
+        lblLocation.text = [NSString stringWithFormat:@"您当前的位置:%@",result.address];
+    });
+    //BMKReverseGeoCodeResult是编码的结果，包括地理位置，道路名称，uid，城市名等信息
+}
 /*
 #pragma mark - Navigation
 
