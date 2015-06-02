@@ -16,7 +16,8 @@
 @property (nonatomic,strong) NSString *strFile;
 @property (nonatomic,assign) CGFloat fDistan;
 @property (nonatomic,assign) int nSex;
-
+@property (nonatomic,assign) CGFloat fLat;
+@property (nonatomic,assign) CGFloat fLong;
 
 -(id)initWithItems:(NSArray *)items;
 

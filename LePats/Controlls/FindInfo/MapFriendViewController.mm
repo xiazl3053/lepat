@@ -8,6 +8,7 @@
 
 #import "MapFriendViewController.h"
 #import "BMKLocationComponent.h"
+#import "NearInfo.h"
 #import "FindService.h"
 #import "BMapKit.h"
 
@@ -18,6 +19,7 @@
     FindService *findSer;
     BMKPointAnnotation *bmk_my;
 }
+@property (nonatomic,strong) NSMutableArray *aryAnnotation;
 @property (nonatomic,strong) NSMutableArray *aryNear;
 @end
 
@@ -44,13 +46,14 @@
 {
     [super viewDidLoad];
     _aryNear = [NSMutableArray array];
+    _aryAnnotation = [NSMutableArray array];
     _mapView = [[BMKMapView alloc] initWithFrame:Rect(0,[self barSize].height, kScreenSourchWidth, kScreenSourchHeight-64)];
     self.title = @"地图";
     _mapView.showsUserLocation = NO;
     _mapView.userTrackingMode = BMKUserTrackingModeFollow;
     _mapView.showsUserLocation = YES;
     _mapView.delegate = self;
-    
+    findSer = [[FindService alloc] init];
     if(fLat != 0 && fLong != 0)
     {
         BMKCoordinateRegion region;
@@ -107,11 +110,39 @@
     findSer.httpBlock = ^(int nStatus,NSArray *aryInfo)
     {
         DLog(@"aryData_length:%lu",aryInfo.count);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [__self removeAnnotation];
+        });
         [__self.aryNear removeAllObjects];
         [__self.aryNear addObjectsFromArray:aryInfo];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [__self addAnnotation];
+        });
     };
     [findSer requestFindNear:fLat lng:fLong];
 }
+
+-(void)removeAnnotation
+{
+    [_mapView removeAnnotations:_aryAnnotation];
+    [_aryAnnotation removeAllObjects];
+}
+
+-(void)addAnnotation
+{
+    for (NearInfo *near in _aryNear)
+    {
+        BMKPointAnnotation *bmk = [[BMKPointAnnotation alloc] init];
+        CLLocationCoordinate2D location;
+        location.latitude = near.fLat;
+        location.longitude = near.fLong;
+        bmk.coordinate = location;
+        bmk.title = near.strName;
+        [_mapView addAnnotation:bmk];
+        [_aryAnnotation addObject:bmk];
+    }
+}
+
 - (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation
 {
     BMKCoordinateRegion region;
@@ -125,6 +156,7 @@
         NSLog(@"当前的坐标是: %f,%f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
         fLat = userLocation.location.coordinate.latitude;
         fLong = userLocation.location.coordinate.longitude;
+        [self findData];
     }
 }
 

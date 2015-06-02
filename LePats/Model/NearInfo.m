@@ -27,11 +27,15 @@
 -(id)initWithDic:(NSDictionary *)dict
 {
     self = [super init];
+    
     _strContent = [dict objectForKey:@"signature"];
     _fDistan = [[dict objectForKey:@"distan"] floatValue];
     _strName = [dict objectForKey:@"nickname"];
     _strFile = [dict objectForKey:@"userIcon"];
     _nSex = [[dict objectForKey:@"sex"] intValue];
+    _fLat = [[dict objectForKey:@"lat"] floatValue];
+    _fLong = [[dict objectForKey:@"lng"] floatValue];
+    
     return self;
     
 }
