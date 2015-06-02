@@ -13,7 +13,7 @@
 #import "MainViewController.h"
 #import "UserInfoViewController.h"
 
-@interface MainViewController ()
+@interface MainViewController ()<UITabBarControllerDelegate>
 
 @end
 
@@ -25,7 +25,7 @@
     if (self) {
         // Custom initialization
         //[self createrView];
-        [self initViews];
+        //[self initViews];
     }
     return self;
 }
@@ -77,11 +77,18 @@
     [self addChildViewController:nav];
 }
 
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSLog(@"%s",__FUNCTION__);
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 -(void)createrView
 {

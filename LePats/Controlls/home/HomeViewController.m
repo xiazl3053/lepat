@@ -48,6 +48,10 @@
     // Do any additional setup after loading the view.
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+}
+
 -(void)initBar{
     //创建一个高20的假状态栏背景
     

@@ -19,6 +19,7 @@
 #import "UserInfo.h"
 #import "PetSort.h"
 #import "ProgressHUD.h"
+#import "Toast+UIView.h"
 
 @interface PetDetailViewController ()<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate>{
     UITableView *_tableView;
@@ -91,10 +92,14 @@
     __weak PetDetailViewController *__self=self;
     pet.getPetInfoBlock=^(NSString *error,LePetInfo *pet){
         if (error) {
-            
+             [self.view makeToast:error];
         }else{
             __self.pet=pet;
-            [_imgView sd_setImageWithURL:[NSURL URLWithString:pet.strIconUrl] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
+            if (self.type==PetType_ADD) {
+                [_imgView sd_setImageWithURL:[NSURL URLWithString:pet.strIconUrl] placeholderImage:[UIImage imageNamed:@"pet_add"]];
+            }else{
+                [_imgView sd_setImageWithURL:[NSURL URLWithString:pet.strIconUrl] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
+            }
             __self.title=_pet.strName;
             [_tableView reloadData];
         }
@@ -148,7 +153,7 @@
                 PetInfoEditService *service=[[PetInfoEditService alloc]init];
                 service.editPetBlock=^(NSString *error){
                     if (error) {
-                        
+                        [__self.view makeToast:error];
                     }else{
                         [__self.navigationController popViewControllerAnimated:YES];
                     }
@@ -383,14 +388,21 @@
     [headView addSubview:bgView];
     
     UIImageView *add=[[UIImageView alloc]initWithFrame:CGRectMake((headView.frame.size.width-80)*.5, (headView.frame.size.height-80)*.5, 80, 80)];
-    [add sd_setImageWithURL:[NSURL URLWithString:_pet.strIconUrl] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
+    
     add.layer.cornerRadius=add.width*.5;
     add.layer.masksToBounds=YES;
+    add.backgroundColor=[UIColor whiteColor];
     UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(addIcon:)];
     //[add addTarget:self action:@selector(addIcon:) forControlEvents:UIControlEventTouchUpInside];
     [add addGestureRecognizer:tap];
     add.userInteractionEnabled=YES;
     _imgView=add;
+    
+    if (self.type==PetType_ADD) {
+        [_imgView sd_setImageWithURL:[NSURL URLWithString:_pet.strIconUrl] placeholderImage:[UIImage imageNamed:@"pet_add"]];
+    }else{
+        [_imgView sd_setImageWithURL:[NSURL URLWithString:_pet.strIconUrl] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
+    }
     
     [headView addSubview:add];
     

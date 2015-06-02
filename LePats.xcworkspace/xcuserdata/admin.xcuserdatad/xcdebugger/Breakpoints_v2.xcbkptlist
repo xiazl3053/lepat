@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LePats/Controlls/my/PetDetailViewController.m"
-            timestampString = "454900936.94777"
+            timestampString = "454909466.798617"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "551"
-            endingLineNumber = "551"
+            startingLineNumber = "563"
+            endingLineNumber = "563"
             landmarkName = "-upDateImage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -153,29 +153,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LePats/Controlls/home/WWSideslipViewController.m"
-            timestampString = "454774960.675498"
+            filePath = "LePats/Controlls/home/MainViewController.m"
+            timestampString = "454907734.117966"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "-handlePan:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LePats/Services/http/Pub/HttpManager.m"
-            timestampString = "454770961.778915"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "-reciveHttp:data:error:"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -186,12 +170,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LePats/Controlls/home/HomeViewController.m"
-            timestampString = "454901758.486367"
+            timestampString = "454909194.097448"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "-getPetSort"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "-viewWillAppear:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -201,13 +185,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LePats/Controlls/home/HomeViewController.m"
-            timestampString = "454901758.486367"
+            filePath = "LePats/Controlls/my/PetDetailViewController.m"
+            timestampString = "454909671.095795"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "-getPetSort"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "-initSelfView"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -20,6 +20,9 @@
     UIView *_leftView;
     UIView *_rightView;
     UIImageView *_icon;
+    UILabel *_fans;
+    UILabel *_focus;
+    UILabel *_singture;
 }
 
 @end
@@ -51,12 +54,20 @@
         _leftView.hidden=NO;
         _rightView.hidden=NO;
         _segmentedView.hidden=NO;
+        _fans.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFansNum];
+        _focus.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFocusNum];
+        if ([[UserInfo sharedUserInfo].strSignature isEqualToString:@""]) {
+            _singture.text=@"这个人很懒,什么都没有留下.";
+        }else{
+            _singture.text=[UserInfo sharedUserInfo].strSignature;
+        }
     }else{
         _detailView.hidden=YES;
         //_headView.hidden=YES;
         _leftView.hidden=YES;
         _rightView.hidden=YES;
         _segmentedView.hidden=YES;
+        [self.tabBarController setSelectedIndex:0];
     }
     
 }
@@ -101,12 +112,14 @@
     }
     sign.textAlignment=NSTextAlignmentCenter;
     [detail addSubview:sign];
+    _singture=sign;
     
     
     UILabel *focus=[[UILabel alloc]initWithFrame:CGRectMake(0, sign.bottom+10, KMainScreenSize.width*.25, 20)];
     focus.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFocusNum];
     focus.textAlignment=NSTextAlignmentCenter;
     [detail addSubview:focus];
+    _focus=focus;
     
     UIButton *focusTitle=[[UIButton alloc]initWithFrame:CGRectMake(0, focus.bottom+5, KMainScreenSize.width*.25, 20)];
     [focusTitle setTitle:@"关注" forState:UIControlStateNormal];
@@ -120,6 +133,7 @@
     fans.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFansNum];
     fans.textAlignment=NSTextAlignmentCenter;
     [detail addSubview:fans];
+    _fans=fans;
     
     UIButton *fansTitle=[[UIButton alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.25, fans.bottom+5, KMainScreenSize.width*.25, 20)];
     [fansTitle setTitle:@"粉丝" forState:UIControlStateNormal];

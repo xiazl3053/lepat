@@ -21,8 +21,12 @@
 #import "PetSortService.h"
 #import "HttpUploadManager.h"
 #import "UploadService.h"
+#import "UserInfo.h"
+#import "LoginViewController.h"
 
-@interface AppDelegate ()
+@interface AppDelegate ()<UITabBarControllerDelegate>{
+    WWSideslipViewController *_slide;
+}
 
 @end
 
@@ -35,13 +39,14 @@
     
     UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     MainViewController *main = [story instantiateViewControllerWithIdentifier:@"MainViewController"];
-    
+    main.delegate=self;
     RightViewController *right = [story instantiateViewControllerWithIdentifier:@"RightViewController"];
     
     LeftViewController *left = [story instantiateViewControllerWithIdentifier:@"LeftViewController"];
     
     WWSideslipViewController * slide = [[WWSideslipViewController alloc]initWithLeftView:left andMainView:main andRightView:right andBackgroundImage:[UIImage imageNamed:@"bg.png"]];
     
+    _slide=slide;
     //滑动速度系数
     [slide setSpeedf:0.5];
     
@@ -64,6 +69,25 @@
     [self.window makeKeyAndVisible];
     
     return YES;
+}
+
+-(BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
+    NSLog(@"%s",__FUNCTION__);
+    if ([UserInfo sharedUserInfo].strToken) {
+        return YES;
+    }else{
+        
+        
+        LoginViewController *login=[[LoginViewController alloc]init];
+        [_slide presentViewController:login animated:YES completion:^{
+            
+        }];
+        return NO;
+    }
+}
+
+-(void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
+    NSLog(@"%s",__FUNCTION__);
 }
 /*
  lat = "23.108941";

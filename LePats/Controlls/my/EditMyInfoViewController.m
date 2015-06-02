@@ -312,7 +312,7 @@
     HttpUploadManager *upload=[[HttpUploadManager alloc]init];
     upload.upDatePersonIconBlock=^(NSString *error){
         if (error) {
-            
+            [self.view makeToast:error];
         }else{
             [self.view makeToast:@"上传图片成功"];
         }

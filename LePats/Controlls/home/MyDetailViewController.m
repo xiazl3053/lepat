@@ -196,6 +196,7 @@
     [UserInfo sharedUserInfo].strToken=nil;
     [self.navigationController popViewControllerAnimated:YES];
     [[NSNotificationCenter defaultCenter]postNotificationName:KUserLogout object:nil];
+   // [self.tabBarController setSelectedIndex:0];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
