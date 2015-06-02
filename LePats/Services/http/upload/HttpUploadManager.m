@@ -49,7 +49,7 @@
 -(void)uploadInfo:(UIImage*)image content:(NSString *)strContent objId:(NSString *)strId
 {
     UserInfo *user = [UserInfo sharedUserInfo];
-    NSString *strUrl = [[NSString alloc] initWithFormat:@"%@pats/photo/upload.do?objid=%@&objtype=%@&userid=%@&token=%@%@",
+    NSString *strUrl = [[NSString alloc] initWithFormat:@"%@pets/photo/upload.do?objid=%@&objtype=%@&userid=%@&token=%@%@",
                         LEPAT_HTTP_HOST,strId,strContent,user.strUserId,user.strToken,LEPAT_VERSION_INFO];
     NSData *imageData = UIImageJPEGRepresentation(image,0.9);
     NSString *strPath = [NSTemporaryDirectory() stringByAppendingString:@"avatar.jpg"];

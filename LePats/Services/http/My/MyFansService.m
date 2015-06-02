@@ -15,7 +15,7 @@
 {
     UserInfo *user = [UserInfo sharedUserInfo];
     
-    NSString *strUrl = [NSString stringWithFormat:@"%@pats/focus/getFocus.do?oper_user_id=%d&userid=%@&token=%@%@",
+    NSString *strUrl = [NSString stringWithFormat:@"%@pets/focus/getFocus.do?oper_user_id=%d&userid=%@&token=%@%@",
                         LEPAT_HTTP_HOST,nUserId,user.strUserId,user.strToken,LEPAT_VERSION_INFO];
     [self sendRequest:strUrl];
     

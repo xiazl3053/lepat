@@ -104,7 +104,11 @@
             [_tableView reloadData];
         }
     };
-    [pet requestPetInfo:self.nPetId];
+    if (self.type==PetType_ADD) {
+        [pet requestPetInfo:_pet.nPetId];
+    }else{
+        [pet requestPetInfo:self.nPetId];
+    }
 }
 
 -(void)initViews{
@@ -560,7 +564,12 @@
             NSDictionary *data=[dic objectForKey:@"photobj"];
             _photoId=[[data objectForKey:@"id"]intValue];
             _pet.nPhotoId=[[data objectForKey:@"id"]intValue];
-            [self queryPetInfo];
+            _pet.strIconUrl=[NSString stringWithFormat:@"%@%@",[data objectForKey:@"host"],[data objectForKey:@"photouri"]];
+            if (self.type==PetType_ADD) {
+                [_imgView sd_setImageWithURL:[NSURL URLWithString:_pet.strIconUrl] placeholderImage:[UIImage imageNamed:@"pet_add"]];
+            }else{
+                [_imgView sd_setImageWithURL:[NSURL URLWithString:_pet.strIconUrl] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
+            }
         }
     };
     [upload uploadPetHead:image petId:[NSString stringWithFormat:@"%d",_pet.nPetId]];

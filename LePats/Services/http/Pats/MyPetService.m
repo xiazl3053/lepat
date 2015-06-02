@@ -17,7 +17,7 @@
 -(void)requestPetInfo:(int)nCur
 {
     UserInfo *user = [UserInfo sharedUserInfo];
-    NSString *strUrl = [NSString stringWithFormat:@"%@pats/pet/getPetByUser.do?pageNum=%d&pageSize=30&userid=%@&token=%@%@",
+    NSString *strUrl = [NSString stringWithFormat:@"%@pets/pet/getPetByUser.do?pageNum=%d&pageSize=30&userid=%@&token=%@%@",
                         LEPAT_HTTP_HOST,nCur,user.strUserId,user.strToken,LEPAT_VERSION_INFO];
     [self sendRequest:strUrl];
 }

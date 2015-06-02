@@ -14,7 +14,7 @@
     UserInfo *user = [UserInfo sharedUserInfo];
     //    NSString *strName = [NSString stringWithUTF8String:"ting"];
     //    NSString *strDecription = [NSString stringWithUTF8String:"ting"];
-    NSString *strUrl = [NSString stringWithFormat:@"%@pats/pet/doEdit.do",LEPAT_HTTP_HOST];
+    NSString *strUrl = [NSString stringWithFormat:@"%@pets/pet/doEdit.do",LEPAT_HTTP_HOST];
     
     //    NSString *strUrl = [NSString stringWithFormat:@"%@pats/pet/doAdd.do?petName=%@&petCount=%d&birthday=%@&sortId=%d&photoid=%d&description=%@&sex=%d&userid=%@&token=%@%@",LEPAT_HTTP_HOST,lePet.strName,lePet.nPetCount,lePet.strBirthday,lePet.nSortId,lePet.nPhotoId,lePet.strDescription,lePet.nSex,
     //                        user.strUserId,user.strToken,LEPAT_VERSION_INFO];
