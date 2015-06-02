@@ -101,6 +101,7 @@
 		7AE8302AB035A0F6C58184D7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF811F65411D3FCD44EA091 /* libPods.a */; };
 		8416BBF01B1D6C990085FC33 /* MyFansService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8416BBEF1B1D6C990085FC33 /* MyFansService.m */; };
 		8416BBF31B1D6D6C0085FC33 /* MyFansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8416BBF21B1D6D6C0085FC33 /* MyFansViewController.m */; };
+		BB1FB2F51B1DA95100A02CCD /* MapPetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1FB2F41B1DA95100A02CCD /* MapPetsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -348,6 +349,8 @@
 		8416BBF11B1D6D6C0085FC33 /* MyFansViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFansViewController.h; sourceTree = "<group>"; };
 		8416BBF21B1D6D6C0085FC33 /* MyFansViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFansViewController.m; sourceTree = "<group>"; };
 		84D4D1C91B018FA400E67D9C /* LePats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LePats.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB1FB2F31B1DA95100A02CCD /* MapPetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapPetsViewController.h; sourceTree = "<group>"; };
+		BB1FB2F41B1DA95100A02CCD /* MapPetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPetsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -402,6 +405,8 @@
 				4D5FEC891B1CB10200360323 /* MapFriendViewController.mm */,
 				4D5FEC8A1B1CB10200360323 /* UploadLocationViewController.h */,
 				4D5FEC8B1B1CB10200360323 /* UploadLocationViewController.m */,
+				BB1FB2F31B1DA95100A02CCD /* MapPetsViewController.h */,
+				BB1FB2F41B1DA95100A02CCD /* MapPetsViewController.m */,
 			);
 			path = FindInfo;
 			sourceTree = "<group>";
@@ -975,6 +980,7 @@
 				4D5FED9F1B1CB10200360323 /* SDWebImageDownloader.m in Sources */,
 				4D5FEDBC1B1CB10200360323 /* MyInfoService.m in Sources */,
 				4D5FEDC91B1CB10200360323 /* UserInfo.m in Sources */,
+				BB1FB2F51B1DA95100A02CCD /* MapPetsViewController.m in Sources */,
 				4D5FEDAB1B1CB10200360323 /* ProgressHUD.m in Sources */,
 				4D5FED841B1CB10200360323 /* MapFriendViewController.mm in Sources */,
 				4D5FED9D1B1CB10200360323 /* SDWebImageCompat.m in Sources */,
