@@ -98,6 +98,14 @@
 		4D5FEDD41B1CB10200360323 /* MyPetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5FED7B1B1CB10200360323 /* MyPetTableViewCell.m */; };
 		4D5FEDD51B1CB10200360323 /* SexButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5FED7D1B1CB10200360323 /* SexButton.m */; };
 		4D5FEDD61B1CB10200360323 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5FED7F1B1CB10200360323 /* UIView+Extension.m */; };
+		4D5FEDE81B1DF57900360323 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4D5FEDD81B1DF57900360323 /* MJRefresh.bundle */; };
+		4D5FEDE91B1DF57900360323 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5FEDDB1B1DF57900360323 /* MJRefreshBaseView.m */; };
+		4D5FEDEA1B1DF57900360323 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5FEDDD1B1DF57900360323 /* MJRefreshConst.m */; };
+		4D5FEDEB1B1DF57900360323 /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5FEDDF1B1DF57900360323 /* MJRefreshFooterView.m */; };
+		4D5FEDEC1B1DF57900360323 /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5FEDE11B1DF57900360323 /* MJRefreshHeaderView.m */; };
+		4D5FEDED1B1DF57900360323 /* UIScrollView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5FEDE31B1DF57900360323 /* UIScrollView+Extension.m */; };
+		4D5FEDEE1B1DF57900360323 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5FEDE51B1DF57900360323 /* UIScrollView+MJRefresh.m */; };
+		4D5FEDEF1B1DF57900360323 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5FEDE71B1DF57900360323 /* UIView+Extension.m */; };
 		7AE8302AB035A0F6C58184D7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF811F65411D3FCD44EA091 /* libPods.a */; };
 		8416BBF01B1D6C990085FC33 /* MyFansService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8416BBEF1B1D6C990085FC33 /* MyFansService.m */; };
 		8416BBF31B1D6D6C0085FC33 /* MyFansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8416BBF21B1D6D6C0085FC33 /* MyFansViewController.m */; };
@@ -343,6 +351,22 @@
 		4D5FED7D1B1CB10200360323 /* SexButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SexButton.m; sourceTree = "<group>"; };
 		4D5FED7E1B1CB10200360323 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		4D5FED7F1B1CB10200360323 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		4D5FEDD81B1DF57900360323 /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
+		4D5FEDD91B1DF57900360323 /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
+		4D5FEDDA1B1DF57900360323 /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
+		4D5FEDDB1B1DF57900360323 /* MJRefreshBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshBaseView.m; sourceTree = "<group>"; };
+		4D5FEDDC1B1DF57900360323 /* MJRefreshConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshConst.h; sourceTree = "<group>"; };
+		4D5FEDDD1B1DF57900360323 /* MJRefreshConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshConst.m; sourceTree = "<group>"; };
+		4D5FEDDE1B1DF57900360323 /* MJRefreshFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshFooterView.h; sourceTree = "<group>"; };
+		4D5FEDDF1B1DF57900360323 /* MJRefreshFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshFooterView.m; sourceTree = "<group>"; };
+		4D5FEDE01B1DF57900360323 /* MJRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshHeaderView.h; sourceTree = "<group>"; };
+		4D5FEDE11B1DF57900360323 /* MJRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeaderView.m; sourceTree = "<group>"; };
+		4D5FEDE21B1DF57900360323 /* UIScrollView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Extension.h"; sourceTree = "<group>"; };
+		4D5FEDE31B1DF57900360323 /* UIScrollView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Extension.m"; sourceTree = "<group>"; };
+		4D5FEDE41B1DF57900360323 /* UIScrollView+MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+MJRefresh.h"; sourceTree = "<group>"; };
+		4D5FEDE51B1DF57900360323 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
+		4D5FEDE61B1DF57900360323 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		4D5FEDE71B1DF57900360323 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		635FBA24F678FB40B37ED093 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8416BBEE1B1D6C990085FC33 /* MyFansService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFansService.h; sourceTree = "<group>"; };
 		8416BBEF1B1D6C990085FC33 /* MyFansService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFansService.m; sourceTree = "<group>"; };
@@ -471,6 +495,7 @@
 		4D5FECB11B1CB10200360323 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				4D5FEDD71B1DF57900360323 /* MJRefresh */,
 				4D5FECB21B1CB10200360323 /* baidumap */,
 				4D5FECF31B1CB10200360323 /* blocks */,
 				4D5FECF61B1CB10200360323 /* SDWebImage */,
@@ -791,6 +816,29 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		4D5FEDD71B1DF57900360323 /* MJRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				4D5FEDD81B1DF57900360323 /* MJRefresh.bundle */,
+				4D5FEDD91B1DF57900360323 /* MJRefresh.h */,
+				4D5FEDDA1B1DF57900360323 /* MJRefreshBaseView.h */,
+				4D5FEDDB1B1DF57900360323 /* MJRefreshBaseView.m */,
+				4D5FEDDC1B1DF57900360323 /* MJRefreshConst.h */,
+				4D5FEDDD1B1DF57900360323 /* MJRefreshConst.m */,
+				4D5FEDDE1B1DF57900360323 /* MJRefreshFooterView.h */,
+				4D5FEDDF1B1DF57900360323 /* MJRefreshFooterView.m */,
+				4D5FEDE01B1DF57900360323 /* MJRefreshHeaderView.h */,
+				4D5FEDE11B1DF57900360323 /* MJRefreshHeaderView.m */,
+				4D5FEDE21B1DF57900360323 /* UIScrollView+Extension.h */,
+				4D5FEDE31B1DF57900360323 /* UIScrollView+Extension.m */,
+				4D5FEDE41B1DF57900360323 /* UIScrollView+MJRefresh.h */,
+				4D5FEDE51B1DF57900360323 /* UIScrollView+MJRefresh.m */,
+				4D5FEDE61B1DF57900360323 /* UIView+Extension.h */,
+				4D5FEDE71B1DF57900360323 /* UIView+Extension.m */,
+			);
+			path = MJRefresh;
+			sourceTree = "<group>";
+		};
 		84D4D1C01B018FA400E67D9C = {
 			isa = PBXGroup;
 			children = (
@@ -911,6 +959,7 @@
 			files = (
 				4D5FEDB31B1CB10200360323 /* LaunchScreen.xib in Resources */,
 				4D5FEDAD1B1CB10200360323 /* Images.xcassets in Resources */,
+				4D5FEDE81B1DF57900360323 /* MJRefresh.bundle in Resources */,
 				4D5FEDAA1B1CB10200360323 /* ProgressHUD.bundle in Resources */,
 				4D5FEDB61B1CB10200360323 /* Main.storyboard in Resources */,
 				4D5FEDB41B1CB10200360323 /* Info.plist in Resources */,
@@ -994,6 +1043,7 @@
 				4D5FEDA91B1CB10200360323 /* UIView+WebCacheOperation.m in Sources */,
 				4D5FEDD21B1CB10200360323 /* LogView.m in Sources */,
 				4D5FED8D1B1CB10200360323 /* WWSideslipViewController.m in Sources */,
+				4D5FEDEC1B1DF57900360323 /* MJRefreshHeaderView.m in Sources */,
 				4D5FED921B1CB10200360323 /* EditMyInfoViewController.m in Sources */,
 				4D5FEDA81B1CB10200360323 /* UIImageView+WebCache.m in Sources */,
 				4D5FEDA61B1CB10200360323 /* UIImage+WebP.m in Sources */,
@@ -1003,11 +1053,16 @@
 				4D5FEDAE1B1CB10200360323 /* HomeItemModel.m in Sources */,
 				4D5FED911B1CB10200360323 /* RegSettingViewController.m in Sources */,
 				4D5FEDA51B1CB10200360323 /* UIImage+MultiFormat.m in Sources */,
+				4D5FEDEF1B1DF57900360323 /* UIView+Extension.m in Sources */,
 				4D5FEDCF1B1CB10200360323 /* HomeItemButton.m in Sources */,
+				4D5FEDE91B1DF57900360323 /* MJRefreshBaseView.m in Sources */,
 				4D5FEDA01B1CB10200360323 /* SDWebImageDownloaderOperation.m in Sources */,
+				4D5FEDEB1B1DF57900360323 /* MJRefreshFooterView.m in Sources */,
+				4D5FEDEE1B1DF57900360323 /* UIScrollView+MJRefresh.m in Sources */,
 				4D5FEDB01B1CB10200360323 /* NearInfo.m in Sources */,
 				4D5FED931B1CB10200360323 /* MyPetsViewController.m in Sources */,
 				4D5FEDD11B1CB10200360323 /* LeftTableViewCell.m in Sources */,
+				4D5FEDED1B1DF57900360323 /* UIScrollView+Extension.m in Sources */,
 				4D5FEDA71B1CB10200360323 /* UIImageView+HighlightedWebCache.m in Sources */,
 				4D5FEDD31B1CB10200360323 /* MyDetailTableViewCell.m in Sources */,
 				4D5FEDCB1B1CB10200360323 /* FriendCell.m in Sources */,
@@ -1028,6 +1083,7 @@
 				4D5FED9E1B1CB10200360323 /* SDWebImageDecoder.m in Sources */,
 				4D5FED851B1CB10200360323 /* UploadLocationViewController.m in Sources */,
 				4D5FED861B1CB10200360323 /* BaseViewController.m in Sources */,
+				4D5FEDEA1B1DF57900360323 /* MJRefreshConst.m in Sources */,
 				4D5FED801B1CB10200360323 /* NSString+LineHeight.m in Sources */,
 				4D5FEDCD1B1CB10200360323 /* HomeHeadItemButton.m in Sources */,
 				4D5FED871B1CB10200360323 /* HomeViewController.m in Sources */,
