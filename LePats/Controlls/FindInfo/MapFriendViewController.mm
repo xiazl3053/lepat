@@ -59,6 +59,11 @@
         region.span.latitudeDelta  = 0.2;
         region.span.longitudeDelta = 0.2;
         _mapView.region = region;
+        bmk_my = [[BMKPointAnnotation alloc] init];
+        CO
+        bmk_my.coordinate.latitude = fLat;
+        bmk_my.coordinate.longitude = fLong;
+        [_mapView addAnnotation:bmk_my];
     }
     
     [self startLocation];
