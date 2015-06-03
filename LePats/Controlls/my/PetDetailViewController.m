@@ -466,11 +466,6 @@
     }else{
         NSLog(@"相机不可用");
     }
-    //sourceType = UIImagePickerControllerSourceTypeCamera; //照相机
-    //sourceType = UIImagePickerControllerSourceTypePhotoLibrary; //图片库
-    //sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum; //保存的相片
-    
-    
 }
 
 -(void)initPhotoLibrary{

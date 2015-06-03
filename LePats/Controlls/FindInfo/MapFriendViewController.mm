@@ -9,7 +9,9 @@
 #import "MapFriendViewController.h"
 #import "BMKLocationComponent.h"
 #import "NearInfo.h"
+#import "UIImageView+WebCache.h"
 #import "FindService.h"
+#import "BDMarker.h"
 #import "BMapKit.h"
 
 @interface MapFriendViewController()<BMKMapViewDelegate,BMKLocationServiceDelegate>
@@ -18,6 +20,7 @@
     CGFloat fLat,fLong;
     FindService *findSer;
     BMKPointAnnotation *bmk_my;
+    BDMarker *bdMarker;
 }
 @property (nonatomic,strong) NSMutableArray *aryAnnotation;
 @property (nonatomic,strong) NSMutableArray *aryNear;
@@ -70,6 +73,7 @@
         location2D.longitude = fLong;
         bmk_my.coordinate = location2D;
         [_mapView addAnnotation:bmk_my];
+        [self findData];
     }
     [self startLocation];
     [self.view addSubview:_mapView];
@@ -119,16 +123,32 @@
         if ([[annotation title] isEqualToString:@"我"])
         {
             newAnnotationView.image = [UIImage imageNamed:@"marker_my"];
+            UIView *view = [[UIView alloc] initWithFrame:Rect(0,0,44,44)];
+            UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"my"]];
+            [view addSubview:imgView];
+            imgView.frame = view.bounds;
+            newAnnotationView.leftCalloutAccessoryView = view;
         }
         else
         {
-//            newAnnotationView.viewForBaselineLayout
+            BDMarker *bMark = (BDMarker*)annotation;
             newAnnotationView.image = [UIImage imageNamed:@"marker_other"];
+            UIView *view = [[UIView alloc] initWithFrame:Rect(0,0,44,44)];
+            UIImageView *imgView = [[UIImageView alloc] initWithFrame:view.bounds];
+            [imgView sd_setImageWithURL:[[NSURL alloc] initWithString:bMark.near.strFile] placeholderImage:[UIImage imageNamed:@""]];
+            [view addSubview:imgView];
+            imgView.frame = view.bounds;
+            newAnnotationView.leftCalloutAccessoryView = view;
+            DLog(@"bMark:%@",bMark.near);
         }
-        
         return newAnnotationView;
     }
     return nil;
+    
+}
+
+-(void)loadImageView:(UIImage *)image
+{
     
 }
 
@@ -167,14 +187,15 @@
 {
     for (NearInfo *near in _aryNear)
     {
-        BMKPointAnnotation *bmk = [[BMKPointAnnotation alloc] init];
+        BDMarker *bmk = [[BDMarker alloc] init];
         CLLocationCoordinate2D location;
         location.latitude = near.fLat;
         location.longitude = near.fLong;
         bmk.coordinate = location;
         bmk.title = near.strName;
+        bmk.near = near;
         [_mapView addAnnotation:bmk];
-        [_aryAnnotation addObject:bmk];
+//        [_aryAnnotation addObject:bmk];
     }
 }
 
@@ -189,10 +210,16 @@
     {
         _mapView.region = region;
         NSLog(@"当前的坐标是: %f,%f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
+    }
+    if(fLat != userLocation.location.coordinate.latitude ||
+       fLong != userLocation.location.coordinate.longitude)
+    {
         fLat = userLocation.location.coordinate.latitude;
         fLong = userLocation.location.coordinate.longitude;
         [self findData];
     }
+    
+    
 }
 
 -(void)addFriend

@@ -106,6 +106,7 @@
 		4D5FEDED1B1DF57900360323 /* UIScrollView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5FEDE31B1DF57900360323 /* UIScrollView+Extension.m */; };
 		4D5FEDEE1B1DF57900360323 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5FEDE51B1DF57900360323 /* UIScrollView+MJRefresh.m */; };
 		4D5FEDEF1B1DF57900360323 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5FEDE71B1DF57900360323 /* UIView+Extension.m */; };
+		4D93262C1B1F4F5700BB6B68 /* BDMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D93262B1B1F4F5700BB6B68 /* BDMarker.m */; };
 		7AE8302AB035A0F6C58184D7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF811F65411D3FCD44EA091 /* libPods.a */; };
 		8416BBF01B1D6C990085FC33 /* MyFansService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8416BBEF1B1D6C990085FC33 /* MyFansService.m */; };
 		8416BBF31B1D6D6C0085FC33 /* MyFansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8416BBF21B1D6D6C0085FC33 /* MyFansViewController.m */; };
@@ -367,6 +368,8 @@
 		4D5FEDE51B1DF57900360323 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		4D5FEDE61B1DF57900360323 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		4D5FEDE71B1DF57900360323 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		4D93262A1B1F4F5700BB6B68 /* BDMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDMarker.h; sourceTree = "<group>"; };
+		4D93262B1B1F4F5700BB6B68 /* BDMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDMarker.m; sourceTree = "<group>"; };
 		635FBA24F678FB40B37ED093 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8416BBEE1B1D6C990085FC33 /* MyFansService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFansService.h; sourceTree = "<group>"; };
 		8416BBEF1B1D6C990085FC33 /* MyFansService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFansService.m; sourceTree = "<group>"; };
@@ -812,6 +815,8 @@
 				4D5FED7D1B1CB10200360323 /* SexButton.m */,
 				4D5FED7E1B1CB10200360323 /* UIView+Extension.h */,
 				4D5FED7F1B1CB10200360323 /* UIView+Extension.m */,
+				4D93262A1B1F4F5700BB6B68 /* BDMarker.h */,
+				4D93262B1B1F4F5700BB6B68 /* BDMarker.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1034,6 +1039,7 @@
 				4D5FED841B1CB10200360323 /* MapFriendViewController.mm in Sources */,
 				4D5FED9D1B1CB10200360323 /* SDWebImageCompat.m in Sources */,
 				4D5FEDB81B1CB10200360323 /* UploadService.m in Sources */,
+				4D93262C1B1F4F5700BB6B68 /* BDMarker.m in Sources */,
 				4D5FED891B1CB10200360323 /* MainViewController.m in Sources */,
 				4D5FED8C1B1CB10200360323 /* RightViewController.m in Sources */,
 				4D5FEDAC1B1CB10200360323 /* Toast+UIView.m in Sources */,
