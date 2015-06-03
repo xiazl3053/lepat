@@ -16,7 +16,6 @@
 -(void)requestFindNear:(CGFloat)fLat lng:(CGFloat)fLng
 {
     UserInfo *user = [UserInfo sharedUserInfo];
-//    NSString *strUrl = [NSString stringWithFormat:@"%@pats/pet/getPetByUser.do?pageNum=%d&pageSize=20&userid=%@&token=%@%@",
     NSString *strUrl = [NSString stringWithFormat:@"%@pets/user/getNear.do?lat=%f&lng=%f&userid=%@&token=%@%@",LEPAT_HTTP_HOST,
                         fLat,fLng,user.strUserId,user.strToken,LEPAT_VERSION_INFO];
     [self sendRequest:strUrl];

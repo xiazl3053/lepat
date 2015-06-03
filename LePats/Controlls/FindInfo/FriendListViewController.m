@@ -8,6 +8,7 @@
 
 #import "FriendListViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "FocusService.h"
 #import "BMKGeoCodeSearch.h"
 #import "MapFriendViewController.h"
 #import "BMKLocationService.h"
@@ -17,7 +18,7 @@
 #import "Toast+UIView.h"
 #import "NearInfo.h"
 
-@interface FriendListViewController ()<UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate,BMKLocationServiceDelegate,BMKGeoCodeSearchDelegate>
+@interface FriendListViewController ()<UITableViewDataSource,FriendViewDelegate,UITableViewDelegate,CLLocationManagerDelegate,BMKLocationServiceDelegate,BMKGeoCodeSearchDelegate>
 {
     FindService *findSer;
     UILabel *lblLocation;
@@ -26,6 +27,7 @@
     CGFloat fLat,fLong;
     BMKGeoCodeSearch *search;
     BOOL bTrue;
+    FocusService *focus;
 }
 
 
@@ -83,6 +85,22 @@
     [self initView];
     search = [[BMKGeoCodeSearch alloc] init];
     search.delegate = self;
+    focus = [[FocusService alloc] init];
+}
+
+-(void)focusUserInfo:(NSString *)strUserId
+{
+    focus.httpFocus = ^(int nStauts,NSString *strMsg)
+    {
+        if (nStauts == 200) {
+            
+        }
+        else
+        {
+            
+        }
+    };
+    [focus requestFocus:strUserId];
 }
 
 -(void)comeToMap
@@ -154,6 +172,7 @@
        friend = [[FriendCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:strFriendIdentifier];
        NearInfo *near = [_aryNear objectAtIndex:indexPath.row];
        [friend setNearInfo:near];
+       friend.delegate = self;
    }
    return friend;
 }
@@ -167,20 +186,6 @@
 {
     
 }
-
-//- (void)locationManager:(CLLocationManager *)manager
-//    didUpdateToLocation:(CLLocation *)newLocation
-//           fromLocation:(CLLocation *)oldLocation
-//{
-//    
-//    CLLocationCoordinate2D loc = [newLocation coordinate];
-//    DLog(@"%f---%f",loc.latitude,loc.longitude);
-//    //纬度
-//    NSString *latitude = [NSString  stringWithFormat:@"%.4f", newLocation.coordinate.latitude];
-//    
-//    //经度
-//    NSString *longitude = [NSString stringWithFormat:@"%.4f",                           newLocation.coordinate.longitude];
-//}
 
 - (void)didUpdateUserHeading:(BMKUserLocation *)userLocation
 {
@@ -211,16 +216,11 @@
     ^{
         lblLocation.text = [NSString stringWithFormat:@"您当前的位置:%@",result.address];
     });
-    //BMKReverseGeoCodeResult是编码的结果，包括地理位置，道路名称，uid，城市名等信息
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)friendView:(FriendCell *)friend focus:(NSString *)strUserId
+{
+    
 }
-*/
 
 @end

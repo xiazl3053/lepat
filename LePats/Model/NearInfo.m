@@ -35,7 +35,7 @@
     _nSex = [[dict objectForKey:@"sex"] intValue];
     _fLat = [[dict objectForKey:@"lat"] floatValue];
     _fLong = [[dict objectForKey:@"lng"] floatValue];
-    
+    _strUserId = [dict objectForKey:@"userId"];
     return self;
     
 }

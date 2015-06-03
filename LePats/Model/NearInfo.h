@@ -18,7 +18,7 @@
 @property (nonatomic,assign) int nSex;
 @property (nonatomic,assign) CGFloat fLat;
 @property (nonatomic,assign) CGFloat fLong;
-
+@property (nonatomic,strong) NSString *strUserId;
 -(id)initWithItems:(NSArray *)items;
 
 -(id)initWithDic:(NSDictionary *)dict;

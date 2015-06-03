@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D08BF421B1FC1130037D6C9 /* FocusService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D08BF411B1FC1130037D6C9 /* FocusService.m */; };
 		4D202BDD1B08894D007DED73 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D202BDC1B08894D007DED73 /* CoreLocation.framework */; };
 		4D202BDF1B088956007DED73 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D202BDE1B088956007DED73 /* QuartzCore.framework */; };
 		4D202BE11B08895E007DED73 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D202BE01B08895E007DED73 /* OpenGLES.framework */; };
@@ -116,6 +117,8 @@
 /* Begin PBXFileReference section */
 		279CFB6916D8141457E3072A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		3BF811F65411D3FCD44EA091 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D08BF401B1FC1130037D6C9 /* FocusService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FocusService.h; sourceTree = "<group>"; };
+		4D08BF411B1FC1130037D6C9 /* FocusService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FocusService.m; sourceTree = "<group>"; };
 		4D202BDC1B08894D007DED73 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4D202BDE1B088956007DED73 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4D202BE01B08895E007DED73 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -399,6 +402,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D08BF3F1B1FC0F00037D6C9 /* focus */ = {
+			isa = PBXGroup;
+			children = (
+				4D08BF401B1FC1130037D6C9 /* FocusService.h */,
+				4D08BF411B1FC1130037D6C9 /* FocusService.m */,
+			);
+			name = focus;
+			sourceTree = "<group>";
+		};
 		4D5FEC7D1B1CB10200360323 /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -699,6 +711,7 @@
 		4D5FED381B1CB10200360323 /* http */ = {
 			isa = PBXGroup;
 			children = (
+				4D08BF3F1B1FC0F00037D6C9 /* focus */,
 				4D5FED391B1CB10200360323 /* Find */,
 				4D5FED421B1CB10200360323 /* My */,
 				4D5FED471B1CB10200360323 /* Pats */,
@@ -1022,6 +1035,7 @@
 				4D5FEDC61B1CB10200360323 /* UpdUserService.m in Sources */,
 				4D5FEDC11B1CB10200360323 /* PetInfoService.m in Sources */,
 				8416BBF01B1D6C990085FC33 /* MyFansService.m in Sources */,
+				4D08BF421B1FC1130037D6C9 /* FocusService.m in Sources */,
 				4D5FEDB11B1CB10200360323 /* PetSortModel.m in Sources */,
 				4D5FEDD01B1CB10200360323 /* HomeItemCollectionCell.m in Sources */,
 				4D5FEDBF1B1CB10200360323 /* MyPetService.m in Sources */,

@@ -115,7 +115,7 @@ imgView
     
     [self.contentView addSubview:_btnAttention];
     [self.contentView addSubview:_btnPriLet];
-    
+    [_btnAttention addTarget:self action:@selector(focusEvent) forControlEvents:UIControlEventTouchUpInside];
     [self addViewLine];
 }
 
@@ -125,10 +125,8 @@ imgView
     _lblInfo.text = nearInfo.strContent;
     _lblPet.text = [NSString stringWithFormat:@"TA的宠物:"];
     [_lblDistance setText:[NSString stringWithFormat:@"%.02f m",nearInfo.fDistan]];
-    
+    _strUserId = nearInfo.strUserId;
     _imgHead.image = nearInfo.nSex ? [UIImage imageNamed:@"boy"] : [UIImage imageNamed:@"girl"];
-    
-    
     [self setImageInfo:nearInfo.strFile];
 }
 
@@ -162,5 +160,12 @@ imgView
     _imgView.image = image;
 }
 
+-(void)focusEvent
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(friendView:focus:)])
+    {
+        [_delegate friendView:self focus:_strUserId];
+    }
+}
 
 @end
