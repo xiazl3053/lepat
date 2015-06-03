@@ -511,6 +511,7 @@ typedef enum {
  *@param mapView 地图View
  *@param views 选中的annotation views
  */
+
 - (void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view;
 
 /**

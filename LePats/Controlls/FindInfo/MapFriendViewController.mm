@@ -63,14 +63,14 @@
         region.span.longitudeDelta = 0.2;
         _mapView.region = region;
         bmk_my = [[BMKPointAnnotation alloc] init];
-        bmk_my.title = @"我的位置";
+        bmk_my.title = @"我";
+        bmk_my.subtitle = @"我的位置";
         CLLocationCoordinate2D location2D;
         location2D.latitude = fLat;
         location2D.longitude = fLong;
         bmk_my.coordinate = location2D;
         [_mapView addAnnotation:bmk_my];
     }
-    
     [self startLocation];
     [self.view addSubview:_mapView];
 }
@@ -88,7 +88,7 @@
     [_mapView viewWillDisappear];
     _mapView.delegate = nil;
 }
-
+#pragma mark 地图实现
 - (void)mapView:(BMKMapView *)mapView onClickedMapBlank:(CLLocationCoordinate2D)coordinate
 {
     NSLog(@"map view: click blank");
@@ -104,6 +104,40 @@
     DLog(@"Map view Finish Loading");
 }
 
+- (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation
+{
+    if ([annotation isKindOfClass:[BMKPointAnnotation class]])
+    {
+ 
+        BMKPinAnnotationView *newAnnotationView = [[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"];
+        
+        newAnnotationView.pinColor = BMKPinAnnotationColorPurple;
+        
+        newAnnotationView.animatesDrop = YES;// 设置该标注点动画显示
+        
+        newAnnotationView.annotation=annotation;
+        if ([[annotation title] isEqualToString:@"我"])
+        {
+            newAnnotationView.image = [UIImage imageNamed:@"marker_my"];
+        }
+        else
+        {
+//            newAnnotationView.viewForBaselineLayout
+            newAnnotationView.image = [UIImage imageNamed:@"marker_other"];
+        }
+        
+        return newAnnotationView;
+    }
+    return nil;
+    
+}
+
+- (void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view
+{
+    
+}
+
+
 -(void)findData
 {
     __weak MapFriendViewController *__self =self;
@@ -115,7 +149,8 @@
         });
         [__self.aryNear removeAllObjects];
         [__self.aryNear addObjectsFromArray:aryInfo];
-        dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_main_queue(),
+        ^{
             [__self addAnnotation];
         });
     };

@@ -141,7 +141,7 @@ imgView
     }
     __block NSString *__strImg = strImage;
     __weak FriendCell *__self = self;
-    dispatch_async(dispatch_get_main_queue(), ^{
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
         UIImage *imgDest = nil;
         NSURL *url = [NSURL URLWithString:__strImg];
         NSData *responseData = [NSData dataWithContentsOfURL:url];
