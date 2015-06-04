@@ -8,6 +8,7 @@
 
 #import "MyFansService.h"
 #import "UserInfo.h"
+#import "FansModel.h"
 
 @implementation MyFansService
 
@@ -34,10 +35,13 @@
     if (self.myFansServiceBlock) {
         if ([[dic objectForKey:KServiceResponseCode]intValue]==KServiceResponseSuccess) {
             NSArray *list=[dic objectForKey:@"fansList"];
-            for (NSString *str in list) {
-                NSLog(@"%@",str);
+            NSMutableArray *data=[NSMutableArray array];
+            for (NSDictionary *obj in list) {
+                NSLog(@"%@",obj);
+                FansModel *model=[[FansModel alloc]initWithDic:obj];
+                [data addObject:model];
             }
-            self.myFansServiceBlock(nil,nil);
+            self.myFansServiceBlock(nil,data);
         }else{
             self.myFansServiceBlock([dic objectForKey:KServiceResponseMsg],nil);
         }

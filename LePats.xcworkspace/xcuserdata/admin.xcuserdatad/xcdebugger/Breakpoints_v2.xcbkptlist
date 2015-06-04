@@ -186,11 +186,11 @@
                   moduleName = "LePats"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/admin/Desktop/06-02/lepat/LePats/Controlls/my/PetDetailViewController.m"
-                  timestampString = "454946632.679275"
+                  timestampString = "455089721.983363"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "153"
-                  endingLineNumber = "153"
+                  startingLineNumber = "157"
+                  endingLineNumber = "157"
                   offsetFromSymbolStart = "166">
                </Location>
                <Location
@@ -201,11 +201,11 @@
                   moduleName = "LePats"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/admin/Desktop/06-02/lepat/LePats/Controlls/my/PetDetailViewController.m"
-                  timestampString = "454946632.679606"
+                  timestampString = "455089721.983531"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "153"
-                  endingLineNumber = "153"
+                  startingLineNumber = "157"
+                  endingLineNumber = "157"
                   offsetFromSymbolStart = "36">
                </Location>
             </Locations>
@@ -233,13 +233,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LePats/Services/http/My/MyFansService.m"
-            timestampString = "454913809.013105"
+            filePath = "LePats/Controlls/my/MyFansViewController.m"
+            timestampString = "455086578.309656"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "-reciveDic:dic:"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "-headerRereshing"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LePats/Controlls/my/MyFansViewController.m"
+            timestampString = "455086580.183894"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "-footerrefeshing"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

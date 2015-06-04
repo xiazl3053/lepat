@@ -8,6 +8,7 @@
 
 #import "MyFocusService.h"
 #import "UserInfo.h"
+#import "FansModel.h"
 
 @implementation MyFocusService
 -(void)requestUserId:(int)nUserId
@@ -30,6 +31,24 @@
         DLog(@"获取我的关注错误");
         return ;
     }
+    if (self.focusServiceBlock) {
+        if ([[dic objectForKey:KServiceResponseCode]intValue]==KServiceResponseSuccess) {
+            NSArray *list=[dic objectForKey:@"focusList"];
+            NSMutableArray *data=[NSMutableArray array];
+            for (NSDictionary *obj in list) {
+                NSLog(@"%@",obj);
+                FansModel *model=[[FansModel alloc]initWithDic:obj];
+                [data addObject:model];
+            }
+            self.focusServiceBlock(nil,data);
+        }else{
+            self.focusServiceBlock([dic objectForKey:KServiceResponseMsg],nil);
+        }
+        
+    }else{
+        NSLog(@"self.focusServiceBlock为nil");
+    }
+
 }
 
 

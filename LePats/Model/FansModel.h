@@ -22,5 +22,6 @@
 @property (nonatomic,strong) NSString *strUserIcon;
 @property (nonatomic,strong) NSString *strSignature;
 
+-(id)initWithDic:(NSDictionary *)dict;
 
 @end

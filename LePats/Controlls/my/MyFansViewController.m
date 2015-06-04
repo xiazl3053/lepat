@@ -10,10 +10,13 @@
 #import "MyFansService.h"
 #import "UserInfo.h"
 #import "Toast+UIView.h"
+#import "FansModel.h"
+#import "MJRefresh.h"
 
 @interface MyFansViewController ()<UITableViewDataSource,UITableViewDelegate>{
     
     UITableView *_tableView;
+    NSArray *_fansList;
     
 }
 
@@ -23,8 +26,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initViews];
     [self initParams];
-    [self initSelfView];
     // Do any additional setup after loading the view.
 }
 
@@ -44,12 +47,21 @@
     UITableView *tableView= [[UITableView alloc] initWithFrame:CGRectMake(0, [self barSize].height,KMainScreenSize.width,KMainScreenSize.height-[self barSize].height)];
     tableView.delegate = self;
     tableView.dataSource = self;
-    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     //_nTimeOut = 0;
     
-    //[tableView addHeaderWithTarget:self action:@selector(headerRereshing)];
+    [tableView addHeaderWithTarget:self action:@selector(headerRereshing)];
+    [tableView addFooterWithTarget:self action:@selector(footerrefeshing)];
     [self.view addSubview:tableView];
     _tableView=tableView;
+}
+
+-(void)headerRereshing{
+
+}
+
+-(void)footerrefeshing{
+
 }
 
 -(void)initParams{
@@ -59,10 +71,15 @@
         if (error) {
             [self.view makeToast:error];
         }else{
+            _fansList=data;
             [_tableView reloadData];
         }
     };
     [service requestUserId:userID];
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return _fansList.count;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,8 +91,13 @@
     static NSString *identifer=@"";
     UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:identifer];
     if (!cell) {
-        cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
+        cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifer];
     }
+    
+    FansModel *model=[_fansList objectAtIndex:indexPath.row];
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:model.strUserIcon] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
+    cell.textLabel.text=model.strName;
+    cell.detailTextLabel.text=model.strSignature;
     return cell;
 }
 
