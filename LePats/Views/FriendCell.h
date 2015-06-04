@@ -8,9 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import "NearInfo.h"
+@class FriendCell;
+
+@protocol FriendViewDelegate <NSObject>
+
+-(void)friendView:(FriendCell *)friend focus:(NSString *)strUserId;
+
+
+
+@end
+
 
 @interface FriendCell : UITableViewCell
 
+@property (nonatomic,assign) id<FriendViewDelegate> delegate;
+
+@property (nonatomic,strong) NSString *strUserId;
 @property (nonatomic,strong) UIImageView *imgView;
 @property (nonatomic,strong) UILabel *lblName;
 @property (nonatomic,strong) UILabel *lblPet;

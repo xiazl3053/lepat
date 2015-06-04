@@ -64,7 +64,6 @@
     _login.hidden=NO;
     _imgView.image=[UIImage imageNamed:@"left_icon_noraml"];
     _nickName.hidden=YES;
-    
 }
 
 -(void)getLoginInfo

@@ -115,7 +115,7 @@ imgView
     
     [self.contentView addSubview:_btnAttention];
     [self.contentView addSubview:_btnPriLet];
-    
+    [_btnAttention addTarget:self action:@selector(focusEvent) forControlEvents:UIControlEventTouchUpInside];
     [self addViewLine];
 }
 
@@ -125,10 +125,8 @@ imgView
     _lblInfo.text = nearInfo.strContent;
     _lblPet.text = [NSString stringWithFormat:@"TA的宠物:"];
     [_lblDistance setText:[NSString stringWithFormat:@"%.02f m",nearInfo.fDistan]];
-    
+    _strUserId = nearInfo.strUserId;
     _imgHead.image = nearInfo.nSex ? [UIImage imageNamed:@"boy"] : [UIImage imageNamed:@"girl"];
-    
-    
     [self setImageInfo:nearInfo.strFile];
 }
 
@@ -141,7 +139,7 @@ imgView
     }
     __block NSString *__strImg = strImage;
     __weak FriendCell *__self = self;
-    dispatch_async(dispatch_get_main_queue(), ^{
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
         UIImage *imgDest = nil;
         NSURL *url = [NSURL URLWithString:__strImg];
         NSData *responseData = [NSData dataWithContentsOfURL:url];
@@ -162,5 +160,12 @@ imgView
     _imgView.image = image;
 }
 
+-(void)focusEvent
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(friendView:focus:)])
+    {
+        [_delegate friendView:self focus:_strUserId];
+    }
+}
 
 @end

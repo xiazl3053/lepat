@@ -9,7 +9,9 @@
 #import "MapFriendViewController.h"
 #import "BMKLocationComponent.h"
 #import "NearInfo.h"
+#import "UIImageView+WebCache.h"
 #import "FindService.h"
+#import "BDMarker.h"
 #import "BMapKit.h"
 
 @interface MapFriendViewController()<BMKMapViewDelegate,BMKLocationServiceDelegate>
@@ -18,6 +20,7 @@
     CGFloat fLat,fLong;
     FindService *findSer;
     BMKPointAnnotation *bmk_my;
+    BDMarker *bdMarker;
 }
 @property (nonatomic,strong) NSMutableArray *aryAnnotation;
 @property (nonatomic,strong) NSMutableArray *aryNear;
@@ -63,14 +66,15 @@
         region.span.longitudeDelta = 0.2;
         _mapView.region = region;
         bmk_my = [[BMKPointAnnotation alloc] init];
-        bmk_my.title = @"我的位置";
+        bmk_my.title = @"我";
+        bmk_my.subtitle = @"我的位置";
         CLLocationCoordinate2D location2D;
         location2D.latitude = fLat;
         location2D.longitude = fLong;
         bmk_my.coordinate = location2D;
         [_mapView addAnnotation:bmk_my];
+        [self findData];
     }
-    
     [self startLocation];
     [self.view addSubview:_mapView];
 }
@@ -88,7 +92,7 @@
     [_mapView viewWillDisappear];
     _mapView.delegate = nil;
 }
-
+#pragma mark 地图实现
 - (void)mapView:(BMKMapView *)mapView onClickedMapBlank:(CLLocationCoordinate2D)coordinate
 {
     NSLog(@"map view: click blank");
@@ -104,6 +108,56 @@
     DLog(@"Map view Finish Loading");
 }
 
+- (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation
+{
+    if ([annotation isKindOfClass:[BMKPointAnnotation class]])
+    {
+ 
+        BMKPinAnnotationView *newAnnotationView = [[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"];
+        
+        newAnnotationView.pinColor = BMKPinAnnotationColorPurple;
+        
+        newAnnotationView.animatesDrop = YES;// 设置该标注点动画显示
+        
+        newAnnotationView.annotation=annotation;
+        if ([[annotation title] isEqualToString:@"我"])
+        {
+            newAnnotationView.image = [UIImage imageNamed:@"marker_my"];
+            UIView *view = [[UIView alloc] initWithFrame:Rect(0,0,44,44)];
+            UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"my"]];
+            [view addSubview:imgView];
+            imgView.frame = view.bounds;
+            newAnnotationView.leftCalloutAccessoryView = view;
+        }
+        else
+        {
+            BDMarker *bMark = (BDMarker*)annotation;
+            newAnnotationView.image = [UIImage imageNamed:@"marker_other"];
+            UIView *view = [[UIView alloc] initWithFrame:Rect(0,0,44,44)];
+            UIImageView *imgView = [[UIImageView alloc] initWithFrame:view.bounds];
+            [imgView sd_setImageWithURL:[[NSURL alloc] initWithString:bMark.near.strFile] placeholderImage:[UIImage imageNamed:@""]];
+            [view addSubview:imgView];
+            imgView.frame = view.bounds;
+            newAnnotationView.leftCalloutAccessoryView = view;
+            DLog(@"bMark:%@",bMark.near);
+        }
+        return newAnnotationView;
+    }
+    return nil;
+    
+}
+
+-(void)loadImageView:(UIImage *)image
+{
+    
+}
+
+- (void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view
+{
+    
+}
+
+
 -(void)findData
 {
     __weak MapFriendViewController *__self =self;
@@ -115,7 +169,8 @@
         });
         [__self.aryNear removeAllObjects];
         [__self.aryNear addObjectsFromArray:aryInfo];
-        dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_main_queue(),
+        ^{
             [__self addAnnotation];
         });
     };
@@ -132,14 +187,15 @@
 {
     for (NearInfo *near in _aryNear)
     {
-        BMKPointAnnotation *bmk = [[BMKPointAnnotation alloc] init];
+        BDMarker *bmk = [[BDMarker alloc] init];
         CLLocationCoordinate2D location;
         location.latitude = near.fLat;
         location.longitude = near.fLong;
         bmk.coordinate = location;
         bmk.title = near.strName;
+        bmk.near = near;
         [_mapView addAnnotation:bmk];
-        [_aryAnnotation addObject:bmk];
+//        [_aryAnnotation addObject:bmk];
     }
 }
 
@@ -154,10 +210,16 @@
     {
         _mapView.region = region;
         NSLog(@"当前的坐标是: %f,%f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
+    }
+    if(fLat != userLocation.location.coordinate.latitude ||
+       fLong != userLocation.location.coordinate.longitude)
+    {
         fLat = userLocation.location.coordinate.latitude;
         fLong = userLocation.location.coordinate.longitude;
         [self findData];
     }
+    
+    
 }
 
 -(void)addFriend

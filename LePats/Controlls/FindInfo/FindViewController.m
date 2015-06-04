@@ -14,7 +14,6 @@
 
 @interface FindViewController()<UITableViewDataSource,UITableViewDelegate>
 {
-    
 }
 @property (nonatomic,strong) UITableView *tableView;
 @end
@@ -89,12 +88,12 @@
     }
     if (indexPath.section==0)
     {
-        cell.imageView.image = [UIImage imageNamed:@"login_user_img"];
+        cell.imageView.image = [UIImage imageNamed:@"wechat_friend_icon"];
         cell.textLabel.text = @"寻找鱼友";
     }
     else if(indexPath.section == 1)
     {
-        cell.imageView.image = [UIImage imageNamed:@"login_pwd_img"];
+        cell.imageView.image = [UIImage imageNamed:@"RichScan_icon"];
         cell.textLabel.text = @"扫一扫";
     }
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
