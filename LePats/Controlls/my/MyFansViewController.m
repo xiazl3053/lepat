@@ -10,7 +10,9 @@
 #import "MyFansService.h"
 #import "UserInfo.h"
 
-@interface MyFansViewController ()
+@interface MyFansViewController (){
+    
+}
 
 @end
 
@@ -25,10 +27,22 @@
 
 -(void)initViews{
     [self initSelfView];
+    [self initTableView];
 }
 
 -(void)initSelfView{
     self.view.backgroundColor=[UIColor whiteColor];
+}
+
+-(void)initTableView{
+//    UITableView *tableView= [[UITableView alloc] initWithFrame:CGRectMake(0, [self barSize].height,KMainScreenSize.width,KMainScreenSize.height-[self barSize].height)];
+//    tableView.delegate = self;
+//    tableView.dataSource = self;
+//    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    //_nTimeOut = 0;
+//    
+//    //[tableView addHeaderWithTarget:self action:@selector(headerRereshing)];
+//    [self.view addSubview:tableView];
 }
 
 -(void)initParams{
