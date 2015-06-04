@@ -37,8 +37,8 @@
     [self getUserInfo];
     [self initData];
     
-//    myFansService *fans=[[myFansService alloc]init];
-//    [fans requestPetInfo:100];
+    //    myFansService *fans=[[myFansService alloc]init];
+    //    [fans requestPetInfo:100];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -48,9 +48,11 @@
 
 -(void)getUserInfo{
     MyInfoService *service=[[MyInfoService alloc]init];
+    __weak UIImageView *__icon = _icon;
+    __weak UITableView *__tableView = _tableView;
     service.getMyInfoBlock=^(NSString *error){
-        [_icon sd_setImageWithURL:[NSURL URLWithString:[UserInfo sharedUserInfo].strUserIcon] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
-        [_tableView reloadData];
+        [__icon sd_setImageWithURL:[NSURL URLWithString:[UserInfo sharedUserInfo].strUserIcon] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
+        [__tableView reloadData];
     };
     [service requestUserId:0];
 }
@@ -188,17 +190,28 @@
     NSLog(@"indexPath=%@",indexPath);
     
     if (indexPath.section==3) {
+//        UIButton *logout=[[UIButton alloc]initWithFrame:CGRectMake((cell.frame.size.width-180)*.5, 10, 180, 25)];
+//        [logout setTitle:@"退出" forState:UIControlStateNormal];
+//        [logout addTarget:self action:@selector(logout:) forControlEvents:UIControlEventTouchUpInside];
+//        [logout setBackgroundColor:RGB(0, 146, 255)];
+//        [logout.layer setMasksToBounds:YES];
+//        logout.layer.cornerRadius = 3.0f;
+//        [cell addSubview:logout];
+//        cell.indicate.hidden=YES;
+//        cell.backgroundColor=[UIColor groupTableViewBackgroundColor];
+//        cell.backgroundColor = RGB(15, 173, 225);
+//        cell.textLabel.textColor = [UIColor whiteColor];
         UIButton *logout=[[UIButton alloc]initWithFrame:CGRectMake((cell.frame.size.width-180)*.5, 10, 180, 25)];
         [logout setTitle:@"退出" forState:UIControlStateNormal];
         [logout addTarget:self action:@selector(logout:) forControlEvents:UIControlEventTouchUpInside];
-        [logout setBackgroundColor:RGB(0, 146, 255)];
+        [logout setBackgroundColor:RGB(15,173,225)];
+        [logout setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [logout.layer setMasksToBounds:YES];
         logout.layer.cornerRadius = 3.0f;
         [cell addSubview:logout];
-        cell.indicate.hidden=YES;
-        cell.backgroundColor=[UIColor groupTableViewBackgroundColor];
+        
     }
-    
+
     [cell setValueWithNSDictionay:dic];
     return cell;
 }
@@ -207,7 +220,7 @@
     [UserInfo sharedUserInfo].strToken=nil;
     [self.navigationController popViewControllerAnimated:YES];
     [[NSNotificationCenter defaultCenter]postNotificationName:KUserLogout object:nil];
-   // [self.tabBarController setSelectedIndex:0];
+    // [self.tabBarController setSelectedIndex:0];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

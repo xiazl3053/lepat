@@ -211,15 +211,11 @@
         _mapView.region = region;
         NSLog(@"当前的坐标是: %f,%f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
     }
-    if(fLat != userLocation.location.coordinate.latitude ||
-       fLong != userLocation.location.coordinate.longitude)
+    if(fLat != 0 || fLong != 0)
     {
         fLat = userLocation.location.coordinate.latitude;
         fLong = userLocation.location.coordinate.longitude;
-        [self findData];
     }
-    
-    
 }
 
 -(void)addFriend
