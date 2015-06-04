@@ -111,6 +111,8 @@
 		7AE8302AB035A0F6C58184D7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF811F65411D3FCD44EA091 /* libPods.a */; };
 		8416BBF01B1D6C990085FC33 /* MyFansService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8416BBEF1B1D6C990085FC33 /* MyFansService.m */; };
 		8416BBF31B1D6D6C0085FC33 /* MyFansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8416BBF21B1D6D6C0085FC33 /* MyFansViewController.m */; };
+		841AB43A1B1FEF1D007B09D7 /* MyFocusService.m in Sources */ = {isa = PBXBuildFile; fileRef = 841AB4391B1FEF1D007B09D7 /* MyFocusService.m */; };
+		841AB43D1B1FEF96007B09D7 /* MyFocusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841AB43C1B1FEF96007B09D7 /* MyFocusViewController.m */; };
 		BB1FB2F51B1DA95100A02CCD /* MapPetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1FB2F41B1DA95100A02CCD /* MapPetsViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -378,6 +380,10 @@
 		8416BBEF1B1D6C990085FC33 /* MyFansService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFansService.m; sourceTree = "<group>"; };
 		8416BBF11B1D6D6C0085FC33 /* MyFansViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFansViewController.h; sourceTree = "<group>"; };
 		8416BBF21B1D6D6C0085FC33 /* MyFansViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFansViewController.m; sourceTree = "<group>"; };
+		841AB4381B1FEF1D007B09D7 /* MyFocusService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFocusService.h; sourceTree = "<group>"; };
+		841AB4391B1FEF1D007B09D7 /* MyFocusService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFocusService.m; sourceTree = "<group>"; };
+		841AB43B1B1FEF96007B09D7 /* MyFocusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFocusViewController.h; sourceTree = "<group>"; };
+		841AB43C1B1FEF96007B09D7 /* MyFocusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFocusViewController.m; sourceTree = "<group>"; };
 		84D4D1C91B018FA400E67D9C /* LePats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LePats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB1FB2F31B1DA95100A02CCD /* MapPetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapPetsViewController.h; sourceTree = "<group>"; };
 		BB1FB2F41B1DA95100A02CCD /* MapPetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPetsViewController.m; sourceTree = "<group>"; };
@@ -497,6 +503,8 @@
 				4D5FECAA1B1CB10200360323 /* MyPetsViewController.m */,
 				8416BBF11B1D6D6C0085FC33 /* MyFansViewController.h */,
 				8416BBF21B1D6D6C0085FC33 /* MyFansViewController.m */,
+				841AB43B1B1FEF96007B09D7 /* MyFocusViewController.h */,
+				841AB43C1B1FEF96007B09D7 /* MyFocusViewController.m */,
 				4D5FECAB1B1CB10200360323 /* PetDetailViewController.h */,
 				4D5FECAC1B1CB10200360323 /* PetDetailViewController.m */,
 				4D5FECAD1B1CB10200360323 /* UserDetailViewController.h */,
@@ -741,6 +749,8 @@
 				4D5FED461B1CB10200360323 /* MyInfoService.m */,
 				8416BBEE1B1D6C990085FC33 /* MyFansService.h */,
 				8416BBEF1B1D6C990085FC33 /* MyFansService.m */,
+				841AB4381B1FEF1D007B09D7 /* MyFocusService.h */,
+				841AB4391B1FEF1D007B09D7 /* MyFocusService.m */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -1040,6 +1050,7 @@
 				4D5FEDD01B1CB10200360323 /* HomeItemCollectionCell.m in Sources */,
 				4D5FEDBF1B1CB10200360323 /* MyPetService.m in Sources */,
 				4D5FEDBD1B1CB10200360323 /* AddPetService.m in Sources */,
+				841AB43A1B1FEF1D007B09D7 /* MyFocusService.m in Sources */,
 				4D5FED881B1CB10200360323 /* LeftViewController.m in Sources */,
 				4D5FED8A1B1CB10200360323 /* MyDetailViewController.m in Sources */,
 				4D5FED831B1CB10200360323 /* FriendListViewController.m in Sources */,
@@ -1055,6 +1066,7 @@
 				4D5FEDB81B1CB10200360323 /* UploadService.m in Sources */,
 				4D93262C1B1F4F5700BB6B68 /* BDMarker.m in Sources */,
 				4D5FED891B1CB10200360323 /* MainViewController.m in Sources */,
+				841AB43D1B1FEF96007B09D7 /* MyFocusViewController.m in Sources */,
 				4D5FED8C1B1CB10200360323 /* RightViewController.m in Sources */,
 				4D5FEDAC1B1CB10200360323 /* Toast+UIView.m in Sources */,
 				4D5FEDD61B1CB10200360323 /* UIView+Extension.m in Sources */,
