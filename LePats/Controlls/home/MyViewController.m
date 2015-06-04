@@ -15,8 +15,7 @@
 #import "MyFansViewController.h"
 #import "MyFocusViewController.h"
 
-@interface MyViewController ()
-{
+@interface MyViewController (){
     UIImageView *_headView;
     UIView *_detailView;
     UISegmentedControl *_segmentedView;
@@ -38,8 +37,7 @@
     // Do any additional setup after loading the view.
 }
 
--(void)initViews
-{
+-(void)initViews{
     [self initSelfView];
     [self initHeadView];
     [self initDetailView];
@@ -76,17 +74,20 @@
     
 }
 
--(void)getUserInfo
-{
+-(void)getUserInfo{
     MyInfoService *service=[[MyInfoService alloc]init];
     service.getMyInfoBlock=^(NSString *error){
         [_icon sd_setImageWithURL:[NSURL URLWithString:[UserInfo sharedUserInfo].strUserIcon] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
     };
-    [service requestUserId:0];
+    if (self.nUserID==0) {
+        [service requestUserId:0];
+    }else{
+        [service requestUserId:self.nUserID];
+    }
+    
 }
 
--(void)initSelfView
-{
+-(void)initSelfView{
     self.title=@"我的";
     self.view.backgroundColor=[UIColor whiteColor];
 }
@@ -192,7 +193,12 @@
 }
 
 -(void)initSegment{
-    NSArray *arr=[NSArray arrayWithObjects:@"我发布的",@"我喜欢的",nil];
+    NSArray *arr=nil;
+    if (self.nUserID==0) {
+        arr=[NSArray arrayWithObjects:@"我发布的",@"我喜欢的",nil];
+    }else{
+        arr=[NSArray arrayWithObjects:@"他的发布",@"他的喜欢",nil];
+    }
     UISegmentedControl *segment=[[UISegmentedControl alloc]initWithItems:arr];
     segment.segmentedControlStyle=UISegmentedControlStyleBordered;
     segment.frame=CGRectMake(0, _detailView.bottom, KMainScreenSize.width, 40);
@@ -261,6 +267,12 @@
 
 
 -(void)gotoOther:(UIButton *)aBtn{
+    
+    return ;
+    
+    if (self.nUserID!=0) {
+        return ;
+    }
     switch (aBtn.tag) {
         case 100:
         {
@@ -282,7 +294,11 @@
 }
 
 -(void)myDetail:(UITapGestureRecognizer *)tap{
+    
     if ([UserInfo sharedUserInfo].strToken) {
+        if (self.nUserID!=0) {
+            return ;
+        }
         MyDetailViewController *detail=[[MyDetailViewController alloc]init];
         detail.hidesBottomBarWhenPushed=YES;
         [self.navigationController pushViewController:detail animated:YES];
