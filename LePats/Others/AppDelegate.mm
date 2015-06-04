@@ -67,7 +67,6 @@
     
     [self.window setRootViewController:slide];
     [self.window makeKeyAndVisible];
-    
     return YES;
 }
 
@@ -76,9 +75,8 @@
     NSLog(@"%s",__FUNCTION__);
     if ([UserInfo sharedUserInfo].strToken) {
         return YES;
-    }else{
-        
-        
+    }else
+    {
         LoginViewController *login=[[LoginViewController alloc]init];
         [_slide presentViewController:login animated:YES completion:^{
             

@@ -20,7 +20,9 @@
 #import "HomeItemModel.h"
 
 
-@interface WWSideslipViewController (){
+@interface WWSideslipViewController ()
+{
+    BOOL bLeft;
     NSInteger _index;
 }
 
@@ -188,8 +190,8 @@
     MainViewController *tabbar=(MainViewController*)mainControl;
     UIViewController *vc=tabbar.selectedViewController;
     
-    
-    switch (tag) {
+    switch (tag)
+    {
         case 10001:
         {
             MyPetsViewController *myPets=[[MyPetsViewController alloc]init];
@@ -217,10 +219,11 @@
     [UIView commitAnimations];
 }
 
--(void)showLeftViewFromSetting{
-    
+-(void)showLeftViewFromSetting
+{
     leftControl.view.hidden = NO;
-    if (_index%2==0) {
+    if (_index%2==0)
+    {
         [self showLeftView];
     }else{
         [self showMainView];

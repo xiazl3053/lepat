@@ -10,7 +10,6 @@
 
 @interface MapPetsViewController : BaseViewController
 
--(id)initWithItems:(NSArray*)array;
 
 
 @end

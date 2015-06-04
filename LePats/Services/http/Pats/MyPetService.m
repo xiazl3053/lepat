@@ -30,11 +30,8 @@
         return ;
     }
     DLog(@"dic:%@",dic);
-//    NSString *N = [dic objectForKey:@"petByUList"];
-//    NSString *newStrInfo = [strInfo stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//    DLog(@"newStrInfo:%@",newStrInfo);
-    
-    if (self.myPetsBlock) {
+    if (self.myPetsBlock)
+    {
         if ([[dic objectForKey:KServiceResponseCode]intValue]==KServiceResponseSuccess) {
             NSMutableArray *data=[NSMutableArray array];
             for (NSDictionary *obj in [dic objectForKey:@"petByUList"]) {

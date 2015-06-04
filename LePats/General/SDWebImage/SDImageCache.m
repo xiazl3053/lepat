@@ -535,7 +535,8 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
     }];
 }
 
-- (NSUInteger)getSize {
+- (NSUInteger)getSize
+{
     __block NSUInteger size = 0;
     dispatch_sync(self.ioQueue, ^{
         NSDirectoryEnumerator *fileEnumerator = [_fileManager enumeratorAtPath:self.diskCachePath];

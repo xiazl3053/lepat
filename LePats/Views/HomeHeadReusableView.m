@@ -167,8 +167,6 @@
         btn.layer.masksToBounds=YES;
         [bottomView addSubview:btn];
     }
-
-    
     [self addSubview:bottomView];
     _bottomView=bottomView;
 }

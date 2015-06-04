@@ -1,40 +1,75 @@
 //
-//  FriendViewController.m
+//  MapPetsViewController.m
 //  LePats
 //
-//  Created by xiongchi on 15-5-17.
+//  Created by 夏钟林 on 15/6/2.
 //  Copyright (c) 2015年 admin. All rights reserved.
 //
 
-#import "MapFriendViewController.h"
+#import "MapPetsViewController.h"
+#import "BMKMapView.h"
 #import "BMKLocationComponent.h"
-#import "NearInfo.h"
-#import "UIImageView+WebCache.h"
-#import "FindService.h"
-#import "BDMarker.h"
-#import "BMapKit.h"
+#import "UIView+Extension.h"
+#import "BMKPointAnnotation.h"
+#import "BMKPinAnnotationView.h"
 #import "UserInfo.h"
+#import "UIImageView+WebCache.h"
+#import "BDMarker.h"
+#import "FindPetsService.h"
 
-@interface MapFriendViewController()<BMKMapViewDelegate,BMKLocationServiceDelegate>
+@interface MapPetsViewController()<BMKMapViewDelegate,BMKLocationServiceDelegate>
 {
     BMKLocationService *_locService;
     CGFloat fLat,fLong;
-    FindService *findSer;
+    FindPetsService *findSer;
     BMKPointAnnotation *bmk_my;
-    BDMarker *bdMarker;
 }
+@property (nonatomic,strong) BMKMapView *mapView;
+@property (nonatomic,strong) NSArray *aryPets;
+
+
 @property (nonatomic,strong) NSMutableArray *aryAnnotation;
 @property (nonatomic,strong) NSMutableArray *aryNear;
+
 @end
 
-@implementation MapFriendViewController
+@implementation MapPetsViewController
 
--(id)initWithLat:(CGFloat)fLatitude long:(CGFloat)fLongitude
+-(id)initWithItems:(NSArray*)array
 {
     self = [super init];
-    fLat = fLatitude;
-    fLong = fLongitude;
+    fLat = 0;
+    fLong = 0;
+    if (array.count>0)
+    {
+        _aryPets = array;
+    }
     return self;
+}
+
+-(void)viewDidLoad
+{
+    [super viewDidLoad];
+    _aryNear = [NSMutableArray array];
+    _aryAnnotation = [NSMutableArray array];
+    _mapView = [[BMKMapView alloc] initWithFrame:Rect(0, [self barSize].height, self.view.width,self.view.height-[self barSize].height)];
+    _mapView.delegate = self;
+    [self.view addSubview:_mapView];
+    findSer = [[FindPetsService alloc] init];
+    [self startLocation];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [_mapView viewWillAppear];
+    _mapView.delegate = self;
+}
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [_mapView viewWillDisappear];
+    _mapView.delegate = self;
 }
 
 -(void)startLocation
@@ -46,80 +81,47 @@
     _locService.delegate = self;
 }
 
--(void)viewDidLoad
+- (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation
 {
-    [super viewDidLoad];
-    _aryNear = [NSMutableArray array];
-    _aryAnnotation = [NSMutableArray array];
-    _mapView = [[BMKMapView alloc] initWithFrame:Rect(0,[self barSize].height, kScreenSourchWidth, kScreenSourchHeight-64)];
-    self.title = @"地图";
-    _mapView.showsUserLocation = NO;
-    _mapView.userTrackingMode = BMKUserTrackingModeFollow;
-    _mapView.showsUserLocation = YES;
-    _mapView.delegate = self;
-    findSer = [[FindService alloc] init];
-    if(fLat != 0 && fLong != 0)
+    BMKCoordinateRegion region;
+    region.center.latitude  = userLocation.location.coordinate.latitude;
+    region.center.longitude = userLocation.location.coordinate.longitude;
+    region.span.latitudeDelta  = 0.2;
+    region.span.longitudeDelta = 0.2;
+    if (_mapView)
     {
-        BMKCoordinateRegion region;
-        region.center.latitude  = fLat;
-        region.center.longitude = fLong;
-        region.span.latitudeDelta  = 0.2;
-        region.span.longitudeDelta = 0.2;
         _mapView.region = region;
-        bmk_my = [[BMKPointAnnotation alloc] init];
-        bmk_my.title = @"我";
-        bmk_my.subtitle = @"我的位置";
-        CLLocationCoordinate2D location2D;
-        location2D.latitude = fLat;
-        location2D.longitude = fLong;
-        bmk_my.coordinate = location2D;
-        [_mapView addAnnotation:bmk_my];
+        NSLog(@"当前的坐标是: %f,%f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
+    }
+    if(fLat == 0 || fLong == 0)
+    {
+        fLat = userLocation.location.coordinate.latitude;
+        fLong = userLocation.location.coordinate.longitude;
+        [self addMyLocation];
         [self findData];
     }
-    [self startLocation];
-    [self.view addSubview:_mapView];
 }
 
--(void)viewWillAppear:(BOOL)animated
+-(void)addMyLocation
 {
-    [super viewWillAppear:animated];
-    [_mapView viewWillAppear];
-    _mapView.delegate = self;
+    bmk_my = [[BMKPointAnnotation alloc] init];
+    bmk_my.title = @"我";
+    bmk_my.subtitle = @"我的位置";
+    CLLocationCoordinate2D location2D;
+    location2D.latitude = fLat;
+    location2D.longitude = fLong;
+    bmk_my.coordinate = location2D;
+    [_mapView addAnnotation:bmk_my];
 }
 
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [_mapView viewWillDisappear];
-    _mapView.delegate = nil;
-}
-#pragma mark 地图实现
-- (void)mapView:(BMKMapView *)mapView onClickedMapBlank:(CLLocationCoordinate2D)coordinate
-{
-    NSLog(@"map view: click blank");
-}
-
-- (void)mapview:(BMKMapView *)mapView onDoubleClick:(CLLocationCoordinate2D)coordinate
-{
-    NSLog(@"map view: double click");
-}
-
--(void)mapViewDidFinishLoading:(BMKMapView *)mapView
-{
-    DLog(@"Map view Finish Loading");
-}
 
 - (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation
 {
     if ([annotation isKindOfClass:[BMKPointAnnotation class]])
     {
- 
         BMKPinAnnotationView *newAnnotationView = [[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"];
-        
         newAnnotationView.pinColor = BMKPinAnnotationColorPurple;
-        
         newAnnotationView.animatesDrop = YES;// 设置该标注点动画显示
-        
         newAnnotationView.annotation=annotation;
         if ([[annotation title] isEqualToString:@"我"])
         {
@@ -136,7 +138,6 @@
         else
         {
             BDMarker *bMark = (BDMarker*)annotation;
-            
             newAnnotationView.image = [UIImage imageNamed:@"marker_other"];
             UIView *view = [[UIView alloc] initWithFrame:Rect(0,0,30,30)];
             UIImageView *imgView = [[UIImageView alloc] initWithFrame:view.bounds];
@@ -153,20 +154,9 @@
     return nil;
 }
 
--(void)loadImageView:(UIImage *)image
-{
-    
-}
-
-- (void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view
-{
-    
-}
-
-
 -(void)findData
 {
-    __weak MapFriendViewController *__self =self;
+    __weak MapPetsViewController *__self =self;
     findSer.httpBlock = ^(int nStatus,NSArray *aryInfo)
     {
         DLog(@"aryData_length:%lu",aryInfo.count);
@@ -180,7 +170,7 @@
             [__self addAnnotation];
         });
     };
-    [findSer requestFindNear:fLat lng:fLong];
+    [findSer requestPetLocation:fLat long:fLong];
 }
 
 -(void)removeAnnotation
@@ -205,35 +195,7 @@
     }
 }
 
-- (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation
-{
-    BMKCoordinateRegion region;
-    region.center.latitude  = userLocation.location.coordinate.latitude;
-    region.center.longitude = userLocation.location.coordinate.longitude;
-    region.span.latitudeDelta  = 0.2;
-    region.span.longitudeDelta = 0.2;
-    if (_mapView)
-    {
-        _mapView.region = region;
-        NSLog(@"当前的坐标是: %f,%f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
-    }
-    if(fLat != 0 || fLong != 0)
-    {
-        fLat = userLocation.location.coordinate.latitude;
-        fLong = userLocation.location.coordinate.longitude;
-    }
-}
 
--(void)addFriend
-{
-    DLog(@"aryNear:%@",_aryNear);
-}
-
--(void)dealloc
-{
-    [_locService stopUserLocationService];
-    _locService = nil;
-}
 
 
 @end

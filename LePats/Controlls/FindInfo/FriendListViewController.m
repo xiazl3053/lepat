@@ -117,7 +117,6 @@
     __weak FriendListViewController *__self =self;
     findSer.httpBlock = ^(int nStatus,NSArray *aryInfo)
     {
-        DLog(@"aryData_length:%lu",aryInfo.count);
         [__self.aryNear removeAllObjects];
         [__self.aryNear addObjectsFromArray:aryInfo];
         dispatch_async(dispatch_get_main_queue(),

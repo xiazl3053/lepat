@@ -8,6 +8,7 @@
 
 #import "MyPetsViewController.h"
 #import "LePetInfo.h"
+#import "MapPetsViewController.h"
 #import "MyPetService.h"
 #import "PetDetailViewController.h"
 #import "PetDetailViewController.h"
@@ -56,16 +57,9 @@
     [service requestPetInfo:0];
 }
 
--(void)initData{
-//    LePetInfo *pet=[[LePetInfo alloc]init];
-//    pet.strName=@"啊黄";
-//    pet.strBirthday=@"5";
-//    pet.nSex=1;
-//    pet.strDescription=@"漂亮的小宝贝";
-//    pet.nSortId=0;
-    
+-(void)initData
+{
     self.pets=[NSMutableArray array];
-    
 }
 
 -(void)initViews{
@@ -93,7 +87,8 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)initTableView{
+-(void)initTableView
+{
     UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, [self barSize].height, self.view.frame.size.width, self.view.frame.size.height-44) style:UITableViewStylePlain];
     tableView.delegate=self;
     tableView.dataSource=self;
@@ -107,10 +102,12 @@
     [tableView setTableFooterView:line];
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     static NSString *identifier=@"MyPetSCELL";
     MyPetTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:identifier];
-    if (!cell) {
+    if (!cell)
+    {
         cell=[[MyPetTableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier];
        // cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     }
@@ -136,8 +133,16 @@
     [self.navigationController pushViewController:edit animated:YES];
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60.0f;
+}
+
+
 -(void)MyPetTableViewCell:(MyPetTableViewCell *)cell clickMap:(UIButton *)aBut{
     NSLog(@"%s",__FUNCTION__);
+    MapPetsViewController *mapPets = [[MapPetsViewController alloc] init];
+    [self presentViewController:mapPets animated:YES completion:nil];
 }
 
 -(void)dealloc{

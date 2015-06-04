@@ -31,8 +31,8 @@
     _nSex = [[dict objectForKey:@"sex"] intValue];
     _fLat = [[dict objectForKey:@"lat"] floatValue];
     _fLong = [[dict objectForKey:@"lng"] floatValue];
-    _strUserId = [dict objectForKey:@"userId"];
-    _nFocus = [[dict objectForKey:@"focusNum"] intValue];
+    _strUserId = [dict objectForKey:@"userid"];
+    _nFocus = [[dict objectForKey:@"relation"] intValue]/10;
     return self;
     
 }

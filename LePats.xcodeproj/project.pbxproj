@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4D08BF421B1FC1130037D6C9 /* FocusService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D08BF411B1FC1130037D6C9 /* FocusService.m */; };
+		4D08BF451B2056980037D6C9 /* FindPetsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D08BF441B2056980037D6C9 /* FindPetsService.m */; };
 		4D202BDD1B08894D007DED73 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D202BDC1B08894D007DED73 /* CoreLocation.framework */; };
 		4D202BDF1B088956007DED73 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D202BDE1B088956007DED73 /* QuartzCore.framework */; };
 		4D202BE11B08895E007DED73 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D202BE01B08895E007DED73 /* OpenGLES.framework */; };
@@ -114,7 +115,7 @@
 		841AB43A1B1FEF1D007B09D7 /* MyFocusService.m in Sources */ = {isa = PBXBuildFile; fileRef = 841AB4391B1FEF1D007B09D7 /* MyFocusService.m */; };
 		841AB43D1B1FEF96007B09D7 /* MyFocusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841AB43C1B1FEF96007B09D7 /* MyFocusViewController.m */; };
 		841AB4401B1FF4BC007B09D7 /* FansModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 841AB43F1B1FF4BC007B09D7 /* FansModel.m */; };
-		BB1FB2F51B1DA95100A02CCD /* MapPetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1FB2F41B1DA95100A02CCD /* MapPetsViewController.m */; };
+		BB1FB2F51B1DA95100A02CCD /* MapPetsViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB1FB2F41B1DA95100A02CCD /* MapPetsViewController.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -122,6 +123,8 @@
 		3BF811F65411D3FCD44EA091 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D08BF401B1FC1130037D6C9 /* FocusService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FocusService.h; sourceTree = "<group>"; };
 		4D08BF411B1FC1130037D6C9 /* FocusService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FocusService.m; sourceTree = "<group>"; };
+		4D08BF431B2056980037D6C9 /* FindPetsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindPetsService.h; sourceTree = "<group>"; };
+		4D08BF441B2056980037D6C9 /* FindPetsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindPetsService.m; sourceTree = "<group>"; };
 		4D202BDC1B08894D007DED73 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4D202BDE1B088956007DED73 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4D202BE01B08895E007DED73 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -389,7 +392,7 @@
 		841AB43F1B1FF4BC007B09D7 /* FansModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FansModel.m; sourceTree = "<group>"; };
 		84D4D1C91B018FA400E67D9C /* LePats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LePats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB1FB2F31B1DA95100A02CCD /* MapPetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapPetsViewController.h; sourceTree = "<group>"; };
-		BB1FB2F41B1DA95100A02CCD /* MapPetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPetsViewController.m; sourceTree = "<group>"; };
+		BB1FB2F41B1DA95100A02CCD /* MapPetsViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MapPetsViewController.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -454,7 +457,7 @@
 				4D5FEC8A1B1CB10200360323 /* UploadLocationViewController.h */,
 				4D5FEC8B1B1CB10200360323 /* UploadLocationViewController.m */,
 				BB1FB2F31B1DA95100A02CCD /* MapPetsViewController.h */,
-				BB1FB2F41B1DA95100A02CCD /* MapPetsViewController.m */,
+				BB1FB2F41B1DA95100A02CCD /* MapPetsViewController.mm */,
 			);
 			path = FindInfo;
 			sourceTree = "<group>";
@@ -741,6 +744,8 @@
 				4D5FED3B1B1CB10200360323 /* FindService.m */,
 				4D5FED3C1B1CB10200360323 /* UploadService.h */,
 				4D5FED3D1B1CB10200360323 /* UploadService.m */,
+				4D08BF431B2056980037D6C9 /* FindPetsService.h */,
+				4D08BF441B2056980037D6C9 /* FindPetsService.m */,
 			);
 			path = Find;
 			sourceTree = "<group>";
@@ -1054,6 +1059,7 @@
 				4D5FEDB11B1CB10200360323 /* PetSortModel.m in Sources */,
 				4D5FEDD01B1CB10200360323 /* HomeItemCollectionCell.m in Sources */,
 				4D5FEDBF1B1CB10200360323 /* MyPetService.m in Sources */,
+				4D08BF451B2056980037D6C9 /* FindPetsService.m in Sources */,
 				4D5FEDBD1B1CB10200360323 /* AddPetService.m in Sources */,
 				841AB43A1B1FEF1D007B09D7 /* MyFocusService.m in Sources */,
 				4D5FED881B1CB10200360323 /* LeftViewController.m in Sources */,
@@ -1064,7 +1070,7 @@
 				4D5FED9F1B1CB10200360323 /* SDWebImageDownloader.m in Sources */,
 				4D5FEDBC1B1CB10200360323 /* MyInfoService.m in Sources */,
 				4D5FEDC91B1CB10200360323 /* UserInfo.m in Sources */,
-				BB1FB2F51B1DA95100A02CCD /* MapPetsViewController.m in Sources */,
+				BB1FB2F51B1DA95100A02CCD /* MapPetsViewController.mm in Sources */,
 				4D5FEDAB1B1CB10200360323 /* ProgressHUD.m in Sources */,
 				4D5FED841B1CB10200360323 /* MapFriendViewController.mm in Sources */,
 				4D5FED9D1B1CB10200360323 /* SDWebImageCompat.m in Sources */,
@@ -1286,7 +1292,7 @@
 					"$(PROJECT_DIR)/LePats/General/baidumap",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4481d1b9-b83c-468a-8e38-f13d926e3b03";
+				PROVISIONING_PROFILE = "2e22e4ce-d81c-471f-ace5-e94d08161147";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7s";
 			};

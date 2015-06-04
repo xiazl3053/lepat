@@ -28,13 +28,13 @@
 
 -(void)initViews
 {
-    UIImageView *icon=[[UIImageView alloc]initWithFrame:CGRectMake(10, 7, 30, 30)];
+    UIImageView *icon=[[UIImageView alloc]initWithFrame:CGRectMake(10, 7, 44, 44)];
     icon.layer.cornerRadius=3.0;
     icon.layer.masksToBounds=YES;
     _icon=icon;
     [self addSubview:icon];
     
-    UILabel *name=[[UILabel alloc]initWithFrame:CGRectMake(icon.right+10, 2, 100, 20)];
+    UILabel *name=[[UILabel alloc]initWithFrame:CGRectMake(icon.right+10, 10, 100, 20)];
     name.font=[UIFont systemFontOfSize:14];
     _name=name;
     [self addSubview:name];
@@ -45,7 +45,7 @@
     _age.textColor=[UIColor grayColor];
     [self addSubview:age];
     
-    UIButton *map=[[UIButton alloc]initWithFrame:CGRectMake(self.frame.size.width-30, 12, 20, 20)];
+    UIButton *map=[[UIButton alloc]initWithFrame:CGRectMake(self.frame.size.width-30, 10, 36, 36)];
     [map setImage:[UIImage imageNamed:@"position"] forState:UIControlStateNormal];
     [map addTarget:self action:@selector(gotoMap:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:map];
@@ -56,7 +56,7 @@
 {
     [super layoutSubviews];
     DLog(@"width:%f",self.contentView.frame.size.width);
-    [self viewWithTag:10001].frame = Rect(self.contentView.frame.size.width-30, 12, 20, 20);
+    [self viewWithTag:10001].frame = Rect(self.contentView.frame.size.width-50, 10, 36, 36);
 }
 
 -(void)setValueWithPetInfo:(LePetInfo *)pet{
