@@ -33,6 +33,8 @@
 @property (nonatomic,strong) UIButton *btnPriLet;
 @property (nonatomic,strong) UIImageView *imgHead;
 
+
+-(void)setAttenBtnSwtich;
 -(void)setNearInfo:(NearInfo *)info;
 
 

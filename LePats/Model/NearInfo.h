@@ -19,6 +19,9 @@
 @property (nonatomic,assign) CGFloat fLat;
 @property (nonatomic,assign) CGFloat fLong;
 @property (nonatomic,strong) NSString *strUserId;
+@property (nonatomic,assign) int nFocus;
+
+
 -(id)initWithItems:(NSArray *)items;
 
 -(id)initWithDic:(NSDictionary *)dict;

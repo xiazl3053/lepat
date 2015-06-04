@@ -16,7 +16,9 @@
 #import "Toast+UIView.h"
 #import "ProgressHUD.h"
 
-@interface MyDetailViewController ()<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
+@interface MyDetailViewController ()<UITableViewDataSource,UITableViewDelegate,
+                    UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIAlertViewDelegate>
+{
     UIImageView *_icon;
     UITableView *_tableView;
 }
@@ -188,40 +190,53 @@
     }
     
     NSLog(@"indexPath=%@",indexPath);
-    
-    if (indexPath.section==3) {
-//        UIButton *logout=[[UIButton alloc]initWithFrame:CGRectMake((cell.frame.size.width-180)*.5, 10, 180, 25)];
-//        [logout setTitle:@"退出" forState:UIControlStateNormal];
-//        [logout addTarget:self action:@selector(logout:) forControlEvents:UIControlEventTouchUpInside];
-//        [logout setBackgroundColor:RGB(0, 146, 255)];
-//        [logout.layer setMasksToBounds:YES];
-//        logout.layer.cornerRadius = 3.0f;
-//        [cell addSubview:logout];
-//        cell.indicate.hidden=YES;
-//        cell.backgroundColor=[UIColor groupTableViewBackgroundColor];
-//        cell.backgroundColor = RGB(15, 173, 225);
-//        cell.textLabel.textColor = [UIColor whiteColor];
-        UIButton *logout=[[UIButton alloc]initWithFrame:CGRectMake((cell.frame.size.width-180)*.5, 10, 180, 25)];
+    if (indexPath.section==3)
+    {
+        cell.indicate.hidden=YES;
+        UIButton *logout=[[UIButton alloc] initWithFrame:CGRectMake(15, 0, self.view.width-30, cell.height)];
         [logout setTitle:@"退出" forState:UIControlStateNormal];
-        [logout addTarget:self action:@selector(logout:) forControlEvents:UIControlEventTouchUpInside];
+        [logout addTarget:self action:@selector(logoutView) forControlEvents:UIControlEventTouchUpInside];
         [logout setBackgroundColor:RGB(15,173,225)];
         [logout setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [logout.layer setMasksToBounds:YES];
         logout.layer.cornerRadius = 3.0f;
         [cell addSubview:logout];
+        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, cell.bounds.size.width);
         
     }
-
     [cell setValueWithNSDictionay:dic];
     return cell;
 }
 
--(void)logout:(UIButton *)aBtn{
+-(void)logoutView
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"是否注销?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
+    alert.tag = 1050;
+    [alert show];
+}
+
+-(void)logout
+{
     [UserInfo sharedUserInfo].strToken=nil;
     [self.navigationController popViewControllerAnimated:YES];
     [[NSNotificationCenter defaultCenter]postNotificationName:KUserLogout object:nil];
-    // [self.tabBarController setSelectedIndex:0];
 }
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag==1050) {
+        switch (buttonIndex) {
+            case 1:
+            {
+                [self logout];
+            }
+                break;
+            default:
+                break;
+        }
+    }
+}
+
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return self.itemList.count;
@@ -389,7 +404,6 @@
 
 /*
  #pragma mark - Navigation
- 
  // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
  // Get the new view controller using [segue destinationViewController].

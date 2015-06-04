@@ -22,6 +22,7 @@
             [[UserInfo sharedUserInfo] setLoginUser:dicInfo];
             [UserInfo sharedUserInfo].strToken = [dict objectForKey:@"token"];
             [[NSNotificationCenter defaultCenter] postNotificationName:MESSAGE_LOGIN_SUC_VC object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_SUCESS_VC object:nil];
             if (_httpBlock)
             {
                 _httpBlock(200);

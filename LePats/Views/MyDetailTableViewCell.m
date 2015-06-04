@@ -18,13 +18,13 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self initViews];
-        self.backgroundColor=[UIColor clearColor];
+        self.backgroundColor=[UIColor whiteColor];
     }
     return self;
 }
 
--(void)initViews{
-    
+-(void)initViews
+{
     self.title=[[UILabel alloc]initWithFrame:CGRectMake(30, (self.frame.size.height-44)*.5, 80, 44)];
     _title.textColor=[UIColor blackColor];
     _title.font=[UIFont systemFontOfSize:14];
@@ -40,16 +40,16 @@
     [self addSubview:_indicate];
 }
 
--(void)setValueWithNSDictionay:(NSDictionary *)dic{
+-(void)setValueWithNSDictionay:(NSDictionary *)dic
+{
     [_title setText:[dic objectForKey:@"title"]];
     [_content setText:[dic objectForKey:@"content"]];
 }
 
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 @end

@@ -13,6 +13,7 @@
 #import "FindService.h"
 #import "BDMarker.h"
 #import "BMapKit.h"
+#import "UserInfo.h"
 
 @interface MapFriendViewController()<BMKMapViewDelegate,BMKLocationServiceDelegate>
 {
@@ -123,8 +124,11 @@
         if ([[annotation title] isEqualToString:@"我"])
         {
             newAnnotationView.image = [UIImage imageNamed:@"marker_my"];
-            UIView *view = [[UIView alloc] initWithFrame:Rect(0,0,44,44)];
-            UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"my"]];
+            UIView *view = [[UIView alloc] initWithFrame:Rect(0,0,30,30)];
+            UIImageView *imgView = [[UIImageView alloc] initWithFrame:view.bounds];
+            [imgView.layer setMasksToBounds:YES];
+            [imgView.layer setCornerRadius:15.0f];
+            [imgView sd_setImageWithURL:[NSURL URLWithString:[UserInfo sharedUserInfo].strUserIcon] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
             [view addSubview:imgView];
             imgView.frame = view.bounds;
             newAnnotationView.leftCalloutAccessoryView = view;
@@ -132,9 +136,12 @@
         else
         {
             BDMarker *bMark = (BDMarker*)annotation;
+            
             newAnnotationView.image = [UIImage imageNamed:@"marker_other"];
-            UIView *view = [[UIView alloc] initWithFrame:Rect(0,0,44,44)];
+            UIView *view = [[UIView alloc] initWithFrame:Rect(0,0,30,30)];
             UIImageView *imgView = [[UIImageView alloc] initWithFrame:view.bounds];
+            [imgView.layer setMasksToBounds:YES];
+            [imgView.layer setCornerRadius:15.0f];
             [imgView sd_setImageWithURL:[[NSURL alloc] initWithString:bMark.near.strFile] placeholderImage:[UIImage imageNamed:@""]];
             [view addSubview:imgView];
             imgView.frame = view.bounds;
@@ -193,9 +200,9 @@
         location.longitude = near.fLong;
         bmk.coordinate = location;
         bmk.title = near.strName;
+        bmk.subtitle = [NSString stringWithFormat:@"距离您:%.01f m",near.fDistan];
         bmk.near = near;
         [_mapView addAnnotation:bmk];
-//        [_aryAnnotation addObject:bmk];
     }
 }
 

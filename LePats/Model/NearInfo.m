@@ -17,10 +17,6 @@
 //@property (nonatomic,strong) NSString *strPet;
 //@property (nonatomic,strong) NSString *strContent;
 //@property (nonatomic,assign) CGFloat
-    
-    
-
-    
     return self;
 }
 
@@ -36,6 +32,7 @@
     _fLat = [[dict objectForKey:@"lat"] floatValue];
     _fLong = [[dict objectForKey:@"lng"] floatValue];
     _strUserId = [dict objectForKey:@"userId"];
+    _nFocus = [[dict objectForKey:@"focusNum"] intValue];
     return self;
     
 }

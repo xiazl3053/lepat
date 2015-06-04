@@ -17,6 +17,7 @@
 #import "FriendCell.h"
 #import "Toast+UIView.h"
 #import "NearInfo.h"
+#import "ProgressHUD.h"
 
 @interface FriendListViewController ()<UITableViewDataSource,FriendViewDelegate,UITableViewDelegate,CLLocationManagerDelegate,BMKLocationServiceDelegate,BMKGeoCodeSearchDelegate>
 {
@@ -86,6 +87,7 @@
     search = [[BMKGeoCodeSearch alloc] init];
     search.delegate = self;
     focus = [[FocusService alloc] init];
+    [ProgressHUD show:@"正在定位..."];
 }
 
 -(void)focusUserInfo:(NSString *)strUserId
@@ -145,7 +147,7 @@
    
    [lblLocation setBackgroundColor:RGB(173, 173, 173)];
    [lblLocation setTextColor:RGB(255, 255, 255)];
-   [lblLocation setText:@"您当前的位置:"];
+   [lblLocation setText:@"        正在解析您的位置..."];
    _tableView = [[UITableView alloc] initWithFrame:Rect(0, lblLocation.height+lblLocation.y, self.view.width,self.view.height-lblLocation.height-lblLocation.y-44)];
    [self.view addSubview:_tableView];
    _tableView.delegate = self;
@@ -206,6 +208,8 @@
         //需要逆地理编码的坐标位置
         reverseGeoCodeOption.reverseGeoPoint = userLocation.location.coordinate;
         [search reverseGeoCode:reverseGeoCodeOption];
+        lblLocation.text = [NSString stringWithFormat:@"     正在解析您的位置..."];
+        [ProgressHUD dismiss];
     }
 }
 
@@ -214,13 +218,37 @@
     DLog(@"result:%@",result.address);
     dispatch_async(dispatch_get_main_queue(),
     ^{
-        lblLocation.text = [NSString stringWithFormat:@"您当前的位置:%@",result.address];
+        lblLocation.text = [NSString stringWithFormat:@"     您当前的位置:%@",result.address];
+        
     });
 }
 
 -(void)friendView:(FriendCell *)friend focus:(NSString *)strUserId
 {
-    
+    if(focus==nil)
+    {
+        focus = [[FocusService alloc] init];
+    }
+    __weak FriendListViewController *__self = self;
+    __weak FriendCell *__friend = friend;
+    focus.httpFocus = ^(int nStatus,NSString *strMsg)
+    {
+        if (nStatus == 1)
+        {
+            dispatch_async(dispatch_get_main_queue(),
+            ^{
+                [__friend setAttenBtnSwtich];
+            });
+        }
+        else
+        {
+            dispatch_async(dispatch_get_main_queue(),
+            ^{
+                [__self.view makeToast:strMsg duration:1.5 position:@"center"];
+            });
+        }
+    };
+    [focus requestFocus:strUserId];
 }
 
 @end

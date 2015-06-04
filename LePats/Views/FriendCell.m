@@ -35,27 +35,18 @@
 
 -(void)addViewLine
 {
-    UILabel *sLine1 = [[UILabel alloc] initWithFrame:CGRectMake(0,0.1,self.contentView.frame.size.width,0.5)];
+    UILabel *sLine1 = [[UILabel alloc] initWithFrame:CGRectMake(0,0.1,kScreenSourchWidth,0.5)];
     sLine1.backgroundColor = [UIColor colorWithRed:237/255.0
                                              green:237/255.0
                                               blue:237/255.0
                                              alpha:1.0];
-    UILabel *sLine2 = [[UILabel alloc] initWithFrame:CGRectMake(0,0.6,self.contentView.frame.size.width, 0.5)] ;
+    UILabel *sLine2 = [[UILabel alloc] initWithFrame:CGRectMake(0,0.6,kScreenSourchWidth, 0.5)] ;
     sLine2.backgroundColor = [UIColor whiteColor];
     
     [self.contentView addSubview:sLine1];
     [self.contentView addSubview:sLine2];
     
 }
-/*
-@property (nonatomic,strong) UILabel *lblName;
-@property (nonatomic,strong) UILabel *lblPet;
-@property (nonatomic,strong) UILabel *lblInfo;
-@property (nonatomic,strong) UILabel *lblDistance;
-@property (nonatomic,strong) UIButton *btnAttention;
-@property (nonatomic,strong) UIButton *btnPriLet;
-imgView
-*/
 
 -(void)initView
 {
@@ -71,7 +62,7 @@ imgView
     
     _lblInfo = [[UILabel alloc] initWithFrame:Rect(84, 60, 180, 13)];
     
-    _lblDistance = [[UILabel alloc] initWithFrame:Rect(250,20,60, 13)];
+    _lblDistance = [[UILabel alloc] initWithFrame:Rect(kScreenSourchWidth-80,20,60, 13)];
     
     [_lblDistance setTextAlignment:NSTextAlignmentRight];
     
@@ -102,8 +93,8 @@ imgView
     [_lblInfo setFont:XCFONT(13)];
     [_lblDistance setFont:XCFONT(12)];
     
-    _btnPriLet.frame = Rect(kScreenSourchWidth-50,40, 44,24);
-    _btnAttention.frame = Rect(kScreenSourchWidth-100,40, 44, 24);
+    _btnPriLet.frame = Rect(kScreenSourchWidth-60,40, 55,24);
+    _btnAttention.frame = Rect(kScreenSourchWidth-120,40, 55, 24);
     _lblDistance.frame = Rect(self.contentView.width-100,15,80, 15);
     
     [self.contentView addSubview:_imgView];
@@ -126,8 +117,23 @@ imgView
     _lblPet.text = [NSString stringWithFormat:@"TA的宠物:"];
     [_lblDistance setText:[NSString stringWithFormat:@"%.02f m",nearInfo.fDistan]];
     _strUserId = nearInfo.strUserId;
+    NSString *strInfo = nearInfo.nFocus ? @"取消关注" : @"关注";
+    [_btnAttention setTitle:strInfo forState:UIControlStateNormal];
+    
     _imgHead.image = nearInfo.nSex ? [UIImage imageNamed:@"boy"] : [UIImage imageNamed:@"girl"];
     [self setImageInfo:nearInfo.strFile];
+}
+
+-(void)setAttenBtnSwtich
+{
+    if ([_btnAttention.titleLabel.text isEqualToString:@"关注"])
+    {
+        [_btnAttention setTitle:@"取消关注" forState:UIControlStateNormal];// = @"取消关注";
+    }
+    else
+    {
+        [_btnAttention setTitle:@"关注" forState:UIControlStateNormal];// = @"取消关注";
+    }
 }
 
 -(void)setImageInfo:(NSString *)strImage
