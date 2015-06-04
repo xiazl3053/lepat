@@ -13,6 +13,7 @@
 #import "LoginViewController.h"
 #import "ProgressHUD.h"
 #import "MyFansViewController.h"
+#import "MyFocusViewController.h"
 
 @interface MyViewController (){
     UIImageView *_headView;
@@ -259,8 +260,16 @@
     switch (aBtn.tag) {
         case 100:
         {
+            
+            MyFocusViewController *other=[[MyFocusViewController alloc]init];
+            [self.navigationController pushViewController:other animated:YES];
+            //self.hidesBottomBarWhenPushed=YES;
+        }break;
+        case 200:{
             MyFansViewController *other=[[MyFansViewController alloc]init];
             [self.navigationController pushViewController:other animated:YES];
+            //self.hidesBottomBarWhenPushed=YES;
+            
         }break;
             
         default:

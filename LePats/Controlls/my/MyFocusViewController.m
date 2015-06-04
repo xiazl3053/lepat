@@ -7,6 +7,8 @@
 //
 
 #import "MyFocusViewController.h"
+#import "MyFocusService.h"
+#import "UserInfo.h"
 
 @interface MyFocusViewController ()
 
@@ -16,12 +18,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initParams];
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)initParams{
+    MyFocusService *service=[[MyFocusService alloc]init];
+    int userID=[[UserInfo sharedUserInfo].strUserId intValue];
+    [service requestUserId:userID];
 }
 
 /*

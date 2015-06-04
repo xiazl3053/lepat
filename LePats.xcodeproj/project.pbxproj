@@ -113,6 +113,7 @@
 		8416BBF31B1D6D6C0085FC33 /* MyFansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8416BBF21B1D6D6C0085FC33 /* MyFansViewController.m */; };
 		841AB43A1B1FEF1D007B09D7 /* MyFocusService.m in Sources */ = {isa = PBXBuildFile; fileRef = 841AB4391B1FEF1D007B09D7 /* MyFocusService.m */; };
 		841AB43D1B1FEF96007B09D7 /* MyFocusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841AB43C1B1FEF96007B09D7 /* MyFocusViewController.m */; };
+		841AB4401B1FF4BC007B09D7 /* FansModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 841AB43F1B1FF4BC007B09D7 /* FansModel.m */; };
 		BB1FB2F51B1DA95100A02CCD /* MapPetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1FB2F41B1DA95100A02CCD /* MapPetsViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -384,6 +385,8 @@
 		841AB4391B1FEF1D007B09D7 /* MyFocusService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFocusService.m; sourceTree = "<group>"; };
 		841AB43B1B1FEF96007B09D7 /* MyFocusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFocusViewController.h; sourceTree = "<group>"; };
 		841AB43C1B1FEF96007B09D7 /* MyFocusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFocusViewController.m; sourceTree = "<group>"; };
+		841AB43E1B1FF4BC007B09D7 /* FansModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FansModel.h; sourceTree = "<group>"; };
+		841AB43F1B1FF4BC007B09D7 /* FansModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FansModel.m; sourceTree = "<group>"; };
 		84D4D1C91B018FA400E67D9C /* LePats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LePats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB1FB2F31B1DA95100A02CCD /* MapPetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapPetsViewController.h; sourceTree = "<group>"; };
 		BB1FB2F41B1DA95100A02CCD /* MapPetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPetsViewController.m; sourceTree = "<group>"; };
@@ -688,6 +691,8 @@
 				4D5FED2A1B1CB10200360323 /* NearInfo.m */,
 				4D5FED2B1B1CB10200360323 /* PetSortModel.h */,
 				4D5FED2C1B1CB10200360323 /* PetSortModel.m */,
+				841AB43E1B1FF4BC007B09D7 /* FansModel.h */,
+				841AB43F1B1FF4BC007B09D7 /* FansModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1091,6 +1096,7 @@
 				4D5FEDA01B1CB10200360323 /* SDWebImageDownloaderOperation.m in Sources */,
 				4D5FEDEB1B1DF57900360323 /* MJRefreshFooterView.m in Sources */,
 				4D5FEDEE1B1DF57900360323 /* UIScrollView+MJRefresh.m in Sources */,
+				841AB4401B1FF4BC007B09D7 /* FansModel.m in Sources */,
 				4D5FEDB01B1CB10200360323 /* NearInfo.m in Sources */,
 				4D5FED931B1CB10200360323 /* MyPetsViewController.m in Sources */,
 				4D5FEDD11B1CB10200360323 /* LeftTableViewCell.m in Sources */,

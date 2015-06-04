@@ -8,6 +8,8 @@
 
 #import "HttpManager.h"
 
+typedef void(^MyFansServiceBlock)(NSString *error,NSArray *list);
 @interface MyFansService : HttpManager
 -(void)requestUserId:(int)nUserId;
+@property (nonatomic ,copy)MyFansServiceBlock myFansServiceBlock;
 @end

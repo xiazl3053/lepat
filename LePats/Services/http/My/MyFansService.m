@@ -31,6 +31,21 @@
         DLog(@"获取我的粉丝错误");
         return ;
     }
+    if (self.myFansServiceBlock) {
+        if ([[dic objectForKey:KServiceResponseCode]intValue]==KServiceResponseSuccess) {
+            NSArray *list=[dic objectForKey:@"fansList"];
+            for (NSString *str in list) {
+                NSLog(@"%@",str);
+            }
+            self.myFansServiceBlock(nil,nil);
+        }else{
+            self.myFansServiceBlock([dic objectForKey:KServiceResponseMsg],nil);
+        }
+        
+    }else{
+        NSLog(@"self.myFansServiceBlock为nil");
+    }
+    
 }
 
 
