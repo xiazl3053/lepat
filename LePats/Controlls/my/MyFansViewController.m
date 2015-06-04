@@ -12,6 +12,7 @@
 #import "Toast+UIView.h"
 #import "FansModel.h"
 #import "MJRefresh.h"
+#import "MyViewController.h"
 
 @interface MyFansViewController ()<UITableViewDataSource,UITableViewDelegate>{
     
@@ -99,6 +100,14 @@
     cell.textLabel.text=model.strName;
     cell.detailTextLabel.text=model.strSignature;
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    MyViewController *userDetail=[[MyViewController alloc]init];
+    FansModel *model=[_fansList objectAtIndex:indexPath.row];
+    userDetail.nUserID=[model.strUserId intValue];
+    [self.navigationController pushViewController:userDetail animated:YES];
 }
 
 /*

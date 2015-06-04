@@ -79,7 +79,12 @@
     service.getMyInfoBlock=^(NSString *error){
         [_icon sd_setImageWithURL:[NSURL URLWithString:[UserInfo sharedUserInfo].strUserIcon] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
     };
-    [service requestUserId:0];
+    if (self.nUserID==0) {
+        [service requestUserId:0];
+    }else{
+        [service requestUserId:self.nUserID];
+    }
+    
 }
 
 -(void)initSelfView{
@@ -188,8 +193,13 @@
 }
 
 -(void)initSegment{
-    NSArray *arr=[NSArray arrayWithObjects:@"我发布的",@"我喜欢的",nil];
-    UISegmentedControl *segment=[[UISegmentedControl alloc]initWithItems:arr];
+    NSArray *arr=nil;
+    if (self.nUserID==0) {
+         arr=[NSArray arrayWithObjects:@"我发布的",@"我喜欢的",nil];
+    }else{
+        arr=[NSArray arrayWithObjects:@"他的发布",@"他的喜欢",nil];
+    }
+        UISegmentedControl *segment=[[UISegmentedControl alloc]initWithItems:arr];
     segment.segmentedControlStyle=UISegmentedControlStyleBordered;
     segment.frame=CGRectMake(0, _detailView.bottom, KMainScreenSize.width, 40);
     [segment setSelectedSegmentIndex:0];
