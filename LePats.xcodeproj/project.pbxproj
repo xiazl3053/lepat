@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		4D08BF421B1FC1130037D6C9 /* FocusService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D08BF411B1FC1130037D6C9 /* FocusService.m */; };
 		4D08BF451B2056980037D6C9 /* FindPetsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D08BF441B2056980037D6C9 /* FindPetsService.m */; };
+		4D08BF521B2118BD0037D6C9 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D08BF481B2118BD0037D6C9 /* FMDatabase.m */; };
+		4D08BF531B2118BD0037D6C9 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D08BF4A1B2118BD0037D6C9 /* FMDatabaseAdditions.m */; };
+		4D08BF541B2118BD0037D6C9 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D08BF4C1B2118BD0037D6C9 /* FMDatabasePool.m */; };
+		4D08BF551B2118BD0037D6C9 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D08BF4E1B2118BD0037D6C9 /* FMDatabaseQueue.m */; };
+		4D08BF561B2118BD0037D6C9 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D08BF511B2118BD0037D6C9 /* FMResultSet.m */; };
+		4D08BF5B1B2119350037D6C9 /* LoginUserDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D08BF5A1B2119350037D6C9 /* LoginUserDB.m */; };
+		4D08BF5E1B21196C0037D6C9 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D08BF5D1B21196C0037D6C9 /* UserModel.m */; };
 		4D202BDD1B08894D007DED73 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D202BDC1B08894D007DED73 /* CoreLocation.framework */; };
 		4D202BDF1B088956007DED73 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D202BDE1B088956007DED73 /* QuartzCore.framework */; };
 		4D202BE11B08895E007DED73 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D202BE01B08895E007DED73 /* OpenGLES.framework */; };
@@ -125,6 +132,21 @@
 		4D08BF411B1FC1130037D6C9 /* FocusService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FocusService.m; sourceTree = "<group>"; };
 		4D08BF431B2056980037D6C9 /* FindPetsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindPetsService.h; sourceTree = "<group>"; };
 		4D08BF441B2056980037D6C9 /* FindPetsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindPetsService.m; sourceTree = "<group>"; };
+		4D08BF471B2118BD0037D6C9 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		4D08BF481B2118BD0037D6C9 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		4D08BF491B2118BD0037D6C9 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		4D08BF4A1B2118BD0037D6C9 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		4D08BF4B1B2118BD0037D6C9 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		4D08BF4C1B2118BD0037D6C9 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		4D08BF4D1B2118BD0037D6C9 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		4D08BF4E1B2118BD0037D6C9 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		4D08BF4F1B2118BD0037D6C9 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		4D08BF501B2118BD0037D6C9 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		4D08BF511B2118BD0037D6C9 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		4D08BF591B2119350037D6C9 /* LoginUserDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginUserDB.h; sourceTree = "<group>"; };
+		4D08BF5A1B2119350037D6C9 /* LoginUserDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginUserDB.m; sourceTree = "<group>"; };
+		4D08BF5C1B21196C0037D6C9 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		4D08BF5D1B21196C0037D6C9 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		4D202BDC1B08894D007DED73 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4D202BDE1B088956007DED73 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4D202BE01B08895E007DED73 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -423,6 +445,33 @@
 			name = focus;
 			sourceTree = "<group>";
 		};
+		4D08BF461B2118BD0037D6C9 /* fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				4D08BF471B2118BD0037D6C9 /* FMDatabase.h */,
+				4D08BF481B2118BD0037D6C9 /* FMDatabase.m */,
+				4D08BF491B2118BD0037D6C9 /* FMDatabaseAdditions.h */,
+				4D08BF4A1B2118BD0037D6C9 /* FMDatabaseAdditions.m */,
+				4D08BF4B1B2118BD0037D6C9 /* FMDatabasePool.h */,
+				4D08BF4C1B2118BD0037D6C9 /* FMDatabasePool.m */,
+				4D08BF4D1B2118BD0037D6C9 /* FMDatabaseQueue.h */,
+				4D08BF4E1B2118BD0037D6C9 /* FMDatabaseQueue.m */,
+				4D08BF4F1B2118BD0037D6C9 /* FMDB.h */,
+				4D08BF501B2118BD0037D6C9 /* FMResultSet.h */,
+				4D08BF511B2118BD0037D6C9 /* FMResultSet.m */,
+			);
+			path = fmdb;
+			sourceTree = "<group>";
+		};
+		4D08BF581B2119350037D6C9 /* dbService */ = {
+			isa = PBXGroup;
+			children = (
+				4D08BF591B2119350037D6C9 /* LoginUserDB.h */,
+				4D08BF5A1B2119350037D6C9 /* LoginUserDB.m */,
+			);
+			path = dbService;
+			sourceTree = "<group>";
+		};
 		4D5FEC7D1B1CB10200360323 /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -524,6 +573,7 @@
 		4D5FECB11B1CB10200360323 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				4D08BF461B2118BD0037D6C9 /* fmdb */,
 				4D5FEDD71B1DF57900360323 /* MJRefresh */,
 				4D5FECB21B1CB10200360323 /* baidumap */,
 				4D5FECF31B1CB10200360323 /* blocks */,
@@ -686,6 +736,8 @@
 		4D5FED241B1CB10200360323 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4D08BF5C1B21196C0037D6C9 /* UserModel.h */,
+				4D08BF5D1B21196C0037D6C9 /* UserModel.m */,
 				4D5FED251B1CB10200360323 /* HomeItemModel.h */,
 				4D5FED261B1CB10200360323 /* HomeItemModel.m */,
 				4D5FED271B1CB10200360323 /* LePetInfo.h */,
@@ -718,6 +770,7 @@
 		4D5FED371B1CB10200360323 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				4D08BF581B2119350037D6C9 /* dbService */,
 				4D5FED381B1CB10200360323 /* http */,
 				4D5FED601B1CB10200360323 /* singleton */,
 			);
@@ -1048,11 +1101,13 @@
 				4D5FED991B1CB10200360323 /* UIControl+BlocksKit.m in Sources */,
 				4D5FEDCC1B1CB10200360323 /* HomeGiftItemButton.m in Sources */,
 				4D5FEDA31B1CB10200360323 /* UIButton+WebCache.m in Sources */,
+				4D08BF551B2118BD0037D6C9 /* FMDatabaseQueue.m in Sources */,
 				4D5FEDC71B1CB10200360323 /* HttpUploadManager.m in Sources */,
 				4D5FEDA11B1CB10200360323 /* SDWebImageManager.m in Sources */,
 				4D5FEDC01B1CB10200360323 /* PetInfoEditService.m in Sources */,
 				4D5FEDCA1B1CB10200360323 /* AddPetCellTableViewCell.m in Sources */,
 				4D5FEDC61B1CB10200360323 /* UpdUserService.m in Sources */,
+				4D08BF541B2118BD0037D6C9 /* FMDatabasePool.m in Sources */,
 				4D5FEDC11B1CB10200360323 /* PetInfoService.m in Sources */,
 				8416BBF01B1D6C990085FC33 /* MyFansService.m in Sources */,
 				4D08BF421B1FC1130037D6C9 /* FocusService.m in Sources */,
@@ -1065,9 +1120,11 @@
 				4D5FED881B1CB10200360323 /* LeftViewController.m in Sources */,
 				4D5FED8A1B1CB10200360323 /* MyDetailViewController.m in Sources */,
 				4D5FED831B1CB10200360323 /* FriendListViewController.m in Sources */,
+				4D08BF5B1B2119350037D6C9 /* LoginUserDB.m in Sources */,
 				4D5FEDC41B1CB10200360323 /* LoginService.m in Sources */,
 				4D5FEDB21B1CB10200360323 /* AppDelegate.mm in Sources */,
 				4D5FED9F1B1CB10200360323 /* SDWebImageDownloader.m in Sources */,
+				4D08BF531B2118BD0037D6C9 /* FMDatabaseAdditions.m in Sources */,
 				4D5FEDBC1B1CB10200360323 /* MyInfoService.m in Sources */,
 				4D5FEDC91B1CB10200360323 /* UserInfo.m in Sources */,
 				BB1FB2F51B1DA95100A02CCD /* MapPetsViewController.mm in Sources */,
@@ -1102,7 +1159,9 @@
 				4D5FEDA01B1CB10200360323 /* SDWebImageDownloaderOperation.m in Sources */,
 				4D5FEDEB1B1DF57900360323 /* MJRefreshFooterView.m in Sources */,
 				4D5FEDEE1B1DF57900360323 /* UIScrollView+MJRefresh.m in Sources */,
+				4D08BF5E1B21196C0037D6C9 /* UserModel.m in Sources */,
 				841AB4401B1FF4BC007B09D7 /* FansModel.m in Sources */,
+				4D08BF521B2118BD0037D6C9 /* FMDatabase.m in Sources */,
 				4D5FEDB01B1CB10200360323 /* NearInfo.m in Sources */,
 				4D5FED931B1CB10200360323 /* MyPetsViewController.m in Sources */,
 				4D5FEDD11B1CB10200360323 /* LeftTableViewCell.m in Sources */,
@@ -1137,6 +1196,7 @@
 				4D5FEDAF1B1CB10200360323 /* LePetInfo.m in Sources */,
 				4D5FED9A1B1CB10200360323 /* MKAnnotationView+WebCache.m in Sources */,
 				4D5FEDA41B1CB10200360323 /* UIImage+GIF.m in Sources */,
+				4D08BF561B2118BD0037D6C9 /* FMResultSet.m in Sources */,
 				8416BBF31B1D6D6C0085FC33 /* MyFansViewController.m in Sources */,
 				4D5FED8E1B1CB10200360323 /* LoginViewController.m in Sources */,
 			);
