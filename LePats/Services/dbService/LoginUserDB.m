@@ -21,6 +21,7 @@
         DLog(@"open fail");
     }
     [db executeUpdate:@"CREATE TABLE IF NOT EXISTS userInfo (id integer primary key asc autoincrement, username text unique, pwd text,token text,nLogin number)"];
+    
     return db;
 }
 +(BOOL)addLoginUser:(UserModel *)userModel
@@ -37,7 +38,7 @@
 
 +(BOOL)updateSaveInfo:(UserModel *)user
 {
-    NSString *strSql = @"insert or replace into userInfo (id,username,pwd,token,nLoginn) values (1,?,?,?,?);";
+    NSString *strSql = @"insert or replace into userInfo (id,username,pwd,token,nLogin) values (1,?,?,?,?);";
     FMDatabase *db = [LoginUserDB initDatabaseUser];
     [db beginTransaction];
     BOOL bRetrun = [db executeUpdate:strSql,user.strUser,user.strPwd,user.strToken,[NSNumber numberWithInt:user.nLogin]];
@@ -48,6 +49,7 @@
 
 +(UserModel*)querySaveInfo
 {
+    
     NSString *strSql = @"select * from userInfo";
     FMDatabase *db = [LoginUserDB initDatabaseUser];
     FMResultSet *rs = [db executeQuery:strSql];
@@ -98,8 +100,6 @@
             return @"";
         }
     }
-    
-    
     return nil;
 }
 

@@ -64,16 +64,13 @@
         NSLog(@"manager start failed!");
     }
     
-//    LoginService *login = [[LoginService alloc] init];
-//    [login requestLogin:@"13888888888" password:@"123456"];
-    
-    
     UserModel *user = [LoginUserDB querySaveInfo];
     if (user.nLogin)
     {
         [UserInfo sharedUserInfo].strToken = user.strToken;
-        [UserInfo sharedUserInfo].strMobile = user.strUser;
+        [UserInfo sharedUserInfo].strUserId = user.strUser;
         [UserInfo sharedUserInfo].strPassword = user.strPwd;
+        [[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_SUCESS_VC object:nil];
     }
     [self.window setRootViewController:slide];
     [self.window makeKeyAndVisible];

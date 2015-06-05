@@ -57,6 +57,8 @@
 
 -(void)requestLogin:(NSString *)strUser password:(NSString *)strPwd
 {
+    [UserInfo sharedUserInfo].strMobile = strUser;
+    [UserInfo sharedUserInfo].strPassword = strPwd;
     NSString *strUrl = [NSString stringWithFormat:@"%@pub/login.do?mobile=%@&password=%@%@",LEPAT_HTTP_HOST,strUser,strPwd,LEPAT_VERSION_INFO];
     [self sendRequest:strUrl];
 }
