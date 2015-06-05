@@ -182,7 +182,7 @@
     
     HomeItemModel *model11 = [[HomeItemModel alloc] init];
     model11.title = @"寻找鱼友";
-    model11.tag = 105;
+    model11.tag = 106;
     model11.img = @"home_findfish";
     
     HomeItemModel *model12 = [[HomeItemModel alloc] init];
@@ -296,8 +296,8 @@
     switch (tag) {
         case 101:
         {
-            UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            //            LoginViewController *info=[story instantiateViewControllerWithIdentifier:@"LoginViewController"];
+//            UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//            LoginViewController *info=[story instantiateViewControllerWithIdentifier:@"LoginViewController"];
             //            info.view.backgroundColor=[UIColor yellowColor];
             if([UserInfo sharedUserInfo].strMobile ==nil)
             {
@@ -310,10 +310,11 @@
         {
             
         }break;
-        case 105:
+        case 106:
         {
             MapFriendViewController *mapFriend = [[MapFriendViewController alloc] init];
-            [self.navigationController pushViewController:mapFriend animated:YES];
+            mapFriend.hidesBottomBarWhenPushed = YES;
+            [self presentViewController:mapFriend animated:YES completion:nil];//:mapFriend animated:YES];
         }
             break;
         default:

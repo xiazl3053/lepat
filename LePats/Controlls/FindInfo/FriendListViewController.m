@@ -68,16 +68,13 @@
 -(void)initHeadView
 {
     self.title = @"附近鱼友列表";
-    [self setRightHidden:NO];
-    [self setRightRect:Rect(self.view.width-50,22, 36, 36)];
-    [self setRightImg:@"position" high:nil select:nil];
     __weak FriendListViewController *__self = self;
     findSer = [[FindService alloc] init];
     _aryNear = [NSMutableArray array];
-    [self addRightEvent:^(id sender)
-    {
-        [__self comeToMap];
-    }];
+//    [self addRightEvent:^(id sender)
+//    {
+//        [__self comeToMap];
+//    }];
 }
 
 
@@ -144,13 +141,20 @@
 
 -(void)initView
 {
-   lblLocation = [[UILabel alloc] initWithFrame:Rect(0,[self barSize].height, self.view.width, 44)];
+    
+    UIButton *btnSender = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btnSender setImage:[UIImage imageNamed:@"position"] forState:UIControlStateNormal];
+    [btnSender addTarget:self action:@selector(comeToMap) forControlEvents:UIControlEventTouchUpInside];
+    btnSender.frame = Rect(7,[self barSize].height+4, 36, 36);
+    [self.view addSubview:btnSender];
+    
+   lblLocation = [[UILabel alloc] initWithFrame:Rect(50,[self barSize].height, self.view.width-50, 44)];
    [lblLocation setFont:XCFONT(15)];
    [self.view addSubview:lblLocation];
    
    [lblLocation setBackgroundColor:RGB(173, 173, 173)];
    [lblLocation setTextColor:RGB(255, 255, 255)];
-   [lblLocation setText:@"        正在解析您的位置..."];
+   [lblLocation setText:@"正在解析您的位置..."];
    _tableView = [[UITableView alloc] initWithFrame:Rect(0, lblLocation.height+lblLocation.y, self.view.width,self.view.height-lblLocation.height-lblLocation.y-44)];
    [self.view addSubview:_tableView];
    _tableView.delegate = self;
@@ -212,7 +216,7 @@
         //需要逆地理编码的坐标位置
         reverseGeoCodeOption.reverseGeoPoint = userLocation.location.coordinate;
         [search reverseGeoCode:reverseGeoCodeOption];
-        lblLocation.text = [NSString stringWithFormat:@"     正在解析您的位置..."];
+        lblLocation.text = [NSString stringWithFormat:@"正在解析您的位置..."];
         [ProgressHUD dismiss];
     }
 }
@@ -222,8 +226,7 @@
     DLog(@"result:%@",result.address);
     dispatch_async(dispatch_get_main_queue(),
     ^{
-        lblLocation.text = [NSString stringWithFormat:@"     您当前的位置:%@",result.address];
-        
+        lblLocation.text = [NSString stringWithFormat:@"您当前的位置:%@",result.address];
     });
 }
 
@@ -266,7 +269,6 @@
         NearInfo *nearInfo = [__aryNear objectAtIndex:__weakFriend.nRow];
         nearInfo.nFansNum = near.nFansNum;
         nearInfo.nFocusNum = near.nFocusNum;
-//        [__weakFriend setNearInfo:near];
     };
     [tUser requestOperId:strUserId];
 }

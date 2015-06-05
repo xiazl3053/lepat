@@ -111,7 +111,7 @@
     if (indexPath.section==0)
     {
         FriendListViewController *friendView = [[FriendListViewController alloc] init];
-        [self.navigationController pushViewController:friendView animated:YES];
+        [self presentViewController:friendView animated:YES completion:nil];// friendView animated:YES];
     }
 }
 

@@ -13,6 +13,7 @@
 #import "WWSideslipViewController.h"
 #import "Common.h"
 #import "UserInfoViewController.h"
+#import "HomeViewController.h"
 #import "MainViewController.h"
 #import "LoginViewController.h"
 #import "MyPetsViewController.h"
@@ -24,6 +25,7 @@
 {
     BOOL bLeft;
     NSInteger _index;
+    UITapGestureRecognizer *rightTap;
 }
 
 @end
@@ -100,32 +102,35 @@
         [self.view addSubview:righControl.view];
         
         [self.view addSubview:mainControl.view];
-        
+        rightTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showMainView)];
+        rightTap.numberOfTapsRequired = 1;
+//        [mainControl.view addGestureRecognizer:rightTap];
     }
     return self;
 }
-
-
+//
+//-(void)showMainViewController
+//{
+//    
+//}
 
 #pragma mark - 滑动手势
 
 //滑动手势
-- (void) handlePan: (UIPanGestureRecognizer *)rec{
-    
+- (void) handlePan: (UIPanGestureRecognizer *)rec
+{
     MainViewController *tabbar=(MainViewController*)mainControl;
     UINavigationController *nav=(UINavigationController *)tabbar.selectedViewController;
-    if ([nav.topViewController isKindOfClass:[UserInfoViewController class]]) {
+    if (![nav.topViewController isKindOfClass:[HomeViewController class]])
+    {
         return ;
     }
     
     CGPoint point = [rec translationInView:self.view];
     scalef = (point.x*speedf+scalef);
     //根据视图位置判断是左滑还是右边滑动
-    if (rec.view.frame.origin.x>=0){
-//        rec.view.center = CGPointMake(rec.view.center.x + point.x*speedf,rec.view.center.y);
-//        rec.view.transform = CGAffineTransformScale(CGAffineTransformIdentity,1-scalef/1000,1-scalef/1000);
-//        [rec setTranslation:CGPointMake(0, 0) inView:self.view];
-//        righControl.view.hidden = YES;
+    if (rec.view.frame.origin.x>=0)
+    {
         leftControl.view.hidden = NO;
     }
     else
@@ -137,22 +142,18 @@
         leftControl.view.hidden = YES;
     }
     //手势结束后修正位置
-    if (rec.state == UIGestureRecognizerStateEnded) {
-        if (scalef>140*speedf){
-            _index++;
+    if (rec.state == UIGestureRecognizerStateEnded)
+    {
+        if (scalef>140*speedf)
+        {
             [self showLeftView];
         }
-//        else if (scalef<-140*speedf) {
-//            [self showRighView];
-//        }
         else
         {
-            _index++;
             [self showMainView];
             scalef = 0;
         }
     }
-
 }
 
 #pragma mark - 单击手势
@@ -171,19 +172,21 @@
 
 #pragma mark - 修改视图位置
 //恢复位置
--(void)showMainView{
+-(void)showMainView
+{
     [UIView beginAnimations:nil context:nil];
     mainControl.view.transform = CGAffineTransformScale(CGAffineTransformIdentity,1.0,1.0);
     mainControl.view.center = CGPointMake([UIScreen mainScreen].bounds.size.width/2,[UIScreen mainScreen].bounds.size.height/2);
     [UIView commitAnimations];
+    [mainControl.view removeGestureRecognizer:rightTap];
 }
 
--(void)gotoMyInfoViewCotroller:(NSNotification *)notification{
+-(void)gotoMyInfoViewCotroller:(NSNotification *)notification
+{
     NSLog(@"notification.object=%@",notification.object);
     [self showMainView];
     HomeItemModel *model=notification.object;
     [self gotoInfoViewWithTag:model.tag];
-    
 }
 
 -(void)gotoInfoViewWithTag:(NSInteger)tag{
@@ -199,15 +202,18 @@
             [((UINavigationController*)vc) pushViewController:myPets animated:YES];
             
         }break;
-        case 10002:{
+        case 10002:
+        {
             PetDetailViewController *addPet=[[PetDetailViewController alloc]init];
             addPet.hidesBottomBarWhenPushed=YES;
             [((UINavigationController*)vc) pushViewController:addPet animated:YES];
         
         }break;
-            
         default:
-            break;
+        {
+            
+        }
+        break;
     }
 }
 //显示左视图
@@ -217,6 +223,7 @@
     mainControl.view.transform = CGAffineTransformScale(CGAffineTransformIdentity,0.8,0.8);
     mainControl.view.center = CGPointMake([UIScreen mainScreen].bounds.size.width*1.2,[UIScreen mainScreen].bounds.size.height/2);
     [UIView commitAnimations];
+    [mainControl.view addGestureRecognizer:rightTap];
 }
 
 -(void)showLeftViewFromSetting

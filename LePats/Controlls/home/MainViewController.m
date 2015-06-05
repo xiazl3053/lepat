@@ -40,7 +40,8 @@
    // [self initVC];
 }
 
--(void)initVC{
+-(void)initVC
+{
     //b.创建子控制器
     UIViewController *c1=[[UIViewController alloc]init];
     c1.view.backgroundColor=[UIColor grayColor];
