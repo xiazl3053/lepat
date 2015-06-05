@@ -26,6 +26,7 @@
     BOOL bLeft;
     NSInteger _index;
     UITapGestureRecognizer *rightTap;
+    UIView *clearView;
 }
 
 @end
@@ -102,6 +103,11 @@
         [self.view addSubview:righControl.view];
         
         [self.view addSubview:mainControl.view];
+        
+        clearView = [[UIView alloc] initWithFrame:mainControl.view.bounds];
+        [clearView setBackgroundColor:[UIColor clearColor]];
+        
+        
         rightTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showMainView)];
         rightTap.numberOfTapsRequired = 1;
 //        [mainControl.view addGestureRecognizer:rightTap];
@@ -178,6 +184,7 @@
     mainControl.view.transform = CGAffineTransformScale(CGAffineTransformIdentity,1.0,1.0);
     mainControl.view.center = CGPointMake([UIScreen mainScreen].bounds.size.width/2,[UIScreen mainScreen].bounds.size.height/2);
     [UIView commitAnimations];
+    [clearView removeFromSuperview];
     [mainControl.view removeGestureRecognizer:rightTap];
 }
 
@@ -223,6 +230,7 @@
     mainControl.view.transform = CGAffineTransformScale(CGAffineTransformIdentity,0.8,0.8);
     mainControl.view.center = CGPointMake([UIScreen mainScreen].bounds.size.width*1.2,[UIScreen mainScreen].bounds.size.height/2);
     [UIView commitAnimations];
+    [mainControl.view addSubview:clearView];
     [mainControl.view addGestureRecognizer:rightTap];
 }
 
