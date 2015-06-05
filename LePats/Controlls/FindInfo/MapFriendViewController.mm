@@ -38,6 +38,14 @@
     return self;
 }
 
+-(id)init
+{
+    self = [super init];
+    fLat = 0;
+    fLong = 0;
+    return self;
+}
+
 -(void)startLocation
 {
     [BMKLocationService setLocationDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
@@ -236,10 +244,19 @@
         _mapView.region = region;
         NSLog(@"当前的坐标是: %f,%f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
     }
-    if(fLat != 0 || fLong != 0)
+    if(fLat == 0 || fLong == 0)
     {
         fLat = userLocation.location.coordinate.latitude;
         fLong = userLocation.location.coordinate.longitude;
+        bmk_my = [[BMKPointAnnotation alloc] init];
+        bmk_my.title = @"我";
+        bmk_my.subtitle = @"我的位置";
+        CLLocationCoordinate2D location2D;
+        location2D.latitude = fLat;
+        location2D.longitude = fLong;
+        bmk_my.coordinate = location2D;
+        [_mapView addAnnotation:bmk_my];
+        [self findData];
     }
 }
 
