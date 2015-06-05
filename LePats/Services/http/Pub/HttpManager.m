@@ -70,9 +70,7 @@
     [request setHTTPBody:data];
     
     __block HttpManager *weakSelf = self;
-    
     DLog(@"strPath:%@",strUrl);
-    
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:
      ^(NSURLResponse* response, NSData* data, NSError* connectionError){
          HttpManager *strongLogin = weakSelf;
@@ -80,7 +78,7 @@
          {
              [strongLogin reciveHttp:response data:data error:connectionError];
          }
-     }];
+    }];
 }
 
 -(void)sendRequestString:(NSString *)strInfo url:(NSString *)strUrl

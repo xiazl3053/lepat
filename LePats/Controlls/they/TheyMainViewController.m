@@ -8,6 +8,8 @@
 
 #import "TheyMainViewController.h"
 #import "UserInfo.h"
+#import "UIImageView+WebCache.h"
+#import "LePetInfo.h"
 #import "NearInfo.h"
 #import "UIView+Extension.h"
 #import "UIImageView+WebCache.h"
@@ -23,6 +25,7 @@
     UIView *_leftView;
     UIView *_rightView;
     TheyInfoService *theyInfo;
+    UIScrollView *scrollView;
 }
 @property (nonatomic,strong) NSMutableArray *aryPets;
 @end
@@ -51,6 +54,7 @@
         {
             [__self.aryPets removeAllObjects];
             [__self.aryPets addObjectsFromArray:aryItem];
+//            dispatch_async(dispatch_get_main_queue(), )
             [__self updateRightView];
         }
     };
@@ -59,7 +63,27 @@
 
 -(void)updateRightView
 {
-     
+    for (UIView *view in scrollView.subviews)
+    {
+        [view removeFromSuperview];
+    }
+    //60
+    CGFloat width = kScreenSourchWidth/4-2;//105
+    int x=0,y=0;
+    //1行  4 个
+    for (LePetInfo *lepet in _aryPets)
+    {
+        DLog(@"length:%@",lepet.strIconUrl);
+        if(![lepet.strIconUrl isEqualToString:@""])
+        {
+            UIImageView *imgView = [[UIImageView alloc] initWithFrame:Rect((x%4)*width+2, y/4+5,width,width)];
+            [scrollView addSubview:imgView];
+            [imgView sd_setImageWithURL:[[NSURL alloc] initWithString:lepet.strIconUrl] placeholderImage:nil];
+            x++;
+            y++;
+        }
+    }
+    [scrollView setContentSize:CGSizeMake(kScreenSourchWidth,y/4*width)];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -118,7 +142,7 @@
     push.image=[UIImage imageNamed:@"my_camera"];
     [view1 addSubview:push];
     
-    UITextView *text=[[UITextView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-280)*.5,push.bottom-20, 280, 80)];
+    UITextView *text=[[UITextView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-280)*.5,push.bottom, 280, 80)];
     text.text=@"青春的时光很短，我们也过得匆忙。我们不能让时光的飞逝慢一点，只能用镜头记录每一个美好瞬间，留作纪念";
     text.font=[UIFont systemFontOfSize:10];
     text.backgroundColor=[UIColor clearColor];
@@ -127,23 +151,13 @@
     _leftView=view1;
     [self.view addSubview:view1];
     
-    UIView *view2=[[UIView alloc]initWithFrame:CGRectMake(0, segment.bottom, KMainScreenSize.width, self.view.frame.size.height-segment.bottom)];
-    view2.backgroundColor=[UIColor groupTableViewBackgroundColor];
-    view2.hidden=YES;
-    
-    UIImageView *like=[[UIImageView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-80)*.5, (view2.height-80)*.5, 80, 80)];
-    like.image=[UIImage imageNamed:@"my_heart"];
-    [view2 addSubview:like];
-    
-    UILabel *text1=[[UILabel alloc]initWithFrame:CGRectMake((KMainScreenSize.width-280)*.5,like.bottom, 280, 20)];
-    text1.text=@"您的喜欢还是空的！";
-    text1.textAlignment=NSTextAlignmentCenter;
-    text1.font=[UIFont systemFontOfSize:10];
-    text1.backgroundColor=[UIColor clearColor];
-    [view2 addSubview:text1];
-    _rightView=view2;
-    
-    [self.view addSubview:view2];
+    _rightView=[[UIView alloc]initWithFrame:CGRectMake(0, segment.bottom, KMainScreenSize.width, self.view.frame.size.height-segment.bottom)];
+    _rightView.backgroundColor=[UIColor groupTableViewBackgroundColor];
+    _rightView.hidden=YES;
+   
+    scrollView = [[UIScrollView alloc] initWithFrame:_rightView.bounds];
+    [_rightView addSubview:scrollView];
+    [self.view addSubview:_rightView];
 }
 
 -(void)segmentedValueChange:(UISegmentedControl *)segmengt
@@ -255,5 +269,7 @@
 {
     
 }
+
+
 
 @end
