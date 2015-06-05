@@ -23,6 +23,7 @@
 @interface LeftViewController ()<UITableViewDataSource,UITableViewDelegate>{
     UIImageView *_imgView;
     UIButton *_login;
+    UITableView *tableView;
     UILabel *_nickName;
 }
 
@@ -72,11 +73,15 @@
     __weak UIImageView *__imgView = _imgView;
     __weak UIButton *__login = _login;
     __weak UILabel *__nickName = _nickName;
+    __weak UITableView *__tableView = tableView;
     service.getMyInfoBlock=^(NSString *error)
     {
         if (!error)
         {
-            dispatch_async(dispatch_get_main_queue(), ^{
+            DLog("路径:%@",[UserInfo sharedUserInfo].strUserIcon);
+            dispatch_async(dispatch_get_main_queue(),
+            ^{
+                [__tableView reloadData];
                 [__imgView sd_setImageWithURL:[NSURL URLWithString:[UserInfo sharedUserInfo].strUserIcon] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
                 __nickName.text=[UserInfo sharedUserInfo].strNickName;
                 if ([UserInfo sharedUserInfo].strToken)
@@ -86,7 +91,9 @@
                 }
             });
             
-        }else{
+        }
+        else
+        {
             
         }
     };
@@ -94,9 +101,10 @@
 }
 
 
--(void)viewWillAppear:(BOOL)animated{
+-(void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:YES];
-    
+//    [self getLoginInfo];
 }
 
 
@@ -183,8 +191,9 @@
     [self.view addSubview:bgView];
 }
 
--(void)initTableView{
-    UITableView *tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 20, KMainScreenSize.width, KMainScreenSize.height) style:UITableViewStylePlain];
+-(void)initTableView
+{
+    tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 20, KMainScreenSize.width, KMainScreenSize.height) style:UITableViewStylePlain];
     tableView.delegate=self;
     tableView.dataSource=self;
     tableView.backgroundColor=[UIColor clearColor];
@@ -206,7 +215,7 @@
     icon.layer.masksToBounds=YES;
     [my addSubview:icon];
     _imgView=icon;
-    
+    DLog(@"UserInfo sharedUserInfo].strUserIcon:%@",[UserInfo sharedUserInfo].strUserIcon);
     [icon sd_setImageWithURL:[NSURL URLWithString:[UserInfo sharedUserInfo].strUserIcon] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
     
     UIButton *login=[[UIButton alloc]initWithFrame:CGRectMake((200-100)*.5, icon.bottom+15, 100, 25)];

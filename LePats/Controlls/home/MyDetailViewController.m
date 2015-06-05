@@ -8,6 +8,7 @@
 
 #import "MyDetailViewController.h"
 #import "HomeItemModel.h"
+#import "LoginUserDB.h"
 #import "MyInfoService.h"
 #import "MyDetailTableViewCell.h"
 #import "UserInfo.h"
@@ -15,9 +16,10 @@
 #import "editmyinfoViewController.h"
 #import "Toast+UIView.h"
 #import "ProgressHUD.h"
-
+#import "UserModel.h"
 @interface MyDetailViewController ()<UITableViewDataSource,UITableViewDelegate,
                     UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIAlertViewDelegate>
+
 {
     UIImageView *_icon;
     UITableView *_tableView;
@@ -217,7 +219,14 @@
 
 -(void)logout
 {
+    UserModel *uDl = [[UserModel alloc] init];
+    uDl.strUser = [UserInfo sharedUserInfo].strMobile;
+    uDl.strPwd = [UserInfo sharedUserInfo].strPassword;
+    uDl.strToken = [UserInfo sharedUserInfo].strToken;
+    uDl.nLogin = 0;
+    [LoginUserDB updateSaveInfo:uDl];
     [UserInfo sharedUserInfo].strToken=nil;
+    
     [self.navigationController popViewControllerAnimated:YES];
     [[NSNotificationCenter defaultCenter]postNotificationName:KUserLogout object:nil];
 }

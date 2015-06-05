@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "WWSideslipViewController.h"
+#import "MyInfoService.h"
 #import "FindService.h"
 #import "LeftViewController.h"
 #import "RightViewController.h"
@@ -39,6 +40,20 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     
+    UserModel *user = [LoginUserDB querySaveInfo];
+    if (user.nLogin)
+    {
+        [UserInfo sharedUserInfo].strToken = user.strToken;
+        [UserInfo sharedUserInfo].strUserId = user.strUser;
+        [UserInfo sharedUserInfo].strPassword = user.strPwd;
+        
+        MyInfoService *service=[[MyInfoService alloc]init];
+        service.getMyInfoBlock=^(NSString *error){
+            DLog(@"已接收到数据");
+            [[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_SUCESS_VC object:nil];
+        };
+        [service requestUserId:0];
+    }
     UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     MainViewController *main = [story instantiateViewControllerWithIdentifier:@"MainViewController"];
     main.delegate=self;
@@ -63,15 +78,7 @@
     {
         NSLog(@"manager start failed!");
     }
-    
-    UserModel *user = [LoginUserDB querySaveInfo];
-    if (user.nLogin)
-    {
-        [UserInfo sharedUserInfo].strToken = user.strToken;
-        [UserInfo sharedUserInfo].strUserId = user.strUser;
-        [UserInfo sharedUserInfo].strPassword = user.strPwd;
-        [[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_SUCESS_VC object:nil];
-    }
+
     [self.window setRootViewController:slide];
     [self.window makeKeyAndVisible];
     return YES;

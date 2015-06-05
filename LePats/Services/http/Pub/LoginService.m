@@ -22,8 +22,8 @@
             NSDictionary *dicInfo = [dict objectForKey:@"loginuser"];
             [[UserInfo sharedUserInfo] setLoginUser:dicInfo];
             [UserInfo sharedUserInfo].strToken = [dict objectForKey:@"token"];
-            [[NSNotificationCenter defaultCenter] postNotificationName:MESSAGE_LOGIN_SUC_VC object:nil];
-            [[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_SUCESS_VC object:nil];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:MESSAGE_LOGIN_SUC_VC object:nil];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_SUCESS_VC object:nil];
             UserModel *userDl = [[UserModel alloc] init];
             userDl.strToken = [UserInfo sharedUserInfo].strToken;
             userDl.strUser = [UserInfo sharedUserInfo].strUserId;

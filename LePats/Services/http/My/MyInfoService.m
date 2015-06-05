@@ -33,12 +33,16 @@
         return ;
     }
     DLog(@"dic:%@",dic);
-    if (self.getMyInfoBlock) {
-        if ([[dic objectForKey:KServiceResponseCode]intValue]==KServiceResponseSuccess) {
+    if (self.getMyInfoBlock)
+    {
+        [[UserInfo sharedUserInfo] setLoginUser:[dic objectForKey:@"user"]];
+        if ([[dic objectForKey:KServiceResponseCode]intValue]==KServiceResponseSuccess)
+        {
             UserInfo *user = [UserInfo sharedUserInfo];
             [user setLoginUser:[dic objectForKey:@"user"]];
             self.getMyInfoBlock(nil);
-        }else{
+        }else
+        {
             self.getMyInfoBlock([dic objectForKey:KServiceResponseMsg]);
         }
     }

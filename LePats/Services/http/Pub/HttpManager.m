@@ -20,7 +20,7 @@
     
     __block HttpManager *weakSelf = self;
     
-    DLog(@"strPath:%@",strPath);
+//    DLog(@"strPath:%@",strPath);
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:
      ^(NSURLResponse* response, NSData* data, NSError* connectionError){
