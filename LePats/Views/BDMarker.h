@@ -11,6 +11,7 @@
 
 @interface BDMarker : BMKPointAnnotation
 
+@property (nonatomic,assign) int nIndex;
 @property (nonatomic,strong) NearInfo *near;
 
 @end

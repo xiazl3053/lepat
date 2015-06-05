@@ -48,6 +48,14 @@
     
 }
 
+-(void)imgTapEvent
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(friendView:index:)])
+    {
+        [_delegate friendView:self index:self.nRow];
+    }
+}
+
 -(void)initView
 {
     _imgView = [[UIImageView alloc] initWithFrame:Rect(10, 10, 64,64)];
@@ -61,6 +69,9 @@
     _lblPet = [[UILabel alloc] initWithFrame:Rect(84, 40, 160, 13)];
     
     _lblInfo = [[UILabel alloc] initWithFrame:Rect(84, 60, 180, 13)];
+    
+    [_imgView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imgTapEvent)]];
+    [_imgView setUserInteractionEnabled:YES];
     
     _lblDistance = [[UILabel alloc] initWithFrame:Rect(kScreenSourchWidth-80,20,60, 13)];
     
@@ -173,5 +184,7 @@
         [_delegate friendView:self focus:_strUserId];
     }
 }
+
+
 
 @end

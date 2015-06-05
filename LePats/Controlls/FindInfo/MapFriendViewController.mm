@@ -8,6 +8,7 @@
 
 #import "MapFriendViewController.h"
 #import "BMKLocationComponent.h"
+#import "TheyMainViewController.h"
 #import "NearInfo.h"
 #import "UIImageView+WebCache.h"
 #import "FindService.h"
@@ -136,7 +137,6 @@
         else
         {
             BDMarker *bMark = (BDMarker*)annotation;
-            
             newAnnotationView.image = [UIImage imageNamed:@"marker_other"];
             UIView *view = [[UIView alloc] initWithFrame:Rect(0,0,30,30)];
             UIImageView *imgView = [[UIImageView alloc] initWithFrame:view.bounds];
@@ -145,6 +145,11 @@
             [imgView sd_setImageWithURL:[[NSURL alloc] initWithString:bMark.near.strFile] placeholderImage:[UIImage imageNamed:@""]];
             [view addSubview:imgView];
             imgView.frame = view.bounds;
+            imgView.tag = bMark.nIndex;
+            [imgView setUserInteractionEnabled:YES];
+            
+            [imgView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tagTheyInfo:)]];
+            
             newAnnotationView.leftCalloutAccessoryView = view;
             DLog(@"bMark:%@",bMark.near);
         }
@@ -153,16 +158,27 @@
     return nil;
 }
 
+-(void)tagTheyInfo:(UITapGestureRecognizer *)sender
+{
+    UIImageView *imgView = (UIImageView *)sender.view;
+    DLog(@"imgView:%d",(int)imgView.tag);
+    NearInfo *near = [_aryNear objectAtIndex:imgView.tag];
+    if (near)
+    {
+        TheyMainViewController *theyView = [[TheyMainViewController alloc] initWithNear:near];
+        [self presentViewController:theyView animated:YES completion:nil];
+    }
+}
+
 -(void)loadImageView:(UIImage *)image
 {
     
 }
 
-- (void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view
+-(void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view
 {
     
 }
-
 
 -(void)findData
 {
@@ -191,9 +207,12 @@
 
 -(void)addAnnotation
 {
-    for (NearInfo *near in _aryNear)
+    NSInteger nCount = _aryNear.count;
+    for(int i=0; i< nCount ;i++ )
     {
+        NearInfo *near = [_aryNear objectAtIndex:i];
         BDMarker *bmk = [[BDMarker alloc] init];
+        bmk.nIndex = i;
         CLLocationCoordinate2D location;
         location.latitude = near.fLat;
         location.longitude = near.fLong;
@@ -234,6 +253,7 @@
     [_locService stopUserLocationService];
     _locService = nil;
 }
+
 
 
 @end

@@ -46,7 +46,7 @@
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor redColor];
     [self initParams];
-    
+    [self initRegitster];
     [self initViews];
     
     

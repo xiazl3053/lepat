@@ -14,7 +14,7 @@
 
 -(void)friendView:(FriendCell *)friend focus:(NSString *)strUserId;
 
-
+-(void)friendView:(FriendCell *)friend index:(int)nIndex;
 
 @end
 
@@ -32,7 +32,7 @@
 @property (nonatomic,strong) UIButton *btnAttention;
 @property (nonatomic,strong) UIButton *btnPriLet;
 @property (nonatomic,strong) UIImageView *imgHead;
-
+@property (nonatomic,assign) int nRow;
 
 -(void)setAttenBtnSwtich;
 -(void)setNearInfo:(NearInfo *)info;

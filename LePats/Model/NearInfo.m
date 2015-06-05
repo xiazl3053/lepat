@@ -33,6 +33,11 @@
     _fLong = [[dict objectForKey:@"lng"] floatValue];
     _strUserId = [dict objectForKey:@"userid"];
     _nFocus = [[dict objectForKey:@"relation"] intValue]/10;
+    _nFansNum = [[dict objectForKey:@"fansNum"] intValue];
+    _nFocusNum = [[dict objectForKey:@"focusNum"] intValue];
+
+    
+    
     return self;
     
 }

@@ -8,6 +8,7 @@
 
 #import "FriendListViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "TheyMainViewController.h"
 #import "FocusService.h"
 #import "BMKGeoCodeSearch.h"
 #import "MapFriendViewController.h"
@@ -174,6 +175,7 @@
        NearInfo *near = [_aryNear objectAtIndex:indexPath.row];
        [friend setNearInfo:near];
        friend.delegate = self;
+       friend.nRow = indexPath.row;
    }
    return friend;
 }
@@ -248,6 +250,16 @@
         }
     };
     [focus requestFocus:strUserId];
+}
+
+-(void)friendView:(FriendCell *)friend index:(int)nIndex
+{
+    if (nIndex>=0)
+    {
+        NearInfo *near = [_aryNear objectAtIndex:nIndex];
+        TheyMainViewController *theyView = [[TheyMainViewController alloc] initWithNear:near];
+        [self presentViewController:theyView animated:YES completion:nil];
+    }
 }
 
 @end

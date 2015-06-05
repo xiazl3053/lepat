@@ -74,7 +74,8 @@
     
 }
 
--(void)getUserInfo{
+-(void)getUserInfo
+{
     MyInfoService *service=[[MyInfoService alloc]init];
     service.getMyInfoBlock=^(NSString *error){
         [_icon sd_setImageWithURL:[NSURL URLWithString:[UserInfo sharedUserInfo].strUserIcon] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
@@ -99,7 +100,8 @@
     [self.view addSubview:head];
 }
 
--(void)initDetailView{
+-(void)initDetailView
+{
     UIView *detail=[[UIView alloc]initWithFrame:CGRectMake(0, _headView.bottom, KMainScreenSize.width, 160)];
     detail.backgroundColor=[UIColor whiteColor];
     detail.layer.borderColor=[UIColor blackColor].CGColor;
@@ -192,7 +194,8 @@
     [self.view addSubview:icon];
 }
 
--(void)initSegment{
+-(void)initSegment
+{
     NSArray *arr=nil;
     if (self.nUserID==0) {
         arr=[NSArray arrayWithObjects:@"我发布的",@"我喜欢的",nil];

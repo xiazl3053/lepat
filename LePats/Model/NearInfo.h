@@ -20,7 +20,8 @@
 @property (nonatomic,assign) CGFloat fLong;
 @property (nonatomic,strong) NSString *strUserId;
 @property (nonatomic,assign) int nFocus;
-
+@property (nonatomic,assign) int nFansNum;
+@property (nonatomic,assign) int nFocusNum;
 
 -(id)initWithItems:(NSArray *)items;
 
