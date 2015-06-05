@@ -7,8 +7,9 @@
 //
 
 #import "LoginService.h"
-
+#import "UserModel.h"
 #import "UserInfo.h"
+#import "LoginUserDB.h"
 
 @implementation LoginService
 
@@ -23,6 +24,12 @@
             [UserInfo sharedUserInfo].strToken = [dict objectForKey:@"token"];
             [[NSNotificationCenter defaultCenter] postNotificationName:MESSAGE_LOGIN_SUC_VC object:nil];
             [[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_SUCESS_VC object:nil];
+            UserModel *userDl = [[UserModel alloc] init];
+            userDl.strToken = [UserInfo sharedUserInfo].strToken;
+            userDl.strUser = [UserInfo sharedUserInfo].strUserId;
+            userDl.strPwd = [UserInfo sharedUserInfo].strPassword;
+            userDl.nLogin = 1;
+            [LoginUserDB updateSaveInfo:userDl];
             if (_httpBlock)
             {
                 _httpBlock(200);
@@ -41,7 +48,8 @@
     }
     else
     {
-        if (_httpBlock) {
+        if (_httpBlock)
+        {
             _httpBlock(*nStatus);
         }
     }

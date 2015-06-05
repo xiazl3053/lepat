@@ -16,6 +16,7 @@
 		4D08BF561B2118BD0037D6C9 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D08BF511B2118BD0037D6C9 /* FMResultSet.m */; };
 		4D08BF5B1B2119350037D6C9 /* LoginUserDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D08BF5A1B2119350037D6C9 /* LoginUserDB.m */; };
 		4D08BF5E1B21196C0037D6C9 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D08BF5D1B21196C0037D6C9 /* UserModel.m */; };
+		4D08BF601B2135480037D6C9 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D08BF5F1B2135480037D6C9 /* libsqlite3.dylib */; };
 		4D202BDD1B08894D007DED73 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D202BDC1B08894D007DED73 /* CoreLocation.framework */; };
 		4D202BDF1B088956007DED73 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D202BDE1B088956007DED73 /* QuartzCore.framework */; };
 		4D202BE11B08895E007DED73 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D202BE01B08895E007DED73 /* OpenGLES.framework */; };
@@ -147,6 +148,7 @@
 		4D08BF5A1B2119350037D6C9 /* LoginUserDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginUserDB.m; sourceTree = "<group>"; };
 		4D08BF5C1B21196C0037D6C9 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		4D08BF5D1B21196C0037D6C9 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		4D08BF5F1B2135480037D6C9 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		4D202BDC1B08894D007DED73 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4D202BDE1B088956007DED73 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4D202BE01B08895E007DED73 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -422,6 +424,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D08BF601B2135480037D6C9 /* libsqlite3.dylib in Frameworks */,
 				4D202BE71B088977007DED73 /* Security.framework in Frameworks */,
 				4D202BE51B088970007DED73 /* CoreGraphics.framework in Frameworks */,
 				4D202BE31B088967007DED73 /* SystemConfiguration.framework in Frameworks */,
@@ -968,6 +971,7 @@
 		CC7EBB73573971DED49E0533 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4D08BF5F1B2135480037D6C9 /* libsqlite3.dylib */,
 				4D202BE61B088977007DED73 /* Security.framework */,
 				4D202BE41B088970007DED73 /* CoreGraphics.framework */,
 				4D202BE21B088967007DED73 /* SystemConfiguration.framework */,

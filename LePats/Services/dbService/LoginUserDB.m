@@ -11,7 +11,7 @@
 #import "UtilsMacro.h"
 #import "FMResultSet.h"
 #import "FMDatabase.h"
-#define kDataLoginPath [kDocumentPath stringByAppendingPathComponent:@"xc.db"]
+#define kDataLoginPath [kDocumentPath stringByAppendingPathComponent:@"lepat.db"]
 @implementation LoginUserDB
 +(FMDatabase *)initDatabaseUser
 {
@@ -28,7 +28,6 @@
     //INSERT OR ignore
     NSString *strSql = @"insert or replace into userInfo (username,pwd,token,nLogin) values (?,?,?,?)";
     FMDatabase *db = [LoginUserDB initDatabaseUser];
-    
     [db beginTransaction];
     BOOL bReturn = [db executeUpdate:strSql,userModel.strUser,userModel.strPwd];
     [db commit];
@@ -36,26 +35,45 @@
     return bReturn ;
 }
 
-+(BOOL)updateSaveInfo:(NSString*)strUsername save:(int)nSave login:(int)nLogin
++(BOOL)updateSaveInfo:(UserModel *)user
 {
-    NSString *strSql = @"insert or replace into UserSave (id,username,save,login) values (1,?,?,?);";
+    NSString *strSql = @"insert or replace into userInfo (id,username,pwd,token,nLoginn) values (1,?,?,?,?);";
     FMDatabase *db = [LoginUserDB initDatabaseUser];
     [db beginTransaction];
-    BOOL bRetrun = [db executeUpdate:strSql,strUsername,[NSNumber numberWithInt:nSave],[NSNumber numberWithInt:nLogin]];
+    BOOL bRetrun = [db executeUpdate:strSql,user.strUser,user.strPwd,user.strToken,[NSNumber numberWithInt:user.nLogin]];
     [db commit];
     [db close];
     return bRetrun;
 }
 
++(UserModel*)querySaveInfo
+{
+    NSString *strSql = @"select * from userInfo";
+    FMDatabase *db = [LoginUserDB initDatabaseUser];
+    FMResultSet *rs = [db executeQuery:strSql];
+    if (rs.next)
+    {
+        //username,pwd,token,nLogin
+        UserModel *user = [[UserModel alloc] init];
+        user.strUser = [rs stringForColumn:@"username"];
+        user.strPwd = [rs stringForColumn:@"pwd"];
+        user.strToken = [rs stringForColumn:@"token"];
+        user.nLogin = [[rs stringForColumn:@"nLogin"] intValue];
+        return user;
+    }
+    return nil;
+}
+
 +(NSString*)querySaveInfo:(int *)nSave login:(int *)nLogin
 {
-    NSString *strSql = @"select * from UserSave";
+    NSString *strSql = @"select * from userInfo";
     FMDatabase *db = [LoginUserDB initDatabaseUser];
     FMResultSet *rs = [db executeQuery:strSql];
     if(rs.next)
     {
         *nSave = [[rs stringForColumn:@"save"] intValue];
         *nLogin = [[rs stringForColumn:@"login"] intValue];
+        
         NSString *strUserName = [[NSString alloc] initWithString:[rs stringForColumn:@"username"]];
         [rs close];
         [db close];

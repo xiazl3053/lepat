@@ -11,21 +11,12 @@
 @implementation UserModel
 
 
--(id)initWithUser:(NSString *)user pwd:(NSString*)pwd
-{
-    self = [super init];
-    if(self)
-    {
-       _strUser = [user copy];
-       _strPwd = [pwd copy];
-    }
-    return  self;
-}
+
 -(void) dealloc
 {
     _strPwd = nil;
     _strUser = nil;
+    _strToken = nil;
 }
-
 
 @end

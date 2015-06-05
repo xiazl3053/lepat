@@ -17,6 +17,4 @@
 @property (nonatomic,assign) int nLogin;
 
 
--(id)initWithUser:(NSString *)user pwd:(NSString*)pwd;
-
 @end

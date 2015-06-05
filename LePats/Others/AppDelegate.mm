@@ -22,6 +22,8 @@
 #import "HttpUploadManager.h"
 #import "UploadService.h"
 #import "UserInfo.h"
+#import "UserModel.h"
+#import "LoginUserDB.h"
 #import "LoginViewController.h"
 
 @interface AppDelegate ()<UITabBarControllerDelegate>{
@@ -62,9 +64,17 @@
         NSLog(@"manager start failed!");
     }
     
-    LoginService *login = [[LoginService alloc] init];
-    [login requestLogin:@"13888888888" password:@"123456"];
+//    LoginService *login = [[LoginService alloc] init];
+//    [login requestLogin:@"13888888888" password:@"123456"];
     
+    
+    UserModel *user = [LoginUserDB querySaveInfo];
+    if (user.nLogin)
+    {
+        [UserInfo sharedUserInfo].strToken = user.strToken;
+        [UserInfo sharedUserInfo].strMobile = user.strUser;
+        [UserInfo sharedUserInfo].strPassword = user.strPwd;
+    }
     [self.window setRootViewController:slide];
     [self.window makeKeyAndVisible];
     return YES;

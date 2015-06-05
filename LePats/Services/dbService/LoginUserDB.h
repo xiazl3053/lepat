@@ -13,11 +13,10 @@
 
 +(BOOL)addLoginUser:(UserModel*)userModel;
 
-+(NSString*)querySaveInfo:(int *)nSave login:(int *)nLogin;
++(UserModel*)querySaveInfo;
 +(NSString*)queryUserPwd:(NSString *)strUser;
-+(BOOL)updateSaveInfo:(NSString*)strUsername save:(int)nSave login:(int)nLogin;
 
-
++(BOOL)updateSaveInfo:(UserModel *)user;
 
 
 @end
