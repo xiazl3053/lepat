@@ -126,6 +126,7 @@
 		BB1FB2F51B1DA95100A02CCD /* MapPetsViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB1FB2F41B1DA95100A02CCD /* MapPetsViewController.mm */; };
 		BB3CBD291B213CE700EF49C4 /* TheyMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3CBD281B213CE700EF49C4 /* TheyMainViewController.m */; };
 		BB3CBD2D1B2166AF00EF49C4 /* TheyInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3CBD2C1B2166AF00EF49C4 /* TheyInfoService.m */; };
+		BB3CBD301B217DDF00EF49C4 /* TUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3CBD2F1B217DDF00EF49C4 /* TUserService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -423,6 +424,8 @@
 		BB3CBD281B213CE700EF49C4 /* TheyMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TheyMainViewController.m; sourceTree = "<group>"; };
 		BB3CBD2B1B2166AF00EF49C4 /* TheyInfoService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TheyInfoService.h; sourceTree = "<group>"; };
 		BB3CBD2C1B2166AF00EF49C4 /* TheyInfoService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TheyInfoService.m; sourceTree = "<group>"; };
+		BB3CBD2E1B217DDF00EF49C4 /* TUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUserService.h; sourceTree = "<group>"; };
+		BB3CBD2F1B217DDF00EF49C4 /* TUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TUserService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -990,6 +993,8 @@
 			children = (
 				BB3CBD2B1B2166AF00EF49C4 /* TheyInfoService.h */,
 				BB3CBD2C1B2166AF00EF49C4 /* TheyInfoService.m */,
+				BB3CBD2E1B217DDF00EF49C4 /* TUserService.h */,
+				BB3CBD2F1B217DDF00EF49C4 /* TUserService.m */,
 			);
 			name = they;
 			sourceTree = "<group>";
@@ -1181,6 +1186,7 @@
 				4D5FEDA61B1CB10200360323 /* UIImage+WebP.m in Sources */,
 				4D5FED9C1B1CB10200360323 /* SDImageCache.m in Sources */,
 				4D5FEDB71B1CB10200360323 /* FindService.m in Sources */,
+				BB3CBD301B217DDF00EF49C4 /* TUserService.m in Sources */,
 				4D5FEDB51B1CB10200360323 /* main.m in Sources */,
 				4D5FEDAE1B1CB10200360323 /* HomeItemModel.m in Sources */,
 				4D5FED911B1CB10200360323 /* RegSettingViewController.m in Sources */,

@@ -19,6 +19,7 @@
 #import "Toast+UIView.h"
 #import "NearInfo.h"
 #import "ProgressHUD.h"
+#import "TUserService.h"
 
 @interface FriendListViewController ()<UITableViewDataSource,FriendViewDelegate,UITableViewDelegate,CLLocationManagerDelegate,BMKLocationServiceDelegate,BMKGeoCodeSearchDelegate>
 {
@@ -30,11 +31,12 @@
     BMKGeoCodeSearch *search;
     BOOL bTrue;
     FocusService *focus;
+    TUserService *tUser;
 }
-
 
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *aryNear;
+
 @end
 
 @implementation FriendListViewController
@@ -85,6 +87,7 @@
     [self startLocation];
     [self initHeadView];
     [self initView];
+    tUser = [[TUserService alloc] init];
     search = [[BMKGeoCodeSearch alloc] init];
     search.delegate = self;
     focus = [[FocusService alloc] init];
@@ -240,6 +243,7 @@
             ^{
                 [__friend setAttenBtnSwtich];
             });
+            [__self updateTUserService:__friend.strUserId friend:__friend];
         }
         else
         {
@@ -250,6 +254,21 @@
         }
     };
     [focus requestFocus:strUserId];
+}
+
+-(void)updateTUserService:(NSString *)strUserId friend:(FriendCell *)friendInfo
+{
+    __weak FriendCell *__weakFriend = friendInfo;
+    __weak NSMutableArray *__aryNear = _aryNear;
+    tUser.httpBlock = ^(int nStatus,NearInfo *near)
+    {
+        DLog(@"near:%d-%d",near.nFocusNum,near.nFocus);
+        NearInfo *nearInfo = [__aryNear objectAtIndex:__weakFriend.nRow];
+        nearInfo.nFansNum = near.nFansNum;
+        nearInfo.nFocusNum = near.nFocusNum;
+//        [__weakFriend setNearInfo:near];
+    };
+    [tUser requestOperId:strUserId];
 }
 
 -(void)friendView:(FriendCell *)friend index:(int)nIndex

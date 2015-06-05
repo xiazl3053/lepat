@@ -14,7 +14,7 @@
 #import "UIView+Extension.h"
 #import "UIImageView+WebCache.h"
 #import "TheyInfoService.h"
-
+#import "TUserService.h"
 @interface TheyMainViewController()
 {
     UIImageView *imgBack;
@@ -26,6 +26,7 @@
     UIView *_rightView;
     TheyInfoService *theyInfo;
     UIScrollView *scrollView;
+    TUserService *tUser;
 }
 @property (nonatomic,strong) NSMutableArray *aryPets;
 @end
@@ -68,7 +69,7 @@
         [view removeFromSuperview];
     }
     //60
-    CGFloat width = kScreenSourchWidth/4-2;//105
+    CGFloat width = kScreenSourchWidth/4-5;//105
     int x=0,y=0;
     //1行  4 个
     for (LePetInfo *lepet in _aryPets)
@@ -76,25 +77,32 @@
         DLog(@"length:%@",lepet.strIconUrl);
         if(![lepet.strIconUrl isEqualToString:@""])
         {
-            UIImageView *imgView = [[UIImageView alloc] initWithFrame:Rect((x%4)*width+2, y/4+5,width,width)];
+            UIImageView *imgView = [[UIImageView alloc] initWithFrame:Rect((x%4)*(width+5)+5, y/4*(width+5)+5,width,width)];
             [scrollView addSubview:imgView];
             [imgView sd_setImageWithURL:[[NSURL alloc] initWithString:lepet.strIconUrl] placeholderImage:nil];
             x++;
             y++;
         }
     }
-    [scrollView setContentSize:CGSizeMake(kScreenSourchWidth,y/4*width)];
+    [scrollView setContentSize:CGSizeMake(kScreenSourchWidth,(y/4+1)*(width+5))];
+}
+
+-(void)requestTUser
+{
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     [self requestTheyInfo];
+    
 }
 
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    tUser = [[TUserService alloc] init];
     self.title = @"TA的信息";
     [self.view setBackgroundColor:[UIColor whiteColor]];
     [self initImgView];
@@ -116,7 +124,6 @@
     [imgHead sd_setImageWithURL:[[NSURL alloc] initWithString:_nearInfo.strFile] placeholderImage:[UIImage imageNamed:@""]];
     
     UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(theyDetail)];
-    
     [imgHead addGestureRecognizer:tap];
     [self.view addSubview:imgHead];
 }
@@ -158,6 +165,8 @@
     scrollView = [[UIScrollView alloc] initWithFrame:_rightView.bounds];
     [_rightView addSubview:scrollView];
     [self.view addSubview:_rightView];
+    
+    
 }
 
 -(void)segmentedValueChange:(UISegmentedControl *)segmengt
@@ -200,12 +209,12 @@
     sign.textAlignment=NSTextAlignmentCenter;
     [detail addSubview:sign];
     
-    UILabel *focus=[[UILabel alloc]initWithFrame:CGRectMake(0, sign.bottom+10, KMainScreenSize.width*.25, 20)];
-    focus.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFocusNum];
+    UILabel *focus=[[UILabel alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.20, sign.bottom+10, KMainScreenSize.width*.25, 20)];
+    focus.text=[NSString stringWithFormat:@"%d",_nearInfo.nFocusNum];
     focus.textAlignment=NSTextAlignmentCenter;
     [detail addSubview:focus];
     
-    UIButton *focusTitle=[[UIButton alloc]initWithFrame:CGRectMake(0, focus.bottom+5, KMainScreenSize.width*.25, 20)];
+    UIButton *focusTitle=[[UIButton alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.20, focus.bottom+5, KMainScreenSize.width*.25, 20)];
     [focusTitle setTitle:@"关注" forState:UIControlStateNormal];
     [focusTitle setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [focusTitle addTarget:self action:@selector(gotoOther:) forControlEvents:UIControlEventTouchUpInside];
@@ -213,41 +222,41 @@
     [detail addSubview:focusTitle];
     
     
-    UILabel *fans=[[UILabel alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.25, sign.bottom+10, KMainScreenSize.width*.25, 20)];
-    fans.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFansNum];
+    UILabel *fans=[[UILabel alloc]initWithFrame:CGRectMake(KMainScreenSize.width*0.6, sign.bottom+10, KMainScreenSize.width*.25, 20)];
+    fans.text=[NSString stringWithFormat:@"%d",_nearInfo.nFansNum];
     fans.textAlignment=NSTextAlignmentCenter;
     [detail addSubview:fans];
     
-    UIButton *fansTitle=[[UIButton alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.25, fans.bottom+5, KMainScreenSize.width*.25, 20)];
+    UIButton *fansTitle=[[UIButton alloc]initWithFrame:CGRectMake(KMainScreenSize.width*0.6, fans.bottom+5, KMainScreenSize.width*.25, 20)];
     [fansTitle setTitle:@"粉丝" forState:UIControlStateNormal];
     [fansTitle setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [fansTitle addTarget:self action:@selector(gotoOther:) forControlEvents:UIControlEventTouchUpInside];
     fansTitle.tag=200;
     [detail addSubview:fansTitle];
     
-    UILabel *heart=[[UILabel alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.5, sign.bottom+10, KMainScreenSize.width*.25, 20)];
-    heart.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFansNum];
-    heart.textAlignment=NSTextAlignmentCenter;
-    [detail addSubview:heart];
-    
-    UIButton *heratTitle=[[UIButton alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.5, fans.bottom+5, KMainScreenSize.width*.25, 20)];
-    [heratTitle setTitle:@"赞" forState:UIControlStateNormal];
-    [heratTitle setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [heratTitle addTarget:self action:@selector(gotoOther:) forControlEvents:UIControlEventTouchUpInside];
-    heratTitle.tag=300;
-    [detail addSubview:heratTitle];
-    
-    UILabel *commet=[[UILabel alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.75, sign.bottom+10, KMainScreenSize.width*.25, 20)];
-    commet.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFansNum];
-    commet.textAlignment=NSTextAlignmentCenter;
-    [detail addSubview:commet];
-    
-    UIButton *commetTitle=[[UIButton alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.75, fans.bottom+5, KMainScreenSize.width*.25, 20)];
-    [commetTitle setTitle:@"评论" forState:UIControlStateNormal];
-    [commetTitle setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [commetTitle addTarget:self action:@selector(gotoOther:) forControlEvents:UIControlEventTouchUpInside];
-    commetTitle.tag=400;
-    [detail addSubview:commetTitle];
+//    UILabel *heart=[[UILabel alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.5, sign.bottom+10, KMainScreenSize.width*.25, 20)];
+//    heart.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFansNum];
+//    heart.textAlignment=NSTextAlignmentCenter;
+//    [detail addSubview:heart];
+//    
+//    UIButton *heratTitle=[[UIButton alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.5, fans.bottom+5, KMainScreenSize.width*.25, 20)];
+//    [heratTitle setTitle:@"赞" forState:UIControlStateNormal];
+//    [heratTitle setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    [heratTitle addTarget:self action:@selector(gotoOther:) forControlEvents:UIControlEventTouchUpInside];
+//    heratTitle.tag=300;
+//    [detail addSubview:heratTitle];
+//    
+//    UILabel *commet=[[UILabel alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.75, sign.bottom+10, KMainScreenSize.width*.25, 20)];
+//    commet.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFansNum];
+//    commet.textAlignment=NSTextAlignmentCenter;
+//    [detail addSubview:commet];
+//    
+//    UIButton *commetTitle=[[UIButton alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.75, fans.bottom+5, KMainScreenSize.width*.25, 20)];
+//    [commetTitle setTitle:@"评论" forState:UIControlStateNormal];
+//    [commetTitle setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    [commetTitle addTarget:self action:@selector(gotoOther:) forControlEvents:UIControlEventTouchUpInside];
+//    commetTitle.tag=400;
+//    [detail addSubview:commetTitle];
     [self.view addSubview:detail];
     
 //    UILabel *lblContent = [[UILabel alloc] initWithFrame:Rect(0, detail.y+detail.height+10, kScreenSourchWidth, 1)];
