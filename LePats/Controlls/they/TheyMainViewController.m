@@ -11,6 +11,7 @@
 #import "NearInfo.h"
 #import "UIView+Extension.h"
 #import "UIImageView+WebCache.h"
+#import "TheyInfoService.h"
 
 @interface TheyMainViewController()
 {
@@ -21,8 +22,9 @@
     NearInfo *_nearInfo;
     UIView *_leftView;
     UIView *_rightView;
+    TheyInfoService *theyInfo;
 }
-
+@property (nonatomic,strong) NSMutableArray *aryPets;
 @end
 
 @implementation TheyMainViewController
@@ -30,10 +32,40 @@
 -(id)initWithNear:(NearInfo *)near
 {
     self = [super init];
-    
+    _aryPets = [NSMutableArray array];
     _nearInfo = near;
     
     return self;
+}
+
+-(void)requestTheyInfo
+{
+    if (theyInfo==nil)
+    {
+        theyInfo = [[TheyInfoService alloc] init];
+    }
+    __weak TheyMainViewController *__self = self;
+    theyInfo.httpBlock = ^(int nStatus,NSArray *aryItem)
+    {
+        if (nStatus == 1)
+        {
+            [__self.aryPets removeAllObjects];
+            [__self.aryPets addObjectsFromArray:aryItem];
+            [__self updateRightView];
+        }
+    };
+    [theyInfo requestUserId:_nearInfo.strUserId];
+}
+
+-(void)updateRightView
+{
+     
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self requestTheyInfo];
 }
 
 -(void)viewDidLoad

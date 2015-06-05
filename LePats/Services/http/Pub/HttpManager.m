@@ -39,8 +39,8 @@
     //准备做加解密
     if (responseCode==200)
     {
-        NSString *strInfo = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        DLog(@"strInfo:%@",strInfo);
+//        NSString *strInfo = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//        DLog(@"strInfo:%@",strInfo);
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         
         [self reciveDic:(int*)&responseCode dic:dic];
