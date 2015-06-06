@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^AccessoryToolViewClickBlock)(NSInteger index);
+
 @interface AccessoryToolView : UIView
+
+@property (nonatomic,copy) AccessoryToolViewClickBlock accessoryToolViewClickBlock;
+
 
 @end

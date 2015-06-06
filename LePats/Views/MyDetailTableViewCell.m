@@ -30,8 +30,9 @@
     _title.font=[UIFont systemFontOfSize:14];
     [self addSubview:_title];
     
-    self.content=[[UILabel alloc]initWithFrame:CGRectMake(_title.right, 0, 200, 44)];
+    self.content=[[UITextField alloc]initWithFrame:CGRectMake(_title.right, 0, 200, 44)];
     _content.textColor=[UIColor blackColor];
+    _content.userInteractionEnabled=NO;
     _content.font=[UIFont systemFontOfSize:14];
     [self addSubview:_content];
     

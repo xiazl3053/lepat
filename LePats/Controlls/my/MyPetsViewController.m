@@ -46,6 +46,7 @@
 
 -(void)queryPets
 {
+
     __block MyPetsViewController *weakSelf = self;
     MyPetService *service=[[MyPetService alloc]init];
     service.myPetsBlock=^(NSString *error,NSArray *pets)

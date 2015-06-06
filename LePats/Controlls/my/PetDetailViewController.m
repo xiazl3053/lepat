@@ -20,6 +20,7 @@
 #import "PetSort.h"
 #import "ProgressHUD.h"
 #import "Toast+UIView.h"
+#import "AccessoryToolView.h"
 
 @interface PetDetailViewController ()<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate>{
     UITableView *_tableView;
@@ -163,6 +164,7 @@
                 };
                 [service requestEditPet:__self.pet];
             }else{
+                [__self.view makeToast:@"请输入完整的宠物信息"];
                 NSLog(@"信息错误");
             }
         }];
@@ -173,7 +175,7 @@
 }
 
 -(void)submitPetInfoView{
-    UIButton *submit=[[UIButton alloc]initWithFrame:CGRectMake((self.view.frame.size.width-200)*.5, self.view.frame.size.height-80, 200, 40)];
+    UIButton *submit=[[UIButton alloc]initWithFrame:CGRectMake(10, _tableView.bottom+40, KMainScreenSize.width-20, 40)];
     [self.view addSubview:submit];
     [submit setBackgroundColor:RGB(0, 146, 255)];
     [submit.layer setMasksToBounds:YES];
@@ -193,8 +195,8 @@
     fmt.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
     fmt.dateFormat = @"yyyy-MM-dd";
     NSString* dateString = [fmt stringFromDate:picker.date];
-    _pet.strBirthday=dateString;
-    _dateCell.content.text=dateString;
+    //_pet.strBirthday=dateString;
+    //_dateCell.content.text=dateString;
     NSLog(@"%@",dateString);
 }
 
@@ -227,16 +229,16 @@
 }
 
 -(void)del{
-    DelPetService *service=[[DelPetService alloc]init];
-    __block PetDetailViewController *__self=self;
-    service.delPetBlock=^(NSString *error){
-        if (error) {
-            
-        }else{
-            [__self.navigationController popViewControllerAnimated:YES];
-        }
-    };
-    [service requestDelPetInfo:self.nPetId];
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                  initWithTitle:@"确定删除宠物!"
+                                  delegate:self
+                                  cancelButtonTitle:@"取消"
+                                  destructiveButtonTitle:@"确定"
+                                  otherButtonTitles:nil];
+    actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    actionSheet.tag=100;
+    [actionSheet showInView:self.view];
 }
 
 -(BOOL)completa{
@@ -252,7 +254,7 @@
                 }break;
                 case 1:
                 {
-                    _pet.nSortId=[_selectSortModel.iD intValue];
+                    _pet.nSortId=_pet.nSortId;
                 }break;
                 case 2:{
                     
@@ -301,6 +303,20 @@
                 {
                     cell.title.text=@"宠物类型:";
                     cell.content.inputView=_sortPickerView;
+                    AccessoryToolView *accessory=[[AccessoryToolView alloc]init];
+                    accessory.accessoryToolViewClickBlock=^(NSInteger index){
+                        [_tableView endEditing:YES];
+                        if (index==1) {
+                            NSLog(@"取消");
+                        }else{
+                            NSInteger row=[_sortPickerView selectedRowInComponent:0];
+                            PetSortModel *model=[self.sortList objectAtIndex:row];
+                            _sortCell.content.text=model.name;
+                            _pet.nSortId=[model.iD intValue];
+                            NSLog(@"完成");
+                        }
+                    };
+                    cell.content.inputAccessoryView=accessory;
                     _sortCell=cell;
                     //cell.detailTextLabel.text=[NSString stringWithFormat:@"%i",_pet.nSortId];
                 }break;
@@ -308,6 +324,22 @@
                 {
                     cell.title.text=@"宠物年龄:";
                     cell.content.inputView=_datePickerView;
+                    AccessoryToolView *accessory=[[AccessoryToolView alloc]init];
+                    accessory.accessoryToolViewClickBlock=^(NSInteger index){
+                        [_tableView endEditing:YES];
+                        if (index==1) {
+                            NSLog(@"取消");
+                        }else{
+                            NSDateFormatter* fmt = [[NSDateFormatter alloc] init];
+                            fmt.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+                            fmt.dateFormat = @"yyyy-MM-dd";
+                            NSString* dateString = [fmt stringFromDate:_datePickerView.date];
+                            _dateCell.content.text=dateString;
+                            _pet.strBirthday=dateString;
+                            NSLog(@"完成");
+                        }
+                    };
+                    cell.content.inputAccessoryView=accessory;
                     _dateCell=cell;
                     //cell.detailTextLabel.text=_pet.strBirthday;
                 }break;
@@ -315,9 +347,19 @@
                 {
                     cell.title.text=@"宠物性别:";
                     cell.content.inputView=_sexPickerView;
-                    UIView *accessoryView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, cell.width, 44)];
-                    accessoryView.backgroundColor=[UIColor redColor];
-                    cell.content.inputAccessoryView=accessoryView;
+                    AccessoryToolView *accessory=[[AccessoryToolView alloc]init];
+                    accessory.accessoryToolViewClickBlock=^(NSInteger index){
+                        [_tableView endEditing:YES];
+                        if (index==1) {
+                            NSLog(@"取消");
+                        }else{
+                            NSInteger row=[_sexPickerView selectedRowInComponent:0];
+                            _sexCell.content.text=[_sexList objectAtIndex:row];
+                            NSLog(@"完成");
+                        }
+                    };
+                    cell.content.inputAccessoryView=accessory;
+                    
                     _sexCell=cell;
                     //cell.detailTextLabel.text=[NSString stringWithFormat:@"%i",_pet.nSex];
                     ;
@@ -350,12 +392,42 @@
                             cell.content.text=[NSString stringWithFormat:@"%@",model.name];
                         }
                     }
+                    AccessoryToolView *accessory=[[AccessoryToolView alloc]init];
+                    accessory.accessoryToolViewClickBlock=^(NSInteger index){
+                        [_tableView endEditing:YES];
+                        if (index==1) {
+                            NSLog(@"取消");
+                        }else{
+                            NSInteger row=[_sortPickerView selectedRowInComponent:0];
+                            PetSortModel *model=[self.sortList objectAtIndex:row];
+                            _sortCell.content.text=model.name;
+                            self.pet.nSortId=[model.iD intValue];
+                            NSLog(@"完成");
+                        }
+                    };
+                    cell.content.inputAccessoryView=accessory;
                 }break;
                 case 2:
                 {
                     cell.title.text=@"宠物年龄:";
                     cell.content.text=_pet.strBirthday;
                     cell.content.inputView=_datePickerView;
+                    AccessoryToolView *accessory=[[AccessoryToolView alloc]init];
+                    accessory.accessoryToolViewClickBlock=^(NSInteger index){
+                        [_tableView endEditing:YES];
+                        if (index==1) {
+                            NSLog(@"取消");
+                        }else{
+                            NSDateFormatter* fmt = [[NSDateFormatter alloc] init];
+                            fmt.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+                            fmt.dateFormat = @"yyyy-MM-dd";
+                            NSString* dateString = [fmt stringFromDate:_datePickerView.date];
+                            _dateCell.content.text=dateString;
+                            _pet.strBirthday=dateString;
+                            NSLog(@"完成");
+                        }
+                    };
+                    cell.content.inputAccessoryView=accessory;
                     _dateCell=cell;
                 }break;
                 case 3:
@@ -363,6 +435,18 @@
                     cell.title.text=@"宠物性别:";
                     cell.content.inputView=_sexPickerView;
                     cell.content.text=[NSString stringWithFormat:@"%@",_pet.nSex==PET_SEX_MALE?@"男":@"女"];
+                    AccessoryToolView *accessory=[[AccessoryToolView alloc]init];
+                    accessory.accessoryToolViewClickBlock=^(NSInteger index){
+                        [_tableView endEditing:YES];
+                        if (index==1) {
+                            NSLog(@"取消");
+                        }else{
+                            NSInteger row=[_sexPickerView selectedRowInComponent:0];
+                            _sexCell.content.text=[_sexList objectAtIndex:row];
+                            NSLog(@"完成");
+                        }
+                    };
+                    cell.content.inputAccessoryView=accessory;
                     _sexCell=cell;
                     ;
                 }break;
@@ -427,19 +511,51 @@
                                   destructiveButtonTitle:nil
                                   otherButtonTitles:@"拍照", @"本地相册",nil];
     actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    actionSheet.tag=200;
     [actionSheet showInView:self.view];
     
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSLog(@"buttonIndex=%li",buttonIndex);
-    switch (buttonIndex) {
-        case 0:{
-            [self initCamera];
+    switch (actionSheet.tag) {
+        case 100:{
+            switch (buttonIndex) {
+                case 0:
+                {
+                        DelPetService *service=[[DelPetService alloc]init];
+                        __block PetDetailViewController *__self=self;
+                        service.delPetBlock=^(NSString *error){
+                            if (error) {
+                    
+                            }else{
+                                [__self.navigationController popViewControllerAnimated:YES];
+                            }
+                        };
+                        [service requestDelPetInfo:self.nPetId];
+                
+                }break;
+                case 1:{
+                
+                }break;
+                default:
+                    break;
+            }
+            
         }break;
-        case 1:{
-            [self initPhotoLibrary];
+        case 200:{
+            switch (buttonIndex) {
+                case 0:{
+                    [self initCamera];
+                }break;
+                case 1:{
+                    [self initPhotoLibrary];
+                }break;
+                default:
+                    break;
+            }
         }break;
+            
         default:
             break;
     }
@@ -538,13 +654,13 @@
     switch (pickerView.tag) {
         case 100:
         {
-            PetSortModel *model=[self.sortList objectAtIndex:row];
-            _sortCell.content.text=model.name;
-            _selectSortModel=model;
+//            PetSortModel *model=[self.sortList objectAtIndex:row];
+//            _sortCell.content.text=model.name;
+//            _selectSortModel=model;
         }break;
         case 200:{
-            NSString *sex=[self.sexList objectAtIndex:row];
-            _sexCell.content.text=sex;
+            //NSString *sex=[self.sexList objectAtIndex:row];
+            //_sexCell.content.text=sex;
         }break;
         default:
             break;

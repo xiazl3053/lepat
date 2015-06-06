@@ -87,22 +87,33 @@
     EditMyInfoService *service=[[EditMyInfoService alloc]init];
     service.editMyInfoBlock=^(NSString *error){
         if (error) {
-            
+            [__self.view makeToast:error];
         }else{
-            [__self.navigationController popViewControllerAnimated:YES];
+            [__self.view makeToast:@"更改性别成功"];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [__self.navigationController popViewControllerAnimated:YES];
+            });
         }
     };
     [service requestEditSex];
 }
 
 -(void)requestEditSingture{
+    if ([UserInfo sharedUserInfo].strSignature.length>46) {
+        [self.view makeToast:@"签名过长"];
+        return ;
+    }
     __block EditMyInfoViewController *__self = self;
     EditMyInfoService *service=[[EditMyInfoService alloc]init];
     service.editMyInfoBlock=^(NSString *error){
         if (error) {
-            
+             [__self.view makeToast:error];
         }else{
-            [__self.navigationController popViewControllerAnimated:YES];
+            
+            [__self.view makeToast:@"更改签名成功"];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [__self.navigationController popViewControllerAnimated:YES];
+            });
         }
     };
     [service requestEditSingture];
@@ -113,9 +124,11 @@
     EditMyInfoService *service=[[EditMyInfoService alloc]init];
     service.editMyInfoBlock=^(NSString *error){
         if (error) {
-            
+            [__self.view makeToast:error];
         }else{
-            [__self.navigationController popViewControllerAnimated:YES];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [__self.navigationController popViewControllerAnimated:YES];
+            });
         }
     };
     [service requestEditBrithday];
@@ -126,15 +139,20 @@
     EditMyInfoService *service=[[EditMyInfoService alloc]init];
     service.editMyInfoBlock=^(NSString *error){
         if (error) {
-            
+             [__self.view makeToast:error];
         }else{
-            [__self.navigationController popViewControllerAnimated:YES];
+            [__self.view makeToast:@"更改昵称成功"];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [__self.navigationController popViewControllerAnimated:YES];
+            });
         }
     };
     [service requestEditNickName];
 }
 
 -(void)initContentView{
+    
+    self.view.backgroundColor=UIColorFromRGB(0xf5f6f7);
     switch (self.editType) {
         case MYInfoEdit_TYPE_NickName:
         {
@@ -166,23 +184,38 @@
 }
 
 -(void)initNickView{
-    UITextField *field=[[UITextField alloc]initWithFrame:CGRectMake(0, [self barSize].height, KMainScreenSize.width, 40)];
+    UITextField *field=[[UITextField alloc]initWithFrame:CGRectMake(0, [self barSize].height+20, KMainScreenSize.width, 40)];
     field.backgroundColor=[UIColor groupTableViewBackgroundColor];
+    field.layer.borderColor=UIColorFromRGB(0xcbcccd).CGColor;
+    field.layer.borderWidth=.5;
     [self.view addSubview:field];
     _nickName=field;
 }
 
 -(void)initSigntureView{
     
-    UITextView *field=[[UITextView alloc]initWithFrame:CGRectMake(0, [self barSize].height, KMainScreenSize.width, 160)];
-    field.backgroundColor=[UIColor groupTableViewBackgroundColor];
+    UITextView *field=[[UITextView alloc]initWithFrame:CGRectMake(10, [self barSize].height+20, KMainScreenSize.width-20, 200)];
+    field.layer.borderColor=UIColorFromRGB(0xcbcccd).CGColor;
+    field.layer.borderWidth=.5;
     [self.view addSubview:field];
+    
+    UILabel *number=[[UILabel alloc]initWithFrame:CGRectMake(field.width-20, field.bottom-20, 20, 20)];
+    number.text=@"46";
+    number.textAlignment=NSTextAlignmentRight;
+    number.font=[UIFont systemFontOfSize:14];
+    number.textColor=[UIColor grayColor];
+    [self.view addSubview:number];
     _signTure=field;
     
 }
 
 -(void)initSexView{
-    SexButton *male=[[SexButton alloc]initWithFrame:CGRectMake(0, [self barSize].height, KMainScreenSize.width, 40)];
+    
+    UIView *topLine=[[UIView alloc]initWithFrame:CGRectMake(0, [self barSize].height+20,KMainScreenSize.width , 0.5)];
+    topLine.backgroundColor=UIColorFromRGB(0xcbcccd);
+    [self.view addSubview:topLine];
+    
+    SexButton *male=[[SexButton alloc]initWithFrame:CGRectMake(0, topLine.bottom+0.5, KMainScreenSize.width, 40)];
     [male setTitle:@"男" forState:UIControlStateNormal];
     male.layer.borderColor=[UIColor groupTableViewBackgroundColor].CGColor;
     male.layer.borderWidth=1.0;
@@ -195,7 +228,11 @@
     [self.view addSubview:male];
     _male=male;
     
-    SexButton *female=[[SexButton alloc]initWithFrame:CGRectMake(0, male.bottom, KMainScreenSize.width, 40)];
+    UIView *centerLine=[[UIView alloc]initWithFrame:CGRectMake(0, male.bottom,KMainScreenSize.width , 0.5)];
+    centerLine.backgroundColor=UIColorFromRGB(0xcbcccd);
+    [self.view addSubview:centerLine];
+    
+    SexButton *female=[[SexButton alloc]initWithFrame:CGRectMake(0, centerLine.bottom+0.5, KMainScreenSize.width, 40)];
     female.tag=200;
     female.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [female setTitle:@"女" forState:UIControlStateNormal];
@@ -205,6 +242,18 @@
     [female addTarget:self action:@selector(changeSex:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:female];
     _female=female;
+    
+    UIView *bottomLine=[[UIView alloc]initWithFrame:CGRectMake(0, female.bottom+0.5,KMainScreenSize.width , 0.5)];
+    bottomLine.backgroundColor=UIColorFromRGB(0xcbcccd);
+    [self.view addSubview:bottomLine];
+    
+    if ([UserInfo sharedUserInfo].nSex==0) {
+        [_male setSelected:YES];
+        [_female setSelected:NO];
+    }else{
+        [_female setSelected:YES];
+        [_male setSelected:NO];
+    }
 }
 
 -(void)initBrithdayView{

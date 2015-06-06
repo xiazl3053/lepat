@@ -48,6 +48,10 @@
     UIView *bgView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 64)];
     bgView.backgroundColor=RGB(253, 252, 250);
     
+    UIView *line=[[UIView alloc]initWithFrame:CGRectMake(0, bgView.bottom-1, self.view.frame.size.width, 1)];
+    line.backgroundColor =UIColorFromRGB(0xcbcccd);
+    [bgView addSubview:line];
+    
     back=[[UIButton alloc] initWithFrame:CGRectMake(0 , 20 , 44, 44)];
     [back setImage:[UIImage imageNamed:@"retrun"] forState:UIControlStateNormal];
     [back addTarget:self action:@selector(popviewcontroller) forControlEvents:UIControlEventTouchUpInside];

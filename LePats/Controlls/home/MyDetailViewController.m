@@ -17,12 +17,15 @@
 #import "Toast+UIView.h"
 #import "ProgressHUD.h"
 #import "UserModel.h"
+#import "AccessoryToolView.h"
+#import "EditMyInfoService.h"
 @interface MyDetailViewController ()<UITableViewDataSource,UITableViewDelegate,
                     UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIAlertViewDelegate>
 
 {
     UIImageView *_icon;
     UITableView *_tableView;
+    UIDatePicker *_datePickerView;
 }
 @property (nonatomic,strong) NSMutableArray *itemList;
 @end
@@ -191,11 +194,10 @@
         }
     }
     
-    NSLog(@"indexPath=%@",indexPath);
     if (indexPath.section==3)
     {
         cell.indicate.hidden=YES;
-        UIButton *logout=[[UIButton alloc] initWithFrame:CGRectMake(15, 0, self.view.width-30, cell.height)];
+        UIButton *logout=[[UIButton alloc] initWithFrame:CGRectMake(10, 0, self.view.width-20, cell.height)];
         [logout setTitle:@"退出" forState:UIControlStateNormal];
         [logout addTarget:self action:@selector(logoutView) forControlEvents:UIControlEventTouchUpInside];
         [logout setBackgroundColor:RGB(15,173,225)];
@@ -204,7 +206,6 @@
         logout.layer.cornerRadius = 3.0f;
         [cell addSubview:logout];
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, cell.bounds.size.width);
-        
     }
     [cell setValueWithNSDictionay:dic];
     return cell;
@@ -295,9 +296,36 @@
         }break;
         case 105:
         {
-            EditMyInfoViewController *edit=[[EditMyInfoViewController alloc]init];
-            edit.editType=MYInfoEdit_TYPE_Brithday;
-            [self.navigationController pushViewController:edit animated:YES];
+//            EditMyInfoViewController *edit=[[EditMyInfoViewController alloc]init];
+//            edit.editType=MYInfoEdit_TYPE_Brithday;
+//            [self.navigationController pushViewController:edit animated:YES];
+            
+            UIDatePicker *picker=[[UIDatePicker alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height-100, self.view.frame.size.width, 100)];
+            [picker setDate:[NSDate date] animated:YES];
+            [picker setDatePickerMode:UIDatePickerModeDate];
+            _datePickerView=picker;
+            //[picker addTarget:self action:@selector(dataPickerValueChange:) forControlEvents:UIControlEventValueChanged];
+            MyDetailTableViewCell *cell=(MyDetailTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+            cell.content.userInteractionEnabled=YES;
+            AccessoryToolView *accessory=[[AccessoryToolView alloc]init];
+            accessory.accessoryToolViewClickBlock=^(NSInteger index){
+                [_tableView endEditing:YES];
+                if (index==1) {
+                    NSLog(@"取消");
+                }else{
+                    NSDateFormatter* fmt = [[NSDateFormatter alloc] init];
+                    fmt.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+                    fmt.dateFormat = @"yyyy-MM-dd";
+                    NSString* dateString = [fmt stringFromDate:_datePickerView.date];
+                    cell.content.text=dateString;
+                    [UserInfo sharedUserInfo].strBirthday=dateString;
+                    [self requestEditBrithDay];
+                    NSLog(@"完成");
+                }
+            };
+            cell.content.inputAccessoryView=accessory;
+            cell.content.inputView=picker;
+            [cell.content becomeFirstResponder];
         }break;
         case 108:{
             EditMyInfoViewController *edit=[[EditMyInfoViewController alloc]init];
@@ -309,6 +337,30 @@
             break;
     }
 }
+
+-(void)requestEditBrithDay{
+    __block MyDetailViewController *__self = self;
+    EditMyInfoService *service=[[EditMyInfoService alloc]init];
+    service.editMyInfoBlock=^(NSString *error){
+        if (error) {
+            [__self.view makeToast:error];
+        }else{
+            [__self.view makeToast:@"更改出生年月成功"];
+        }
+    };
+    [service requestEditBrithday];
+}
+
+-(void)dataPickerValueChange:(UIDatePicker *)picker{
+    NSDateFormatter* fmt = [[NSDateFormatter alloc] init];
+    fmt.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+    fmt.dateFormat = @"yyyy-MM-dd";
+    NSString* dateString = [fmt stringFromDate:picker.date];
+    //_pet.strBirthday=dateString;
+    //_dateCell.content.text=dateString;
+    NSLog(@"%@",dateString);
+}
+
 
 -(void)addIcon:(UIButton *)aBtn{
     UIActionSheet *actionSheet = [[UIActionSheet alloc]
