@@ -60,13 +60,6 @@
                     {
                         _httpReg(200);
                     }
-//                    [UserInfo sharedUserInfo].strPassword = @"123456";
-//                    [UserInfo sharedUserInfo].strNickName = @"test";
-//                    [UserInfo sharedUserInfo].strBirthday = @"1970-1-1";
-//                    
-//                    UpdUserService *updService = [[UpdUserService alloc] init];
-//                    [updService updReqUserInfo];
-                    
                 }
                 else
                 {

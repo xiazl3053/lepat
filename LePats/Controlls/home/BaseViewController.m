@@ -61,7 +61,6 @@
     [lblTitle setTextAlignment:NSTextAlignmentCenter];
     [lblTitle setFont:XCFONT(16)];
     [lblTitle setTextColor:RGB(51,51,51)];
-    
     [bgView addSubview:lblTitle];
     
     UILabel *sLine1 = [[UILabel alloc] initWithFrame:CGRectMake(0,63,self.view.width,0.5)];
@@ -119,6 +118,11 @@
     [btnRight setTitle:strTitle forState:UIControlStateNormal];
 }
 
+-(void)addLeftEvent:(void (^)(id sender))handler
+{
+    [back removeTarget:self action:@selector(popviewcontroller) forControlEvents:UIControlEventTouchUpInside];
+    [back bk_addEventHandler:handler forControlEvents:UIControlEventTouchUpInside];
+}
 
 -(void)addRightEvent:(void (^)(id sender))handler
 {

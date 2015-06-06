@@ -19,9 +19,6 @@
     [request setHTTPMethod:@"POST"];//设置请求方式
     
     __block HttpManager *weakSelf = self;
-    
-//    DLog(@"strPath:%@",strPath);
-    
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:
      ^(NSURLResponse* response, NSData* data, NSError* connectionError){
          HttpManager *strongLogin = weakSelf;
@@ -37,23 +34,33 @@
     NSInteger responseCode = [(NSHTTPURLResponse *)response statusCode];
     DLog(@"responseCode:%li",responseCode);
     //准备做加解密
-    if (responseCode==200)
+    
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    if (responseCode == 200)
     {
-//        NSString *strInfo = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-//        DLog(@"strInfo:%@",strInfo);
-        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-        
-        [self reciveDic:(int*)&responseCode dic:dic];
+        int nStatus = [[dic objectForKey:@"return_code"] intValue];
+        if (nStatus == 50003)
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:MESSAGE_SHOW_LOGIN_VC object:nil];
+            return ;
+        }
     }
-    else
+    [self reciveDic:(int*)&responseCode dic:dic];
+}
+
+-(BOOL)isConnection:(NSDictionary *)dict
+{
+    int nCode = [[dict objectForKey:@"return_code"] intValue];
+    if (nCode == 50003)
     {
-        [self reciveDic:(int *)&responseCode dic:nil];
+        return YES;
     }
+    return NO;
 }
 
 -(void)reciveDic:(int *)nStatus dic:(NSDictionary *)dict
 {
-    
+
 }
 
 -(void)decodeJson:(NSData*)jsonData

@@ -37,11 +37,18 @@
 
 @implementation AppDelegate
 
+-(void)showLoginView
+{
+    LoginViewController *login = [[LoginViewController alloc] init];
+    [login show];
+}
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLoginView) name:MESSAGE_SHOW_LOGIN_VC object:nil];
     UserModel *user = [LoginUserDB querySaveInfo];
     if (user.nLogin)
     {
@@ -53,6 +60,13 @@
         service.getMyInfoBlock=^(NSString *error){
             DLog(@"已接收到数据");
             [[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_SUCESS_VC object:nil];
+//            if([error intValue] == 50003)
+//            {
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    LoginViewController *loginView = [[LoginViewController alloc] init];
+//                    [[UIApplication sharedApplication].keyWindow setRootViewController:loginView];
+//                });
+//            }
         };
         [service requestUserId:0];
     }

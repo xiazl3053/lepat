@@ -34,12 +34,18 @@
             _httpFocus(1,@"OK");
         }
     }
+    else if(nType == 50003)
+    {
+        if (_httpFocus)
+        {
+            _httpFocus(50003,@"登录信息超时");
+        }
+    }
     else
     {
         if (_httpFocus)
         {
-            NSString *strMsg = [dict objectForKey:@"return_msg"];
-            _httpFocus(nType,strMsg);
+            _httpFocus(nType,@"");
         }
     }
 }

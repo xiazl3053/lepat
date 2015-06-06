@@ -10,7 +10,7 @@
 
 @interface LoginViewController : BaseViewController
 
-
+-(void)show;
 
 
 @end

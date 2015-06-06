@@ -71,10 +71,12 @@
         return ;
     }
     DLog(@"dic:%@",dic);
-    if (self.editMyInfoBlock) {
+    if (self.editMyInfoBlock)
+    {
         if ([[dic objectForKey:KServiceResponseCode]intValue]==KServiceResponseSuccess) {
             self.editMyInfoBlock(nil);
-        }else{
+        }else
+        {
             self.editMyInfoBlock([dic objectForKey:KServiceResponseMsg]);
         }
     }

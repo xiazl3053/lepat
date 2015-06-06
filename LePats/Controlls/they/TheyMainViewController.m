@@ -10,11 +10,14 @@
 #import "UserInfo.h"
 #import "UIImageView+WebCache.h"
 #import "LePetInfo.h"
+#import "Toast+UIView.h"
 #import "NearInfo.h"
 #import "UIView+Extension.h"
 #import "UIImageView+WebCache.h"
 #import "TheyInfoService.h"
 #import "TUserService.h"
+#import "LoginViewController.h"
+
 @interface TheyMainViewController()
 {
     UIImageView *imgBack;
@@ -57,6 +60,14 @@
             [__self.aryPets addObjectsFromArray:aryItem];
 //            dispatch_async(dispatch_get_main_queue(), )
             [__self updateRightView];
+        }
+        else if(nStatus == 50003)
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [__self.view makeToast:@"登录信息超时"];
+                LoginViewController *loginView = [[LoginViewController alloc] init];
+                [[UIApplication sharedApplication].keyWindow setRootViewController:loginView];
+            });
         }
     };
     [theyInfo requestUserId:_nearInfo.strUserId];

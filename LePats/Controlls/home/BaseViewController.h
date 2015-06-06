@@ -16,6 +16,8 @@
 @property(assign,nonatomic)UIView *topLine;//top的底部分割线
 @property(assign,nonatomic)UIButton *returnBtn;//返回键
 
+-(void)addLeftEvent:(void (^)(id sender))handler;
+
 -(CGSize)barSize;
 
 -(void)setLeftHidden:(BOOL)bHidden;

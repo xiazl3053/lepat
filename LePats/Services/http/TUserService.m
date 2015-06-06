@@ -40,5 +40,19 @@
             _httpBlock(1,nearInfo);
         }
     }
+    else if(nType == 50003)
+    {
+        if (_httpBlock)
+        {
+            _httpBlock(50003,nil);
+        }
+    }
+    else
+    {
+        if (_httpBlock)
+        {
+            _httpBlock(nType,nil);
+        }
+    }
 }
 @end

@@ -32,8 +32,8 @@
     }
     DLog(@"dic:%@",dict);
     
-    FindService *findService = [[FindService alloc] init];
-    [findService requestFindNear:23.117055 lng:113.275995];
+//    FindService *findService = [[FindService alloc] init];
+//    [findService requestFindNear:23.117055 lng:113.275995];
     
     
 }

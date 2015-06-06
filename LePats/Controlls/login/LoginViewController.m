@@ -18,11 +18,20 @@
 {
     LogView *loginView;
     LoginService *loginSer;
+    BOOL bTokenShow;
 }
 @end
 
 
 @implementation LoginViewController
+
+-(void)show
+{
+    bTokenShow = YES;
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    [window addSubview:self.view];
+    [window.rootViewController addChildViewController:self];
+}
 
 -(id)init
 {
@@ -34,7 +43,21 @@
 
 -(void)backRegSucc
 {
-    [self.navigationController popViewControllerAnimated:NO];
+    if (bTokenShow)
+    {
+        [self.view removeFromSuperview];
+        [self removeFromParentViewController];
+        return;
+    }
+    if (self.navigationController)
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+        [self.navigationController setNavigationBarHidden:NO animated:NO];
+    }
+    else
+    {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 
@@ -45,10 +68,16 @@
     loginView = [[LogView alloc] initWithFrame:Rect(10, 120,self.view.frame.size.width-20, 100)];
     [self.view addSubview:loginView];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backRegSucc) name:MESSAGE_UPDATE_USER_TH_VC object:nil];
+    __weak LoginViewController *__self = self;
     self.title = @"登录";
+    [self addLeftEvent:^(id sender)
+     {
+         dispatch_async(dispatch_get_main_queue(), ^{
+             [__self backRegSucc];
+         });
+     }];
     [self setRightHidden:NO];
     [self setRightTitle:@"注册"];
-    __weak LoginViewController *__self = self;
     [self addRightEvent:^(id sender)
     {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -77,7 +106,6 @@
 -(void)comeToReg
 {
     RegFirstViewController *regFirst = [[RegFirstViewController alloc] init];
-//    [self.navigationController pushViewController:regFirst animated:NO];
     [self presentViewController:regFirst animated:YES completion:nil];
 }
 
@@ -138,10 +166,7 @@
             
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2.0*NSEC_PER_SEC), dispatch_get_main_queue(),
             ^{
-//                  [__strongSelf.navigationController popViewControllerAnimated:YES];
-//                  [__strongSelf.navigationController setNavigationBarHidden:NO animated:NO];
                 [__strongSelf login_BackView];
-                
             });
         }
     };
@@ -151,15 +176,7 @@
 -(void)login_BackView
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_SUCESS_VC object:nil];
-    if (self.navigationController)
-    {
-        [self.navigationController popViewControllerAnimated:YES];
-        [self.navigationController setNavigationBarHidden:NO animated:NO];
-    }
-    else
-    {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
+    [self backRegSucc];
 }
 
 
