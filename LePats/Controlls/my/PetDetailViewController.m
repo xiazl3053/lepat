@@ -213,6 +213,8 @@
     //    pet.strDescription=[strDescription stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     //    pet.nSortId=3;
     
+    
+    
     if ([self completa]) {
         AddPetService *service=[[AddPetService alloc]init];
         service.addPetBlock=^(NSString *error){
@@ -224,6 +226,7 @@
         };
         [service requestAddPet:_pet];
     }else{
+        [self.view makeToast:@"输入信息不完整"];
         NSLog(@"信息错误");
     }
 }
@@ -669,11 +672,12 @@
 
 -(void)upDateImage:(UIImage *)image{
     [ProgressHUD show:@"上传头像..."];
+    __weak PetDetailViewController *__self=self;
     HttpUploadManager *upload=[[HttpUploadManager alloc]init];
     upload.uploadImgBlock=^(NSString *error,NSDictionary *dic){
         [ProgressHUD dismiss];
         if (error) {
-            
+            [__self.view makeToast:error];
         }else{
             NSDictionary *data=[dic objectForKey:@"photobj"];
             _photoId=[[data objectForKey:@"id"]intValue];

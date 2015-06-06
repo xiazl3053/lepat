@@ -266,4 +266,10 @@
     return NO; //返回NO表示要显示，返回YES将hiden
 }
 
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:KGotoViewController object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:KShowMainViewController object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:KShowLeftViewController object:nil];
+}
+
 @end
