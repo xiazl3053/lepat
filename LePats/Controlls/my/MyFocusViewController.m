@@ -12,11 +12,15 @@
 #import "MJRefresh.h"
 #import "Toast+UIView.h"
 #import "FansModel.h"
+#import "FriendCell.h"
+#import "FocusService.h"
+#import "TheyMainViewController.h"
 
-@interface MyFocusViewController ()<UITableViewDataSource,UITableViewDelegate>{
+@interface MyFocusViewController ()<UITableViewDataSource,UITableViewDelegate,FriendViewDelegate>{
 
     UITableView *_tableView;
     NSArray *_focusList;
+    FocusService *focus;
 }
 
 @end
@@ -57,6 +61,10 @@
     [tableView addHeaderWithTarget:self action:@selector(headerRereshing)];
     [tableView addFooterWithTarget:self action:@selector(footerrefeshing)];
     [self.view addSubview:tableView];
+    
+    UIView *view = [UIView new];
+    view.backgroundColor = [UIColor clearColor];
+    [tableView setTableFooterView:view];
     _tableView=tableView;
 }
 
@@ -86,21 +94,63 @@
     return _focusList.count;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 84;
+}
+
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *identifer=@"";
-    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:identifer];
+    FriendCell *cell=[tableView dequeueReusableCellWithIdentifier:identifer];
     if (!cell) {
-        cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifer];
+        cell=[[FriendCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifer];
     }
     
-    FansModel *model=[_focusList objectAtIndex:indexPath.row];
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:model.strUserIcon] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
-    cell.textLabel.text=model.strName;
-    cell.detailTextLabel.text=model.strSignature;
+    NearInfo *model=[_focusList objectAtIndex:indexPath.row];
+    cell.delegate=self;
+    [cell setNearInfo:model];
     return cell;
 }
 
+
+-(void)friendView:(FriendCell *)friend focus:(NSString *)strUserId
+{
+    if(focus==nil)
+    {
+        focus = [[FocusService alloc] init];
+    }
+    __weak MyFocusViewController *__self = self;
+    __weak FriendCell *__friend = friend;
+    focus.httpFocus = ^(int nStatus,NSString *strMsg)
+    {
+        if (nStatus == 1)
+        {
+            dispatch_async(dispatch_get_main_queue(),
+                           ^{
+                               [__friend setAttenBtnSwtich];
+                           });
+            
+        }
+        else
+        {
+            dispatch_async(dispatch_get_main_queue(),
+                           ^{
+                               [__self.view makeToast:strMsg duration:1.5 position:@"center"];
+                           });
+        }
+    };
+    [focus requestFocus:strUserId];
+}
+
+-(void)friendView:(FriendCell *)friend index:(int)nIndex
+{
+    if (nIndex>=0)
+    {
+        NearInfo *near = [_focusList objectAtIndex:nIndex];
+        TheyMainViewController *theyView = [[TheyMainViewController alloc] initWithNear:near];
+        [self.navigationController pushViewController:theyView animated:YES];
+    }
+}
 
 /*
 #pragma mark - Navigation

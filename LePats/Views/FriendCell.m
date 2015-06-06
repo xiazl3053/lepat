@@ -106,7 +106,7 @@
     
     _btnPriLet.frame = Rect(kScreenSourchWidth-60,40, 55,24);
     _btnAttention.frame = Rect(kScreenSourchWidth-120,40, 55, 24);
-    _lblDistance.frame = Rect(self.contentView.width-100,15,80, 15);
+    _lblDistance.frame = Rect(kScreenSourchWidth-85,15,80, 15);
     
     [self.contentView addSubview:_imgView];
     [self.contentView addSubview:_imgHead];

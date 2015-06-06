@@ -9,6 +9,7 @@
 #import "MyFocusService.h"
 #import "UserInfo.h"
 #import "FansModel.h"
+#import "NearInfo.h"
 
 @implementation MyFocusService
 -(void)requestUserId:(int)nUserId
@@ -37,8 +38,8 @@
             NSMutableArray *data=[NSMutableArray array];
             for (NSDictionary *obj in list) {
                 NSLog(@"%@",obj);
-                FansModel *model=[[FansModel alloc]initWithDic:obj];
-                [data addObject:model];
+                NearInfo *info=[[NearInfo alloc]initWithDic:obj];
+                [data addObject:info];
             }
             self.focusServiceBlock(nil,data);
         }else{

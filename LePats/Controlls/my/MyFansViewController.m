@@ -13,11 +13,16 @@
 #import "FansModel.h"
 #import "MJRefresh.h"
 #import "MyViewController.h"
+#import "NearInfo.h"
+#import "FriendCell.h"
+#import "FocusService.h"
+#import "TheyMainViewController.h"
 
-@interface MyFansViewController ()<UITableViewDataSource,UITableViewDelegate>{
+@interface MyFansViewController ()<UITableViewDataSource,UITableViewDelegate,FriendViewDelegate>{
     
     UITableView *_tableView;
     NSArray *_fansList;
+    FocusService *focus;
     
 }
 
@@ -54,6 +59,11 @@
     [tableView addHeaderWithTarget:self action:@selector(headerRereshing)];
     [tableView addFooterWithTarget:self action:@selector(footerrefeshing)];
     [self.view addSubview:tableView];
+    
+    UIView *view = [UIView new];
+    view.backgroundColor = [UIColor clearColor];
+    [tableView setTableFooterView:view];
+    
     _tableView=tableView;
 }
 
@@ -63,6 +73,10 @@
 
 -(void)footerrefeshing{
 
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 80;
 }
 
 -(void)initParams{
@@ -79,6 +93,45 @@
     [service requestUserId:userID];
 }
 
+-(void)friendView:(FriendCell *)friend focus:(NSString *)strUserId
+{
+    if(focus==nil)
+    {
+        focus = [[FocusService alloc] init];
+    }
+    __weak MyFansViewController *__self = self;
+    __weak FriendCell *__friend = friend;
+    focus.httpFocus = ^(int nStatus,NSString *strMsg)
+    {
+        if (nStatus == 1)
+        {
+            dispatch_async(dispatch_get_main_queue(),
+                           ^{
+                               [__friend setAttenBtnSwtich];
+                           });
+            
+        }
+        else
+        {
+            dispatch_async(dispatch_get_main_queue(),
+                           ^{
+                               [__self.view makeToast:strMsg duration:1.5 position:@"center"];
+                           });
+        }
+    };
+    [focus requestFocus:strUserId];
+}
+
+-(void)friendView:(FriendCell *)friend index:(int)nIndex
+{
+    if (nIndex>=0)
+    {
+        NearInfo *near = [_fansList objectAtIndex:nIndex];
+        TheyMainViewController *theyView = [[TheyMainViewController alloc] initWithNear:near];
+        [self.navigationController pushViewController:theyView animated:YES];
+    }
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return _fansList.count;
 }
@@ -89,16 +142,18 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *identifer=@"";
-    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:identifer];
+    
+    
+    static NSString *identifer=@"FriendCell";
+    FriendCell *cell=[tableView dequeueReusableCellWithIdentifier:identifer];
     if (!cell) {
-        cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifer];
+        cell=[[FriendCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifer];
     }
     
-    FansModel *model=[_fansList objectAtIndex:indexPath.row];
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:model.strUserIcon] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
-    cell.textLabel.text=model.strName;
-    cell.detailTextLabel.text=model.strSignature;
+    NearInfo *model=[_fansList objectAtIndex:indexPath.row];
+    //    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:model.strFile] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
+    [cell setNearInfo:model];
+    cell.delegate=self;
     return cell;
 }
 

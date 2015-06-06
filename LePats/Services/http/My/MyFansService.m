@@ -8,7 +8,7 @@
 
 #import "MyFansService.h"
 #import "UserInfo.h"
-#import "FansModel.h"
+#import "NearInfo.h"
 
 @implementation MyFansService
 
@@ -38,7 +38,7 @@
             NSMutableArray *data=[NSMutableArray array];
             for (NSDictionary *obj in list) {
                 NSLog(@"%@",obj);
-                FansModel *model=[[FansModel alloc]initWithDic:obj];
+                NearInfo *model=[[NearInfo alloc]initWithDic:obj];
                 [data addObject:model];
             }
             self.myFansServiceBlock(nil,data);

@@ -35,6 +35,7 @@
     _nFocus = [[dict objectForKey:@"relation"] intValue]/10;
     _nFansNum = [[dict objectForKey:@"fansNum"] intValue];
     _nFocusNum = [[dict objectForKey:@"focusNum"] intValue];
+    _strSignature=[dict objectForKey:@"signature"];
 
     
     

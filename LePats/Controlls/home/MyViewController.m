@@ -50,31 +50,16 @@
     [self initContentView];
 }
 
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:YES];
+}
+
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     if ([UserInfo sharedUserInfo].strToken) {
         [self getUserInfo];
-        _detailView.hidden=NO;
-        //_headView.hidden=YES;
-        _leftView.hidden=NO;
-        _rightView.hidden=NO;
-        _segmented.hidden=NO;
-        _fans.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFansNum];
-        _focus.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFocusNum];
-        if ([[UserInfo sharedUserInfo].strSignature isEqualToString:@""]) {
-            _singture.text=@"这个人很懒,什么都没有留下.";
-        }else{
-            _singture.text=[UserInfo sharedUserInfo].strSignature;
-        }
-        _nickName.text=[UserInfo sharedUserInfo].strNickName;
-        
     }else{
-        _detailView.hidden=YES;
-        //_headView.hidden=YES;
-        _leftView.hidden=YES;
-        _rightView.hidden=YES;
-        _segmented.hidden=YES;
         [self.tabBarController setSelectedIndex:0];
     }
     
@@ -84,6 +69,14 @@
 {
     MyInfoService *service=[[MyInfoService alloc]init];
     service.getMyInfoBlock=^(NSString *error){
+        _fans.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFansNum];
+        _focus.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFocusNum];
+        _nickName.text=[UserInfo sharedUserInfo].strNickName;
+        if ([[UserInfo sharedUserInfo].strSignature isEqualToString:@""]) {
+            _singture.text=@"这个人很懒,什么都没有留下.";
+        }else{
+            _singture.text=[UserInfo sharedUserInfo].strSignature;
+        }
         [_icon sd_setImageWithURL:[NSURL URLWithString:[UserInfo sharedUserInfo].strUserIcon] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
     };
     if (self.nUserID==0) {
@@ -190,8 +183,6 @@
 
 -(void)initIconView{
     UIImageView *icon=[[UIImageView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-80)*.5, _detailView.top-60, 80, 80)];
-    //icon.backgroundColor=[UIColor redColor];
-    icon.image=[UIImage imageNamed:@"headView_bg"];
     icon.layer.cornerRadius= icon.bounds.size.width/2;
     icon.layer.masksToBounds=YES;
     icon.userInteractionEnabled=YES;
@@ -330,19 +321,18 @@
 
 
 -(void)gotoOther:(UIButton *)aBtn{
-    return ;
     switch (aBtn.tag) {
         case 100:
         {
             
             MyFocusViewController *other=[[MyFocusViewController alloc]init];
+            other.hidesBottomBarWhenPushed=YES;
             [self.navigationController pushViewController:other animated:YES];
-            //self.hidesBottomBarWhenPushed=YES;
         }break;
         case 200:{
             MyFansViewController *other=[[MyFansViewController alloc]init];
+            other.hidesBottomBarWhenPushed=YES;
             [self.navigationController pushViewController:other animated:YES];
-            self.hidesBottomBarWhenPushed=YES;
             
         }break;
             
