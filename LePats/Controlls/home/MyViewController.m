@@ -25,6 +25,7 @@
     UILabel *_fans;
     UILabel *_focus;
     UILabel *_singture;
+    UILabel *_nickName;
 }
 
 @end
@@ -63,6 +64,8 @@
         }else{
             _singture.text=[UserInfo sharedUserInfo].strSignature;
         }
+        _nickName.text=[UserInfo sharedUserInfo].strNickName;
+        
     }else{
         _detailView.hidden=YES;
         //_headView.hidden=YES;
@@ -111,6 +114,7 @@
     nick.text=[UserInfo sharedUserInfo].strNickName;
     nick.textAlignment=NSTextAlignmentCenter;
     [detail addSubview:nick];
+    _nickName=nick;
     
     UILabel *sign=[[UILabel alloc]initWithFrame:CGRectMake(0, nick.bottom+10, KMainScreenSize.width, 20)];
     sign.text=[UserInfo sharedUserInfo].strSignature;

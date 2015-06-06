@@ -14,6 +14,8 @@
 #import "PetDetailViewController.h"
 #import "MyPetTableViewCell.h"
 #import "MyInfoService.h"
+#import "ProgressHUD.h"
+#import "Toast+UIView.h"
 
 @interface MyPetsViewController ()<UITableViewDataSource,UITableViewDelegate,MyPetTableViewCellDelegate>{
     UITableView *_tableView;
@@ -46,13 +48,25 @@
 
 -(void)queryPets
 {
+    [ProgressHUD show:@"获取我的宠物"];
+    
 
     __block MyPetsViewController *weakSelf = self;
     MyPetService *service=[[MyPetService alloc]init];
     service.myPetsBlock=^(NSString *error,NSArray *pets)
     {
-        weakSelf.pets=pets;
-        [weakSelf->_tableView reloadData];
+        
+        [ProgressHUD dismiss];
+        if (error) {
+            [weakSelf.view makeToast:error];
+        }else{
+            if (pets.count==0) {
+                [weakSelf.view makeToast:@"您尚未添加宠物"];
+            }else{
+                weakSelf.pets=pets;
+                [weakSelf->_tableView reloadData];
+            }
+        }
 
     };
     [service requestPetInfo:0];

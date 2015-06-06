@@ -85,6 +85,7 @@
 
 -(BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
 {
+    
     NSLog(@"%s",__FUNCTION__);
     if ([UserInfo sharedUserInfo].strToken) {
         return YES;

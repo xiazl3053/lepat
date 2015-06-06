@@ -271,6 +271,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView endEditing:YES];
     NSArray *rows=[self.itemList objectAtIndex:indexPath.section];
     NSDictionary *dic=[rows objectAtIndex:indexPath.row];
     NSInteger tag=[[dic objectForKey:@"tag"]intValue];
