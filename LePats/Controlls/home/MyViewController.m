@@ -18,7 +18,7 @@
 @interface MyViewController (){
     UIImageView *_headView;
     UIView *_detailView;
-    UISegmentedControl *_segmentedView;
+    UIView *_segmented;
     UIView *_leftView;
     UIView *_rightView;
     UIImageView *_icon;
@@ -26,6 +26,9 @@
     UILabel *_focus;
     UILabel *_singture;
     UILabel *_nickName;
+    UIButton *_likeBtn;
+    UIButton *_releaseBtn;
+    UIView *_line;
 }
 
 @end
@@ -56,7 +59,7 @@
         //_headView.hidden=YES;
         _leftView.hidden=NO;
         _rightView.hidden=NO;
-        _segmentedView.hidden=NO;
+        _segmented.hidden=NO;
         _fans.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFansNum];
         _focus.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFocusNum];
         if ([[UserInfo sharedUserInfo].strSignature isEqualToString:@""]) {
@@ -71,7 +74,7 @@
         //_headView.hidden=YES;
         _leftView.hidden=YES;
         _rightView.hidden=YES;
-        _segmentedView.hidden=YES;
+        _segmented.hidden=YES;
         [self.tabBarController setSelectedIndex:0];
     }
     
@@ -206,17 +209,69 @@
     }else{
         arr=[NSArray arrayWithObjects:@"他的发布",@"他的喜欢",nil];
     }
-    UISegmentedControl *segment=[[UISegmentedControl alloc]initWithItems:arr];
-    segment.segmentedControlStyle=UISegmentedControlStyleBordered;
-    segment.frame=CGRectMake(0, _detailView.bottom, KMainScreenSize.width, 40);
-    [segment setSelectedSegmentIndex:0];
+//    UISegmentedControl *segment=[[UISegmentedControl alloc]initWithItems:arr];
+//    segment.segmentedControlStyle=UISegmentedControlStyleBordered;
+//    segment.frame=CGRectMake(0, _detailView.bottom, KMainScreenSize.width, 40);
+//    [segment setSelectedSegmentIndex:0];
+//    [self.view addSubview:segment];
+    
+    UIView *segment=[[UIView alloc]initWithFrame:CGRectMake(0, _detailView.bottom, KMainScreenSize.width, 40)];
     [self.view addSubview:segment];
-    [segment addTarget:self action:@selector(segmentedValueChange:) forControlEvents:UIControlEventValueChanged];
-    _segmentedView=segment;
+    
+    UIButton *release=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, KMainScreenSize.width*.5, 40)];
+    release.backgroundColor=[UIColor whiteColor];
+    [release setTitleColor:UIColorFromRGB(0x24cdfd) forState:UIControlStateSelected];
+    [release setTitleColor:UIColorFromRGB(0x646566) forState:UIControlStateNormal];
+    [release setTitle:@"我的发布" forState:UIControlStateNormal];
+    release.tag=100;
+    [segment addSubview:release];
+    [release addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
+    [release setSelected:YES];
+    _releaseBtn=release;
+    
+    
+    
+    UIButton *like=[[UIButton alloc]initWithFrame:CGRectMake(release.right, 0, KMainScreenSize.width*.5, 40)];
+    like.backgroundColor=[UIColor whiteColor];
+    [like setTitleColor:UIColorFromRGB(0x24cdfd) forState:UIControlStateSelected];
+    [like setTitleColor:UIColorFromRGB(0x646566) forState:UIControlStateNormal];
+    [like setTitle:@"我的喜欢" forState:UIControlStateNormal];
+    like.tag=200;
+    [segment addSubview:like];
+    [like addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIView *line=[[UIView alloc]initWithFrame:CGRectMake(0, segment.height-3, KMainScreenSize.width*.5, 3)];
+    line.backgroundColor=UIColorFromRGB(0x24cdfd);
+    [segment addSubview:line];
+    
+    _likeBtn=like;
+    _segmented=segment;
+    _line=line;
+    
+//    [segment addTarget:self action:@selector(segmentedValueChange:) forControlEvents:UIControlEventValueChanged];
+//    _segmentedView=segment;
+}
+
+-(void)click:(UIButton *)aBtn{
+    
+    if (aBtn.tag==100) {
+        [_likeBtn setSelected:NO];
+        [_releaseBtn setSelected:YES];
+        _rightView.hidden=YES;
+        _leftView.hidden=NO;
+        _line.frame=CGRectMake(0, _segmented.height-3, KMainScreenSize.width*.5, 3);
+    }else{
+        [_likeBtn setSelected:YES];
+        [_releaseBtn setSelected:NO];
+        _rightView.hidden=NO;
+        _leftView.hidden=YES;
+        _line.frame=CGRectMake(KMainScreenSize.width*.5, _segmented.height-3, KMainScreenSize.width*.5, 3);
+    }
+
 }
 
 -(void)initContentView{
-    UIView *view1=[[UIView alloc]initWithFrame:CGRectMake(0, _segmentedView.bottom, KMainScreenSize.width, self.view.frame.size.height-_segmentedView.bottom-44)];
+    UIView *view1=[[UIView alloc]initWithFrame:CGRectMake(0, _segmented.bottom, KMainScreenSize.width, self.view.frame.size.height-_segmented.bottom-44)];
     view1.backgroundColor=[UIColor groupTableViewBackgroundColor];
     
     UIImageView *push=[[UIImageView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-80)*.5, (view1.height-80)*.5, 80, 80)];
@@ -232,7 +287,7 @@
     _leftView=view1;
     [self.view addSubview:view1];
     
-    UIView *view2=[[UIView alloc]initWithFrame:CGRectMake(0, _segmentedView.bottom, KMainScreenSize.width, self.view.frame.size.height-_segmentedView.bottom-44)];
+    UIView *view2=[[UIView alloc]initWithFrame:CGRectMake(0, _segmented.bottom, KMainScreenSize.width, self.view.frame.size.height-_segmented.bottom-44)];
     view2.backgroundColor=[UIColor groupTableViewBackgroundColor];
     view2.hidden=YES;
     
@@ -274,12 +329,7 @@
 
 
 -(void)gotoOther:(UIButton *)aBtn{
-    
     return ;
-    
-    if (self.nUserID!=0) {
-        return ;
-    }
     switch (aBtn.tag) {
         case 100:
         {
@@ -291,7 +341,7 @@
         case 200:{
             MyFansViewController *other=[[MyFansViewController alloc]init];
             [self.navigationController pushViewController:other animated:YES];
-            //self.hidesBottomBarWhenPushed=YES;
+            self.hidesBottomBarWhenPushed=YES;
             
         }break;
             

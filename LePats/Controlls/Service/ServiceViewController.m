@@ -16,8 +16,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.title=@"服务";
     // Do any additional setup after loading the view.
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

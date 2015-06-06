@@ -26,6 +26,8 @@
 #import "UserModel.h"
 #import "LoginUserDB.h"
 #import "LoginViewController.h"
+#import "ServiceViewController.h"
+#import "HelpViewController.h"
 
 @interface AppDelegate ()<UITabBarControllerDelegate>{
     WWSideslipViewController *_slide;

@@ -104,10 +104,10 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    MyViewController *userDetail=[[MyViewController alloc]init];
-    FansModel *model=[_fansList objectAtIndex:indexPath.row];
-    userDetail.nUserID=[model.strUserId intValue];
-    [self.navigationController pushViewController:userDetail animated:YES];
+//    MyViewController *userDetail=[[MyViewController alloc]init];
+//    FansModel *model=[_fansList objectAtIndex:indexPath.row];
+//    userDetail.nUserID=[model.strUserId intValue];
+//    [self.navigationController pushViewController:userDetail animated:YES];
 }
 
 /*
