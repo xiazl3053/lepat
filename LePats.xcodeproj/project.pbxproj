@@ -1394,7 +1394,7 @@
 					"$(PROJECT_DIR)/LePats/General/baidumap",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "4481d1b9-b83c-468a-8e38-f13d926e3b03";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7s";
 			};
@@ -1424,7 +1424,7 @@
 					"$(PROJECT_DIR)/LePats/General/baidumap",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "2e22e4ce-d81c-471f-ace5-e94d08161147";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7s";
 			};

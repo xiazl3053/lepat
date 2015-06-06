@@ -112,11 +112,11 @@
 
 -(void)initImgView
 {
-    imgBack=[[UIImageView alloc]initWithFrame:Rect(0, [self barSize].height, KMainScreenSize.width, 200)];
+    imgBack=[[UIImageView alloc]initWithFrame:Rect(0, [self barSize].height, KMainScreenSize.width, 120)];
     imgBack.image=[UIImage imageNamed:@"headView_bg"];
     [self.view addSubview:imgBack];
    
-    imgHead=[ [UIImageView alloc] initWithFrame:Rect((KMainScreenSize.width-80)*.5, imgBack.y+140, 80, 80)];
+    imgHead=[ [UIImageView alloc] initWithFrame:Rect((KMainScreenSize.width-80)*.5, imgBack.y+60, 80, 80)];
     //icon.backgroundColor=[UIColor redColor];
     imgHead.layer.cornerRadius= imgHead.bounds.size.width/2;
     imgHead.layer.masksToBounds=YES;
@@ -193,15 +193,17 @@
 {
     detail=[[UIView alloc]initWithFrame:CGRectMake(0, imgHead.y+imgHead.height+20, KMainScreenSize.width, 120)];
     
-    UILabel *nick=[[UILabel alloc]initWithFrame:CGRectMake(0, 5, KMainScreenSize.width, 20)];
+    UILabel *nick=[[UILabel alloc]initWithFrame:CGRectMake(0, 5, KMainScreenSize.width, 15)];
     nick.text = _nearInfo.strName;
     nick.textAlignment=NSTextAlignmentCenter;
     [detail addSubview:nick];
+    [nick setFont:XCFONT(14)];
     
-    UILabel *sign=[[UILabel alloc]initWithFrame:CGRectMake(0, nick.bottom+10, KMainScreenSize.width, 20)];
+    UILabel *sign=[[UILabel alloc]initWithFrame:CGRectMake(0, nick.bottom+5, KMainScreenSize.width, 15)];
     sign.text=[UserInfo sharedUserInfo].strSignature;
     sign.textColor=[UIColor grayColor];
     sign.font=[UIFont systemFontOfSize:14];
+    [sign setFont:XCFONT(12)];
     if ([[UserInfo sharedUserInfo].strSignature isEqualToString:@""])
     {
         sign.text=@"这个人很懒,什么都没有留下.";
