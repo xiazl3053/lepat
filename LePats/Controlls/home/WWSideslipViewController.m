@@ -59,6 +59,12 @@
 -(void)initRegisterNotification{
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(gotoMyInfoViewCotroller:) name:KShowMainViewController object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showLeftViewFromSetting) name:KShowLeftViewController object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(gotoViewController) name:KGotoViewController object:nil];
+}
+
+-(void)gotoViewController{
+    MainViewController *tabbar=(MainViewController*)mainControl;
+    [tabbar setSelectedIndex:4];
 }
 
 - (void)didReceiveMemoryWarning

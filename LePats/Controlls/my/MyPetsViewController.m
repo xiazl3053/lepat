@@ -49,8 +49,6 @@
 -(void)queryPets
 {
     [ProgressHUD show:@"获取我的宠物"];
-    
-
     __block MyPetsViewController *weakSelf = self;
     MyPetService *service=[[MyPetService alloc]init];
     service.myPetsBlock=^(NSString *error,NSArray *pets)
@@ -61,6 +59,8 @@
             [weakSelf.view makeToast:error];
         }else{
             if (pets.count==0) {
+                weakSelf.pets=pets;
+                [weakSelf->_tableView reloadData];
                 [weakSelf.view makeToast:@"您尚未添加宠物"];
             }else{
                 weakSelf.pets=pets;

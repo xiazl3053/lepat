@@ -214,6 +214,11 @@
     icon.layer.cornerRadius=icon.frame.size.width*.5;
     icon.layer.masksToBounds=YES;
     [my addSubview:icon];
+    
+    UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(gotoMyView)];
+    [icon addGestureRecognizer:tap];
+    icon.userInteractionEnabled=YES;
+    
     _imgView=icon;
     DLog(@"UserInfo sharedUserInfo].strUserIcon:%@",[UserInfo sharedUserInfo].strUserIcon);
     [icon sd_setImageWithURL:[NSURL URLWithString:[UserInfo sharedUserInfo].strUserIcon] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
@@ -242,6 +247,13 @@
     [my addSubview:title];
     
     return my;
+}
+
+-(void)gotoMyView{
+    if ([UserInfo sharedUserInfo].strToken) {
+         [[NSNotificationCenter defaultCenter]postNotificationName:KShowMainViewController object:nil];
+        [[NSNotificationCenter defaultCenter]postNotificationName:KGotoViewController object:nil];
+    }
 }
 
 -(void)login:(UIButton *)aBtn

@@ -15,6 +15,7 @@
 #define KShowLeftViewController @"KShowLeftViewController"
 #define KUserLogout @"KUserLogout"
 #define LOGIN_SUCESS_VC  @"LOGIN_SUCESS_VC"
+#define KGotoViewController @"KGotoViewController"
 
 #define KServiceResponseCode @"return_code"
 #define KServiceResponseMsg @"result_msg"
