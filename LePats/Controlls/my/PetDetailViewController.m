@@ -315,6 +315,9 @@
                 {
                     cell.title.text=@"宠物性别:";
                     cell.content.inputView=_sexPickerView;
+                    UIView *accessoryView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, cell.width, 44)];
+                    accessoryView.backgroundColor=[UIColor redColor];
+                    cell.content.inputAccessoryView=accessoryView;
                     _sexCell=cell;
                     //cell.detailTextLabel.text=[NSString stringWithFormat:@"%i",_pet.nSex];
                     ;
