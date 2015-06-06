@@ -68,7 +68,7 @@
     
     _lblPet = [[UILabel alloc] initWithFrame:Rect(84, 40, 160, 13)];
     
-    _lblInfo = [[UILabel alloc] initWithFrame:Rect(84, 60, 180, 13)];
+    _lblInfo = [[UILabel alloc] initWithFrame:Rect(84, 65, 180, 13)];
     
     [_imgView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imgTapEvent)]];
     [_imgView setUserInteractionEnabled:YES];
@@ -101,7 +101,7 @@
     [_lblName setFont:XCFONT(15)];
     [_lblName setTextColor:RGB(254, 153, 0)];
     [_lblPet setFont:XCFONT(14)];
-    [_lblInfo setFont:XCFONT(13)];
+    [_lblInfo setFont:XCFONT(12)];
     [_lblDistance setFont:XCFONT(12)];
     
     _btnPriLet.frame = Rect(kScreenSourchWidth-60,40, 55,24);

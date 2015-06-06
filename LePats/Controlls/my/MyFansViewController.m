@@ -149,6 +149,7 @@
     if (!cell) {
         cell=[[FriendCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifer];
     }
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
     
     NearInfo *model=[_fansList objectAtIndex:indexPath.row];
     //    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:model.strFile] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];

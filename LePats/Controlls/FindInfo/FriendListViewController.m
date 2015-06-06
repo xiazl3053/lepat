@@ -41,19 +41,19 @@
 
 @implementation FriendListViewController
 
--(id)init
-{
-    self = [super init];
-//    if([CLLocationManager locationServicesEnabled]) {
-//        locationManager = [[CLLocationManager alloc] init];
-//        locationManager.delegate = self;
-//    }else {
-//        //提示用户无法进行定位操作
-//    }
-//    // 开始定位
-//    [locationManager startUpdatingLocation];
-    return self;
-}
+//-(id)init
+//{
+//    self = [super init];
+////    if([CLLocationManager locationServicesEnabled]) {
+////        locationManager = [[CLLocationManager alloc] init];
+////        locationManager.delegate = self;
+////    }else {
+////        //提示用户无法进行定位操作
+////    }
+////    // 开始定位
+////    [locationManager startUpdatingLocation];
+//    return self;
+//}
 
 -(void)startLocation
 {
@@ -68,6 +68,7 @@
 -(void)initHeadView
 {
     self.title = @"附近鱼友列表";
+    self.view.backgroundColor=[UIColor whiteColor];
     __weak FriendListViewController *__self = self;
     findSer = [[FindService alloc] init];
     _aryNear = [NSMutableArray array];
@@ -110,7 +111,8 @@
 {
     [_locService stopUserLocationService];
     MapFriendViewController *map =[[MapFriendViewController alloc] initWithLat:fLat long:fLong];
-    [self presentViewController:map animated:YES completion:nil];
+    [self.navigationController pushViewController:map animated:YES];
+    //[self presentViewController:map animated:YES completion:nil];
 }
 
 -(void)findData
@@ -159,7 +161,11 @@
    [self.view addSubview:_tableView];
    _tableView.delegate = self;
    _tableView.dataSource = self;
-   _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+   _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+
+    UIView *clean=[UIView new];
+    clean.backgroundColor=[UIColor clearColor];
+    [_tableView setTableFooterView:clean];
     
 }
 
@@ -179,6 +185,7 @@
    if (friend==nil)
    {
        friend = [[FriendCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:strFriendIdentifier];
+       friend.selectionStyle=UITableViewCellSelectionStyleNone;
        NearInfo *near = [_aryNear objectAtIndex:indexPath.row];
        [friend setNearInfo:near];
        friend.delegate = self;
@@ -279,7 +286,8 @@
     {
         NearInfo *near = [_aryNear objectAtIndex:nIndex];
         TheyMainViewController *theyView = [[TheyMainViewController alloc] initWithNear:near];
-        [self presentViewController:theyView animated:YES completion:nil];
+        [self.navigationController pushViewController:theyView animated:YES];
+        //[self presentViewController:theyView animated:YES completion:nil];
     }
 }
 

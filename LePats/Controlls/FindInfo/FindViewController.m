@@ -63,12 +63,16 @@
 //    [txtScan setText:@"扫一扫"];
 //    [txtScan setFont:XCFONT(12)];
     
-    _tableView = [[UITableView alloc] initWithFrame:Rect(0, [self barSize].height,self.view.width, self.view.height-44) style:UITableViewStyleGrouped];
+    _tableView = [[UITableView alloc] initWithFrame:Rect(0, [self barSize].height,self.view.width, self.view.height-44) style:UITableViewStylePlain];
     [self.view addSubview:_tableView];
     _tableView.delegate = self;
     _tableView.dataSource = self;
-    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    //_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [_tableView setBackgroundColor:RGB(240, 240, 240)];
+    
+    UIView *clearn=[[UIView alloc]init];
+    clearn.backgroundColor=[UIColor clearColor];
+    [_tableView setTableFooterView:clearn];
     
 }
 
@@ -108,10 +112,13 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section==0)
     {
         FriendListViewController *friendView = [[FriendListViewController alloc] init];
-        [self presentViewController:friendView animated:YES completion:nil];// friendView animated:YES];
+//        [self presentViewController:friendView animated:YES completion:nil];// friendView animated:YES];
+        friendView.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:friendView animated:YES];
     }
 }
 

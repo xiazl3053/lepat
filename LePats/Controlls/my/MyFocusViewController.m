@@ -105,7 +105,7 @@
     if (!cell) {
         cell=[[FriendCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifer];
     }
-    
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
     NearInfo *model=[_focusList objectAtIndex:indexPath.row];
     cell.delegate=self;
     [cell setNearInfo:model];
