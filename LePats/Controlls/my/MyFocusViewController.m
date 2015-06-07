@@ -98,6 +98,11 @@
     return 84;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NearInfo *near = [_focusList objectAtIndex:indexPath.row];
+    TheyMainViewController *theyView = [[TheyMainViewController alloc] initWithNear:near];
+    [self.navigationController pushViewController:theyView animated:YES];
+}
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *identifer=@"";

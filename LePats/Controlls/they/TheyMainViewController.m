@@ -146,7 +146,7 @@
 
 -(void)initBodyView
 {
-    NSArray *arr = [NSArray arrayWithObjects:@"他的发布",@"他的宠物",nil];
+    NSArray *arr = [NSArray arrayWithObjects:@"TA的发布",@"TA的宠物",nil];
     UISegmentedControl *segment=[[UISegmentedControl alloc]initWithItems:arr];
     segment.segmentedControlStyle = UISegmentedControlStyleBordered;
     segment.frame=CGRectMake(0, detail.bottom , KMainScreenSize.width, 40);

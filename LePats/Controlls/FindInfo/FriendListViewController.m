@@ -201,7 +201,9 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    NearInfo *near = [_aryNear objectAtIndex:indexPath.row];
+    TheyMainViewController *theyView = [[TheyMainViewController alloc] initWithNear:near];
+    [self.navigationController pushViewController:theyView animated:YES];
 }
 
 - (void)didUpdateUserHeading:(BMKUserLocation *)userLocation

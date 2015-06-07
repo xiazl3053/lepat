@@ -164,6 +164,10 @@
 //    FansModel *model=[_fansList objectAtIndex:indexPath.row];
 //    userDetail.nUserID=[model.strUserId intValue];
 //    [self.navigationController pushViewController:userDetail animated:YES];
+    
+    NearInfo *near = [_fansList objectAtIndex:indexPath.row];
+    TheyMainViewController *theyView = [[TheyMainViewController alloc] initWithNear:near];
+    [self.navigationController pushViewController:theyView animated:YES];
 }
 
 /*
