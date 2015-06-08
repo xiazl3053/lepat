@@ -20,14 +20,9 @@
 @interface MyViewController ()<UITableViewDataSource,UITableViewDelegate>{
     UIImageView *_headView;
     UIView *_detailView;
-    UIView *_segmented;
     UIView *_leftView;
     UIView *_rightView;
     UIImageView *_icon;
-    UILabel *_fans;
-    UILabel *_focus;
-    UILabel *_heart;
-    UILabel *_comment;
     UILabel *_singture;
     UILabel *_nickName;
     UIButton *_likeBtn;
@@ -35,7 +30,10 @@
     UIView *_line;
     UIView *_tableHeadView;
     UIView *_statusView;
+    UITableView *_tableView;
 }
+
+@property (nonatomic,strong) NSArray *items;
 
 @end
 
@@ -49,12 +47,9 @@
 
 -(void)initViews{
     [self initSelfView];
-//    [self initHeadView];
-    //[self initDetailView];
     [self initTableView];
-//    [self initIconView];
-//    [self initSegment];
     [self initContentView];
+    [self click:_releaseBtn];
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
@@ -212,59 +207,6 @@
     [chat addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
     
     [detail addSubview:operation];
-    
-//    UILabel *focus=[[UILabel alloc]initWithFrame:CGRectMake(0, sign.bottom+5, KMainScreenSize.width*.25, 20)];
-//    focus.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFocusNum];
-//    focus.textAlignment=NSTextAlignmentCenter;
-//    [detail addSubview:focus];
-//    _focus=focus;
-//    
-//    UIButton *focusTitle=[[UIButton alloc]initWithFrame:CGRectMake(0, focus.bottom+5, KMainScreenSize.width*.25, 20)];
-//    [focusTitle setTitle:@"关注" forState:UIControlStateNormal];
-//    [focusTitle setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//    [focusTitle addTarget:self action:@selector(gotoOther:) forControlEvents:UIControlEventTouchUpInside];
-//    focusTitle.tag=100;
-//    [detail addSubview:focusTitle];
-//    
-//    
-//    UILabel *fans=[[UILabel alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.25, sign.bottom+5, KMainScreenSize.width*.25, 20)];
-//    fans.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFansNum];
-//    fans.textAlignment=NSTextAlignmentCenter;
-//    [detail addSubview:fans];
-//    _fans=fans;
-//    
-//    UIButton *fansTitle=[[UIButton alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.25, fans.bottom+5, KMainScreenSize.width*.25, 20)];
-//    [fansTitle setTitle:@"粉丝" forState:UIControlStateNormal];
-//    [fansTitle setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//    [fansTitle addTarget:self action:@selector(gotoOther:) forControlEvents:UIControlEventTouchUpInside];
-//    fansTitle.tag=200;
-//    [detail addSubview:fansTitle];
-//    
-//    UILabel *heart=[[UILabel alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.5, sign.bottom+5, KMainScreenSize.width*.25, 20)];
-//    heart.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFansNum];
-//    heart.textAlignment=NSTextAlignmentCenter;
-//    [detail addSubview:heart];
-//    _heart=heart;
-//    
-//    UIButton *heratTitle=[[UIButton alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.5, fans.bottom+5, KMainScreenSize.width*.25, 20)];
-//    [heratTitle setTitle:@"赞" forState:UIControlStateNormal];
-//    [heratTitle setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//    [heratTitle addTarget:self action:@selector(gotoOther:) forControlEvents:UIControlEventTouchUpInside];
-//    heratTitle.tag=300;
-//    [detail addSubview:heratTitle];
-//    
-//    UILabel *commet=[[UILabel alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.75, sign.bottom+5, KMainScreenSize.width*.25, 20)];
-//    commet.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFansNum];
-//    commet.textAlignment=NSTextAlignmentCenter;
-//    [detail addSubview:commet];
-//    
-//    UIButton *commetTitle=[[UIButton alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.75, fans.bottom+5, KMainScreenSize.width*.25, 20)];
-//    [commetTitle setTitle:@"评论" forState:UIControlStateNormal];
-//    [commetTitle setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//    [commetTitle addTarget:self action:@selector(gotoOther:) forControlEvents:UIControlEventTouchUpInside];
-//    commetTitle.tag=400;
-//    [detail addSubview:commetTitle];
-    
     _tableHeadView=detail;
 }
 
@@ -285,21 +227,41 @@
     [tableView setTableFooterView:view];
     
     [self.view addSubview:tableView];
+    _tableView=tableView;
 }
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 0;
+    if (self.items) {
+        return 10;
+    }else{
+        return 1;
+    }
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.items) {
+        return 10;
+    }else{
+        return 325;
+    }
 }
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *identifier=@"";
     UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:identifier];
-    if (!cell) {
-        cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }
-    return cell;
+    if (self.items) {
+        if (!cell) {
+            cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        }
+        return cell;
+    }else{
+        if (!cell) {
+            cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        }
+        return cell;
+    };
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -320,9 +282,8 @@
     [segment addSubview:release];
     [release addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
     [release setSelected:YES];
+
     _releaseBtn=release;
-    
-    
     
     UIButton *like=[[UIButton alloc]initWithFrame:CGRectMake(release.right, 0, KMainScreenSize.width*.5, 40)];
     like.backgroundColor=[UIColor whiteColor];
@@ -332,89 +293,88 @@
     like.tag=200;
     [segment addSubview:like];
     [like addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
+    _likeBtn=like;
+    
     
     UIView *line=[[UIView alloc]initWithFrame:CGRectMake(0, segment.height-3, KMainScreenSize.width*.5, 3)];
     line.backgroundColor=UIColorFromRGB(0x24cdfd);
     [segment addSubview:line];
-    
-    _likeBtn=like;
-    _segmented=segment;
     _line=line;
 
     return segment;
 }
 
--(void)initSegment
-{
-    NSArray *arr=nil;
-    if (self.nUserID==0) {
-        arr=[NSArray arrayWithObjects:@"我发布的",@"我喜欢的",nil];
-    }else{
-        arr=[NSArray arrayWithObjects:@"他的发布",@"他的喜欢",nil];
-    }
-//    UISegmentedControl *segment=[[UISegmentedControl alloc]initWithItems:arr];
-//    segment.segmentedControlStyle=UISegmentedControlStyleBordered;
-//    segment.frame=CGRectMake(0, _detailView.bottom, KMainScreenSize.width, 40);
-//    [segment setSelectedSegmentIndex:0];
-//    [self.view addSubview:segment];
-    
-    UIView *segment=[[UIView alloc]initWithFrame:CGRectMake(0, _detailView.bottom, KMainScreenSize.width, 40)];
-    [self.view addSubview:segment];
-    
-    UIButton *release=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, KMainScreenSize.width*.5, 40)];
-    release.backgroundColor=[UIColor whiteColor];
-    [release setTitleColor:UIColorFromRGB(0x24cdfd) forState:UIControlStateSelected];
-    [release setTitleColor:UIColorFromRGB(0x646566) forState:UIControlStateNormal];
-    [release setTitle:@"我的发布" forState:UIControlStateNormal];
-    release.tag=100;
-    [segment addSubview:release];
-    [release addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
-    [release setSelected:YES];
-    _releaseBtn=release;
-    
-    
-    
-    UIButton *like=[[UIButton alloc]initWithFrame:CGRectMake(release.right, 0, KMainScreenSize.width*.5, 40)];
-    like.backgroundColor=[UIColor whiteColor];
-    [like setTitleColor:UIColorFromRGB(0x24cdfd) forState:UIControlStateSelected];
-    [like setTitleColor:UIColorFromRGB(0x646566) forState:UIControlStateNormal];
-    [like setTitle:@"我的喜欢" forState:UIControlStateNormal];
-    like.tag=200;
-    [segment addSubview:like];
-    [like addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIView *line=[[UIView alloc]initWithFrame:CGRectMake(0, segment.height-3, KMainScreenSize.width*.5, 3)];
-    line.backgroundColor=UIColorFromRGB(0x24cdfd);
-    [segment addSubview:line];
-    
-    _likeBtn=like;
-    _segmented=segment;
-    _line=line;
-    
-//    [segment addTarget:self action:@selector(segmentedValueChange:) forControlEvents:UIControlEventValueChanged];
-//    _segmentedView=segment;
-}
 
 -(void)click:(UIButton *)aBtn{
     
     if (aBtn.tag==100) {
         [_likeBtn setSelected:NO];
         [_releaseBtn setSelected:YES];
-        _rightView.hidden=YES;
-        _leftView.hidden=NO;
-        _line.frame=CGRectMake(0, _segmented.height-3, KMainScreenSize.width*.5, 3);
+        _line.frame=CGRectMake(0, _releaseBtn.height-3, KMainScreenSize.width*.5, 3);
+        
     }else{
         [_likeBtn setSelected:YES];
         [_releaseBtn setSelected:NO];
-        _rightView.hidden=NO;
-        _leftView.hidden=YES;
-        _line.frame=CGRectMake(KMainScreenSize.width*.5, _segmented.height-3, KMainScreenSize.width*.5, 3);
+        _line.frame=CGRectMake(KMainScreenSize.width*.5, _releaseBtn.height-3, KMainScreenSize.width*.5, 3);
     }
+    
+    if (self.items) {
+        
+    }else{
+        NSArray *cells=[_tableView visibleCells];
+        for (UITableViewCell *cell in cells) {
+            UIView *view=[cell viewWithTag:888];
+            [view removeFromSuperview];
+            
+            cell.selectionStyle=UITableViewCellSelectionStyleNone;
+            
+            if (_releaseBtn.selected) {
+                UIView *view1=[[UIView alloc]initWithFrame:CGRectMake(0,0, KMainScreenSize.width, 325)];
+                view1.backgroundColor=[UIColor groupTableViewBackgroundColor];
+                view1.tag=888;
+                
+                UIImageView *push=[[UIImageView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-80)*.5, (view1.height-80)*.5, 80, 80)];
+                push.image=[UIImage imageNamed:@"my_camera"];
+                [view1 addSubview:push];
+                
+                UITextView *text=[[UITextView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-280)*.5,push.bottom-20, 280, 80)];
+                text.text=@"青春的时光很短，我们也过得匆忙。我们不能让时光的飞逝慢一点，只能用镜头记录每一个美好瞬间，留作纪念";
+                text.font=[UIFont systemFontOfSize:10];
+                text.backgroundColor=[UIColor clearColor];
+                [view1 addSubview:text];
+                
+                [cell addSubview:view1];
+            }else{
+                UIView *view2=[[UIView alloc]initWithFrame:CGRectMake(0, 0, KMainScreenSize.width, 325)];
+                view2.backgroundColor=[UIColor groupTableViewBackgroundColor];
+                view2.tag=888;
+                
+                UIImageView *like=[[UIImageView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-80)*.5, (view2.height-80)*.5, 80, 80)];
+                like.image=[UIImage imageNamed:@"my_heart"];
+                [view2 addSubview:like];
+                
+                UILabel *text1=[[UILabel alloc]initWithFrame:CGRectMake((KMainScreenSize.width-280)*.5,like.bottom, 280, 20)];
+                text1.text=@"您的喜欢还是空的！";
+                text1.textAlignment=NSTextAlignmentCenter;
+                text1.font=[UIFont systemFontOfSize:10];
+                text1.backgroundColor=[UIColor clearColor];
+                [view2 addSubview:text1];
+                [cell addSubview:view2];
+                
+            }
+
+        }
+        
+      
+    }
+    
+    
 
 }
 
 -(void)initContentView{
-    UIView *view1=[[UIView alloc]initWithFrame:CGRectMake(0, _segmented.bottom, KMainScreenSize.width, self.view.frame.size.height-_segmented.bottom-44)];
+    
+    UIView *view1=[[UIView alloc]initWithFrame:CGRectMake(0,0, KMainScreenSize.width, self.view.frame.size.height)];
     view1.backgroundColor=[UIColor groupTableViewBackgroundColor];
     
     UIImageView *push=[[UIImageView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-80)*.5, (view1.height-80)*.5, 80, 80)];
@@ -427,14 +387,11 @@
     text.backgroundColor=[UIColor clearColor];
     [view1 addSubview:text];
     
-    _leftView=view1;
-    [self.view addSubview:view1];
     
-    UIView *view2=[[UIView alloc]initWithFrame:CGRectMake(0, _segmented.bottom, KMainScreenSize.width, self.view.frame.size.height-_segmented.bottom-44)];
+    
+    UIView *view2=[[UIView alloc]initWithFrame:CGRectMake(0, 0, KMainScreenSize.width, self.view.frame.size.height)];
     view2.backgroundColor=[UIColor groupTableViewBackgroundColor];
     view2.hidden=YES;
-    
-    
     UIImageView *like=[[UIImageView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-80)*.5, (view2.height-80)*.5, 80, 80)];
     like.image=[UIImage imageNamed:@"my_heart"];
     [view2 addSubview:like];
@@ -446,30 +403,8 @@
     text1.backgroundColor=[UIColor clearColor];
     [view2 addSubview:text1];
     
-    _rightView=view2;
-    [self.view addSubview:view2];
     
 }
-
--(void)segmentedValueChange:(UISegmentedControl *)segmented{
-    NSLog(@"segmented.selectedSegmentIndex=%li",segmented.selectedSegmentIndex);
-    switch (segmented.selectedSegmentIndex) {
-        case 0:
-        {
-            _rightView.hidden=YES;
-            _leftView.hidden=NO;
-        }break;
-        case 1:
-        {
-            _leftView.hidden=YES;
-            _rightView.hidden=NO;
-        }break;
-            
-        default:
-            break;
-    }
-}
-
 
 -(void)gotoOther:(UIButton *)aBtn{
     switch (aBtn.tag) {
