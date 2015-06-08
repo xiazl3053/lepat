@@ -27,6 +27,10 @@
     if (*nStatus!=200)
     {
         DLog(@"获取我的宠物信息错误");
+        if (self.myPetsBlock)
+        {
+            self.myPetsBlock(nil,nil);
+        }
         return ;
     }
     DLog(@"dic:%@",dic);

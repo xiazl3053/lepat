@@ -33,6 +33,10 @@
     if (*nStatus!=200)
     {
         DLog(@"添加我的宠物错误");
+        if (_addPetBlock)
+        {
+            self.addPetBlock(nil);
+        }
         return ;
     }
     DLog(@"dic:%@",dic);

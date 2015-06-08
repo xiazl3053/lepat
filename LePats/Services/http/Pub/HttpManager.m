@@ -17,8 +17,8 @@
     NSMutableURLRequest *request=[[NSMutableURLRequest alloc] initWithURL:url];//通过URL创建网络请求
     [request setTimeoutInterval:XC_HTTP_TIMEOUT];//设置超时时间
     [request setHTTPMethod:@"POST"];//设置请求方式
-    
     __block HttpManager *weakSelf = self;
+    DLog(@"strUrl:%@",strPath);
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:
      ^(NSURLResponse* response, NSData* data, NSError* connectionError){
          HttpManager *strongLogin = weakSelf;
@@ -34,18 +34,21 @@
     NSInteger responseCode = [(NSHTTPURLResponse *)response statusCode];
     DLog(@"responseCode:%li",responseCode);
     //准备做加解密
-    
-    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
     if (responseCode == 200)
     {
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         int nStatus = [[dic objectForKey:@"return_code"] intValue];
         if (nStatus == 50003)
         {
             [[NSNotificationCenter defaultCenter] postNotificationName:MESSAGE_SHOW_LOGIN_VC object:nil];
             return ;
         }
+        [self reciveDic:(int*)&responseCode dic:dic];
     }
-    [self reciveDic:(int*)&responseCode dic:dic];
+    else
+    {
+        [self reciveDic:(int*)&responseCode dic:nil];
+    }
 }
 
 -(BOOL)isConnection:(NSDictionary *)dict

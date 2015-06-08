@@ -30,6 +30,10 @@
     if (*nStatus!=200)
     {
         DLog(@"获取我的关注错误");
+        if (self.focusServiceBlock)
+        {
+            self.focusServiceBlock(nil,nil);
+        }
         return ;
     }
     if (self.focusServiceBlock) {

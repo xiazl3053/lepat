@@ -30,6 +30,10 @@
     if (*nStatus!=200)
     {
         DLog(@"获取我的粉丝错误");
+        if (self.myFansServiceBlock)
+        {
+            self.myFansServiceBlock(nil,nil);
+        }
         return ;
     }
     if (self.myFansServiceBlock) {

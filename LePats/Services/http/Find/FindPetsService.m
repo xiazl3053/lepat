@@ -17,6 +17,10 @@
     if (*nStatus!=200)
     {
         DLog(@"查询经纬度信息");
+        if (_httpBlock)
+        {
+            _httpBlock(*nStatus,nil);
+        }
         return ;
     }
     DLog(@"dic:%@",dict);
@@ -51,12 +55,20 @@
     }
 }
 
+-(void)requestPetLocation:(CGFloat)fLat long:(CGFloat)fLng type:(int)nType
+{
+     UserInfo *user = [UserInfo sharedUserInfo];//pets/user/getNearByUserPets.do
+    NSString *strUrl = [NSString stringWithFormat:@"%@pets/user/getNearByUserPets.do?lat=%f&lng=%f&userid=%@&token=%@%@",LEPAT_HTTP_HOST,
+                        fLat,fLng,user.strUserId,user.strToken,LEPAT_VERSION_INFO];
+    [self sendRequest:strUrl];   
+}
 
 -(void)requestPetLocation:(CGFloat)fLat long:(CGFloat)fLng
 {
     UserInfo *user = [UserInfo sharedUserInfo];//pets/user/getNearByUserPets.do
     NSString *strUrl = [NSString stringWithFormat:@"%@pets/user/getNearByUserPets.do?lat=%f&lng=%f&userid=%@&token=%@%@",LEPAT_HTTP_HOST,
                         fLat,fLng,user.strUserId,user.strToken,LEPAT_VERSION_INFO];
+    DLog(@"strUrl:%@",strUrl);
     [self sendRequest:strUrl];
 }
 

@@ -27,6 +27,10 @@
     if (*nStatus!=200)
     {
         DLog(@"getInfo.do");
+        if (self.httpBlock)
+        {
+            self.httpBlock(0,nil);
+        }
         return ;
     }
     int nType = [[dict objectForKey:@"return_code"] intValue];

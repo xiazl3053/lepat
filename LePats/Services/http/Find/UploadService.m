@@ -26,7 +26,8 @@
 
 -(void)reciveDic:(int *)nStatus dic:(NSDictionary *)dict
 {
-    if (*nStatus!=200) {
+    if (*nStatus!=200)
+    {
         DLog(@"连接失败");
         return ;
     }

@@ -69,10 +69,8 @@
 {
     self.title = @"附近鱼友列表";
     self.view.backgroundColor=[UIColor whiteColor];
-//    __weak FriendListViewController *__self = self;
     findSer = [[FindService alloc] init];
     _aryNear = [NSMutableArray array];
-
 }
 
 

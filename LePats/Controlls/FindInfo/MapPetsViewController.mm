@@ -8,6 +8,7 @@
 
 #import "MapPetsViewController.h"
 #import "BMKMapView.h"
+#import "TheyMainViewController.h"
 #import "BMKLocationComponent.h"
 #import "UIView+Extension.h"
 #import "BMKPointAnnotation.h"
@@ -147,6 +148,10 @@
             [view addSubview:imgView];
             imgView.frame = view.bounds;
             newAnnotationView.leftCalloutAccessoryView = view;
+            
+            [imgView setUserInteractionEnabled:YES];
+            [imgView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tagTheyInfo:)]];
+            
             DLog(@"bMark:%@",bMark.near);
         }
         return newAnnotationView;
@@ -195,7 +200,17 @@
     }
 }
 
-
+-(void)tagTheyInfo:(UITapGestureRecognizer *)sender
+{
+    UIImageView *imgView = (UIImageView *)sender.view;
+    DLog(@"imgView:%d",(int)imgView.tag);
+    NearInfo *near = [_aryNear objectAtIndex:imgView.tag];
+    if (near)
+    {
+        TheyMainViewController *theyView = [[TheyMainViewController alloc] initWithNear:near];
+        [self presentViewController:theyView animated:YES completion:nil];
+    }
+}
 
 
 @end

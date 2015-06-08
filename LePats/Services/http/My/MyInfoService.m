@@ -30,6 +30,10 @@
     if (*nStatus!=200)
     {
         DLog(@"获取我的信息错误");
+        if (_getMyInfoBlock)
+        {
+            self.getMyInfoBlock(nil);
+        }
         return ;
     }
     DLog(@"dic:%@",dic);

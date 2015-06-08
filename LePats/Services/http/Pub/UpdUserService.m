@@ -26,7 +26,8 @@
 {
     if (*nStatus!=200)
     {
-        if (_httpBlock) {
+        if (_httpBlock)
+        {
             _httpBlock(*nStatus);
         }
         return ;

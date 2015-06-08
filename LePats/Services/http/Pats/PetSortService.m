@@ -25,6 +25,10 @@
     if (*nStatus!=200)
     {
         DLog(@"获取宠物分类错误");
+        if (self.getPetSortBlock)
+        {
+            self.getPetSortBlock(nil,nil);
+        }
         return ;
     }
     DLog(@"dic:%@",dic);

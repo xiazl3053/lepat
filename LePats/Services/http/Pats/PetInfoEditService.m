@@ -31,6 +31,10 @@
     if (*nStatus!=200)
     {
         DLog(@"编辑我的宠物错误");
+        if (self.editPetBlock)
+        {
+            self.editPetBlock(nil);
+        }
         return ;
     }
     DLog(@"dic:%@",dic);

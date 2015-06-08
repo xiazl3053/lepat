@@ -26,6 +26,10 @@
     if (*nStatus!=200)
     {
         DLog(@"查询经纬度信息");
+        if (_httpBlock)
+        {
+            _httpBlock(*nStatus,nil);
+        }
         return ;
     }
     DLog(@"dic:%@",dict);

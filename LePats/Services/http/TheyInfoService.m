@@ -25,6 +25,10 @@
     if (*nStatus!=200)
     {
         DLog(@"查询经纬度信息");
+        if (self.httpBlock)
+        {
+            self.httpBlock(0,nil);
+        }
         return ;
     }
     int nType = [[dict objectForKey:@"return_code"] intValue];

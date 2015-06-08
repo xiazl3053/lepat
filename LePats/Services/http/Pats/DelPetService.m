@@ -25,6 +25,10 @@
     if (*nStatus!=200)
     {
         DLog(@"获取我的宠物信息错误");
+        if (_delPetBlock)
+        {
+            _delPetBlock(nil);
+        }
         return ;
     }
     DLog(@"dic:%@",dic);
