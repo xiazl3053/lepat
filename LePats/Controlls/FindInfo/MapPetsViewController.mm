@@ -148,10 +148,8 @@
             [view addSubview:imgView];
             imgView.frame = view.bounds;
             newAnnotationView.leftCalloutAccessoryView = view;
-            
             [imgView setUserInteractionEnabled:YES];
             [imgView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tagTheyInfo:)]];
-            
             DLog(@"bMark:%@",bMark.near);
         }
         return newAnnotationView;
@@ -211,6 +209,19 @@
         [self presentViewController:theyView animated:YES completion:nil];
     }
 }
+
+-(void)dealloc
+{
+    [_locService stopUserLocationService];
+    for (BMKPointAnnotation *point in _mapView.annotations)
+    {
+        [_mapView removeAnnotation:point];
+    }
+    _locService = nil;
+    findSer = nil;
+    bmk_my = nil;
+}
+
 
 
 @end

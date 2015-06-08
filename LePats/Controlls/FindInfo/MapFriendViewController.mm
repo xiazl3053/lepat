@@ -257,7 +257,14 @@
 -(void)dealloc
 {
     [_locService stopUserLocationService];
+    for (BMKPointAnnotation *point in _mapView.annotations)
+    {
+        [_mapView removeAnnotation:point];
+    }
     _locService = nil;
+    findSer = nil;
+    bmk_my = nil;
+
 }
 
 

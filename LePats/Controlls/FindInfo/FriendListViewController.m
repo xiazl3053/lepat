@@ -41,6 +41,17 @@
 
 @implementation FriendListViewController
 
+-(void)dealloc
+{
+    [ProgressHUD dismiss];
+    focus = nil;
+    tUser = nil;
+    search = nil;
+    [_locService stopUserLocationService];
+    _locService = nil;
+}
+
+
 //-(id)init
 //{
 //    self = [super init];
