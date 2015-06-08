@@ -69,20 +69,16 @@
 {
     self.title = @"附近鱼友列表";
     self.view.backgroundColor=[UIColor whiteColor];
-    __weak FriendListViewController *__self = self;
+//    __weak FriendListViewController *__self = self;
     findSer = [[FindService alloc] init];
     _aryNear = [NSMutableArray array];
-//    [self addRightEvent:^(id sender)
-//    {
-//        [__self comeToMap];
-//    }];
+
 }
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self startLocation];
     [self initHeadView];
     [self initView];
     tUser = [[TUserService alloc] init];
@@ -111,8 +107,8 @@
 {
     [_locService stopUserLocationService];
     MapFriendViewController *map =[[MapFriendViewController alloc] initWithLat:fLat long:fLong];
-    [self.navigationController pushViewController:map animated:YES];
-    //[self presentViewController:map animated:YES completion:nil];
+//    [self.navigationController pushViewController:map animated:YES];
+    [self presentViewController:map animated:YES completion:nil];
 }
 
 -(void)findData
@@ -138,6 +134,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [self startLocation];
 }
 
 

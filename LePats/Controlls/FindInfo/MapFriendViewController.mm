@@ -23,6 +23,8 @@
     FindService *findSer;
     BMKPointAnnotation *bmk_my;
     BDMarker *bdMarker;
+    BOOL bMeLoading;
+    BOOL bTheLoading;
 }
 @property (nonatomic,strong) NSMutableArray *aryAnnotation;
 @property (nonatomic,strong) NSMutableArray *aryNear;
@@ -55,18 +57,23 @@
     _locService.delegate = self;
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self startLocation];
+}
+
+
 -(void)viewDidLoad
 {
     [super viewDidLoad];
     _aryNear = [NSMutableArray array];
     _aryAnnotation = [NSMutableArray array];
+    findSer = [[FindService alloc] init];
+    
     _mapView = [[BMKMapView alloc] initWithFrame:Rect(0,[self barSize].height, kScreenSourchWidth, kScreenSourchHeight-64)];
     self.title = @"地图";
-    _mapView.showsUserLocation = NO;
-    _mapView.userTrackingMode = BMKUserTrackingModeFollow;
-    _mapView.showsUserLocation = YES;
     _mapView.delegate = self;
-    findSer = [[FindService alloc] init];
     if(fLat != 0 && fLong != 0)
     {
         BMKCoordinateRegion region;
@@ -85,7 +92,6 @@
         [_mapView addAnnotation:bmk_my];
         [self findData];
     }
-    [self startLocation];
     [self.view addSubview:_mapView];
 }
 
@@ -103,26 +109,11 @@
     _mapView.delegate = nil;
 }
 #pragma mark 地图实现
-- (void)mapView:(BMKMapView *)mapView onClickedMapBlank:(CLLocationCoordinate2D)coordinate
-{
-    NSLog(@"map view: click blank");
-}
-
-- (void)mapview:(BMKMapView *)mapView onDoubleClick:(CLLocationCoordinate2D)coordinate
-{
-    NSLog(@"map view: double click");
-}
-
--(void)mapViewDidFinishLoading:(BMKMapView *)mapView
-{
-    DLog(@"Map view Finish Loading");
-}
-
 - (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation
 {
+    DLog(@"11111");
     if ([annotation isKindOfClass:[BMKPointAnnotation class]])
     {
- 
         BMKPinAnnotationView *newAnnotationView = [[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"];
         
         newAnnotationView.pinColor = BMKPinAnnotationColorPurple;
@@ -155,9 +146,7 @@
             imgView.frame = view.bounds;
             imgView.tag = bMark.nIndex;
             [imgView setUserInteractionEnabled:YES];
-            
             [imgView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tagTheyInfo:)]];
-            
             newAnnotationView.leftCalloutAccessoryView = view;
             DLog(@"bMark:%@",bMark.near);
         }

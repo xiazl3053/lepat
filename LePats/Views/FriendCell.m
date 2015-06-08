@@ -132,6 +132,7 @@
     [_btnAttention setTitle:strInfo forState:UIControlStateNormal];
     
     _imgHead.image = nearInfo.nSex ? [UIImage imageNamed:@"boy"] : [UIImage imageNamed:@"girl"];
+    [_imgView setImage:[UIImage imageNamed:@"left_icon_noraml"]];
     [self setImageInfo:nearInfo.strFile];
 }
 
