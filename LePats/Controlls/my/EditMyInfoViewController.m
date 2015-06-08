@@ -186,8 +186,11 @@
 -(void)initNickView{
     UITextField *field=[[UITextField alloc]initWithFrame:CGRectMake(0, [self barSize].height+20, KMainScreenSize.width, 40)];
     field.backgroundColor=[UIColor groupTableViewBackgroundColor];
+    field.font=[UIFont systemFontOfSize:14];
     field.layer.borderColor=UIColorFromRGB(0xcbcccd).CGColor;
     field.layer.borderWidth=.5;
+    field.text=[UserInfo sharedUserInfo].strNickName;
+    [field becomeFirstResponder];
     [self.view addSubview:field];
     _nickName=field;
 }
@@ -197,6 +200,8 @@
     UITextView *field=[[UITextView alloc]initWithFrame:CGRectMake(10, [self barSize].height+20, KMainScreenSize.width-20, 200)];
     field.layer.borderColor=UIColorFromRGB(0xcbcccd).CGColor;
     field.layer.borderWidth=.5;
+    field.text=[UserInfo sharedUserInfo].strSignature;
+    [field becomeFirstResponder];
     [self.view addSubview:field];
     
     UILabel *number=[[UILabel alloc]initWithFrame:CGRectMake(field.width-20, field.bottom-20, 20, 20)];

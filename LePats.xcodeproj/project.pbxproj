@@ -126,6 +126,8 @@
 		84E755D01B2285490059710B /* AccessoryToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E755CF1B2285490059710B /* AccessoryToolView.m */; };
 		84E755D41B22B3D40059710B /* ServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E755D31B22B3D40059710B /* ServiceViewController.m */; };
 		84E755D81B22B3F90059710B /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E755D71B22B3F90059710B /* HelpViewController.m */; };
+		84E755DF1B2581C40059710B /* MyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E755DE1B2581C40059710B /* MyButton.m */; };
+		84E755E21B2584EB0059710B /* UserOperationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E755E11B2584EB0059710B /* UserOperationModel.m */; };
 		BB1FB2F51B1DA95100A02CCD /* MapPetsViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB1FB2F41B1DA95100A02CCD /* MapPetsViewController.mm */; };
 		BB3CBD291B213CE700EF49C4 /* TheyMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3CBD281B213CE700EF49C4 /* TheyMainViewController.m */; };
 		BB3CBD2D1B2166AF00EF49C4 /* TheyInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3CBD2C1B2166AF00EF49C4 /* TheyInfoService.m */; };
@@ -427,6 +429,10 @@
 		84E755D31B22B3D40059710B /* ServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceViewController.m; sourceTree = "<group>"; };
 		84E755D61B22B3F90059710B /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
 		84E755D71B22B3F90059710B /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
+		84E755DD1B2581C40059710B /* MyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyButton.h; sourceTree = "<group>"; };
+		84E755DE1B2581C40059710B /* MyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyButton.m; sourceTree = "<group>"; };
+		84E755E01B2584EB0059710B /* UserOperationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserOperationModel.h; sourceTree = "<group>"; };
+		84E755E11B2584EB0059710B /* UserOperationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserOperationModel.m; sourceTree = "<group>"; };
 		BB1FB2F31B1DA95100A02CCD /* MapPetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapPetsViewController.h; sourceTree = "<group>"; };
 		BB1FB2F41B1DA95100A02CCD /* MapPetsViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MapPetsViewController.mm; sourceTree = "<group>"; };
 		BB3CBD271B213CE700EF49C4 /* TheyMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TheyMainViewController.h; sourceTree = "<group>"; };
@@ -772,6 +778,8 @@
 				4D5FED2C1B1CB10200360323 /* PetSortModel.m */,
 				841AB43E1B1FF4BC007B09D7 /* FansModel.h */,
 				841AB43F1B1FF4BC007B09D7 /* FansModel.m */,
+				84E755E01B2584EB0059710B /* UserOperationModel.h */,
+				84E755E11B2584EB0059710B /* UserOperationModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -930,6 +938,8 @@
 				4D93262B1B1F4F5700BB6B68 /* BDMarker.m */,
 				84E755CE1B2285490059710B /* AccessoryToolView.h */,
 				84E755CF1B2285490059710B /* AccessoryToolView.m */,
+				84E755DD1B2581C40059710B /* MyButton.h */,
+				84E755DE1B2581C40059710B /* MyButton.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1191,6 +1201,7 @@
 				4D08BF5B1B2119350037D6C9 /* LoginUserDB.m in Sources */,
 				4D5FEDC41B1CB10200360323 /* LoginService.m in Sources */,
 				4D5FEDB21B1CB10200360323 /* AppDelegate.mm in Sources */,
+				84E755DF1B2581C40059710B /* MyButton.m in Sources */,
 				4D5FED9F1B1CB10200360323 /* SDWebImageDownloader.m in Sources */,
 				4D08BF531B2118BD0037D6C9 /* FMDatabaseAdditions.m in Sources */,
 				4D5FEDBC1B1CB10200360323 /* MyInfoService.m in Sources */,
@@ -1201,6 +1212,7 @@
 				4D5FED9D1B1CB10200360323 /* SDWebImageCompat.m in Sources */,
 				4D5FEDB81B1CB10200360323 /* UploadService.m in Sources */,
 				4D93262C1B1F4F5700BB6B68 /* BDMarker.m in Sources */,
+				84E755E21B2584EB0059710B /* UserOperationModel.m in Sources */,
 				4D5FED891B1CB10200360323 /* MainViewController.m in Sources */,
 				841AB43D1B1FEF96007B09D7 /* MyFocusViewController.m in Sources */,
 				4D5FED8C1B1CB10200360323 /* RightViewController.m in Sources */,

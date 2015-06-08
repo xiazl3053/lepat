@@ -185,8 +185,8 @@
                   symbolName = "__39-[PetDetailViewController initSelfView]_block_invoke"
                   moduleName = "LePats"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/admin/Desktop/06-06/lepat/LePats/Controlls/my/PetDetailViewController.m"
-                  timestampString = "455277620.2228"
+                  urlString = "file:///Users/admin/Desktop/external/06-08/lepat/LePats/Controlls/my/PetDetailViewController.m"
+                  timestampString = "455445260.269979"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "158"
@@ -200,8 +200,8 @@
                   symbolName = "__39-[PetDetailViewController initSelfView]_block_invoke_2"
                   moduleName = "LePats"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/admin/Desktop/06-06/lepat/LePats/Controlls/my/PetDetailViewController.m"
-                  timestampString = "455277620.22297"
+                  urlString = "file:///Users/admin/Desktop/external/06-08/lepat/LePats/Controlls/my/PetDetailViewController.m"
+                  timestampString = "455445260.270142"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "158"
@@ -458,11 +458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LePats/Controlls/home/MyViewController.m"
-            timestampString = "455279629.568742"
+            timestampString = "455445863.337857"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "255"
-            endingLineNumber = "255"
+            startingLineNumber = "406"
+            endingLineNumber = "406"
             landmarkName = "-click:"
             landmarkType = "5">
          </BreakpointContent>
@@ -560,6 +560,38 @@
             startingLineNumber = "21"
             endingLineNumber = "21"
             landmarkName = "-requestUserId:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LePats/Controlls/home/MyViewController.m"
+            timestampString = "455445254.657544"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "-getUserInfo"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LePats/Views/MyButton.m"
+            timestampString = "455445280.17254"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "-setValueWithNumber:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
