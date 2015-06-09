@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title=@"服务";
+    self.title=@"圈子";
     // Do any additional setup after loading the view.
 }
 

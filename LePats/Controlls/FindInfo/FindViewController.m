@@ -100,6 +100,11 @@
         cell.imageView.image = [UIImage imageNamed:@"RichScan_icon"];
         cell.textLabel.text = @"扫一扫";
     }
+    else if(indexPath.section == 2)
+    {
+        cell.imageView.image = [UIImage imageNamed:@"RichScan_icon"];
+        cell.textLabel.text = @"服务";
+    }
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
@@ -107,7 +112,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

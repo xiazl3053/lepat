@@ -11,11 +11,16 @@
 #import "HomeItemModel.h"
 #import "HomeHeadItemButton.h"
 #import "HomeGiftItemButton.h"
+#import "LoginViewController.h"
 
 @interface HomeHeadReusableView (){
     UIView *_topView;
     UIView *_centerView;
     UIView *_bottomView;
+    UILabel *_title;
+    UILabel *_score;
+    UIButton *_btn;
+    
 
 }
 
@@ -35,7 +40,32 @@
     [self initTopView];
     [self initCenterView];
     [self initBottomView];
+    [self initResgister];
     
+}
+
+-(void)initResgister{
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refueshScoreStatus) name:LOGIN_SUCESS_VC object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(userLogOut) name:KUserLogout object:nil];
+}
+
+-(void)refueshScoreStatus{
+    _title.hidden=NO;
+    _score.hidden=NO;
+    _btn.hidden=YES;
+}
+
+-(void)userLogOut{
+    _title.hidden=YES;
+    _score.hidden=YES;
+    _btn.hidden=NO;
+}
+
+-(void)login:(UIButton *)aBtn
+{
+    UIViewController *root=[UIApplication sharedApplication].keyWindow.rootViewController;
+    LoginViewController *login=[[LoginViewController alloc]init];
+    [root presentViewController:login animated:YES completion:nil];
 }
 
 -(void)initSelfView{
@@ -55,14 +85,25 @@
     title.font=[UIFont systemFontOfSize:30];
     title.textAlignment=NSTextAlignmentCenter;
     title.textColor=[UIColor whiteColor];
+    title.hidden=YES;
+    _title=title;
     [topView addSubview:title];
     
     UILabel *score=[[UILabel alloc]initWithFrame:CGRectMake(0, title.bottom+10, self.frame.size.width, 30)];
-    score.text=@"150";
+    score.text=@"0";
+    score.hidden=YES;
     score.font=[UIFont systemFontOfSize:30];
     score.textAlignment=NSTextAlignmentCenter;
     score.textColor=[UIColor whiteColor];
     [topView addSubview:score];
+    _score=score;
+    
+    UIButton *btn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, 80)];
+    [btn setTitle:@"登陆查看积分" forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
+    [topView addSubview:btn];
+    _btn=btn;
+    
     
     [self addSubview:topView];
     _topView=topView;

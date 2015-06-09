@@ -195,11 +195,11 @@
             </objects>
             <point key="canvasLocation" x="-240" y="2062"/>
         </scene>
-        <!--服务-->
+        <!--圈子-->
         <scene sceneID="qS5-3C-tLR">
             <objects>
                 <navigationController id="4d6-3m-ver" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="服务" image="Tabbar_service_normal" id="Uvw-kx-cS6"/>
+                    <tabBarItem key="tabBarItem" title="圈子" image="Tabbar_service_normal" id="Uvw-kx-cS6"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WLS-ls-bDE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

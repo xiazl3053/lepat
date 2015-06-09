@@ -186,12 +186,12 @@
                   moduleName = "LePats"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/admin/Desktop/external/06-08/lepat/LePats/Controlls/my/PetDetailViewController.m"
-                  timestampString = "455469768.794824"
+                  timestampString = "455531105.312795"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "158"
                   endingLineNumber = "158"
-                  offsetFromSymbolStart = "166">
+                  offsetFromSymbolStart = "168">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -201,12 +201,12 @@
                   moduleName = "LePats"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/admin/Desktop/external/06-08/lepat/LePats/Controlls/my/PetDetailViewController.m"
-                  timestampString = "455469768.795066"
+                  timestampString = "455531105.312957"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "158"
                   endingLineNumber = "158"
-                  offsetFromSymbolStart = "36">
+                  offsetFromSymbolStart = "40">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -576,6 +576,38 @@
             startingLineNumber = "50"
             endingLineNumber = "50"
             landmarkName = "-setValueWithNumber:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LePats/Views/HomeHeadReusableView.m"
+            timestampString = "455531420.975983"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "-refueshScoreStatus"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LePats/Views/HomeHeadReusableView.m"
+            timestampString = "455531420.975983"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "-userLogOut"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
