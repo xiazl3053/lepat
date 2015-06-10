@@ -24,6 +24,8 @@
     CGFloat fLat,fLong;
     FindPetsService *findSer;
     BMKPointAnnotation *bmk_my;
+    UIScrollView *scrolView;
+    
 }
 @property (nonatomic,strong) BMKMapView *mapView;
 @property (nonatomic,strong) NSArray *aryPets;
@@ -46,6 +48,13 @@
         _aryPets = array;
     }
     return self;
+}
+
+-(void)initWithScrol
+{
+    scrolView = [[UIScrollView alloc] initWithFrame:Rect(0,self.view.height-75,self.view.width,75)];
+    [self.view addSubview:scrolView];
+    
 }
 
 -(void)viewDidLoad
