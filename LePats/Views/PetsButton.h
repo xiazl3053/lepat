@@ -10,4 +10,7 @@
 
 @interface PetsButton : UIButton
 
+
+-(id)initWithTitle:(NSString *)strTitle nor:(NSString *)strNor high:(NSString *)strHigh frame:(CGRect)frame;
+
 @end
