@@ -32,8 +32,10 @@
         return ;
     }
     DLog(@"dic:%@",dic);
-    if (self.getPetSortBlock) {
-        if ([[dic objectForKey:KServiceResponseCode]intValue]==KServiceResponseSuccess) {
+    if (self.getPetSortBlock)
+    {
+        if ([[dic objectForKey:KServiceResponseCode]intValue]==KServiceResponseSuccess)
+        {
             NSMutableArray *data=[NSMutableArray array];
             for (NSDictionary *obj in [dic objectForKey:@"petList"]) {
                 PetSortModel *model=[[PetSortModel alloc]initWithNSDictionary:obj];

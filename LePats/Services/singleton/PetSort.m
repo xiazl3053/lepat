@@ -13,17 +13,22 @@
 
 DEFINE_SINGLETON_FOR_CLASS(PetSort);
 
--(void)setPetListArr:(NSArray *)petListArr{
+-(void)setPetListArr:(NSArray *)petListArr
+{
+    for (PetSortModel *model in petListArr)
+    {
+        DLog(@"model_name:%@--id:%@--superid:%@",model.name,model.iD,model.superId);
+    }
     _petListArr=petListArr;
 }
 
 -(NSString *)getPetNameWithiD:(int)iD{
-    for (PetSortModel *model in _petListArr) {
+    for (PetSortModel *model in _petListArr)
+    {
         if ([model.iD intValue]==iD) {
             return model.name;
         }
     }
-    
     return @"";
 }
 

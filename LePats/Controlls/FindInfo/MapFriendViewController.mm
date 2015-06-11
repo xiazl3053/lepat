@@ -17,6 +17,7 @@
 #import "BDMarker.h"
 #import "BMapKit.h"
 #import "UserInfo.h"
+#import "FindPetsService.h"
 
 @interface MapFriendViewController()<BMKMapViewDelegate,BMKLocationServiceDelegate>
 {
@@ -28,6 +29,7 @@
     BOOL bMeLoading;
     BOOL bTheLoading;
     UIScrollView *scrolView;
+    FindPetsService *findPets;
 }
 @property (nonatomic,strong) NSMutableArray *aryAnnotation;
 @property (nonatomic,strong) NSMutableArray *aryNear;
@@ -42,30 +44,96 @@
     [self.view addSubview:scrolView];
     PetsButton *btnAll = [[PetsButton alloc] initWithTitle:@"全部" nor:@"yulei_all" high:@"yulei_all" frame:Rect(15,6,44,60)];
     [scrolView addSubview:btnAll];
+    btnAll.tag = 10000;
+    [btnAll addTarget:self action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
     
     PetsButton *btnLong = [[PetsButton alloc] initWithTitle:@"龙鱼" nor:@"longyu" high:@"longyu" frame:Rect(btnAll.width+btnAll.x+15,6,44,60)];
     [scrolView addSubview:btnLong];
+    btnLong.tag = 10015;
+    [btnLong addTarget:self action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
     
     PetsButton *btnKing = [[PetsButton alloc] initWithTitle:@"金鱼" nor:@"jinyu" high:@"jinyu" frame:Rect(btnLong.width+btnLong.x+18,6,44,60)];
     [scrolView addSubview:btnKing];
+    btnKing.tag = 10012;
+    [btnKing addTarget:self action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
     
     PetsButton *btnXiao = [[PetsButton alloc] initWithTitle:@"小丑鱼" nor:@"xiaochou" high:@"xiaochou" frame:Rect(btnKing.width+btnKing.x+18,6,44,60)];
     [scrolView addSubview:btnXiao];
+    btnXiao.tag = 10040;
+    [btnXiao addTarget:self action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
     
-     PetsButton *btnJin = [[PetsButton alloc] initWithTitle:@"锦鲤" nor:@"jinli" high:@"jinli" frame:Rect(btnXiao.width+btnXiao.x+18,6,44,60)];
+    PetsButton *btnJin = [[PetsButton alloc] initWithTitle:@"锦鲤" nor:@"jinli" high:@"jinli" frame:Rect(btnXiao.width+btnXiao.x+18,6,44,60)];
     [scrolView addSubview:btnJin];
+    btnJin.tag = 10027;
+    [btnJin addTarget:self action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
     
-     PetsButton *btnYing = [[PetsButton alloc] initWithTitle:@"鹦鹉鱼" nor:@"yingwu" high:@"yingwu" frame:Rect(btnJin.width+btnJin.x+18,6,44,60)];
+    PetsButton *btnYing = [[PetsButton alloc] initWithTitle:@"鹦鹉鱼" nor:@"yingwu" high:@"yingwu" frame:Rect(btnJin.width+btnJin.x+18,6,44,60)];
     [scrolView addSubview:btnYing];
+    btnYing.tag = 10002;
+    [btnYing addTarget:self action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
+   
+    PetsButton *btnLuohan = [[PetsButton alloc] initWithTitle:@"罗汉鱼" nor:@"yingwu" high:@"yingwu" frame:Rect(btnYing.width+btnYing.x+18,6,44,60)];
+    [scrolView addSubview:btnLuohan];
+    btnLuohan.tag = 10080;
+    [btnLuohan addTarget:self action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
     
-     PetsButton *btnOther = [[PetsButton alloc] initWithTitle:@"其它" nor:@"other_yulei" high:@"other_yulei" frame:Rect(btnYing.width+btnYing.x+18,6,44,60)];
+    PetsButton *btnShen = [[PetsButton alloc] initWithTitle:@"神仙鱼" nor:@"yingwu" high:@"yingwu" frame:Rect(btnLuohan.width+btnLuohan.x+18,6,44,60)];
+    [scrolView addSubview:btnShen];
+    btnShen.tag = 10075;
+    [btnShen addTarget:self action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
+    
+    PetsButton *btnHudie = [[PetsButton alloc] initWithTitle:@"蝴蝶鱼" nor:@"yingwu" high:@"yingwu" frame:Rect(btnShen.width+btnShen.x+18,6,44,60)];
+    [scrolView addSubview:btnHudie];
+    btnHudie.tag = 100178;
+    [btnHudie addTarget:self action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    PetsButton *btnOther = [[PetsButton alloc] initWithTitle:@"其它" nor:@"other_yulei" high:@"other_yulei" frame:Rect(btnHudie.width+btnHudie.x+18,6,44,60)];
     [scrolView addSubview:btnOther];
+    [btnAll addTarget:self action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
+    
     
     scrolView.showsHorizontalScrollIndicator = NO;
     scrolView.showsVerticalScrollIndicator = NO;
     scrolView.contentSize = CGSizeMake(btnOther.width+btnOther.x+15,75);
-}   
+}
 
+-(void)findFish:(int)nId
+{
+    __weak MapFriendViewController *__self = self;
+    findPets.httpBlock = ^(int nStatus,NSArray *aryPet)
+    {
+        if (nStatus==1)
+        {
+           dispatch_async(dispatch_get_main_queue(),
+           ^{
+               [__self removeAnnotation];
+           });
+           [__self.aryNear removeAllObjects];
+           [__self.aryNear addObjectsFromArray:aryPet];
+           dispatch_async(dispatch_get_main_queue(),
+           ^{
+               [__self addAnnotation];
+           });
+        }
+    };
+    [findPets requestPetLocation:fLat long:fLong pet:nId];
+}
+
+-(void)clickEvent:(PetsButton*)sender
+{
+    DLog(@"请求类型-id:%d",sender.tag-10000);
+    int nId = sender.tag - 10000;
+    __block int __nId = nId;
+    if (findPets==nil)
+    {
+        findPets = [[FindPetsService alloc] init];
+    }
+    __weak MapFriendViewController *__self = self;
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [__self findFish:__nId];
+    });
+}
 
 -(id)initWithLat:(CGFloat)fLatitude long:(CGFloat)fLongitude
 {
@@ -217,7 +285,7 @@
     __weak MapFriendViewController *__self =self;
     findSer.httpBlock = ^(int nStatus,NSArray *aryInfo)
     {
-        DLog(@"aryData_length:%lu",aryInfo.count);
+        DLog(@"aryData_length:%u",aryInfo.count);
         dispatch_async(dispatch_get_main_queue(), ^{
             [__self removeAnnotation];
         });
