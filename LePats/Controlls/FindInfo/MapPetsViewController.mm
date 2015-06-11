@@ -68,7 +68,7 @@
     PetsButton *btnXiao = [[PetsButton alloc] initWithTitle:@"小丑鱼" nor:@"xiaochou" high:@"xiaochou" frame:Rect(btnKing.width+btnKing.x+18,6,44,60)];
     [scrolView addSubview:btnXiao];
     
-     PetsButton *btnJin = [[PetsButton alloc] initWithTitle:@"锦鲤" nor:@"jinli" high:@"jinli" frame:Rect(btnXiao.width+btnXiao.x+18,6,44,60)];
+    PetsButton *btnJin = [[PetsButton alloc] initWithTitle:@"锦鲤" nor:@"jinli" high:@"jinli" frame:Rect(btnXiao.width+btnXiao.x+18,6,44,60)];
     [scrolView addSubview:btnJin];
     
      PetsButton *btnYing = [[PetsButton alloc] initWithTitle:@"鹦鹉鱼" nor:@"yingwu" high:@"yingwu" frame:Rect(btnJin.width+btnJin.x+18,6,44,60)];
