@@ -313,10 +313,10 @@
         }break;
         case 106:
         {
-//            MapFriendViewController *mapFriend = [[MapFriendViewController alloc] init];
-            MapPetsViewController *mapPets = [[MapPetsViewController alloc] init];
-            mapPets.hidesBottomBarWhenPushed = YES;
-            [self presentViewController:mapPets animated:YES completion:nil];//:mapFriend animated:YES];
+            MapFriendViewController *mapFriend = [[MapFriendViewController alloc] init];
+//            MapPetsViewController *mapPets = [[MapPetsViewController alloc] init];
+            mapFriend.hidesBottomBarWhenPushed = YES;
+            [self presentViewController:mapFriend animated:YES completion:nil];//:mapFriend animated:YES];
         }
             break;
         default:

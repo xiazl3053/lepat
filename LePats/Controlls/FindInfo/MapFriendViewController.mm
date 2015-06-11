@@ -8,8 +8,10 @@
 
 #import "MapFriendViewController.h"
 #import "BMKLocationComponent.h"
+#import "PetsButton.h"
 #import "TheyMainViewController.h"
 #import "NearInfo.h"
+#import "UIView+Extension.h"
 #import "UIImageView+WebCache.h"
 #import "FindService.h"
 #import "BDMarker.h"
@@ -25,12 +27,45 @@
     BDMarker *bdMarker;
     BOOL bMeLoading;
     BOOL bTheLoading;
+    UIScrollView *scrolView;
 }
 @property (nonatomic,strong) NSMutableArray *aryAnnotation;
 @property (nonatomic,strong) NSMutableArray *aryNear;
 @end
 
 @implementation MapFriendViewController
+
+-(void)initWithScrol
+{
+    scrolView = [[UIScrollView alloc] initWithFrame:Rect(0,self.view.height-75,self.view.width,75)];
+    [scrolView setBackgroundColor:[UIColor whiteColor]];
+    [self.view addSubview:scrolView];
+    PetsButton *btnAll = [[PetsButton alloc] initWithTitle:@"全部" nor:@"yulei_all" high:@"yulei_all" frame:Rect(15,6,44,60)];
+    [scrolView addSubview:btnAll];
+    
+    PetsButton *btnLong = [[PetsButton alloc] initWithTitle:@"龙鱼" nor:@"longyu" high:@"longyu" frame:Rect(btnAll.width+btnAll.x+15,6,44,60)];
+    [scrolView addSubview:btnLong];
+    
+    PetsButton *btnKing = [[PetsButton alloc] initWithTitle:@"金鱼" nor:@"jinyu" high:@"jinyu" frame:Rect(btnLong.width+btnLong.x+18,6,44,60)];
+    [scrolView addSubview:btnKing];
+    
+    PetsButton *btnXiao = [[PetsButton alloc] initWithTitle:@"小丑鱼" nor:@"xiaochou" high:@"xiaochou" frame:Rect(btnKing.width+btnKing.x+18,6,44,60)];
+    [scrolView addSubview:btnXiao];
+    
+     PetsButton *btnJin = [[PetsButton alloc] initWithTitle:@"锦鲤" nor:@"jinli" high:@"jinli" frame:Rect(btnXiao.width+btnXiao.x+18,6,44,60)];
+    [scrolView addSubview:btnJin];
+    
+     PetsButton *btnYing = [[PetsButton alloc] initWithTitle:@"鹦鹉鱼" nor:@"yingwu" high:@"yingwu" frame:Rect(btnJin.width+btnJin.x+18,6,44,60)];
+    [scrolView addSubview:btnYing];
+    
+     PetsButton *btnOther = [[PetsButton alloc] initWithTitle:@"其它" nor:@"other_yulei" high:@"other_yulei" frame:Rect(btnYing.width+btnYing.x+18,6,44,60)];
+    [scrolView addSubview:btnOther];
+    
+    scrolView.showsHorizontalScrollIndicator = NO;
+    scrolView.showsVerticalScrollIndicator = NO;
+    scrolView.contentSize = CGSizeMake(btnOther.width+btnOther.x+15,75);
+}   
+
 
 -(id)initWithLat:(CGFloat)fLatitude long:(CGFloat)fLongitude
 {
@@ -60,9 +95,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self startLocation];
 }
-
 
 -(void)viewDidLoad
 {
@@ -92,7 +125,9 @@
         [_mapView addAnnotation:bmk_my];
         [self findData];
     }
+    [self startLocation];
     [self.view addSubview:_mapView];
+    [self initWithScrol];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -233,7 +268,7 @@
         _mapView.region = region;
         NSLog(@"当前的坐标是: %f,%f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
     }
-    if(fLat == 0 || fLong == 0)
+    if(fLat == 0 && fLong == 0)
     {
         fLat = userLocation.location.coordinate.latitude;
         fLong = userLocation.location.coordinate.longitude;

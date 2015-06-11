@@ -56,32 +56,31 @@
     scrolView = [[UIScrollView alloc] initWithFrame:Rect(0,self.view.height-75,self.view.width,75)];
     [scrolView setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:scrolView];
-    PetsButton *btnAll = [[PetsButton alloc] initWithTitle:@"全部" nor:@"my" high:@"my" frame:Rect(15,6,44,60)];
+    PetsButton *btnAll = [[PetsButton alloc] initWithTitle:@"全部" nor:@"yulei_all" high:@"yulei_all" frame:Rect(15,6,44,60)];
     [scrolView addSubview:btnAll];
     
-    
-    PetsButton *btnLong = [[PetsButton alloc] initWithTitle:@"龙鱼" nor:@"my" high:@"my" frame:Rect(btnAll.width+btnAll.x+15,6,44,60)];
+    PetsButton *btnLong = [[PetsButton alloc] initWithTitle:@"龙鱼" nor:@"longyu" high:@"longyu" frame:Rect(btnAll.width+btnAll.x+15,6,44,60)];
     [scrolView addSubview:btnLong];
     
-    PetsButton *btnKing = [[PetsButton alloc] initWithTitle:@"金鱼" nor:@"my" high:@"my" frame:Rect(btnLong.width+btnLong.x+18,6,44,60)];
+    PetsButton *btnKing = [[PetsButton alloc] initWithTitle:@"金鱼" nor:@"jinyu" high:@"jinyu" frame:Rect(btnLong.width+btnLong.x+18,6,44,60)];
     [scrolView addSubview:btnKing];
     
-    PetsButton *btnXiao = [[PetsButton alloc] initWithTitle:@"小丑鱼" nor:@"my" high:@"my" frame:Rect(btnKing.width+btnKing.x+18,6,44,60)];
+    PetsButton *btnXiao = [[PetsButton alloc] initWithTitle:@"小丑鱼" nor:@"xiaochou" high:@"xiaochou" frame:Rect(btnKing.width+btnKing.x+18,6,44,60)];
     [scrolView addSubview:btnXiao];
     
-     PetsButton *btnJin = [[PetsButton alloc] initWithTitle:@"锦鲤" nor:@"my" high:@"my" frame:Rect(btnXiao.width+btnXiao.x+18,6,44,60)];
+     PetsButton *btnJin = [[PetsButton alloc] initWithTitle:@"锦鲤" nor:@"jinli" high:@"jinli" frame:Rect(btnXiao.width+btnXiao.x+18,6,44,60)];
     [scrolView addSubview:btnJin];
     
-     PetsButton *btnYing = [[PetsButton alloc] initWithTitle:@"鹦鹉鱼" nor:@"my" high:@"my" frame:Rect(btnJin.width+btnJin.x+18,6,44,60)];
+     PetsButton *btnYing = [[PetsButton alloc] initWithTitle:@"鹦鹉鱼" nor:@"yingwu" high:@"yingwu" frame:Rect(btnJin.width+btnJin.x+18,6,44,60)];
     [scrolView addSubview:btnYing];
     
-     PetsButton *btnOther = [[PetsButton alloc] initWithTitle:@"其它" nor:@"my" high:@"my" frame:Rect(btnYing.width+btnYing.x+18,6,44,60)];
+     PetsButton *btnOther = [[PetsButton alloc] initWithTitle:@"其它" nor:@"other_yulei" high:@"other_yulei" frame:Rect(btnYing.width+btnYing.x+18,6,44,60)];
     [scrolView addSubview:btnOther];
     
     scrolView.showsHorizontalScrollIndicator = NO;
     scrolView.showsVerticalScrollIndicator = NO;
     scrolView.contentSize = CGSizeMake(btnOther.width+btnOther.x+15,75);
-}
+}   
 
 -(void)viewDidLoad
 {
