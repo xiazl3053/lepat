@@ -263,7 +263,7 @@
 -(void)addNoGift{
     _noGift=nil;
     UIImageView *noGift=[[UIImageView alloc]initWithFrame:_bottomView.bounds];
-    noGift.image=[UIImage imageNamed:@"headView_bg"];
+    noGift.image=[UIImage imageNamed:@"home_gift_nogift"];
     [_bottomView addSubview:noGift];
     _noGift=noGift;
 }
