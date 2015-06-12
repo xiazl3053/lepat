@@ -16,7 +16,8 @@ DEFINE_SINGLETON_FOR_HEADER(PetSort);
 @property (nonatomic,strong) NSMutableArray *aryKey;
 @property (nonatomic,strong) NSMutableArray *aryInfo;
 
--(void)setPetListArr:(NSArray *)petList;
+
+//-(void)setPetListArr:(NSMutableArray *)petListArr;
 
 -(NSString *)getPetNameWithiD:(int )iD;
 

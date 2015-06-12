@@ -63,7 +63,7 @@
     [self sendRequest:strUrl];   
 }
 
--(void)requestPetLocation:(CGFloat)fLat long:(CGFloat)fLng
+-(void)requestAllPetLocation:(CGFloat)fLat long:(CGFloat)fLng
 {
     UserInfo *user = [UserInfo sharedUserInfo];//pets/user/getNearByUserPets.do
     NSString *strUrl = [NSString stringWithFormat:@"%@pets/user/getNearByUserPets.do?lat=%f&lng=%f&userid=%@&token=%@%@",LEPAT_HTTP_HOST,

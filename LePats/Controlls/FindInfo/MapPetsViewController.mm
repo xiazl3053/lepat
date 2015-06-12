@@ -17,18 +17,23 @@
 #import "UserInfo.h"
 #import "UIImageView+WebCache.h"
 #import "BDMarker.h"
+#import "PetSort.h"
+#import "PetSortModel.h"
 #import "FindPetsService.h"
 #import "PetsButton.h"
 
-@interface MapPetsViewController()<BMKMapViewDelegate,BMKLocationServiceDelegate>
+@interface MapPetsViewController()<BMKMapViewDelegate,BMKLocationServiceDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     BMKLocationService *_locService;
     CGFloat fLat,fLong;
-    FindPetsService *findSer;
+    FindPetsService *findPets;
     BMKPointAnnotation *bmk_my;
     UIScrollView *scrolView;
-    
+    UIView *topView;
+    NSArray *filterData;
+    UISearchDisplayController *searchDisplayController;
 }
+@property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) BMKMapView *mapView;
 @property (nonatomic,strong) NSArray *aryPets;
 
@@ -50,6 +55,36 @@
         _aryPets = array;
     }
     return self;
+}
+
+-(void)initTableView
+{
+    topView = [[UIView alloc] initWithFrame:Rect(0,0,self.view.width,self.view.height)];
+    [self.view addSubview:topView];
+    
+    UIButton *btnClick = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btnClick setBackgroundColor:[UIColor clearColor]];
+    [topView addSubview:btnClick];
+    btnClick.frame = topView.bounds;
+    [btnClick addTarget:self action:@selector(TopViewChange) forControlEvents:UIControlEventTouchUpInside];
+    
+    _tableView =[[UITableView alloc] initWithFrame:Rect(0,(self.view.height-300)/2,self.view.width,300) style:UITableViewStyleGrouped];
+    [topView addSubview:_tableView];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, _tableView.y-44, self.view.frame.size.width, 44)];
+    searchBar.placeholder = @"搜索";
+    
+    [topView addSubview:searchBar];
+    searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
+    searchDisplayController.searchResultsDataSource = self;
+    searchDisplayController.searchResultsDelegate = self;
+    topView.hidden = YES;
+}
+
+-(void)TopViewChange
+{
+    topView.hidden = !topView.hidden;
 }
 
 -(void)initWithScrol
@@ -86,7 +121,7 @@
     [scrolView addSubview:btnYing];
     btnYing.tag = 10002;
     [btnYing addTarget:self action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
-   
+    
     PetsButton *btnLuohan = [[PetsButton alloc] initWithTitle:@"罗汉鱼" nor:@"yingwu" high:@"yingwu" frame:Rect(btnYing.width+btnYing.x+18,6,44,60)];
     [scrolView addSubview:btnLuohan];
     btnLuohan.tag = 10080;
@@ -105,54 +140,60 @@
     
     PetsButton *btnOther = [[PetsButton alloc] initWithTitle:@"其它" nor:@"other_yulei" high:@"other_yulei" frame:Rect(btnHudie.width+btnHudie.x+18,6,44,60)];
     [scrolView addSubview:btnOther];
-    [btnAll addTarget:self action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
-    
+    [btnOther addTarget:self action:@selector(TopViewChange) forControlEvents:UIControlEventTouchUpInside];
     
     scrolView.showsHorizontalScrollIndicator = NO;
     scrolView.showsVerticalScrollIndicator = NO;
     scrolView.contentSize = CGSizeMake(btnOther.width+btnOther.x+15,75);
 }
 
+-(void)findFish:(int)nId
+{
+    __weak MapPetsViewController *__self = self;
+    findPets.httpBlock = ^(int nStatus,NSArray *aryPet)
+    {
+        if (nStatus==1)
+        {
+            if(aryPet.count==0)
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [__self.view makeToast:@"没有找到目标"];
+                });
+            }
+            else
+            {
+                dispatch_async(dispatch_get_main_queue(),
+                               ^{
+                                   [__self removeAnnotation];
+                               });
+                [__self.aryNear removeAllObjects];
+                [__self.aryNear addObjectsFromArray:aryPet];
+                dispatch_async(dispatch_get_main_queue(),
+                               ^{
+                                   [__self addAnnotation];
+                               });
+            }
+        }
+    };
+    if (nId==0)
+    {
+        [findPets requestAllPetLocation:fLat long:fLong];
+    }
+    else
+    {
+        [findPets requestPetLocation:fLat long:fLong pet:nId];
+    }
+}
+
 -(void)clickEvent:(PetsButton*)sender
 {
-    int nId = (int)sender.tag - 10000;
+    DLog(@"请求类型:%d",(int)(sender.tag-10000));
+    int nId = (int)(sender.tag - 10000);
     __block int __nId = nId;
     __weak MapPetsViewController *__self = self;
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [__self findFish:__nId];
     });
-}
-
--(void)findFish:(int)nId
-{
-    __weak MapPetsViewController *__self = self;
-    findSer.httpBlock = ^(int nStatus,NSArray *aryPet)
-    {
-        if (nStatus==1)
-        {
-           if(aryPet.count==0)
-           {
-               dispatch_async(dispatch_get_main_queue(),
-               ^{
-                   [__self.view makeToast:@"没有找到目标"];
-               });
-           }
-           else
-           {
-               dispatch_async(dispatch_get_main_queue(),
-               ^{
-                   [__self removeAnnotation];
-               });
-               [__self.aryNear removeAllObjects];
-               [__self.aryNear addObjectsFromArray:aryPet];
-               dispatch_async(dispatch_get_main_queue(),
-               ^{
-                   [__self addAnnotation];
-               });
-           }
-        }
-    };
-    [findSer requestPetLocation:fLat long:fLong pet:nId];
 }
 
 -(void)viewDidLoad
@@ -163,9 +204,10 @@
     _mapView = [[BMKMapView alloc] initWithFrame:Rect(0, [self barSize].height, self.view.width,self.view.height-[self barSize].height)];
     _mapView.delegate = self;
     [self.view addSubview:_mapView];
-    [self initWithScrol];
-    findSer = [[FindPetsService alloc] init];
+    findPets = [[FindPetsService alloc] init];
     [self startLocation];
+    [self initTableView];
+    [self initWithScrol];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -268,7 +310,7 @@
 -(void)findData
 {
     __weak MapPetsViewController *__self =self;
-    findSer.httpBlock = ^(int nStatus,NSArray *aryInfo)
+    findPets.httpBlock = ^(int nStatus,NSArray *aryInfo)
     {
         DLog(@"aryData_length:%lu",aryInfo.count);
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -281,7 +323,7 @@
             [__self addAnnotation];
         });
     };
-    [findSer requestPetLocation:fLat long:fLong];
+    [findPets requestAllPetLocation:fLat long:fLong];
 }
 
 -(void)removeAnnotation
@@ -327,8 +369,105 @@
         [_mapView removeAnnotation:point];
     }
     _locService = nil;
-    findSer = nil;
+    findPets = nil;
     bmk_my = nil;
+}
+
+#pragma mark 新增加的
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (tableView==_tableView) {
+        return ((NSArray*)[[PetSort sharedPetSort].aryInfo objectAtIndex:section]).count;
+    }
+    else
+    {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name contains [cd] %@",searchDisplayController.searchBar.text];
+        filterData =  [[NSArray alloc] initWithArray:[[PetSort sharedPetSort].petListArr filteredArrayUsingPredicate:predicate]];
+        return filterData.count;
+    }
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    if(tableView == _tableView)
+    {
+        return [PetSort sharedPetSort].aryKey.count;
+    }
+    else
+    {
+        return 1;
+    }
+}
+
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = nil;
+    static NSString *strPinYinIdentify = @"pinyinIdentity";
+    cell = [tableView dequeueReusableCellWithIdentifier:strPinYinIdentify];
+    if (cell==nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:strPinYinIdentify];
+    }
+    if(tableView == _tableView)
+    {
+        NSArray *aryValues = [[PetSort sharedPetSort].aryInfo objectAtIndex:indexPath.section];
+        PetSortModel *petModel = [aryValues objectAtIndex:indexPath.row];
+        cell.textLabel.text = petModel.name;
+    }
+    else
+    {
+         cell.textLabel.text = ((PetSortModel *)filterData[indexPath.row]).name;
+    }
+    return cell;
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if(tableView==_tableView)
+    {
+        return [[PetSort sharedPetSort].aryKey objectAtIndex:section];
+    }
+    else
+    {
+        return @"";
+    }
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (tableView == _tableView)
+    {
+        if(section==0)
+        {
+            return 30;
+        }
+        return 20;
+    }
+    else
+    {
+        return 20;
+    }
+}
+
+#pragma mark 设置尾部说明内容高度
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView == _tableView)
+    {
+        PetSortModel *pet = [[[PetSort sharedPetSort].aryInfo objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+        [self findFish:[pet.iD intValue]];
+        [self TopViewChange];
+    }
+    else
+    {
+        PetSortModel *pet = (PetSortModel*)filterData[indexPath.row];
+        [self findFish:[pet.iD intValue]];
+        [searchDisplayController setActive:NO];
+        topView.hidden = YES;
+    }
 }
 
 @end

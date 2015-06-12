@@ -14,8 +14,8 @@ typedef void(^HttpPetBlock)(int nStatus,NSArray *aryPet);
 
 @property (nonatomic,copy) HttpPetBlock httpBlock;
 
--(void)requestPetLocation:(CGFloat)fLat long:(CGFloat)fLng;
-
+//-(void)requestPetLocation:(CGFloat)fLat long:(CGFloat)fLng;
+-(void)requestAllPetLocation:(CGFloat)fLat long:(CGFloat)fLng;
 -(void)requestPetLocation:(CGFloat)fLat long:(CGFloat)fLng pet:(int)nPet;
 
 
