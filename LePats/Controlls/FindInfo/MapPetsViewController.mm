@@ -10,6 +10,7 @@
 #import "BMKMapView.h"
 #import "TheyMainViewController.h"
 #import "BMKLocationComponent.h"
+#import "Toast+UIView.h"
 #import "UIView+Extension.h"
 #import "BMKPointAnnotation.h"
 #import "BMKPinAnnotationView.h"
@@ -114,8 +115,7 @@
 
 -(void)clickEvent:(PetsButton*)sender
 {
-    DLog(@"请求类型-id:%d",sender.tag-10000);
-    int nId = sender.tag - 10000;
+    int nId = (int)sender.tag - 10000;
     __block int __nId = nId;
     __weak MapPetsViewController *__self = self;
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
@@ -130,16 +130,26 @@
     {
         if (nStatus==1)
         {
-           dispatch_async(dispatch_get_main_queue(),
-           ^{
-               [__self removeAnnotation];
-           });
-           [__self.aryNear removeAllObjects];
-           [__self.aryNear addObjectsFromArray:aryPet];
-           dispatch_async(dispatch_get_main_queue(),
-           ^{
-               [__self addAnnotation];
-           });
+           if(aryPet.count==0)
+           {
+               dispatch_async(dispatch_get_main_queue(),
+               ^{
+                   [__self.view makeToast:@"没有找到目标"];
+               });
+           }
+           else
+           {
+               dispatch_async(dispatch_get_main_queue(),
+               ^{
+                   [__self removeAnnotation];
+               });
+               [__self.aryNear removeAllObjects];
+               [__self.aryNear addObjectsFromArray:aryPet];
+               dispatch_async(dispatch_get_main_queue(),
+               ^{
+                   [__self addAnnotation];
+               });
+           }
         }
     };
     [findSer requestPetLocation:fLat long:fLong pet:nId];
@@ -293,6 +303,7 @@
         bmk.subtitle = [NSString stringWithFormat:@"距离您:%.01f m",near.fDistan];
         bmk.near = near;
         [_mapView addAnnotation:bmk];
+        [_aryAnnotation addObject:bmk];
     }
 }
 
@@ -319,7 +330,5 @@
     findSer = nil;
     bmk_my = nil;
 }
-
-
 
 @end

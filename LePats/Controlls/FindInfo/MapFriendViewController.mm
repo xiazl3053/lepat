@@ -8,6 +8,7 @@
 
 #import "MapFriendViewController.h"
 #import "BMKLocationComponent.h"
+#import "Toast+UIView.h"
 #import "PetsButton.h"
 #import "TheyMainViewController.h"
 #import "NearInfo.h"
@@ -105,16 +106,25 @@
     {
         if (nStatus==1)
         {
-           dispatch_async(dispatch_get_main_queue(),
-           ^{
-               [__self removeAnnotation];
-           });
-           [__self.aryNear removeAllObjects];
-           [__self.aryNear addObjectsFromArray:aryPet];
-           dispatch_async(dispatch_get_main_queue(),
-           ^{
-               [__self addAnnotation];
-           });
+           if(aryPet.count==0)
+           {
+               dispatch_async(dispatch_get_main_queue(), ^{
+                   [__self.view makeToast:@"没有找到目标"];
+               });
+           }
+           else
+           {
+               dispatch_async(dispatch_get_main_queue(),
+               ^{
+                   [__self removeAnnotation];
+               });
+               [__self.aryNear removeAllObjects];
+               [__self.aryNear addObjectsFromArray:aryPet];
+               dispatch_async(dispatch_get_main_queue(),
+               ^{
+                   [__self addAnnotation];
+               });
+           }
         }
     };
     [findPets requestPetLocation:fLat long:fLong pet:nId];
@@ -122,8 +132,8 @@
 
 -(void)clickEvent:(PetsButton*)sender
 {
-    DLog(@"请求类型-id:%d",sender.tag-10000);
-    int nId = sender.tag - 10000;
+    DLog(@"请求类型:%d",(int)(sender.tag-10000));
+    int nId = (int)(sender.tag - 10000);
     __block int __nId = nId;
     if (findPets==nil)
     {
@@ -285,7 +295,7 @@
     __weak MapFriendViewController *__self =self;
     findSer.httpBlock = ^(int nStatus,NSArray *aryInfo)
     {
-        DLog(@"aryData_length:%u",aryInfo.count);
+        DLog(@"aryData_length:%lu",aryInfo.count);
         dispatch_async(dispatch_get_main_queue(), ^{
             [__self removeAnnotation];
         });
@@ -321,6 +331,7 @@
         bmk.subtitle = [NSString stringWithFormat:@"距离您:%.01f m",near.fDistan];
         bmk.near = near;
         [_mapView addAnnotation:bmk];
+        [_aryAnnotation addObject:bmk];
     }
 }
 
