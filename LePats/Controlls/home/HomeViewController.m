@@ -20,9 +20,10 @@
 #import "HomeGiftItemButton.h"
 #import "PetSortService.h"
 #import "PetSort.h"
+#import "SignInViewController.h"
 
 
-@interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,HomeItemCollectionCellDelegate>
+@interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,HomeItemCollectionCellDelegate,HomeHeadReusableViewDelegate>
 @property (nonatomic,strong) NSMutableArray *itemList;
 
 @end
@@ -206,13 +207,15 @@
 -(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     
-    UICollectionReusableView *reusable=nil;
+    HomeHeadReusableView *reusable=nil;
     
     if ([kind isEqualToString:UICollectionElementKindSectionFooter]) {
         
         
     }else{
-        reusable=[collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HEAD_VIEW" forIndexPath:indexPath];
+        reusable=(HomeHeadReusableView *)[collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HEAD_VIEW" forIndexPath:indexPath];
+        reusable.delegate=self;
+        
     }
     return reusable;
 }
@@ -334,6 +337,13 @@
 -(void)loginSuccess
 {
     [self getPetSort];
+}
+
+-(void)homeHeadReusableView:(HomeHeadReusableView *)view selectButton:(UIButton *)abtn{
+    NSLog(@"%@",abtn);
+    SignInViewController *sign=[[SignInViewController alloc]init];
+    sign.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:sign animated:YES];
 }
 
 -(void)dealloc

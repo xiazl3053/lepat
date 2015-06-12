@@ -125,6 +125,12 @@
 		841AB43D1B1FEF96007B09D7 /* MyFocusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841AB43C1B1FEF96007B09D7 /* MyFocusViewController.m */; };
 		841AB4401B1FF4BC007B09D7 /* FansModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 841AB43F1B1FF4BC007B09D7 /* FansModel.m */; };
 		842F1C431B2A74500009C1C3 /* GiftService.m in Sources */ = {isa = PBXBuildFile; fileRef = 842F1C421B2A74500009C1C3 /* GiftService.m */; };
+		84B964681B2AD1AE00F0FA6B /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B964671B2AD1AE00F0FA6B /* SignInViewController.m */; };
+		84B964741B2AD1CA00F0FA6B /* NSDate+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9646B1B2AD1CA00F0FA6B /* NSDate+convenience.m */; };
+		84B964751B2AD1CA00F0FA6B /* NSMutableArray+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9646D1B2AD1CA00F0FA6B /* NSMutableArray+convenience.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		84B964761B2AD1CA00F0FA6B /* UIColor+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9646F1B2AD1CA00F0FA6B /* UIColor+expanded.m */; };
+		84B964771B2AD1CA00F0FA6B /* UIView+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B964711B2AD1CA00F0FA6B /* UIView+convenience.m */; };
+		84B964781B2AD1CA00F0FA6B /* VRGCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B964731B2AD1CA00F0FA6B /* VRGCalendarView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		84E755D01B2285490059710B /* AccessoryToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E755CF1B2285490059710B /* AccessoryToolView.m */; };
 		84E755D41B22B3D40059710B /* ServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E755D31B22B3D40059710B /* ServiceViewController.m */; };
 		84E755D81B22B3F90059710B /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E755D71B22B3F90059710B /* HelpViewController.m */; };
@@ -428,6 +434,18 @@
 		841AB43F1B1FF4BC007B09D7 /* FansModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FansModel.m; sourceTree = "<group>"; };
 		842F1C411B2A74500009C1C3 /* GiftService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiftService.h; sourceTree = "<group>"; };
 		842F1C421B2A74500009C1C3 /* GiftService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiftService.m; sourceTree = "<group>"; };
+		84B964661B2AD1AE00F0FA6B /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
+		84B964671B2AD1AE00F0FA6B /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
+		84B9646A1B2AD1CA00F0FA6B /* NSDate+convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+convenience.h"; sourceTree = "<group>"; };
+		84B9646B1B2AD1CA00F0FA6B /* NSDate+convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+convenience.m"; sourceTree = "<group>"; };
+		84B9646C1B2AD1CA00F0FA6B /* NSMutableArray+convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+convenience.h"; sourceTree = "<group>"; };
+		84B9646D1B2AD1CA00F0FA6B /* NSMutableArray+convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+convenience.m"; sourceTree = "<group>"; };
+		84B9646E1B2AD1CA00F0FA6B /* UIColor+expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+expanded.h"; sourceTree = "<group>"; };
+		84B9646F1B2AD1CA00F0FA6B /* UIColor+expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+expanded.m"; sourceTree = "<group>"; };
+		84B964701B2AD1CA00F0FA6B /* UIView+convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+convenience.h"; sourceTree = "<group>"; };
+		84B964711B2AD1CA00F0FA6B /* UIView+convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+convenience.m"; sourceTree = "<group>"; };
+		84B964721B2AD1CA00F0FA6B /* VRGCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VRGCalendarView.h; sourceTree = "<group>"; };
+		84B964731B2AD1CA00F0FA6B /* VRGCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VRGCalendarView.m; sourceTree = "<group>"; };
 		84D4D1C91B018FA400E67D9C /* LePats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LePats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84E755CE1B2285490059710B /* AccessoryToolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessoryToolView.h; sourceTree = "<group>"; };
 		84E755CF1B2285490059710B /* AccessoryToolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessoryToolView.m; sourceTree = "<group>"; };
@@ -602,6 +620,8 @@
 				4D5FECAE1B1CB10200360323 /* UserDetailViewController.m */,
 				4D5FECAF1B1CB10200360323 /* UserInfoViewController.h */,
 				4D5FECB01B1CB10200360323 /* UserInfoViewController.m */,
+				84B964661B2AD1AE00F0FA6B /* SignInViewController.h */,
+				84B964671B2AD1AE00F0FA6B /* SignInViewController.m */,
 			);
 			path = my;
 			sourceTree = "<group>";
@@ -916,6 +936,7 @@
 		4D5FED651B1CB10200360323 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				84B964691B2AD1CA00F0FA6B /* CalendarView */,
 				4D5FED661B1CB10200360323 /* AddPetCellTableViewCell.h */,
 				4D5FED671B1CB10200360323 /* AddPetCellTableViewCell.m */,
 				4D5FED681B1CB10200360323 /* FriendCell.h */,
@@ -975,6 +996,23 @@
 				4D5FEDE71B1DF57900360323 /* UIView+Extension.m */,
 			);
 			path = MJRefresh;
+			sourceTree = "<group>";
+		};
+		84B964691B2AD1CA00F0FA6B /* CalendarView */ = {
+			isa = PBXGroup;
+			children = (
+				84B9646A1B2AD1CA00F0FA6B /* NSDate+convenience.h */,
+				84B9646B1B2AD1CA00F0FA6B /* NSDate+convenience.m */,
+				84B9646C1B2AD1CA00F0FA6B /* NSMutableArray+convenience.h */,
+				84B9646D1B2AD1CA00F0FA6B /* NSMutableArray+convenience.m */,
+				84B9646E1B2AD1CA00F0FA6B /* UIColor+expanded.h */,
+				84B9646F1B2AD1CA00F0FA6B /* UIColor+expanded.m */,
+				84B964701B2AD1CA00F0FA6B /* UIView+convenience.h */,
+				84B964711B2AD1CA00F0FA6B /* UIView+convenience.m */,
+				84B964721B2AD1CA00F0FA6B /* VRGCalendarView.h */,
+				84B964731B2AD1CA00F0FA6B /* VRGCalendarView.m */,
+			);
+			path = CalendarView;
 			sourceTree = "<group>";
 		};
 		84D4D1C01B018FA400E67D9C = {
@@ -1187,6 +1225,7 @@
 				4D5FED991B1CB10200360323 /* UIControl+BlocksKit.m in Sources */,
 				4D5FEDCC1B1CB10200360323 /* HomeGiftItemButton.m in Sources */,
 				4D5FEDA31B1CB10200360323 /* UIButton+WebCache.m in Sources */,
+				84B964741B2AD1CA00F0FA6B /* NSDate+convenience.m in Sources */,
 				4D08BF551B2118BD0037D6C9 /* FMDatabaseQueue.m in Sources */,
 				4D5FEDC71B1CB10200360323 /* HttpUploadManager.m in Sources */,
 				4D5FEDA11B1CB10200360323 /* SDWebImageManager.m in Sources */,
@@ -1213,6 +1252,7 @@
 				4D5FEDB21B1CB10200360323 /* AppDelegate.mm in Sources */,
 				84E755DF1B2581C40059710B /* MyButton.m in Sources */,
 				4D5FED9F1B1CB10200360323 /* SDWebImageDownloader.m in Sources */,
+				84B964781B2AD1CA00F0FA6B /* VRGCalendarView.m in Sources */,
 				4D08BF531B2118BD0037D6C9 /* FMDatabaseAdditions.m in Sources */,
 				4D5FEDBC1B1CB10200360323 /* MyInfoService.m in Sources */,
 				4D5FEDC91B1CB10200360323 /* UserInfo.m in Sources */,
@@ -1224,6 +1264,7 @@
 				4D93262C1B1F4F5700BB6B68 /* BDMarker.m in Sources */,
 				84E755E21B2584EB0059710B /* UserOperationModel.m in Sources */,
 				4D5FED891B1CB10200360323 /* MainViewController.m in Sources */,
+				84B964751B2AD1CA00F0FA6B /* NSMutableArray+convenience.m in Sources */,
 				841AB43D1B1FEF96007B09D7 /* MyFocusViewController.m in Sources */,
 				4D5FED8C1B1CB10200360323 /* RightViewController.m in Sources */,
 				4D5FEDAC1B1CB10200360323 /* Toast+UIView.m in Sources */,
@@ -1237,9 +1278,11 @@
 				4D5FED921B1CB10200360323 /* EditMyInfoViewController.m in Sources */,
 				4D5FEDA81B1CB10200360323 /* UIImageView+WebCache.m in Sources */,
 				BB3CBD2D1B2166AF00EF49C4 /* TheyInfoService.m in Sources */,
+				84B964761B2AD1CA00F0FA6B /* UIColor+expanded.m in Sources */,
 				4D5FEDA61B1CB10200360323 /* UIImage+WebP.m in Sources */,
 				4D5FED9C1B1CB10200360323 /* SDImageCache.m in Sources */,
 				4D5FEDB71B1CB10200360323 /* FindService.m in Sources */,
+				84B964681B2AD1AE00F0FA6B /* SignInViewController.m in Sources */,
 				BB3CBD301B217DDF00EF49C4 /* TUserService.m in Sources */,
 				4D5FEDB51B1CB10200360323 /* main.m in Sources */,
 				4D5FEDAE1B1CB10200360323 /* HomeItemModel.m in Sources */,
@@ -1260,6 +1303,7 @@
 				4D5FEDD11B1CB10200360323 /* LeftTableViewCell.m in Sources */,
 				4D5FEDED1B1DF57900360323 /* UIScrollView+Extension.m in Sources */,
 				4D5FEDA71B1CB10200360323 /* UIImageView+HighlightedWebCache.m in Sources */,
+				84B964771B2AD1CA00F0FA6B /* UIView+convenience.m in Sources */,
 				4D5FEDD31B1CB10200360323 /* MyDetailTableViewCell.m in Sources */,
 				4D5FEDCB1B1CB10200360323 /* FriendCell.m in Sources */,
 				4D5FED901B1CB10200360323 /* RegSecondVIewController.m in Sources */,

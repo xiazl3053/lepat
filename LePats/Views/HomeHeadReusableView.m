@@ -150,6 +150,7 @@
         [btn setImage:[UIImage imageNamed:obj.img] forState:UIControlStateNormal];
         [btn.titleLabel setFont:[UIFont systemFontOfSize:12]];
         [btn setTitle:obj.title forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
         [centerView addSubview:btn];
     }
     [self addSubview:centerView];
@@ -266,6 +267,10 @@
     noGift.image=[UIImage imageNamed:@"home_gift_nogift"];
     [_bottomView addSubview:noGift];
     _noGift=noGift;
+}
+
+-(void)click:(UIButton *)aBtn{
+    [self.delegate homeHeadReusableView:self selectButton:aBtn];
 }
 
 @end

@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HomeHeadReusableView : UICollectionReusableView
+@class HomeHeadReusableView;
+@protocol HomeHeadReusableViewDelegate <NSObject>
 
+-(void)homeHeadReusableView:(HomeHeadReusableView *)view selectButton:(UIButton *)abtn;
+
+@end
+
+@interface HomeHeadReusableView : UICollectionReusableView
+@property (nonatomic,assign) id<HomeHeadReusableViewDelegate> delegate;
 @end
