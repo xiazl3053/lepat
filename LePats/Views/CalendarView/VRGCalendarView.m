@@ -275,7 +275,7 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MMMM yyyy"];
     labelCurrentMonth.text = [formatter stringFromDate:self.currentMonth];
-    [labelCurrentMonth sizeToFit];
+   // [labelCurrentMonth sizeToFit];
     labelCurrentMonth.frameX = roundf(self.frame.size.width/2 - labelCurrentMonth.frameWidth/2);
     labelCurrentMonth.frameY = 10;
     [formatter release];
@@ -550,12 +550,15 @@
         self.clipsToBounds=YES;
         
         isAnimating=NO;
-        self.labelCurrentMonth = [[UILabel alloc] initWithFrame:CGRectMake(34, 0, kVRGCalendarViewWidth-68, 40)];
+        self.labelCurrentMonth = [[UILabel alloc] initWithFrame:CGRectMake((kVRGCalendarViewWidth-100)*.5, 0, 100, 30)];
         [self addSubview:labelCurrentMonth];
         labelCurrentMonth.backgroundColor=[UIColor whiteColor];
         labelCurrentMonth.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:17];
         labelCurrentMonth.textColor = [UIColor colorWithHexString:@"0x383838"];
-        labelCurrentMonth.textAlignment = UITextAlignmentCenter;
+        labelCurrentMonth.backgroundColor=[UIColor clearColor];
+        labelCurrentMonth.textAlignment=NSTextAlignmentCenter;
+        
+        
         
         [self performSelector:@selector(reset) withObject:nil afterDelay:0.1]; //so delegate can be set after init and still get called on init
         //        [self reset];
