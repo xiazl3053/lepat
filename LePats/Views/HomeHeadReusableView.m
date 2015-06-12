@@ -13,6 +13,7 @@
 #import "HomeGiftItemButton.h"
 #import "LoginViewController.h"
 #import "GiftService.h"
+#import "UserInfo.h"
 
 @interface HomeHeadReusableView (){
     UIView *_topView;
@@ -21,7 +22,8 @@
     UILabel *_title;
     UILabel *_score;
     UIButton *_btn;
-    
+    UIImageView *_noLogin;
+    UIImageView *_noGift;
 
 }
 
@@ -53,11 +55,15 @@
 -(void)refueshScoreStatus{
     _score.hidden=NO;
     _btn.hidden=YES;
+    _noLogin.hidden=YES;
+    [self queryGift];
 }
 
 -(void)userLogOut{
     _score.hidden=YES;
     _btn.hidden=NO;
+    _noLogin.hidden=NO;
+    [self addNologin];
 }
 
 -(void)login:(UIButton *)aBtn
@@ -152,70 +158,114 @@
 
 -(void)initBottomView{
     
-    
-    GiftService *service=[[GiftService alloc]init];
-    service.giftServiceBlock=^(NSString *error,NSArray *data){
-        
-    };
-    [service requestGiftWithID:0];
-    
-    HomeItemModel *model4 = [[HomeItemModel alloc] init];
-    model4.title = @"大礼包";
-    model4.tag = 105;
-    model4.img = @"left_icon_noraml";
-    
-    HomeItemModel *model5 = [[HomeItemModel alloc] init];
-    model5.title = @"大礼包";
-    model5.tag = 105;
-    model5.img = @"left_icon_noraml";
-    
-    HomeItemModel *model6 = [[HomeItemModel alloc] init];
-    model6.title = @"大礼包";
-    model6.tag = 105;
-    model6.img = @"left_icon_noraml";
-    
-    HomeItemModel *model7 = [[HomeItemModel alloc] init];
-    model7.title = @"大礼包";
-    model7.tag = 105;
-    model7.img = @"left_icon_noraml";
-    
-    HomeItemModel *model8 = [[HomeItemModel alloc] init];
-    model8.title = @"大礼包";
-    model8.tag = 105;
-    model8.img = @"left_icon_noraml";
-    
-    NSMutableArray *section1=[NSMutableArray array];
-    
-    [section1 addObject:model4];
-    [section1 addObject:model5];
-    [section1 addObject:model6];
-    [section1 addObject:model7];
-    [section1 addObject:model8];
-
-    
     UIView *bottomView=[[UIView alloc]initWithFrame:CGRectMake(0, _centerView.bottom, self.frame.size.width, 216*.5)];
     bottomView.backgroundColor=[UIColor whiteColor];
-    
-    UILabel *title=[[UILabel alloc]initWithFrame:CGRectMake(10, 2, self.frame.size.width, 24)];
-    title.text=@"我的礼品: 3";
-    title.textColor=UIColorFromRGB(0x326294);
-    [bottomView addSubview:title];
-    
-    for (int i=0; i<section1.count; i++) {
-        HomeItemModel *obj=[section1 objectAtIndex:i];
-        HomeGiftItemButton *btn=[[HomeGiftItemButton alloc]initWithFrame:CGRectMake(i*KMainScreenSize.width/5.0+4, title.bottom+2, (self.frame.size.width-8*2-4*3)/5.0, (self.frame.size.width-8*2-4*3)/5.0)];
-        [btn setImage:[UIImage imageNamed:obj.img] forState:UIControlStateNormal];
-        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [btn.titleLabel setFont:[UIFont systemFontOfSize:12]];
-        [btn setTitle:obj.title forState:UIControlStateNormal];
-        btn.layer.borderColor=[UIColor redColor].CGColor;
-        btn.layer.cornerRadius=3.0;
-        btn.layer.borderWidth=1.0;
-        btn.layer.masksToBounds=YES;
-        [bottomView addSubview:btn];
-    }
     [self addSubview:bottomView];
     _bottomView=bottomView;
+    
+    [self addNologin];
+    
+    
+    
+//    HomeItemModel *model4 = [[HomeItemModel alloc] init];
+//    model4.title = @"大礼包";
+//    model4.tag = 105;
+//    model4.img = @"left_icon_noraml";
+//    
+//    HomeItemModel *model5 = [[HomeItemModel alloc] init];
+//    model5.title = @"大礼包";
+//    model5.tag = 105;
+//    model5.img = @"left_icon_noraml";
+//    
+//    HomeItemModel *model6 = [[HomeItemModel alloc] init];
+//    model6.title = @"大礼包";
+//    model6.tag = 105;
+//    model6.img = @"left_icon_noraml";
+//    
+//    HomeItemModel *model7 = [[HomeItemModel alloc] init];
+//    model7.title = @"大礼包";
+//    model7.tag = 105;
+//    model7.img = @"left_icon_noraml";
+//    
+//    HomeItemModel *model8 = [[HomeItemModel alloc] init];
+//    model8.title = @"大礼包";
+//    model8.tag = 105;
+//    model8.img = @"left_icon_noraml";
+//    
+//    NSMutableArray *section1=[NSMutableArray array];
+//    
+//    [section1 addObject:model4];
+//    [section1 addObject:model5];
+//    [section1 addObject:model6];
+//    [section1 addObject:model7];
+//    [section1 addObject:model8];   
+    
+}
+
+-(void)queryGift{
+    
+    __weak HomeHeadReusableView *__self=self;
+    if ([UserInfo sharedUserInfo].strToken) {
+        GiftService *service=[[GiftService alloc]init];
+        service.giftServiceBlock=^(NSString *error,NSArray *data){
+            if (error) {
+                
+            }else{
+                if (data.count==0) {
+                    [__self addNoGift];
+                }else{
+                    UILabel *title=[[UILabel alloc]initWithFrame:CGRectMake(10, 2, self.frame.size.width, 24)];
+                    title.text=[NSString stringWithFormat:@"我的礼品:%li",data.count];
+                    title.textColor=UIColorFromRGB(0x326294);
+                    [_bottomView addSubview:title];
+                    
+                    NSArray *prefix;
+                    if (data.count>5) {
+                        NSIndexSet *set=[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 5)];
+                        prefix=[data objectsAtIndexes:set];
+                    }else{
+                        prefix=data;
+                    }
+                    
+                    for (int i=0; i<prefix.count; i++) {
+                        HomeItemModel *obj=[prefix objectAtIndex:i];
+                        HomeGiftItemButton *btn=[[HomeGiftItemButton alloc]initWithFrame:CGRectMake(i*KMainScreenSize.width/5.0+4, title.bottom+2, (self.frame.size.width-8*2-4*3)/5.0, (self.frame.size.width-8*2-4*3)/5.0)];
+                        [btn setImage:[UIImage imageNamed:obj.img] forState:UIControlStateNormal];
+                        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                        [btn.titleLabel setFont:[UIFont systemFontOfSize:12]];
+                        [btn setTitle:obj.title forState:UIControlStateNormal];
+                        btn.layer.borderColor=[UIColor redColor].CGColor;
+                        btn.layer.cornerRadius=3.0;
+                        btn.layer.borderWidth=1.0;
+                        btn.layer.masksToBounds=YES;
+                        [_bottomView addSubview:btn];
+                    }
+                    
+                }
+            }
+            
+        };
+        [service requestGiftWithID:0];
+    }else{
+        [self addNologin];
+    }
+
+}
+
+-(void)addNologin{
+    _noLogin=nil;
+    UIImageView *noLogin=[[UIImageView alloc]initWithFrame:_bottomView.bounds];
+    noLogin.image=[UIImage imageNamed:@"home_gift_nologin"];
+    [_bottomView addSubview:noLogin];
+    _noLogin=noLogin;
+}
+
+-(void)addNoGift{
+    _noGift=nil;
+    UIImageView *noGift=[[UIImageView alloc]initWithFrame:_bottomView.bounds];
+    noGift.image=[UIImage imageNamed:@"headView_bg"];
+    [_bottomView addSubview:noGift];
+    _noGift=noGift;
 }
 
 @end
