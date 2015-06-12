@@ -19,8 +19,10 @@
 #import "BMapKit.h"
 #import "UserInfo.h"
 #import "FindPetsService.h"
+#import "PetSort.h"
+#import "PetSortModel.h"
 
-@interface MapFriendViewController()<BMKMapViewDelegate,BMKLocationServiceDelegate>
+@interface MapFriendViewController()<BMKMapViewDelegate,BMKLocationServiceDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     BMKLocationService *_locService;
     CGFloat fLat,fLong;
@@ -31,12 +33,31 @@
     BOOL bTheLoading;
     UIScrollView *scrolView;
     FindPetsService *findPets;
+    UIView *topView;
+    UITextField *txtName;
 }
+@property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *aryAnnotation;
 @property (nonatomic,strong) NSMutableArray *aryNear;
 @end
 
 @implementation MapFriendViewController
+
+-(void)initTableView
+{
+    topView = [[UIView alloc] initWithFrame:Rect(0,0,self.view.width,self.view.height)];
+    [self.view addSubview:topView];
+//    [topView setBackgroundColor:RGB(100, 100, 100)];
+//    [topView setAlpha:0.9f];
+    _tableView =[[UITableView alloc] initWithFrame:Rect(0,(self.view.height-300)/2,self.view.width,300) style:UITableViewStyleGrouped];
+    [topView addSubview:_tableView];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    
+    txtName = [[UITextField alloc] initWithFrame:Rect(0,100,self.view.width,30)];
+    [topView addSubview:txtName];
+    [txtName setPlaceholder:@"搜索"];
+}
 
 -(void)initWithScrol
 {
@@ -206,6 +227,7 @@
     [self startLocation];
     [self.view addSubview:_mapView];
     [self initWithScrol];
+    [self initTableView];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -381,6 +403,42 @@
 
 }
 
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return ((NSArray*)[[PetSort sharedPetSort].aryInfo objectAtIndex:section]).count;
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return [PetSort sharedPetSort].aryKey.count;
+}
+
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = nil;
+    static NSString *strPinYinIdentify = @"pinyinIdentity";
+    cell = [tableView dequeueReusableCellWithIdentifier:strPinYinIdentify];
+    if (cell==nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:strPinYinIdentify];
+    }
+    NSArray *aryValues = [[PetSort sharedPetSort].aryInfo objectAtIndex:indexPath.section];
+    PetSortModel *petModel = [aryValues objectAtIndex:indexPath.row];
+    cell.textLabel.text = petModel.name;
+    return cell;
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return [[PetSort sharedPetSort].aryKey objectAtIndex:section];
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    PetSortModel *pet = [[[PetSort sharedPetSort].aryInfo objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    NSString *strInfo =pet.name;
+    DLog(@"strInfo:%@---id:%@",strInfo,pet.iD);
+    [self findFish:[pet.iD intValue]];
+}
 
 
 @end

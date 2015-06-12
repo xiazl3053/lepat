@@ -118,6 +118,8 @@
 		4D5FEDEF1B1DF57900360323 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5FEDE71B1DF57900360323 /* UIView+Extension.m */; };
 		4D93262C1B1F4F5700BB6B68 /* BDMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D93262B1B1F4F5700BB6B68 /* BDMarker.m */; };
 		4DB9F6731B286D8D00941C83 /* PetsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB9F6721B286D8D00941C83 /* PetsButton.m */; };
+		4DC433501B2B155700045562 /* ChineseString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4334D1B2B155700045562 /* ChineseString.m */; };
+		4DC433511B2B155700045562 /* pinyin.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4334E1B2B155700045562 /* pinyin.c */; };
 		7AE8302AB035A0F6C58184D7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF811F65411D3FCD44EA091 /* libPods.a */; };
 		8416BBF01B1D6C990085FC33 /* MyFansService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8416BBEF1B1D6C990085FC33 /* MyFansService.m */; };
 		8416BBF31B1D6D6C0085FC33 /* MyFansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8416BBF21B1D6D6C0085FC33 /* MyFansViewController.m */; };
@@ -421,6 +423,10 @@
 		4D93262B1B1F4F5700BB6B68 /* BDMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDMarker.m; sourceTree = "<group>"; };
 		4DB9F6711B286D8D00941C83 /* PetsButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PetsButton.h; sourceTree = "<group>"; };
 		4DB9F6721B286D8D00941C83 /* PetsButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetsButton.m; sourceTree = "<group>"; };
+		4DC4334C1B2B155700045562 /* ChineseString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseString.h; sourceTree = "<group>"; };
+		4DC4334D1B2B155700045562 /* ChineseString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChineseString.m; sourceTree = "<group>"; };
+		4DC4334E1B2B155700045562 /* pinyin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pinyin.c; sourceTree = "<group>"; };
+		4DC4334F1B2B155700045562 /* pinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pinyin.h; sourceTree = "<group>"; };
 		635FBA24F678FB40B37ED093 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8416BBEE1B1D6C990085FC33 /* MyFansService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFansService.h; sourceTree = "<group>"; };
 		8416BBEF1B1D6C990085FC33 /* MyFansService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFansService.m; sourceTree = "<group>"; };
@@ -629,6 +635,7 @@
 		4D5FECB11B1CB10200360323 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				4DC4334B1B2B155700045562 /* pinyin */,
 				4D08BF461B2118BD0037D6C9 /* fmdb */,
 				4D5FEDD71B1DF57900360323 /* MJRefresh */,
 				4D5FECB21B1CB10200360323 /* baidumap */,
@@ -998,6 +1005,17 @@
 			path = MJRefresh;
 			sourceTree = "<group>";
 		};
+		4DC4334B1B2B155700045562 /* pinyin */ = {
+			isa = PBXGroup;
+			children = (
+				4DC4334C1B2B155700045562 /* ChineseString.h */,
+				4DC4334D1B2B155700045562 /* ChineseString.m */,
+				4DC4334E1B2B155700045562 /* pinyin.c */,
+				4DC4334F1B2B155700045562 /* pinyin.h */,
+			);
+			path = pinyin;
+			sourceTree = "<group>";
+		};
 		84B964691B2AD1CA00F0FA6B /* CalendarView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1236,6 +1254,7 @@
 				4D5FEDC11B1CB10200360323 /* PetInfoService.m in Sources */,
 				8416BBF01B1D6C990085FC33 /* MyFansService.m in Sources */,
 				4D08BF421B1FC1130037D6C9 /* FocusService.m in Sources */,
+				4DC433511B2B155700045562 /* pinyin.c in Sources */,
 				4D5FEDB11B1CB10200360323 /* PetSortModel.m in Sources */,
 				4D5FEDD01B1CB10200360323 /* HomeItemCollectionCell.m in Sources */,
 				4D5FEDBF1B1CB10200360323 /* MyPetService.m in Sources */,
@@ -1322,6 +1341,7 @@
 				842F1C431B2A74500009C1C3 /* GiftService.m in Sources */,
 				4D5FED811B1CB10200360323 /* UIView+Add.m in Sources */,
 				4D5FED961B1CB10200360323 /* UserInfoViewController.m in Sources */,
+				4DC433501B2B155700045562 /* ChineseString.m in Sources */,
 				4D5FED9E1B1CB10200360323 /* SDWebImageDecoder.m in Sources */,
 				4D5FED851B1CB10200360323 /* UploadLocationViewController.m in Sources */,
 				4D5FED861B1CB10200360323 /* BaseViewController.m in Sources */,
@@ -1462,7 +1482,7 @@
 					"$(PROJECT_DIR)/LePats/General/baidumap",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "4481d1b9-b83c-468a-8e38-f13d926e3b03";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7";
 			};
