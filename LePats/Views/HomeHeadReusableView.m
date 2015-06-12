@@ -12,6 +12,7 @@
 #import "HomeHeadItemButton.h"
 #import "HomeGiftItemButton.h"
 #import "LoginViewController.h"
+#import "GiftService.h"
 
 @interface HomeHeadReusableView (){
     UIView *_topView;
@@ -50,13 +51,11 @@
 }
 
 -(void)refueshScoreStatus{
-    _title.hidden=NO;
     _score.hidden=NO;
     _btn.hidden=YES;
 }
 
 -(void)userLogOut{
-    _title.hidden=YES;
     _score.hidden=YES;
     _btn.hidden=NO;
 }
@@ -85,7 +84,6 @@
     title.font=[UIFont systemFontOfSize:30];
     title.textAlignment=NSTextAlignmentCenter;
     title.textColor=[UIColor whiteColor];
-    title.hidden=YES;
     _title=title;
     [topView addSubview:title];
     
@@ -98,7 +96,7 @@
     [topView addSubview:score];
     _score=score;
     
-    UIButton *btn=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, 80)];
+    UIButton *btn=[[UIButton alloc]initWithFrame:CGRectMake(0, title.bottom+10, self.frame.size.width, 30)];
     [btn setTitle:@"登陆查看积分" forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:btn];
@@ -110,6 +108,7 @@
 }
 
 -(void)initCenterView{
+    
     HomeItemModel *model=[[HomeItemModel alloc]init];
     model.title=@"每日签到";
     model.tag=101;
@@ -152,6 +151,13 @@
 }
 
 -(void)initBottomView{
+    
+    
+    GiftService *service=[[GiftService alloc]init];
+    service.giftServiceBlock=^(NSString *error,NSArray *data){
+        
+    };
+    [service requestGiftWithID:0];
     
     HomeItemModel *model4 = [[HomeItemModel alloc] init];
     model4.title = @"大礼包";
