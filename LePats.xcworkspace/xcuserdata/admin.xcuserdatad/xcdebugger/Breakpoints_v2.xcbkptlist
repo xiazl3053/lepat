@@ -186,7 +186,7 @@
                   moduleName = "LePats"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/admin/Desktop/external/06-08/lepat/LePats/Controlls/my/PetDetailViewController.m"
-                  timestampString = "455868914.087267"
+                  timestampString = "455872407.466243"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "158"
@@ -201,7 +201,7 @@
                   moduleName = "LePats"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/admin/Desktop/external/06-08/lepat/LePats/Controlls/my/PetDetailViewController.m"
-                  timestampString = "455868914.087413"
+                  timestampString = "455872407.466384"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "158"
@@ -608,6 +608,38 @@
             startingLineNumber = "23"
             endingLineNumber = "23"
             landmarkName = "-imageRectForContentRect:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LePats/Controlls/my/SignRecordViewController.m"
+            timestampString = "455874467.420266"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "-initTableHeaderView"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LePats/Controlls/my/SignRecordViewController.m"
+            timestampString = "455874467.420266"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "-initTableHeaderView"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

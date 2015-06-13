@@ -9,6 +9,7 @@
 #import "SignInViewController.h"
 #import "VRGCalendarView.h"
 #import "NSDate+convenience.h"
+#import "SignRecordViewController.h"
 
 @interface SignInViewController ()<VRGCalendarViewDelegate>{
     VRGCalendarView *_calendar;
@@ -38,6 +39,15 @@
 -(void)initSelfView{
     self.title=@"签到";
     self.view.backgroundColor=[UIColor whiteColor];
+    [self setRightHidden:NO];
+    [self setRightTitle:@"记录"];
+    __weak typeof (self)weakSelf = self;
+    [self addRightEvent:^(id sender)
+     {
+         SignRecordViewController *add=[[SignRecordViewController alloc]init];
+         [weakSelf.navigationController pushViewController:add animated:YES];
+         
+     }];
 }
 
 -(void)initCalendarView{
