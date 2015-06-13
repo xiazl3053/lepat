@@ -19,10 +19,6 @@
     NSString *strUrl = [NSString stringWithFormat:@"%@pets/focus/getFans.do?oper_user_id=%d&userid=%@&token=%@%@",
                         LEPAT_HTTP_HOST,nUserId,user.strUserId,user.strToken,LEPAT_VERSION_INFO];
     [self sendRequest:strUrl];
-    
-    if (nUserId==0) {
-       
-    }
 }
 
 -(void)reciveDic:(int *)nStatus dic:(NSDictionary *)dic

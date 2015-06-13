@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface MyFocusViewController : BaseViewController
-
+@property (nonatomic,assign) int nUserId;
 @end

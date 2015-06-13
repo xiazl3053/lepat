@@ -413,11 +413,13 @@
             
             MyFocusViewController *other=[[MyFocusViewController alloc]init];
             other.hidesBottomBarWhenPushed=YES;
+            other.nUserId=[[UserInfo sharedUserInfo].strUserId intValue];
             [self.navigationController pushViewController:other animated:YES];
         }break;
         case 200:{
             MyFansViewController *other=[[MyFansViewController alloc]init];
             other.hidesBottomBarWhenPushed=YES;
+            other.nUserId=[[UserInfo sharedUserInfo].strUserId intValue];
             [self.navigationController pushViewController:other animated:YES];
             
         }break;

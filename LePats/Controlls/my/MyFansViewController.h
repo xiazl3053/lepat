@@ -10,4 +10,6 @@
 
 @interface MyFansViewController : BaseViewController
 
+@property (nonatomic,assign) int nUserId;
+
 @end

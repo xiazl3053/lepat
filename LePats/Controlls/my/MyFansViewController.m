@@ -46,7 +46,11 @@
 
 -(void)initSelfView{
     self.view.backgroundColor=[UIColor whiteColor];
-    self.title=@"我的粉丝";
+    if (self.nUserId==[[UserInfo sharedUserInfo].strUserId intValue]) {
+        self.title=@"我的粉丝";
+    }else{
+        self.title=@"TA的粉丝";
+    }
 }
 
 -(void)initTableView{
@@ -90,7 +94,7 @@
             [_tableView reloadData];
         }
     };
-    [service requestUserId:userID];
+    [service requestUserId:self.nUserId];
 }
 
 -(void)friendView:(FriendCell *)friend focus:(NSString *)strUserId

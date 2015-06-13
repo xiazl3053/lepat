@@ -17,6 +17,8 @@
 #import "TheyInfoService.h"
 #import "TUserService.h"
 #import "LoginViewController.h"
+#import "MyFansViewController.h"
+#import "MyFocusViewController.h"
 
 @interface TheyMainViewController()
 {
@@ -30,6 +32,9 @@
     TheyInfoService *theyInfo;
     UIScrollView *scrollView;
     TUserService *tUser;
+    UIButton *_releaseBtn;
+    UIButton *_likeBtn;
+    UIView *_line;
 }
 @property (nonatomic,strong) NSMutableArray *aryPets;
 @end
@@ -146,13 +151,49 @@
 
 -(void)initBodyView
 {
-    NSArray *arr = [NSArray arrayWithObjects:@"TA的发布",@"TA的宠物",nil];
-    UISegmentedControl *segment=[[UISegmentedControl alloc]initWithItems:arr];
-    segment.segmentedControlStyle = UISegmentedControlStyleBordered;
-    segment.frame=CGRectMake(0, detail.bottom , KMainScreenSize.width, 40);
-    [segment setSelectedSegmentIndex:0];
+//    NSArray *arr = [NSArray arrayWithObjects:@"TA的发布",@"TA的宠物",nil];
+//    UISegmentedControl *segment=[[UISegmentedControl alloc]initWithItems:arr];
+//    segment.segmentedControlStyle = UISegmentedControlStyleBordered;
+//    segment.frame=CGRectMake(0, detail.bottom , KMainScreenSize.width, 40);
+//    [segment setSelectedSegmentIndex:0];
+//    [self.view addSubview:segment];
+//    [segment addTarget:self action:@selector(segmentedValueChange:) forControlEvents:UIControlEventValueChanged];
+    
+    UIView *segment=[[UIView alloc]initWithFrame:CGRectMake(0, detail.bottom, KMainScreenSize.width, 40)];
+    segment.backgroundColor=[UIColor grayColor];
     [self.view addSubview:segment];
-    [segment addTarget:self action:@selector(segmentedValueChange:) forControlEvents:UIControlEventValueChanged];
+    
+    
+    UIButton *release=[[UIButton alloc]initWithFrame:CGRectMake(0, 0.5, KMainScreenSize.width*.5, 40)];
+    release.backgroundColor=[UIColor whiteColor];
+    [release setTitleColor:UIColorFromRGB(0x24cdfd) forState:UIControlStateSelected];
+    [release setTitleColor:UIColorFromRGB(0x646566) forState:UIControlStateNormal];
+    [release setTitle:@"TA的发布" forState:UIControlStateNormal];
+    release.tag=100;
+    [segment addSubview:release];
+    [release addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
+    [release setSelected:YES];
+    
+    _releaseBtn=release;
+    
+    UIButton *like=[[UIButton alloc]initWithFrame:CGRectMake(release.right, .5, KMainScreenSize.width*.5, 40)];
+    like.backgroundColor=[UIColor whiteColor];
+    [like setTitleColor:UIColorFromRGB(0x24cdfd) forState:UIControlStateSelected];
+    [like setTitleColor:UIColorFromRGB(0x646566) forState:UIControlStateNormal];
+    [like setTitle:@"TA的喜欢" forState:UIControlStateNormal];
+    like.tag=200;
+    [segment addSubview:like];
+    [like addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
+    _likeBtn=like;
+    
+    
+    UIView *line=[[UIView alloc]initWithFrame:CGRectMake(0, segment.height-3, KMainScreenSize.width*.5, 3)];
+    line.backgroundColor=UIColorFromRGB(0x24cdfd);
+    [segment addSubview:line];
+    _line=line;
+    
+
+    
     UIView *view1=[[UIView alloc]initWithFrame:CGRectMake(0, segment.bottom, KMainScreenSize.width, self.view.frame.size.height-segment.bottom)];
     view1.backgroundColor=[UIColor groupTableViewBackgroundColor];
     
@@ -178,6 +219,24 @@
     [self.view addSubview:_rightView];
     
     
+}
+
+-(void)click:(UIButton *)aBtn{
+    
+    if (aBtn.tag==100) {
+        _rightView.hidden=YES;
+        _leftView.hidden=NO;
+        [_likeBtn setSelected:NO];
+        [_releaseBtn setSelected:YES];
+        _line.frame=CGRectMake(0, _releaseBtn.height-3, KMainScreenSize.width*.5, 3);
+        
+    }else{
+        [_likeBtn setSelected:YES];
+        [_releaseBtn setSelected:NO];
+        _leftView.hidden=YES;
+        _rightView.hidden=NO;
+        _line.frame=CGRectMake(KMainScreenSize.width*.5, _releaseBtn.height-3, KMainScreenSize.width*.5, 3);
+    }
 }
 
 -(void)segmentedValueChange:(UISegmentedControl *)segmengt
@@ -225,11 +284,13 @@
     UILabel *focus=[[UILabel alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.20, sign.bottom+10, KMainScreenSize.width*.25, 20)];
     focus.text=[NSString stringWithFormat:@"%d",_nearInfo.nFocusNum];
     focus.textAlignment=NSTextAlignmentCenter;
+    focus.font=[UIFont systemFontOfSize:14];
     [detail addSubview:focus];
     
     UIButton *focusTitle=[[UIButton alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.20, focus.bottom+5, KMainScreenSize.width*.25, 20)];
     [focusTitle setTitle:@"关注" forState:UIControlStateNormal];
     [focusTitle setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    focusTitle.titleLabel.font=[UIFont systemFontOfSize:14];
     [focusTitle addTarget:self action:@selector(gotoOther:) forControlEvents:UIControlEventTouchUpInside];
     focusTitle.tag=100;
     [detail addSubview:focusTitle];
@@ -238,14 +299,18 @@
     UILabel *fans=[[UILabel alloc]initWithFrame:CGRectMake(KMainScreenSize.width*0.6, sign.bottom+10, KMainScreenSize.width*.25, 20)];
     fans.text=[NSString stringWithFormat:@"%d",_nearInfo.nFansNum];
     fans.textAlignment=NSTextAlignmentCenter;
+    fans.font=[UIFont systemFontOfSize:14];
     [detail addSubview:fans];
     
     UIButton *fansTitle=[[UIButton alloc]initWithFrame:CGRectMake(KMainScreenSize.width*0.6, fans.bottom+5, KMainScreenSize.width*.25, 20)];
     [fansTitle setTitle:@"粉丝" forState:UIControlStateNormal];
+    fansTitle.titleLabel.font=[UIFont systemFontOfSize:14];
     [fansTitle setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [fansTitle addTarget:self action:@selector(gotoOther:) forControlEvents:UIControlEventTouchUpInside];
     fansTitle.tag=200;
     [detail addSubview:fansTitle];
+    
+    
     
 //    UILabel *heart=[[UILabel alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.5, sign.bottom+10, KMainScreenSize.width*.25, 20)];
 //    heart.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFansNum];
@@ -279,7 +344,25 @@
 
 -(void)gotoOther:(UIButton *)btnSender
 {
-    
+    NSLog(@"btnSender.tag=%li",btnSender.tag);
+    switch (btnSender.tag) {
+        case 100:
+        {
+            MyFocusViewController *focus=[[MyFocusViewController alloc]init];
+            focus.hidesBottomBarWhenPushed=YES;
+            focus.nUserId=[_nearInfo.strUserId intValue];
+            [self.navigationController pushViewController:focus animated:YES];
+        }break;
+        case 200:{
+            MyFansViewController *fans=[[MyFansViewController alloc]init];
+            fans.nUserId=[_nearInfo.strUserId intValue];
+            fans.hidesBottomBarWhenPushed=YES;
+            [self.navigationController pushViewController:fans animated:YES];
+        }break;
+            
+        default:
+            break;
+    }
 }
 
 -(void)getUserInfo

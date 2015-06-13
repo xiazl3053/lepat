@@ -20,9 +20,6 @@
                         LEPAT_HTTP_HOST,nUserId,user.strUserId,user.strToken,LEPAT_VERSION_INFO];
     [self sendRequest:strUrl];
     
-    if (nUserId==0) {
-        
-    }
 }
 
 -(void)reciveDic:(int *)nStatus dic:(NSDictionary *)dic

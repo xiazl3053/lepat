@@ -48,7 +48,11 @@
 
 -(void)initSelfView{
     self.view.backgroundColor=[UIColor whiteColor];
-    self.title=@"我的关注";
+    if (self.nUserId==[[UserInfo sharedUserInfo].strUserId intValue]) {
+        self.title=@"我的关注";
+    }else{
+        self.title=@"TA的关注";
+    }
 }
 
 -(void)initTableView{
@@ -87,7 +91,7 @@
             [_tableView reloadData];
         }
     };
-    [service requestUserId:userID];
+    [service requestUserId:self.nUserId];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
