@@ -21,6 +21,7 @@
 #import "PetSortService.h"
 #import "PetSort.h"
 #import "SignInViewController.h"
+#import "GiftExchangeViewController.h"
 
 
 @interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,HomeItemCollectionCellDelegate,HomeHeadReusableViewDelegate>
@@ -174,7 +175,7 @@
     
     HomeItemModel *model9 = [[HomeItemModel alloc] init];
     model9.title = @"礼品兑换";
-    model9.tag = 105;
+    model9.tag = 104;
     model9.img = @"home_convert";
     
     HomeItemModel *model10 = [[HomeItemModel alloc] init];
@@ -189,7 +190,7 @@
     
     HomeItemModel *model12 = [[HomeItemModel alloc] init];
     model12.title = @"邀请好友";
-    model12.tag = 105;
+    model12.tag = 107;
     model12.img = @"home_ invite";
     
     [section2 addObject:model9];
@@ -321,7 +322,11 @@
             mapFriend.hidesBottomBarWhenPushed = YES;
             [self presentViewController:mapFriend animated:YES completion:nil];//:mapFriend animated:YES];
         }
-            break;
+        case 104:{
+            GiftExchangeViewController *gift=[[GiftExchangeViewController alloc]init];
+            gift.hidesBottomBarWhenPushed=YES;
+            [self.navigationController pushViewController:gift animated:YES];
+        }break;
         default:
             break;
     }

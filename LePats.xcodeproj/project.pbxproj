@@ -141,6 +141,9 @@
 		84E011CE1B2C0B720022E93F /* SignRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E011CD1B2C0B720022E93F /* SignRecordViewController.m */; };
 		84E011D11B2C12100022E93F /* RecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E011D01B2C12100022E93F /* RecordModel.m */; };
 		84E011D41B2C122E0022E93F /* RecordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E011D31B2C122E0022E93F /* RecordTableViewCell.m */; };
+		84E011D71B2C1B020022E93F /* GiftExchangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E011D61B2C1B020022E93F /* GiftExchangeViewController.m */; };
+		84E011DA1B2C1B9F0022E93F /* GiftExchangeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E011D91B2C1B9F0022E93F /* GiftExchangeTableViewCell.m */; };
+		84E011DD1B2C1BCF0022E93F /* GIftExchangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E011DC1B2C1BCF0022E93F /* GIftExchangeModel.m */; };
 		84E755D01B2285490059710B /* AccessoryToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E755CF1B2285490059710B /* AccessoryToolView.m */; };
 		84E755D41B22B3D40059710B /* ServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E755D31B22B3D40059710B /* ServiceViewController.m */; };
 		84E755D81B22B3F90059710B /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E755D71B22B3F90059710B /* HelpViewController.m */; };
@@ -477,6 +480,12 @@
 		84E011D01B2C12100022E93F /* RecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordModel.m; sourceTree = "<group>"; };
 		84E011D21B2C122E0022E93F /* RecordTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordTableViewCell.h; sourceTree = "<group>"; };
 		84E011D31B2C122E0022E93F /* RecordTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordTableViewCell.m; sourceTree = "<group>"; };
+		84E011D51B2C1B020022E93F /* GiftExchangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiftExchangeViewController.h; sourceTree = "<group>"; };
+		84E011D61B2C1B020022E93F /* GiftExchangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiftExchangeViewController.m; sourceTree = "<group>"; };
+		84E011D81B2C1B9F0022E93F /* GiftExchangeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiftExchangeTableViewCell.h; sourceTree = "<group>"; };
+		84E011D91B2C1B9F0022E93F /* GiftExchangeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiftExchangeTableViewCell.m; sourceTree = "<group>"; };
+		84E011DB1B2C1BCF0022E93F /* GIftExchangeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIftExchangeModel.h; sourceTree = "<group>"; };
+		84E011DC1B2C1BCF0022E93F /* GIftExchangeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GIftExchangeModel.m; sourceTree = "<group>"; };
 		84E755CE1B2285490059710B /* AccessoryToolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessoryToolView.h; sourceTree = "<group>"; };
 		84E755CF1B2285490059710B /* AccessoryToolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessoryToolView.m; sourceTree = "<group>"; };
 		84E755D21B22B3D40059710B /* ServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceViewController.h; sourceTree = "<group>"; };
@@ -654,6 +663,8 @@
 				84B964671B2AD1AE00F0FA6B /* SignInViewController.m */,
 				84E011CC1B2C0B720022E93F /* SignRecordViewController.h */,
 				84E011CD1B2C0B720022E93F /* SignRecordViewController.m */,
+				84E011D51B2C1B020022E93F /* GiftExchangeViewController.h */,
+				84E011D61B2C1B020022E93F /* GiftExchangeViewController.m */,
 			);
 			path = my;
 			sourceTree = "<group>";
@@ -841,6 +852,8 @@
 				84E755E11B2584EB0059710B /* UserOperationModel.m */,
 				84E011CF1B2C12100022E93F /* RecordModel.h */,
 				84E011D01B2C12100022E93F /* RecordModel.m */,
+				84E011DB1B2C1BCF0022E93F /* GIftExchangeModel.h */,
+				84E011DC1B2C1BCF0022E93F /* GIftExchangeModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1010,6 +1023,8 @@
 				4DB9F6721B286D8D00941C83 /* PetsButton.m */,
 				84E011D21B2C122E0022E93F /* RecordTableViewCell.h */,
 				84E011D31B2C122E0022E93F /* RecordTableViewCell.m */,
+				84E011D81B2C1B9F0022E93F /* GiftExchangeTableViewCell.h */,
+				84E011D91B2C1B9F0022E93F /* GiftExchangeTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1315,6 +1330,7 @@
 				4D5FEDC41B1CB10200360323 /* LoginService.m in Sources */,
 				84B964AD1B2BD48500F0FA6B /* MJRefreshConst.m in Sources */,
 				4D5FEDB21B1CB10200360323 /* AppDelegate.mm in Sources */,
+				84E011D71B2C1B020022E93F /* GiftExchangeViewController.m in Sources */,
 				84E755DF1B2581C40059710B /* MyButton.m in Sources */,
 				4D5FED9F1B1CB10200360323 /* SDWebImageDownloader.m in Sources */,
 				84B964781B2AD1CA00F0FA6B /* VRGCalendarView.m in Sources */,
@@ -1358,6 +1374,7 @@
 				4D5FEDCF1B1CB10200360323 /* HomeItemButton.m in Sources */,
 				4D5FEDA01B1CB10200360323 /* SDWebImageDownloaderOperation.m in Sources */,
 				4D08BF5E1B21196C0037D6C9 /* UserModel.m in Sources */,
+				84E011DA1B2C1B9F0022E93F /* GiftExchangeTableViewCell.m in Sources */,
 				841AB4401B1FF4BC007B09D7 /* FansModel.m in Sources */,
 				4D08BF521B2118BD0037D6C9 /* FMDatabase.m in Sources */,
 				4D5FEDB01B1CB10200360323 /* NearInfo.m in Sources */,
@@ -1380,6 +1397,7 @@
 				4D5FEDD51B1CB10200360323 /* SexButton.m in Sources */,
 				84B964AE1B2BD48500F0FA6B /* MJRefreshFooter.m in Sources */,
 				84B964AC1B2BD48500F0FA6B /* MJRefreshComponent.m in Sources */,
+				84E011DD1B2C1BCF0022E93F /* GIftExchangeModel.m in Sources */,
 				84B964B31B2BD48500F0FA6B /* MJRefreshLegendHeader.m in Sources */,
 				4D5FED9B1B1CB10200360323 /* NSData+ImageContentType.m in Sources */,
 				4D5FED8B1B1CB10200360323 /* MyViewController.m in Sources */,
