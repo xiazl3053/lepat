@@ -34,6 +34,7 @@
 }
 
 -(void)initSelfView{
+    self.title=@"我的签到";
     self.view.backgroundColor=[UIColor whiteColor];
 }
 

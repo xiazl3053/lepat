@@ -143,12 +143,5 @@
 #define VIDEO_HIGH  NSLocalizedString(@"videoHight", nil)
 
 
-#define  MJRefreshFooterPullToRefresh NSLocalizedString(@"pulltomore","")
-#define  MJRefreshFooterReleaseToRefresh NSLocalizedString(@"releasemore", "")
-#define  MJRefreshFooterRefreshing  NSLocalizedString(@"devfresh", "")
-
-#define  MJRefreshHeaderPullToRefresh NSLocalizedString(@"pullto", "")
-#define  MJRefreshHeaderReleaseToRefresh NSLocalizedString(@"releaseRefresh", "")
-#define  MJRefreshHeaderRefreshing NSLocalizedString(@"devfresh", "")
 
 #endif

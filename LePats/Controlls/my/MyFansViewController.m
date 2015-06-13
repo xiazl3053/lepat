@@ -11,22 +11,20 @@
 #import "UserInfo.h"
 #import "Toast+UIView.h"
 #import "FansModel.h"
-#import "MJRefresh.h"
 #import "MyViewController.h"
 #import "NearInfo.h"
 #import "FriendCell.h"
 #import "FocusService.h"
 #import "TheyMainViewController.h"
 #import "Common.h"
+#import "MJRefresh.h"
 
 @interface MyFansViewController ()<UITableViewDataSource,UITableViewDelegate,FriendViewDelegate>{
-    
-    UITableView *_tableView;
     NSArray *_fansList;
     FocusService *focus;
     
 }
-
+@property (nonatomic,strong) UITableView *tableView;
 @end
 
 @implementation MyFansViewController
@@ -55,29 +53,46 @@
 }
 
 -(void)initTableView{
-    UITableView *tableView= [[UITableView alloc] initWithFrame:CGRectMake(0, [self barSize].height,KMainScreenSize.width,KMainScreenSize.height-[self barSize].height)];
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    //_nTimeOut = 0;
+    self.tableView= [[UITableView alloc] initWithFrame:CGRectMake(0, [self barSize].height,KMainScreenSize.width,KMainScreenSize.height-[self barSize].height)];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     
-    [tableView addHeaderWithTarget:self action:@selector(headerRereshing)];
-    [tableView addFooterWithTarget:self action:@selector(footerrefeshing)];
+    __weak typeof(self) weakSelf = self;
     
-    [self.view addSubview:tableView];
+    // 添加传统的下拉刷新
+    // 设置回调（一旦进入刷新状态就会调用这个refreshingBlock）
+    [self.tableView addLegendHeaderWithRefreshingBlock:^{
+        [weakSelf loadNewData];
+    }];
+    
+    // 马上进入刷新状态
+    [self.tableView.legendHeader beginRefreshing];
+    
+    
+    // 添加传统的上拉刷新
+    // 设置回调（一旦进入刷新状态就会调用这个refreshingBlock）
+    [self.tableView addLegendFooterWithRefreshingBlock:^{
+        [weakSelf loadMoreData];
+    }];
+    
+    
+
+
+    [self.view addSubview:self.tableView];
     
     UIView *view = [UIView new];
     view.backgroundColor = [UIColor clearColor];
-    [tableView setTableFooterView:view];
+    [self.tableView setTableFooterView:view];
     
-    _tableView=tableView;
 }
 
--(void)headerRereshing{
-
+-(void)loadNewData{
+    [self.tableView.header endRefreshing];
 }
 
--(void)footerrefeshing{
+-(void)loadMoreData{
+    [self.tableView.footer endRefreshing];
 
 }
 
@@ -86,9 +101,12 @@
 }
 
 -(void)initParams{
+     __weak typeof(self) weakSelf = self;
     MyFansService *service=[[MyFansService alloc]init];
     int userID=[[UserInfo sharedUserInfo].strUserId intValue];
     service.myFansServiceBlock=^(NSString *error,NSArray *data){
+        [weakSelf.tableView.header endRefreshing];
+        [weakSelf.tableView.footer endRefreshing];
         if (error) {
             [self.view makeToast:error];
         }else{
