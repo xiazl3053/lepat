@@ -16,6 +16,7 @@
 #import "MyFocusViewController.h"
 #import "MyButton.h"
 #import "UserOperationModel.h"
+#import "LeftImgButton.h"
 
 @interface MyViewController ()<UITableViewDataSource,UITableViewDelegate>{
     UIImageView *_headView;
@@ -183,28 +184,36 @@
     [detail addSubview:status];
     
     
-    UIView *operation=[[UIView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-200)*.5,_statusView.bottom, 200, 40)];
+    UIView *operation=[[UIView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-160)*.5,_statusView.bottom, 160, 40)];
     
-    UIButton *focus=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, operation.width*.5, 40)];
-    focus.backgroundColor=[UIColor whiteColor];
+    LeftImgButton *focus=[[LeftImgButton alloc]initWithFrame:CGRectMake(0, 10, operation.width*.5-10, 30)];
+    focus.layer.borderColor=[UIColor grayColor].CGColor;
+    focus.layer.borderWidth=1;
+    //focus.backgroundColor=[UIColor whiteColor];
     [focus setTitleColor:UIColorFromRGB(0x24cdfd) forState:UIControlStateSelected];
     //[focus setBackgroundColor:UIColorFromRGB(0x646566)];
     [focus setTitleColor:UIColorFromRGB(0x24cdfd) forState:UIControlStateNormal];
+    [focus setImage:[UIImage imageNamed:@"my_focus"] forState:UIControlStateNormal];
     [focus setTitle:@"关注" forState:UIControlStateNormal];
+    focus.titleLabel.font=[UIFont systemFontOfSize:14];
     focus.tag=1000;
     [operation addSubview:focus];
-    [focus addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
+    [focus addTarget:self action:@selector(getFocus) forControlEvents:UIControlEventTouchUpInside];
     
     
-    UIButton *chat=[[UIButton alloc]initWithFrame:CGRectMake(focus.right, 0, operation.width*.5, 40)];
-    chat.backgroundColor=[UIColor whiteColor];
+    LeftImgButton *chat=[[LeftImgButton alloc]initWithFrame:CGRectMake(focus.right+20, 10, operation.width*.5-10, 30)];
+    //chat.backgroundColor=[UIColor redColor];
+    chat.layer.borderColor=[UIColor grayColor].CGColor;
+    chat.layer.borderWidth=1;
     [chat setTitleColor:UIColorFromRGB(0x24cdfd) forState:UIControlStateSelected];
+    [chat setImage:[UIImage imageNamed:@"my_chat"] forState:UIControlStateNormal];
     [chat setTitleColor:UIColorFromRGB(0x24cdfd) forState:UIControlStateNormal];
     //[chat setBackgroundColor:UIColorFromRGB(0x24cdfd)];
     [chat setTitle:@"私信" forState:UIControlStateNormal];
+    chat.titleLabel.font=[UIFont systemFontOfSize:14];
     chat.tag=2000;
     [operation addSubview:chat];
-    [chat addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
+    [chat addTarget:self action:@selector(getChat) forControlEvents:UIControlEventTouchUpInside];
     
     [detail addSubview:operation];
     _tableHeadView=detail;
@@ -304,6 +313,14 @@
     return segment;
 }
 
+
+-(void)getFocus{
+
+}
+
+-(void)getChat{
+
+}
 
 -(void)click:(UIButton *)aBtn{
     

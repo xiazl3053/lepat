@@ -136,7 +136,8 @@
 		84B964B41B2BD48500F0FA6B /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B964A61B2BD48500F0FA6B /* UIScrollView+MJExtension.m */; };
 		84B964B51B2BD48500F0FA6B /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B964A81B2BD48500F0FA6B /* UIScrollView+MJRefresh.m */; };
 		84B964B61B2BD48500F0FA6B /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B964AA1B2BD48500F0FA6B /* UIView+MJExtension.m */; };
-		84B964B91B2BDD0D00F0FA6B /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B964B81B2BDD0D00F0FA6B /* UIView+Extension.m */; };
+		84B964BC1B2BE10200F0FA6B /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B964BB1B2BE10200F0FA6B /* UIView+Extension.m */; };
+		84E011CB1B2C00B90022E93F /* LeftImgButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E011CA1B2C00B90022E93F /* LeftImgButton.m */; };
 		84E755D01B2285490059710B /* AccessoryToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E755CF1B2285490059710B /* AccessoryToolView.m */; };
 		84E755D41B22B3D40059710B /* ServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E755D31B22B3D40059710B /* ServiceViewController.m */; };
 		84E755D81B22B3F90059710B /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E755D71B22B3F90059710B /* HelpViewController.m */; };
@@ -462,9 +463,11 @@
 		84B964A81B2BD48500F0FA6B /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		84B964A91B2BD48500F0FA6B /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		84B964AA1B2BD48500F0FA6B /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
-		84B964B71B2BDD0D00F0FA6B /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
-		84B964B81B2BDD0D00F0FA6B /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		84B964BA1B2BE10200F0FA6B /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		84B964BB1B2BE10200F0FA6B /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		84D4D1C91B018FA400E67D9C /* LePats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LePats.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		84E011C91B2C00B90022E93F /* LeftImgButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftImgButton.h; sourceTree = "<group>"; };
+		84E011CA1B2C00B90022E93F /* LeftImgButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftImgButton.m; sourceTree = "<group>"; };
 		84E755CE1B2285490059710B /* AccessoryToolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessoryToolView.h; sourceTree = "<group>"; };
 		84E755CF1B2285490059710B /* AccessoryToolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessoryToolView.m; sourceTree = "<group>"; };
 		84E755D21B22B3D40059710B /* ServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceViewController.h; sourceTree = "<group>"; };
@@ -960,6 +963,8 @@
 				4D5FED671B1CB10200360323 /* AddPetCellTableViewCell.m */,
 				4D5FED681B1CB10200360323 /* FriendCell.h */,
 				4D5FED691B1CB10200360323 /* FriendCell.m */,
+				84B964BA1B2BE10200F0FA6B /* UIView+Extension.h */,
+				84B964BB1B2BE10200F0FA6B /* UIView+Extension.m */,
 				4D5FED6A1B1CB10200360323 /* HomeGiftItemButton.h */,
 				4D5FED6B1B1CB10200360323 /* HomeGiftItemButton.m */,
 				4D5FED6C1B1CB10200360323 /* HomeHeadItemButton.h */,
@@ -986,6 +991,8 @@
 				84E755CF1B2285490059710B /* AccessoryToolView.m */,
 				84E755DD1B2581C40059710B /* MyButton.h */,
 				84E755DE1B2581C40059710B /* MyButton.m */,
+				84E011C91B2C00B90022E93F /* LeftImgButton.h */,
+				84E011CA1B2C00B90022E93F /* LeftImgButton.m */,
 				4DB9F6711B286D8D00941C83 /* PetsButton.h */,
 				4DB9F6721B286D8D00941C83 /* PetsButton.m */,
 			);
@@ -1006,8 +1013,6 @@
 		84B964691B2AD1CA00F0FA6B /* CalendarView */ = {
 			isa = PBXGroup;
 			children = (
-				84B964B71B2BDD0D00F0FA6B /* UIView+Extension.h */,
-				84B964B81B2BDD0D00F0FA6B /* UIView+Extension.m */,
 				84B9646A1B2AD1CA00F0FA6B /* NSDate+convenience.h */,
 				84B9646B1B2AD1CA00F0FA6B /* NSDate+convenience.m */,
 				84B9646C1B2AD1CA00F0FA6B /* NSMutableArray+convenience.h */,
@@ -1306,6 +1311,7 @@
 				4D93262C1B1F4F5700BB6B68 /* BDMarker.m in Sources */,
 				84E755E21B2584EB0059710B /* UserOperationModel.m in Sources */,
 				4D5FED891B1CB10200360323 /* MainViewController.m in Sources */,
+				84E011CB1B2C00B90022E93F /* LeftImgButton.m in Sources */,
 				84B964751B2AD1CA00F0FA6B /* NSMutableArray+convenience.m in Sources */,
 				841AB43D1B1FEF96007B09D7 /* MyFocusViewController.m in Sources */,
 				84B964B21B2BD48500F0FA6B /* MJRefreshLegendFooter.m in Sources */,
@@ -1362,7 +1368,7 @@
 				4D5FEDC51B1CB10200360323 /* RegisterService.m in Sources */,
 				842F1C431B2A74500009C1C3 /* GiftService.m in Sources */,
 				4D5FED811B1CB10200360323 /* UIView+Add.m in Sources */,
-				84B964B91B2BDD0D00F0FA6B /* UIView+Extension.m in Sources */,
+				84B964BC1B2BE10200F0FA6B /* UIView+Extension.m in Sources */,
 				4D5FED961B1CB10200360323 /* UserInfoViewController.m in Sources */,
 				4DC433501B2B155700045562 /* ChineseString.m in Sources */,
 				4D5FED9E1B1CB10200360323 /* SDWebImageDecoder.m in Sources */,

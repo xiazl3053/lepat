@@ -19,6 +19,9 @@
 #import "LoginViewController.h"
 #import "MyFansViewController.h"
 #import "MyFocusViewController.h"
+#import "LeftImgButton.h"
+#import "UserOperationModel.h"
+#import "MyButton.h"
 
 @interface TheyMainViewController()
 {
@@ -35,6 +38,7 @@
     UIButton *_releaseBtn;
     UIButton *_likeBtn;
     UIView *_line;
+    UIView *_statusView;
 }
 @property (nonatomic,strong) NSMutableArray *aryPets;
 @end
@@ -261,7 +265,7 @@
 
 -(void)initDetailView
 {
-    detail=[[UIView alloc]initWithFrame:CGRectMake(0, imgHead.y+imgHead.height+20, KMainScreenSize.width, 120)];
+    detail=[[UIView alloc]initWithFrame:CGRectMake(0, imgHead.y+imgHead.height+20, KMainScreenSize.width, 140)];
     
     UILabel *nick=[[UILabel alloc]initWithFrame:CGRectMake(0, 5, KMainScreenSize.width, 15)];
     nick.text = _nearInfo.strName;
@@ -281,36 +285,95 @@
     sign.textAlignment=NSTextAlignmentCenter;
     [detail addSubview:sign];
     
-    UILabel *focus=[[UILabel alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.20, sign.bottom+10, KMainScreenSize.width*.25, 20)];
-    focus.text=[NSString stringWithFormat:@"%d",_nearInfo.nFocusNum];
-    focus.textAlignment=NSTextAlignmentCenter;
-    focus.font=[UIFont systemFontOfSize:14];
-    [detail addSubview:focus];
     
-    UIButton *focusTitle=[[UIButton alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.20, focus.bottom+5, KMainScreenSize.width*.25, 20)];
-    [focusTitle setTitle:@"关注" forState:UIControlStateNormal];
-    [focusTitle setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    focusTitle.titleLabel.font=[UIFont systemFontOfSize:14];
-    [focusTitle addTarget:self action:@selector(gotoOther:) forControlEvents:UIControlEventTouchUpInside];
-    focusTitle.tag=100;
-    [detail addSubview:focusTitle];
+    UIView *status=[[UIView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-200)*.5,sign.bottom, 200, 40)];
     
+    UserOperationModel *model=[[UserOperationModel alloc]init];
+    model.title=@"关注";
+    model.number=_nearInfo.nFocusNum;
+    model.tag=100;
     
-    UILabel *fans=[[UILabel alloc]initWithFrame:CGRectMake(KMainScreenSize.width*0.6, sign.bottom+10, KMainScreenSize.width*.25, 20)];
-    fans.text=[NSString stringWithFormat:@"%d",_nearInfo.nFansNum];
-    fans.textAlignment=NSTextAlignmentCenter;
-    fans.font=[UIFont systemFontOfSize:14];
-    [detail addSubview:fans];
-    
-    UIButton *fansTitle=[[UIButton alloc]initWithFrame:CGRectMake(KMainScreenSize.width*0.6, fans.bottom+5, KMainScreenSize.width*.25, 20)];
-    [fansTitle setTitle:@"粉丝" forState:UIControlStateNormal];
-    fansTitle.titleLabel.font=[UIFont systemFontOfSize:14];
-    [fansTitle setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [fansTitle addTarget:self action:@selector(gotoOther:) forControlEvents:UIControlEventTouchUpInside];
-    fansTitle.tag=200;
-    [detail addSubview:fansTitle];
+    UserOperationModel *model1=[[UserOperationModel alloc]init];
+    model1.title=@"粉丝";
+    model1.number=_nearInfo.nFansNum;
+    model1.tag=200;
     
     
+    
+    NSArray *list=[NSArray arrayWithObjects:model,model1, nil];
+    
+    for (int i=0; i<list.count; i++) {
+        UserOperationModel *obj=[list objectAtIndex:i];
+        MyButton *aBtn=[[MyButton alloc]initWithFrame:CGRectMake(i*status.width/list.count, 0, status.width/list.count, status.height)];
+        [aBtn setValueWithUserOperationModel:obj];
+        [aBtn addTarget:self action:@selector(gotoOther:) forControlEvents:UIControlEventTouchUpInside];
+        [status addSubview:aBtn];
+    }
+    _statusView=status;
+    [detail addSubview:status];
+    
+//    UILabel *focus=[[UILabel alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.20, sign.bottom+10, KMainScreenSize.width*.25, 20)];
+//    focus.text=[NSString stringWithFormat:@"%d",_nearInfo.nFocusNum];
+//    focus.textAlignment=NSTextAlignmentCenter;
+//    focus.font=[UIFont systemFontOfSize:14];
+//    [detail addSubview:focus];
+//    
+//    UIButton *focusTitle=[[UIButton alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.30, focus.bottom+5, KMainScreenSize.width*.25, 20)];
+//    [focusTitle setTitle:@"关注" forState:UIControlStateNormal];
+//    [focusTitle setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    focusTitle.titleLabel.font=[UIFont systemFontOfSize:14];
+//    [focusTitle addTarget:self action:@selector(gotoOther:) forControlEvents:UIControlEventTouchUpInside];
+//    focusTitle.tag=100;
+//    [detail addSubview:focusTitle];
+    
+    
+//    UILabel *fans=[[UILabel alloc]initWithFrame:CGRectMake(KMainScreenSize.width*0.5, sign.bottom+10, KMainScreenSize.width*.25, 20)];
+//    fans.text=[NSString stringWithFormat:@"%d",_nearInfo.nFansNum];
+//    fans.textAlignment=NSTextAlignmentCenter;
+//    fans.font=[UIFont systemFontOfSize:14];
+//    [detail addSubview:fans];
+//    
+//    UIButton *fansTitle=[[UIButton alloc]initWithFrame:CGRectMake(KMainScreenSize.width*0.6, fans.bottom+5, KMainScreenSize.width*.25, 20)];
+//    [fansTitle setTitle:@"粉丝" forState:UIControlStateNormal];
+//    fansTitle.titleLabel.font=[UIFont systemFontOfSize:14];
+//    [fansTitle setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    [fansTitle addTarget:self action:@selector(gotoOther:) forControlEvents:UIControlEventTouchUpInside];
+//    fansTitle.tag=200;
+//    [detail addSubview:fansTitle];
+    
+    UIView *operation=[[UIView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-160)*.5,status.bottom, 160, 40)];
+    
+    LeftImgButton *focusBtn=[[LeftImgButton alloc]initWithFrame:CGRectMake(0, 10, operation.width*.5-10, 30)];
+    focusBtn.layer.borderColor=[UIColor grayColor].CGColor;
+    focusBtn.layer.borderWidth=1;
+    //focus.backgroundColor=[UIColor whiteColor];
+    [focusBtn setTitleColor:UIColorFromRGB(0x24cdfd) forState:UIControlStateSelected];
+    //[focus setBackgroundColor:UIColorFromRGB(0x646566)];
+    [focusBtn setTitleColor:UIColorFromRGB(0x24cdfd) forState:UIControlStateNormal];
+    [focusBtn setImage:[UIImage imageNamed:@"my_focus"] forState:UIControlStateNormal];
+    [focusBtn setTitle:@"关注" forState:UIControlStateNormal];
+    focusBtn.titleLabel.font=[UIFont systemFontOfSize:14];
+    focusBtn.tag=1000;
+    [operation addSubview:focusBtn];
+    [focusBtn addTarget:self action:@selector(getFocus) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    LeftImgButton *chat=[[LeftImgButton alloc]initWithFrame:CGRectMake(focusBtn.right+20, 10, operation.width*.5-10, 30)];
+    //chat.backgroundColor=[UIColor redColor];
+    chat.layer.borderColor=[UIColor grayColor].CGColor;
+    chat.layer.borderWidth=1;
+    [chat setTitleColor:UIColorFromRGB(0x24cdfd) forState:UIControlStateSelected];
+    [chat setImage:[UIImage imageNamed:@"my_chat"] forState:UIControlStateNormal];
+    [chat setTitleColor:UIColorFromRGB(0x24cdfd) forState:UIControlStateNormal];
+    //[chat setBackgroundColor:UIColorFromRGB(0x24cdfd)];
+    [chat setTitle:@"私信" forState:UIControlStateNormal];
+    chat.titleLabel.font=[UIFont systemFontOfSize:14];
+    chat.tag=2000;
+    [operation addSubview:chat];
+    [chat addTarget:self action:@selector(getChat) forControlEvents:UIControlEventTouchUpInside];
+    
+    [detail addSubview:operation];
+
     
 //    UILabel *heart=[[UILabel alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.5, sign.bottom+10, KMainScreenSize.width*.25, 20)];
 //    heart.text=[NSString stringWithFormat:@"%@",[UserInfo sharedUserInfo].strFansNum];
@@ -373,6 +436,13 @@
 -(void)theyDetail
 {
     
+}
+
+-(void)getFocus{
+
+}
+-(void)getChat{
+
 }
 
 

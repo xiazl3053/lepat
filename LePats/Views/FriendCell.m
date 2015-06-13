@@ -8,6 +8,7 @@
 
 #import "FriendCell.h"
 #import "UIView+Extension.h"
+#import "UIImageView+WebCache.h"
 
 @implementation FriendCell
 
@@ -126,14 +127,15 @@
     _lblName.text = nearInfo.strName;
     _lblInfo.text = nearInfo.strContent;
     _lblPet.text = [NSString stringWithFormat:@"TA的宠物:"];
-    [_lblDistance setText:[NSString stringWithFormat:@"%.02f m",nearInfo.fDistan]];
+    [_lblDistance setText:[NSString stringWithFormat:@"%.02f 里",nearInfo.fDistan/1000]];
     _strUserId = nearInfo.strUserId;
     NSString *strInfo = nearInfo.nFocus ? @"取消关注" : @"关注";
     [_btnAttention setTitle:strInfo forState:UIControlStateNormal];
     
     _imgHead.image = nearInfo.nSex ? [UIImage imageNamed:@"boy"] : [UIImage imageNamed:@"girl"];
     [_imgView setImage:[UIImage imageNamed:@"left_icon_noraml"]];
-    [self setImageInfo:nearInfo.strFile];
+    [_imgView sd_setImageWithURL:[NSURL URLWithString:nearInfo.strFile] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
+    //[self setImageInfo:nearInfo.strFile];
 }
 
 -(void)setAttenBtnSwtich

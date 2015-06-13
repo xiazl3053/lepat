@@ -506,11 +506,11 @@
         int targetX = targetColumn * (kVRGCalendarViewDayWidth+2) + 7;
         int targetY = kVRGCalendarViewTopBarHeight + targetRow * (kVRGCalendarViewDayHeight+2) + 38;
     
-        CGRect rectangle = CGRectMake(targetX,targetY-30,32,32);
+        CGRect rectangle = CGRectMake(targetX+5,targetY-33,32,32);
         
         NSLog(@"targetX=%i,targetY=%i",targetX,targetY);
         
-        [[UIImage imageNamed:@"home_like"] drawInRect:rectangle];
+        [[UIImage imageNamed:@"home_signin"] drawInRect:rectangle];
         
         //CGContextAddRect(context, rectangle);
         
@@ -544,7 +544,7 @@
 
 #pragma mark - Init
 -(id)init {
-    self = [super initWithFrame:CGRectMake(0, 64, kVRGCalendarViewWidth, 0)];
+    self = [super initWithFrame:CGRectMake(0, 0, kVRGCalendarViewWidth, 0)];
     if (self) {
         self.contentMode = UIViewContentModeTop;
         self.clipsToBounds=YES;
