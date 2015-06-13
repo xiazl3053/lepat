@@ -17,6 +17,7 @@
 #import "FriendCell.h"
 #import "FocusService.h"
 #import "TheyMainViewController.h"
+#import "Common.h"
 
 @interface MyFansViewController ()<UITableViewDataSource,UITableViewDelegate,FriendViewDelegate>{
     
@@ -62,6 +63,7 @@
     
     [tableView addHeaderWithTarget:self action:@selector(headerRereshing)];
     [tableView addFooterWithTarget:self action:@selector(footerrefeshing)];
+    
     [self.view addSubview:tableView];
     
     UIView *view = [UIView new];
