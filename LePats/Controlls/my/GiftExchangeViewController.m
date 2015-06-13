@@ -36,7 +36,7 @@
 }
 
 -(void)initSelfView{
-    self.title=@"记录数";
+    self.title=@"礼品兑换";
     self.view.backgroundColor=[UIColor whiteColor];
 }
 
