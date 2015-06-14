@@ -164,7 +164,7 @@
 //   [lblLocation setBackgroundColor:RGB(173, 173, 173)];
    [lblLocation setTextColor:RGB(15,173,225)];
    [lblLocation setText:@"正在解析您的位置..."];
-   _tableView = [[UITableView alloc] initWithFrame:Rect(0, lblLocation.height+lblLocation.y, self.view.width,self.view.height-lblLocation.height-lblLocation.y-44)];
+   _tableView = [[UITableView alloc] initWithFrame:Rect(0, lblLocation.height+lblLocation.y, self.view.width,self.view.height-lblLocation.height-lblLocation.y)];
    [self.view addSubview:_tableView];
    _tableView.delegate = self;
    _tableView.dataSource = self;
