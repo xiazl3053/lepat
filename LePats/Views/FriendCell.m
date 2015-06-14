@@ -127,7 +127,13 @@
     _lblName.text = nearInfo.strName;
     _lblInfo.text = nearInfo.strContent;
     _lblPet.text = [NSString stringWithFormat:@"TA的宠物:"];
-    [_lblDistance setText:[NSString stringWithFormat:@"%.02f 里",nearInfo.fDistan/1000]];
+    float dis=nearInfo.fDistan/2000;
+    if (dis<1) {
+        [_lblDistance setText:[NSString stringWithFormat:@"%.02f 米",nearInfo.fDistan]];
+    }else{
+        [_lblDistance setText:[NSString stringWithFormat:@"%.02f 公里",dis]];
+    }
+    
     _strUserId = nearInfo.strUserId;
     NSString *strInfo = nearInfo.nFocus ? @"取消关注" : @"关注";
     [_btnAttention setTitle:strInfo forState:UIControlStateNormal];

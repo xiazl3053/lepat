@@ -19,6 +19,7 @@ DEFINE_SINGLETON_FOR_HEADER(UserInfo);
 @property (nonatomic,strong) NSString *strUserId;
 @property (nonatomic,strong) NSString *strBirthday;
 @property (nonatomic,assign) int  nSex;
+@property (nonatomic,assign) int  nScore;
 @property (nonatomic,strong ) NSString *strCode;
 @property (nonatomic,strong) NSString *strUserIcon;
 @property (nonatomic,copy) NSString *strFocusNum;

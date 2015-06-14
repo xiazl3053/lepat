@@ -20,11 +20,11 @@
 */
 
 -(CGRect)imageRectForContentRect:(CGRect)contentRect{
-    return CGRectMake(10, 5, 20, 20);
+    return CGRectMake(5, 5, 20, 20);
 }
 
 -(CGRect)titleRectForContentRect:(CGRect)contentRect{
-    return CGRectMake(35 , 0, 30, contentRect.size.height);
+    return CGRectMake(30 , 0, 45, contentRect.size.height);
 }
 
 @end

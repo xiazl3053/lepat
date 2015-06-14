@@ -144,6 +144,7 @@
 		84E011D71B2C1B020022E93F /* GiftExchangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E011D61B2C1B020022E93F /* GiftExchangeViewController.m */; };
 		84E011DA1B2C1B9F0022E93F /* GiftExchangeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E011D91B2C1B9F0022E93F /* GiftExchangeTableViewCell.m */; };
 		84E011DD1B2C1BCF0022E93F /* GIftExchangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E011DC1B2C1BCF0022E93F /* GIftExchangeModel.m */; };
+		84E011E01B2D944A0022E93F /* RelationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E011DF1B2D944A0022E93F /* RelationService.m */; };
 		84E755D01B2285490059710B /* AccessoryToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E755CF1B2285490059710B /* AccessoryToolView.m */; };
 		84E755D41B22B3D40059710B /* ServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E755D31B22B3D40059710B /* ServiceViewController.m */; };
 		84E755D81B22B3F90059710B /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E755D71B22B3F90059710B /* HelpViewController.m */; };
@@ -486,6 +487,8 @@
 		84E011D91B2C1B9F0022E93F /* GiftExchangeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiftExchangeTableViewCell.m; sourceTree = "<group>"; };
 		84E011DB1B2C1BCF0022E93F /* GIftExchangeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIftExchangeModel.h; sourceTree = "<group>"; };
 		84E011DC1B2C1BCF0022E93F /* GIftExchangeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GIftExchangeModel.m; sourceTree = "<group>"; };
+		84E011DE1B2D944A0022E93F /* RelationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelationService.h; sourceTree = "<group>"; };
+		84E011DF1B2D944A0022E93F /* RelationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelationService.m; sourceTree = "<group>"; };
 		84E755CE1B2285490059710B /* AccessoryToolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessoryToolView.h; sourceTree = "<group>"; };
 		84E755CF1B2285490059710B /* AccessoryToolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessoryToolView.m; sourceTree = "<group>"; };
 		84E755D21B22B3D40059710B /* ServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceViewController.h; sourceTree = "<group>"; };
@@ -1157,6 +1160,8 @@
 				BB3CBD2C1B2166AF00EF49C4 /* TheyInfoService.m */,
 				BB3CBD2E1B217DDF00EF49C4 /* TUserService.h */,
 				BB3CBD2F1B217DDF00EF49C4 /* TUserService.m */,
+				84E011DE1B2D944A0022E93F /* RelationService.h */,
+				84E011DF1B2D944A0022E93F /* RelationService.m */,
 			);
 			name = they;
 			sourceTree = "<group>";
@@ -1317,6 +1322,7 @@
 				4D5FEDBF1B1CB10200360323 /* MyPetService.m in Sources */,
 				84E755D41B22B3D40059710B /* ServiceViewController.m in Sources */,
 				4D08BF451B2056980037D6C9 /* FindPetsService.m in Sources */,
+				84E011E01B2D944A0022E93F /* RelationService.m in Sources */,
 				84E011CE1B2C0B720022E93F /* SignRecordViewController.m in Sources */,
 				84E011D41B2C122E0022E93F /* RecordTableViewCell.m in Sources */,
 				84B964B61B2BD48500F0FA6B /* UIView+MJExtension.m in Sources */,

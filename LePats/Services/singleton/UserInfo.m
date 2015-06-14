@@ -25,6 +25,7 @@ DEFINE_SINGLETON_FOR_CLASS(UserInfo);
     _strFansNum=[dicInfo objectForKey:@"fansNum"];
     _strFocusNum=[dicInfo objectForKey:@"focusNum"];
     _strUserIcon=[dicInfo objectForKey:@"userIcon"];
+    _nScore=[[dicInfo objectForKey:@"points"]intValue];
 }
 
 @end

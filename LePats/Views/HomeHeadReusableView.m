@@ -56,6 +56,7 @@
     _score.hidden=NO;
     _btn.hidden=YES;
     _noLogin.hidden=YES;
+    _score.text=[NSString stringWithFormat:@"%i",[UserInfo sharedUserInfo].nScore];
     [self queryGift];
 }
 

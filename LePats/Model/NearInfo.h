@@ -23,6 +23,7 @@
 @property (nonatomic,assign) int nFansNum;
 @property (nonatomic,assign) int nFocusNum;
 @property (nonatomic,copy) NSString *strSignature;
+@property (nonatomic,assign) int nRelation;
 
 -(id)initWithItems:(NSArray *)items;
 

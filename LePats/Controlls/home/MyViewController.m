@@ -109,7 +109,7 @@
 }
 
 -(void)initTableViewHeadView{
-    UIView *detail=[[UIView alloc]initWithFrame:CGRectMake(0, 0, KMainScreenSize.width, 260)];
+    UIView *detail=[[UIView alloc]initWithFrame:CGRectMake(0, 0, KMainScreenSize.width, 220)];
     detail.backgroundColor=[UIColor whiteColor];
     detail.layer.borderColor=[UIColor grayColor].CGColor;
     detail.layer.borderWidth=0.5;
@@ -184,38 +184,38 @@
     [detail addSubview:status];
     
     
-    UIView *operation=[[UIView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-160)*.5,_statusView.bottom, 160, 40)];
-    
-    LeftImgButton *focus=[[LeftImgButton alloc]initWithFrame:CGRectMake(0, 10, operation.width*.5-10, 30)];
-    focus.layer.borderColor=[UIColor grayColor].CGColor;
-    focus.layer.borderWidth=1;
-    //focus.backgroundColor=[UIColor whiteColor];
-    [focus setTitleColor:UIColorFromRGB(0x24cdfd) forState:UIControlStateSelected];
-    //[focus setBackgroundColor:UIColorFromRGB(0x646566)];
-    [focus setTitleColor:UIColorFromRGB(0x24cdfd) forState:UIControlStateNormal];
-    [focus setImage:[UIImage imageNamed:@"my_focus"] forState:UIControlStateNormal];
-    [focus setTitle:@"关注" forState:UIControlStateNormal];
-    focus.titleLabel.font=[UIFont systemFontOfSize:14];
-    focus.tag=1000;
-    [operation addSubview:focus];
-    [focus addTarget:self action:@selector(getFocus) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    LeftImgButton *chat=[[LeftImgButton alloc]initWithFrame:CGRectMake(focus.right+20, 10, operation.width*.5-10, 30)];
-    //chat.backgroundColor=[UIColor redColor];
-    chat.layer.borderColor=[UIColor grayColor].CGColor;
-    chat.layer.borderWidth=1;
-    [chat setTitleColor:UIColorFromRGB(0x24cdfd) forState:UIControlStateSelected];
-    [chat setImage:[UIImage imageNamed:@"my_chat"] forState:UIControlStateNormal];
-    [chat setTitleColor:UIColorFromRGB(0x24cdfd) forState:UIControlStateNormal];
-    //[chat setBackgroundColor:UIColorFromRGB(0x24cdfd)];
-    [chat setTitle:@"私信" forState:UIControlStateNormal];
-    chat.titleLabel.font=[UIFont systemFontOfSize:14];
-    chat.tag=2000;
-    [operation addSubview:chat];
-    [chat addTarget:self action:@selector(getChat) forControlEvents:UIControlEventTouchUpInside];
-    
-    [detail addSubview:operation];
+//    UIView *operation=[[UIView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-160)*.5,_statusView.bottom, 160, 40)];
+//    
+//    LeftImgButton *focus=[[LeftImgButton alloc]initWithFrame:CGRectMake(0, 10, operation.width*.5-10, 30)];
+//    focus.layer.borderColor=[UIColor grayColor].CGColor;
+//    focus.layer.borderWidth=1;
+//    //focus.backgroundColor=[UIColor whiteColor];
+//    [focus setTitleColor:UIColorFromRGB(0x24cdfd) forState:UIControlStateSelected];
+//    //[focus setBackgroundColor:UIColorFromRGB(0x646566)];
+//    [focus setTitleColor:UIColorFromRGB(0x24cdfd) forState:UIControlStateNormal];
+//    [focus setImage:[UIImage imageNamed:@"my_focus"] forState:UIControlStateNormal];
+//    [focus setTitle:@"关注" forState:UIControlStateNormal];
+//    focus.titleLabel.font=[UIFont systemFontOfSize:14];
+//    focus.tag=1000;
+//    [operation addSubview:focus];
+//    [focus addTarget:self action:@selector(getFocus) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    
+//    LeftImgButton *chat=[[LeftImgButton alloc]initWithFrame:CGRectMake(focus.right+20, 10, operation.width*.5-10, 30)];
+//    //chat.backgroundColor=[UIColor redColor];
+//    chat.layer.borderColor=[UIColor grayColor].CGColor;
+//    chat.layer.borderWidth=1;
+//    [chat setTitleColor:UIColorFromRGB(0x24cdfd) forState:UIControlStateSelected];
+//    [chat setImage:[UIImage imageNamed:@"my_chat"] forState:UIControlStateNormal];
+//    [chat setTitleColor:UIColorFromRGB(0x24cdfd) forState:UIControlStateNormal];
+//    //[chat setBackgroundColor:UIColorFromRGB(0x24cdfd)];
+//    [chat setTitle:@"私信" forState:UIControlStateNormal];
+//    chat.titleLabel.font=[UIFont systemFontOfSize:14];
+//    chat.tag=2000;
+//    [operation addSubview:chat];
+//    [chat addTarget:self action:@selector(getChat) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    [detail addSubview:operation];
     _tableHeadView=detail;
 }
 
@@ -252,7 +252,7 @@
     if (self.items) {
         return 10;
     }else{
-        return 325;
+        return 365;
     }
 }
 
@@ -346,7 +346,7 @@
             cell.selectionStyle=UITableViewCellSelectionStyleNone;
             
             if (_releaseBtn.selected) {
-                UIView *view1=[[UIView alloc]initWithFrame:CGRectMake(0,0, KMainScreenSize.width, 325)];
+                UIView *view1=[[UIView alloc]initWithFrame:CGRectMake(0,0, KMainScreenSize.width, 365)];
                 view1.backgroundColor=[UIColor groupTableViewBackgroundColor];
                 view1.tag=888;
                 
@@ -362,7 +362,7 @@
                 
                 [cell addSubview:view1];
             }else{
-                UIView *view2=[[UIView alloc]initWithFrame:CGRectMake(0, 0, KMainScreenSize.width, 325)];
+                UIView *view2=[[UIView alloc]initWithFrame:CGRectMake(0, 0, KMainScreenSize.width, 365)];
                 view2.backgroundColor=[UIColor groupTableViewBackgroundColor];
                 view2.tag=888;
                 

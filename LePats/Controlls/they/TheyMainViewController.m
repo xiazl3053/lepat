@@ -22,6 +22,8 @@
 #import "LeftImgButton.h"
 #import "UserOperationModel.h"
 #import "MyButton.h"
+#import "FocusService.h"
+#import "RelationService.h"
 
 @interface TheyMainViewController()
 {
@@ -39,6 +41,7 @@
     UIButton *_likeBtn;
     UIView *_line;
     UIView *_statusView;
+    LeftImgButton *_focusBtn;
 }
 @property (nonatomic,strong) NSMutableArray *aryPets;
 @end
@@ -52,6 +55,19 @@
     _nearInfo = near;
     
     return self;
+}
+
+-(void)requestRelation{
+    __weak typeof(self) weakSelf =self;
+    RelationService *service=[[RelationService alloc]init];
+    service.relationBlock=^(NSString *error,NSInteger code){
+        if (error) {
+            
+        }else{
+         [_focusBtn setTitle:[weakSelf isFocusFromFocusCode:[UserInfo sharedUserInfo].nScore] forState:UIControlStateNormal];
+        }
+    };
+    [service requestOperId:_nearInfo.strUserId];
 }
 
 -(void)requestTheyInfo
@@ -116,7 +132,7 @@
 {
     [super viewDidAppear:animated];
     [self requestTheyInfo];
-    
+    [self requestRelation];
 }
 
 -(void)viewDidLoad
@@ -351,12 +367,12 @@
     //[focus setBackgroundColor:UIColorFromRGB(0x646566)];
     [focusBtn setTitleColor:UIColorFromRGB(0x24cdfd) forState:UIControlStateNormal];
     [focusBtn setImage:[UIImage imageNamed:@"my_focus"] forState:UIControlStateNormal];
-    [focusBtn setTitle:@"关注" forState:UIControlStateNormal];
-    focusBtn.titleLabel.font=[UIFont systemFontOfSize:14];
+    [focusBtn setTitle:[self isFocusFromFocusCode:_nearInfo.nRelation] forState:UIControlStateNormal];
+    focusBtn.titleLabel.font=[UIFont systemFontOfSize:12];
     focusBtn.tag=1000;
     [operation addSubview:focusBtn];
     [focusBtn addTarget:self action:@selector(getFocus) forControlEvents:UIControlEventTouchUpInside];
-    
+    _focusBtn=focusBtn;
     
     LeftImgButton *chat=[[LeftImgButton alloc]initWithFrame:CGRectMake(focusBtn.right+20, 10, operation.width*.5-10, 30)];
     //chat.backgroundColor=[UIColor redColor];
@@ -367,7 +383,7 @@
     [chat setTitleColor:UIColorFromRGB(0x24cdfd) forState:UIControlStateNormal];
     //[chat setBackgroundColor:UIColorFromRGB(0x24cdfd)];
     [chat setTitle:@"私信" forState:UIControlStateNormal];
-    chat.titleLabel.font=[UIFont systemFontOfSize:14];
+    chat.titleLabel.font=[UIFont systemFontOfSize:12];
     chat.tag=2000;
     [operation addSubview:chat];
     [chat addTarget:self action:@selector(getChat) forControlEvents:UIControlEventTouchUpInside];
@@ -439,12 +455,50 @@
 }
 
 -(void)getFocus{
+    
+    __weak typeof(self) weakSelf=self;
+   FocusService *focus = [[FocusService alloc] init];
+    
+    focus.httpFocus = ^(int nStatus,NSString *strMsg)
+    {
+        if (nStatus == 1)
+        {
+            [weakSelf requestRelation];
+        }
+        else
+        {
+            
+        }
+    };
+    [focus requestFocus:_nearInfo.strUserId];
+
 
 }
 -(void)getChat{
 
 }
 
+
+-(NSString *)isFocusFromFocusCode:(NSInteger )code{
+    switch (code) {
+        case 10:{
+            return @"已关注";
+        }break;
+        case 11:{
+            return @"已关注";
+        }break;
+        case 0:{
+            return @"关注";
+        }break;
+        case 1:{
+            return @"关注";
+        }break;
+            
+        default:
+            return nil;
+            break;
+    }
+}
 
 
 @end
