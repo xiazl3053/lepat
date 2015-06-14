@@ -189,6 +189,10 @@
             [cell addSubview:icon];
         }
         
+        if (indexPath.row==3) {
+            cell.indicate.hidden=YES;
+        }
+        
         if (indexPath.row==1) {
             cell.indicate.hidden=YES;
         }
@@ -291,9 +295,9 @@
         }break;
         case 104:
         {
-            EditMyInfoViewController *edit=[[EditMyInfoViewController alloc]init];
-            edit.editType=MYInfoEdit_TYPE_Sex;
-            [self.navigationController pushViewController:edit animated:YES];
+//            EditMyInfoViewController *edit=[[EditMyInfoViewController alloc]init];
+//            edit.editType=MYInfoEdit_TYPE_Sex;
+//            [self.navigationController pushViewController:edit animated:YES];
         }break;
         case 105:
         {

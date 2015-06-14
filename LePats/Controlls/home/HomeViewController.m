@@ -22,6 +22,7 @@
 #import "PetSort.h"
 #import "SignInViewController.h"
 #import "GiftExchangeViewController.h"
+#import "FriendListViewController.h"
 
 
 @interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,HomeItemCollectionCellDelegate,HomeHeadReusableViewDelegate>
@@ -317,12 +318,17 @@
         }break;
         case 106:
         {
-            MapFriendViewController *mapFriend = [[MapFriendViewController alloc] init];
+            
+            FriendListViewController *mapFriend=[[FriendListViewController alloc]init];
+//            MapFriendViewController *mapFriend = [[MapFriendViewController alloc] init];
 //            MapPetsViewController *mapPets = [[MapPetsViewController alloc] init];
+            //[self presentViewController:mapFriend animated:YES completion:nil];//:mapFriend animated:YES];
             mapFriend.hidesBottomBarWhenPushed = YES;
-            [self presentViewController:mapFriend animated:YES completion:nil];//:mapFriend animated:YES];
-        }
-        case 104:{
+            [self.navigationController pushViewController:mapFriend animated:YES];
+            
+        }break;
+        case 104
+            :{
             GiftExchangeViewController *gift=[[GiftExchangeViewController alloc]init];
             gift.hidesBottomBarWhenPushed=YES;
             [self.navigationController pushViewController:gift animated:YES];

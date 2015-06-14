@@ -144,7 +144,7 @@
            if(aryPet.count==0)
            {
                dispatch_async(dispatch_get_main_queue(), ^{
-                   [__self.view makeToast:@"没有找到目标"];
+                   [__self.view makeToast:@"当前位置没有小伙伴"];
                });
            }
            else
