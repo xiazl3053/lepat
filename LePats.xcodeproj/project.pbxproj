@@ -120,6 +120,7 @@
 		841AB43D1B1FEF96007B09D7 /* MyFocusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841AB43C1B1FEF96007B09D7 /* MyFocusViewController.m */; };
 		841AB4401B1FF4BC007B09D7 /* FansModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 841AB43F1B1FF4BC007B09D7 /* FansModel.m */; };
 		842F1C431B2A74500009C1C3 /* GiftService.m in Sources */ = {isa = PBXBuildFile; fileRef = 842F1C421B2A74500009C1C3 /* GiftService.m */; };
+		846E29AB1B2E9F3D00CE37D8 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 846E29AA1B2E9F3D00CE37D8 /* libz.1.1.3.dylib */; };
 		84B964681B2AD1AE00F0FA6B /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B964671B2AD1AE00F0FA6B /* SignInViewController.m */; };
 		84B964741B2AD1CA00F0FA6B /* NSDate+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9646B1B2AD1CA00F0FA6B /* NSDate+convenience.m */; };
 		84B964751B2AD1CA00F0FA6B /* NSMutableArray+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9646D1B2AD1CA00F0FA6B /* NSMutableArray+convenience.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -438,6 +439,7 @@
 		841AB43F1B1FF4BC007B09D7 /* FansModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FansModel.m; sourceTree = "<group>"; };
 		842F1C411B2A74500009C1C3 /* GiftService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiftService.h; sourceTree = "<group>"; };
 		842F1C421B2A74500009C1C3 /* GiftService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiftService.m; sourceTree = "<group>"; };
+		846E29AA1B2E9F3D00CE37D8 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
 		84B964661B2AD1AE00F0FA6B /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
 		84B964671B2AD1AE00F0FA6B /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
 		84B9646A1B2AD1CA00F0FA6B /* NSDate+convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+convenience.h"; sourceTree = "<group>"; };
@@ -518,6 +520,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				846E29AB1B2E9F3D00CE37D8 /* libz.1.1.3.dylib in Frameworks */,
 				4D08BF601B2135480037D6C9 /* libsqlite3.dylib in Frameworks */,
 				4D202BE71B088977007DED73 /* Security.framework in Frameworks */,
 				4DC433561B2E87BF00045562 /* MAMapKit.framework in Frameworks */,
@@ -1185,6 +1188,7 @@
 		CC7EBB73573971DED49E0533 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				846E29AA1B2E9F3D00CE37D8 /* libz.1.1.3.dylib */,
 				4D08BF5F1B2135480037D6C9 /* libsqlite3.dylib */,
 				4D202BE61B088977007DED73 /* Security.framework */,
 				4D202BE41B088970007DED73 /* CoreGraphics.framework */,
@@ -1552,6 +1556,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_CXX_LIBRARY = "libstdc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
@@ -1571,7 +1576,7 @@
 					"$(PROJECT_DIR)/LePats/General/baidumap",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f7c3aa05-d0e9-4a29-a136-e17396b5e3e1";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7";
 			};
@@ -1583,6 +1588,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_CXX_LIBRARY = "libstdc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
@@ -1602,7 +1608,7 @@
 					"$(PROJECT_DIR)/LePats/General/baidumap",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f7c3aa05-d0e9-4a29-a136-e17396b5e3e1";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7";
 			};
@@ -1652,6 +1658,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_CXX_LIBRARY = "libstdc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
@@ -1671,7 +1678,7 @@
 					"$(PROJECT_DIR)/LePats/General/baidumap",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f7c3aa05-d0e9-4a29-a136-e17396b5e3e1";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7";
 			};
