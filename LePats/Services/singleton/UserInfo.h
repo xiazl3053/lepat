@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <CoreLocation/CoreLocation.h>
 @interface UserInfo : NSObject
+
 
 DEFINE_SINGLETON_FOR_HEADER(UserInfo);
 
@@ -28,5 +29,7 @@ DEFINE_SINGLETON_FOR_HEADER(UserInfo);
 
 
 -(void)setLoginUser:(NSDictionary *)strInfo;
+
+-(double)getDistan:(CLLocationCoordinate2D)dStart end:(CLLocationCoordinate2D)dEnd;
 
 @end

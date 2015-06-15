@@ -18,5 +18,6 @@ typedef void(^HttpPetBlock)(int nStatus,NSArray *aryPet);
 -(void)requestAllPetLocation:(CGFloat)fLat long:(CGFloat)fLng;
 -(void)requestPetLocation:(CGFloat)fLat long:(CGFloat)fLng pet:(int)nPet;
 
+-(void)requestDisPetWithLat:(CGFloat)fLat lng:(CGFloat)fLng dis:(double)dDis;
 
 @end

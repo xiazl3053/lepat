@@ -55,6 +55,14 @@
     }
 }
 
+-(void)requestDisPetWithLat:(CGFloat)fLat lng:(CGFloat)fLng dis:(double)dDis
+{
+    UserInfo *user = [UserInfo sharedUserInfo];
+    NSString *strUrl = [NSString stringWithFormat:@"%@pets/user/getNearByUserPets.do?lat=%f&lng=%f&raidus=%f&userid=%@&token=%@%@",LEPAT_HTTP_HOST,fLat,fLng,dDis,user.strUserId,user.strToken,LEPAT_VERSION_INFO];
+    [self sendRequest:strUrl];
+
+}
+
 -(void)requestPetLocation:(CGFloat)fLat long:(CGFloat)fLng type:(int)nType
 {
      UserInfo *user = [UserInfo sharedUserInfo];//pets/user/getNearByUserPets.do

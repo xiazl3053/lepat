@@ -253,9 +253,43 @@
 
 -(void)findLocation
 {
-    if (_mapView) {
+    if (_mapView)
+    {
         DLog(@"%f--%f",_mapView.region.center.latitude,_mapView.region.center.longitude);
         DLog(@"%f--%f",_mapView.region.span.latitudeDelta,_mapView.region.span.longitudeDelta);
+        
+        CLLocationCoordinate2D start,end;
+        start = _mapView.region.center;
+        end.latitude = _mapView.region.span.latitudeDelta+_mapView.region.center.latitude;
+        end.longitude = _mapView.region.span.longitudeDelta+_mapView.region.center.longitude;
+        double dDis = [[UserInfo sharedUserInfo] getDistan:start end:end];
+        __weak MapPetsViewController *__self = self;
+        findPets.httpBlock = ^(int nStatus,NSArray *aryPet)
+        {
+            if (nStatus==1)
+            {
+                if(aryPet.count==0)
+                {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [__self.view makeToast:@"没有找到目标"];
+                    });
+                }
+                else
+                {
+                    dispatch_async(dispatch_get_main_queue(),
+                                   ^{
+                                       [__self removeAnnotation];
+                                   });
+                    [__self.aryNear removeAllObjects];
+                    [__self.aryNear addObjectsFromArray:aryPet];
+                    dispatch_async(dispatch_get_main_queue(),
+                                   ^{
+                                       [__self addAnnotation];
+                                   });
+                }
+            }
+        };
+        [findPets requestDisPetWithLat:_mapView.region.center.latitude lng:_mapView.region.center.longitude dis:dDis];//:_mapView.region.center.latitude long:_mapView.region.center.latitude pet:<#(int)#>]
     }
 }
 
