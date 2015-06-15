@@ -57,8 +57,35 @@
     return self;
 }
 
+-(void)mapZoomIn
+{
+    if (_mapView) {
+        [_mapView zoomIn];
+    }
+}
+
+-(void)mapZoomOut
+{
+    if (_mapView)
+    {
+        [_mapView zoomOut];
+    }
+}
+
 -(void)initTableView
 {
+    UIButton *btnIn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btnIn setImage:[UIImage imageNamed:@"map_zoomIn"] forState:UIControlStateNormal];
+    [self.view addSubview:btnIn];
+    [btnIn addTarget:self action:@selector(mapZoomIn) forControlEvents:UIControlEventTouchUpInside];
+    btnIn.frame = Rect(self.view.width - 50,self.view.height-160,40,40);
+    
+    UIButton *btnOut = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btnOut setImage:[UIImage imageNamed:@"map_ZoomOut"] forState:UIControlStateNormal];
+    [self.view addSubview:btnOut];
+    [btnOut addTarget:self action:@selector(mapZoomOut) forControlEvents:UIControlEventTouchUpInside];
+    btnOut.frame = Rect(self.view.width-50,self.view.height-116,40,40);
+ 
     topView = [[UIView alloc] initWithFrame:Rect(0,0,self.view.width,self.view.height)];
     [self.view addSubview:topView];
     
@@ -208,6 +235,25 @@
     [self startLocation];
     [self initTableView];
     [self initWithScrol];
+    [self setRightHidden:NO];
+    [self setRightRect:Rect(self.view.width-50, 20, 40, 40)];
+    [self setRightImg:@"my_location" high:nil select:nil];
+    __weak MapPetsViewController *__self = self;
+    [self addRightEvent:^(id sender)
+    {
+        [__self setMapCenter];
+    }];
+}
+
+-(void)setMapCenter
+{
+    if(_mapView)
+    {
+        CLLocationCoordinate2D coord;
+        coord.latitude = fLat;
+        coord.longitude = fLong;
+        [_mapView setCenterCoordinate:coord animated:YES];
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
