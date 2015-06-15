@@ -61,6 +61,12 @@
 
 -(void)initTableView
 {
+    UIButton *btnLocation = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btnLocation setImage:[UIImage imageNamed:@"my_location"] forState:UIControlStateNormal];
+    [self.view addSubview:btnLocation];
+    [btnLocation addTarget:self action:@selector(setMapCenter) forControlEvents:UIControlEventTouchUpInside];
+    btnLocation.frame = Rect(self.view.width-50,70, 40, 40);
+    
     UIButton *btnIn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btnIn setImage:[UIImage imageNamed:@"map_zoomIn"] forState:UIControlStateNormal];
     [self.view addSubview:btnIn];
@@ -266,13 +272,21 @@
     [self initWithScrol];
     [self initTableView];
     [self setRightHidden:NO];
-    [self setRightRect:Rect(self.view.width-50, 20, 40, 40)];
-    [self setRightImg:@"my_location" high:nil select:nil];
+    [self setRightRect:Rect(self.view.width-80, 20, 70, 40)];
+    [self setRightTitle:@"当前查找"];
     __weak MapFriendViewController *__self = self;
     [self addRightEvent:^(id sender)
-    {
-        [__self setMapCenter];
-    }];
+     {
+         [__self findLocation];
+     }];
+}
+
+-(void)findLocation
+{
+    if (_mapView) {
+        DLog(@"%f--%f",_mapView.region.center.latitude,_mapView.region.center.longitude);
+        DLog(@"%f--%f",_mapView.region.span.latitudeDelta,_mapView.region.span.longitudeDelta);
+    }
 }
 -(void)setMapCenter
 {
