@@ -312,7 +312,7 @@
     __weak MapPetsViewController *__self =self;
     findPets.httpBlock = ^(int nStatus,NSArray *aryInfo)
     {
-        DLog(@"aryData_length:%lu",aryInfo.count);
+        DLog(@"aryData_length:%u",aryInfo.count);
         dispatch_async(dispatch_get_main_queue(), ^{
             [__self removeAnnotation];
         });

@@ -111,6 +111,8 @@
 		4DB9F6731B286D8D00941C83 /* PetsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB9F6721B286D8D00941C83 /* PetsButton.m */; };
 		4DC433501B2B155700045562 /* ChineseString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4334D1B2B155700045562 /* ChineseString.m */; };
 		4DC433511B2B155700045562 /* pinyin.c in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4334E1B2B155700045562 /* pinyin.c */; };
+		4DC433551B2E87BF00045562 /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC433531B2E87BF00045562 /* AMapSearchKit.framework */; };
+		4DC433561B2E87BF00045562 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC433541B2E87BF00045562 /* MAMapKit.framework */; };
 		7AE8302AB035A0F6C58184D7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF811F65411D3FCD44EA091 /* libPods.a */; };
 		8416BBF01B1D6C990085FC33 /* MyFansService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8416BBEF1B1D6C990085FC33 /* MyFansService.m */; };
 		8416BBF31B1D6D6C0085FC33 /* MyFansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8416BBF21B1D6D6C0085FC33 /* MyFansViewController.m */; };
@@ -421,6 +423,8 @@
 		4DC4334D1B2B155700045562 /* ChineseString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChineseString.m; sourceTree = "<group>"; };
 		4DC4334E1B2B155700045562 /* pinyin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pinyin.c; sourceTree = "<group>"; };
 		4DC4334F1B2B155700045562 /* pinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pinyin.h; sourceTree = "<group>"; };
+		4DC433531B2E87BF00045562 /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
+		4DC433541B2E87BF00045562 /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
 		635FBA24F678FB40B37ED093 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8416BBEE1B1D6C990085FC33 /* MyFansService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFansService.h; sourceTree = "<group>"; };
 		8416BBEF1B1D6C990085FC33 /* MyFansService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFansService.m; sourceTree = "<group>"; };
@@ -516,10 +520,12 @@
 			files = (
 				4D08BF601B2135480037D6C9 /* libsqlite3.dylib in Frameworks */,
 				4D202BE71B088977007DED73 /* Security.framework in Frameworks */,
+				4DC433561B2E87BF00045562 /* MAMapKit.framework in Frameworks */,
 				4D202BE51B088970007DED73 /* CoreGraphics.framework in Frameworks */,
 				4D202BE31B088967007DED73 /* SystemConfiguration.framework in Frameworks */,
 				4D5FED971B1CB10200360323 /* libbaidumapapi.a in Frameworks */,
 				4D202BE11B08895E007DED73 /* OpenGLES.framework in Frameworks */,
+				4DC433551B2E87BF00045562 /* AMapSearchKit.framework in Frameworks */,
 				4D202BDF1B088956007DED73 /* QuartzCore.framework in Frameworks */,
 				4D202BDD1B08894D007DED73 /* CoreLocation.framework in Frameworks */,
 				7AE8302AB035A0F6C58184D7 /* libPods.a in Frameworks */,
@@ -1043,6 +1049,15 @@
 			path = pinyin;
 			sourceTree = "<group>";
 		};
+		4DC433521B2E87BF00045562 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				4DC433531B2E87BF00045562 /* AMapSearchKit.framework */,
+				4DC433541B2E87BF00045562 /* MAMapKit.framework */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
 		84B964691B2AD1CA00F0FA6B /* CalendarView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1113,6 +1128,7 @@
 		84D4D1CB1B018FA400E67D9C /* LePats */ = {
 			isa = PBXGroup;
 			children = (
+				4DC433521B2E87BF00045562 /* lib */,
 				4D5FEC7D1B1CB10200360323 /* Category */,
 				4D5FEC821B1CB10200360323 /* Controlls */,
 				4D5FECB11B1CB10200360323 /* General */,
@@ -1542,6 +1558,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LePats/General",
+					"$(PROJECT_DIR)/LePats/lib",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1554,7 +1571,7 @@
 					"$(PROJECT_DIR)/LePats/General/baidumap",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "f7c3aa05-d0e9-4a29-a136-e17396b5e3e1";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7";
 			};
@@ -1572,6 +1589,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LePats/General",
+					"$(PROJECT_DIR)/LePats/lib",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1584,7 +1602,7 @@
 					"$(PROJECT_DIR)/LePats/General/baidumap",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "f7c3aa05-d0e9-4a29-a136-e17396b5e3e1";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7";
 			};
@@ -1640,6 +1658,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LePats/General",
+					"$(PROJECT_DIR)/LePats/lib",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1652,7 +1671,7 @@
 					"$(PROJECT_DIR)/LePats/General/baidumap",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "f7c3aa05-d0e9-4a29-a136-e17396b5e3e1";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7";
 			};
