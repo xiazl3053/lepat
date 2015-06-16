@@ -153,6 +153,8 @@
 		84E755D81B22B3F90059710B /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E755D71B22B3F90059710B /* HelpViewController.m */; };
 		84E755DF1B2581C40059710B /* MyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E755DE1B2581C40059710B /* MyButton.m */; };
 		84E755E21B2584EB0059710B /* UserOperationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E755E11B2584EB0059710B /* UserOperationModel.m */; };
+		84EE1D961B2FBD46007AF774 /* PetImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EE1D951B2FBD46007AF774 /* PetImageView.m */; };
+		84F0B4831B2FB30300AB6363 /* TwoTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F0B4821B2FB30300AB6363 /* TwoTitleButton.m */; };
 		BB1FB2F51B1DA95100A02CCD /* MapPetsViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB1FB2F41B1DA95100A02CCD /* MapPetsViewController.mm */; };
 		BB3CBD291B213CE700EF49C4 /* TheyMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3CBD281B213CE700EF49C4 /* TheyMainViewController.m */; };
 		BB3CBD2D1B2166AF00EF49C4 /* TheyInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3CBD2C1B2166AF00EF49C4 /* TheyInfoService.m */; };
@@ -505,6 +507,10 @@
 		84E755DE1B2581C40059710B /* MyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyButton.m; sourceTree = "<group>"; };
 		84E755E01B2584EB0059710B /* UserOperationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserOperationModel.h; sourceTree = "<group>"; };
 		84E755E11B2584EB0059710B /* UserOperationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserOperationModel.m; sourceTree = "<group>"; };
+		84EE1D941B2FBD46007AF774 /* PetImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PetImageView.h; sourceTree = "<group>"; };
+		84EE1D951B2FBD46007AF774 /* PetImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetImageView.m; sourceTree = "<group>"; };
+		84F0B4811B2FB30300AB6363 /* TwoTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoTitleButton.h; sourceTree = "<group>"; };
+		84F0B4821B2FB30300AB6363 /* TwoTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoTitleButton.m; sourceTree = "<group>"; };
 		BB1FB2F31B1DA95100A02CCD /* MapPetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapPetsViewController.h; sourceTree = "<group>"; };
 		BB1FB2F41B1DA95100A02CCD /* MapPetsViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MapPetsViewController.mm; sourceTree = "<group>"; };
 		BB3CBD271B213CE700EF49C4 /* TheyMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TheyMainViewController.h; sourceTree = "<group>"; };
@@ -1031,12 +1037,16 @@
 				84E755DE1B2581C40059710B /* MyButton.m */,
 				84E011C91B2C00B90022E93F /* LeftImgButton.h */,
 				84E011CA1B2C00B90022E93F /* LeftImgButton.m */,
+				84F0B4811B2FB30300AB6363 /* TwoTitleButton.h */,
+				84F0B4821B2FB30300AB6363 /* TwoTitleButton.m */,
 				4DB9F6711B286D8D00941C83 /* PetsButton.h */,
 				4DB9F6721B286D8D00941C83 /* PetsButton.m */,
 				84E011D21B2C122E0022E93F /* RecordTableViewCell.h */,
 				84E011D31B2C122E0022E93F /* RecordTableViewCell.m */,
 				84E011D81B2C1B9F0022E93F /* GiftExchangeTableViewCell.h */,
 				84E011D91B2C1B9F0022E93F /* GiftExchangeTableViewCell.m */,
+				84EE1D941B2FBD46007AF774 /* PetImageView.h */,
+				84EE1D951B2FBD46007AF774 /* PetImageView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1331,6 +1341,7 @@
 				4D5FEDA11B1CB10200360323 /* SDWebImageManager.m in Sources */,
 				4D5FEDC01B1CB10200360323 /* PetInfoEditService.m in Sources */,
 				4D5FEDCA1B1CB10200360323 /* AddPetCellTableViewCell.m in Sources */,
+				84F0B4831B2FB30300AB6363 /* TwoTitleButton.m in Sources */,
 				4D5FEDC61B1CB10200360323 /* UpdUserService.m in Sources */,
 				4D08BF541B2118BD0037D6C9 /* FMDatabasePool.m in Sources */,
 				4D5FEDC11B1CB10200360323 /* PetInfoService.m in Sources */,
@@ -1428,6 +1439,7 @@
 				4D5FED9B1B1CB10200360323 /* NSData+ImageContentType.m in Sources */,
 				4D5FED8B1B1CB10200360323 /* MyViewController.m in Sources */,
 				4D5FEDC51B1CB10200360323 /* RegisterService.m in Sources */,
+				84EE1D961B2FBD46007AF774 /* PetImageView.m in Sources */,
 				842F1C431B2A74500009C1C3 /* GiftService.m in Sources */,
 				4D5FED811B1CB10200360323 /* UIView+Add.m in Sources */,
 				84B964BC1B2BE10200F0FA6B /* UIView+Extension.m in Sources */,
@@ -1576,7 +1588,7 @@
 					"$(PROJECT_DIR)/LePats/General/baidumap",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f7c3aa05-d0e9-4a29-a136-e17396b5e3e1";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7";
 			};

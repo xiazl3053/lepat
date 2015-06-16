@@ -45,8 +45,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initParams];
     [self initViews];
+    [self initParams];
     // Do any additional setup after loading the view.
 }
 
@@ -57,7 +57,7 @@
 }
 
 -(void)getPetInfo{
-    if (self.type==PetType_EDIT) {
+    if (self.type==PetType_EDIT||self.type==PetType_TA) {
         [self queryPetInfo];
     }else{
         self.pet=[[LePetInfo alloc]init];
@@ -78,14 +78,6 @@
 
 -(void)initData{
     self.sexList=[NSArray arrayWithObjects:@"男",@"女",nil];
-    //    LePetInfo *pet=[[LePetInfo alloc]init];
-    //    pet.strName=@"啊黑";
-    //    pet.strBirthday=@"5";
-    //    pet.nSex=1;
-    //    pet.strDescription=@"漂亮的小宝贝";
-    //    pet.nSortId=0;
-    //    _pet=pet;
-    
 }
 
 -(void)queryPetInfo{
@@ -105,11 +97,27 @@
             [_tableView reloadData];
         }
     };
-    if (self.type==PetType_ADD) {
-        [pet requestPetInfo:_pet.nPetId];
-    }else{
-        [pet requestPetInfo:self.nPetId];
+    switch (self.type) {
+        case PetType_ADD:
+        {
+            [pet requestPetInfo:_pet.nPetId];
+        }break;
+        case PetType_EDIT:{
+            [pet requestPetInfo:self.nPetId];
+        }break;
+        case PetType_TA:{
+            _tableView.userInteractionEnabled=NO;
+            [pet requestPetInfo:self.nPetId];
+        }break;
+            
+        default:
+            break;
     }
+//    if (self.type==PetType_ADD) {
+//        
+//    }else{
+//        [pet requestPetInfo:self.nPetId];
+//    }
 }
 
 -(void)initViews{
@@ -148,6 +156,7 @@
 }
 
 -(void)initSelfView{
+    
     if (self.type==PetType_EDIT) {
         [self setRightHidden:NO];
         [self setRightTitle:@"保存"];
@@ -175,11 +184,18 @@
 }
 
 -(void)submitPetInfoView{
+    
+    
+    
     UIButton *submit=[[UIButton alloc]initWithFrame:CGRectMake(10, _tableView.bottom+40, KMainScreenSize.width-20, 40)];
     [self.view addSubview:submit];
     [submit setBackgroundColor:RGB(0, 146, 255)];
     [submit.layer setMasksToBounds:YES];
     submit.layer.cornerRadius = 3.0f;
+    
+    if (self.type==PetType_TA) {
+        submit.hidden=YES;
+    }
     
     if (self.type==PetType_EDIT) {
         [submit setTitle:@"删除" forState:UIControlStateNormal];
@@ -295,90 +311,8 @@
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
     }
     switch (self.type) {
-        case PetType_ADD:{
-            switch (indexPath.row) {
-                case 0:
-                {
-                    cell.title.text=@"宠物昵称:";
-                    //cell.detailTextLabel.text=_pet.strName;
-                }break;
-                case 1:
-                {
-                    cell.title.text=@"宠物类型:";
-                    cell.content.inputView=_sortPickerView;
-                    AccessoryToolView *accessory=[[AccessoryToolView alloc]init];
-                    accessory.accessoryToolViewClickBlock=^(NSInteger index){
-                        [_tableView endEditing:YES];
-                        if (index==1) {
-                            NSLog(@"取消");
-                        }else{
-                            NSInteger row=[_sortPickerView selectedRowInComponent:0];
-                            PetSortModel *model=[self.sortList objectAtIndex:row];
-                            _sortCell.content.text=model.name;
-                            _pet.nSortId=[model.iD intValue];
-                            NSLog(@"完成");
-                        }
-                    };
-                    cell.content.inputAccessoryView=accessory;
-                    _sortCell=cell;
-                    //cell.detailTextLabel.text=[NSString stringWithFormat:@"%i",_pet.nSortId];
-                }break;
-                case 2:
-                {
-                    cell.title.text=@"宠物年龄:";
-                    cell.content.inputView=_datePickerView;
-                    AccessoryToolView *accessory=[[AccessoryToolView alloc]init];
-                    accessory.accessoryToolViewClickBlock=^(NSInteger index){
-                        [_tableView endEditing:YES];
-                        if (index==1) {
-                            NSLog(@"取消");
-                        }else{
-                            NSDateFormatter* fmt = [[NSDateFormatter alloc] init];
-                            fmt.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
-                            fmt.dateFormat = @"yyyy-MM-dd";
-                            NSString* dateString = [fmt stringFromDate:_datePickerView.date];
-                            _dateCell.content.text=dateString;
-                            _pet.strBirthday=dateString;
-                            NSLog(@"完成");
-                        }
-                    };
-                    cell.content.inputAccessoryView=accessory;
-                    _dateCell=cell;
-                    //cell.detailTextLabel.text=_pet.strBirthday;
-                }break;
-                case 3:
-                {
-                    cell.title.text=@"宠物性别:";
-                    cell.content.inputView=_sexPickerView;
-                    AccessoryToolView *accessory=[[AccessoryToolView alloc]init];
-                    accessory.accessoryToolViewClickBlock=^(NSInteger index){
-                        [_tableView endEditing:YES];
-                        if (index==1) {
-                            NSLog(@"取消");
-                        }else{
-                            NSInteger row=[_sexPickerView selectedRowInComponent:0];
-                            _sexCell.content.text=[_sexList objectAtIndex:row];
-                            NSLog(@"完成");
-                        }
-                    };
-                    cell.content.inputAccessoryView=accessory;
-                    
-                    _sexCell=cell;
-                    //cell.detailTextLabel.text=[NSString stringWithFormat:@"%i",_pet.nSex];
-                    ;
-                }break;
-                case 4:
-                {
-                    cell.title.text=@"宠物描述:";
-                    //cell.detailTextLabel.text=_pet.strDescription;
-                }break;
-                    
-                default:
-                    break;
-            }
-            
-        }break;
-        case PetType_EDIT:{
+        case PetType_TA:{}
+        case PetType_EDIT:PetType_TA:{
             switch (indexPath.row) {
                 case 0:
                 {
@@ -457,6 +391,89 @@
                 {
                     cell.title.text=@"宠物描述:";
                     cell.content.text=_pet.strDescription;
+                }break;
+                    
+                default:
+                    break;
+            }
+            
+        }break;
+        case PetType_ADD:{
+            switch (indexPath.row) {
+                case 0:
+                {
+                    cell.title.text=@"宠物昵称:";
+                    //cell.detailTextLabel.text=_pet.strName;
+                }break;
+                case 1:
+                {
+                    cell.title.text=@"宠物类型:";
+                    cell.content.inputView=_sortPickerView;
+                    AccessoryToolView *accessory=[[AccessoryToolView alloc]init];
+                    accessory.accessoryToolViewClickBlock=^(NSInteger index){
+                        [_tableView endEditing:YES];
+                        if (index==1) {
+                            NSLog(@"取消");
+                        }else{
+                            NSInteger row=[_sortPickerView selectedRowInComponent:0];
+                            PetSortModel *model=[self.sortList objectAtIndex:row];
+                            _sortCell.content.text=model.name;
+                            _pet.nSortId=[model.iD intValue];
+                            NSLog(@"完成");
+                        }
+                    };
+                    cell.content.inputAccessoryView=accessory;
+                    _sortCell=cell;
+                    //cell.detailTextLabel.text=[NSString stringWithFormat:@"%i",_pet.nSortId];
+                }break;
+                case 2:
+                {
+                    cell.title.text=@"宠物年龄:";
+                    cell.content.inputView=_datePickerView;
+                    AccessoryToolView *accessory=[[AccessoryToolView alloc]init];
+                    accessory.accessoryToolViewClickBlock=^(NSInteger index){
+                        [_tableView endEditing:YES];
+                        if (index==1) {
+                            NSLog(@"取消");
+                        }else{
+                            NSDateFormatter* fmt = [[NSDateFormatter alloc] init];
+                            fmt.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+                            fmt.dateFormat = @"yyyy-MM-dd";
+                            NSString* dateString = [fmt stringFromDate:_datePickerView.date];
+                            _dateCell.content.text=dateString;
+                            _pet.strBirthday=dateString;
+                            NSLog(@"完成");
+                        }
+                    };
+                    cell.content.inputAccessoryView=accessory;
+                    _dateCell=cell;
+                    //cell.detailTextLabel.text=_pet.strBirthday;
+                }break;
+                case 3:
+                {
+                    cell.title.text=@"宠物性别:";
+                    cell.content.inputView=_sexPickerView;
+                    AccessoryToolView *accessory=[[AccessoryToolView alloc]init];
+                    accessory.accessoryToolViewClickBlock=^(NSInteger index){
+                        [_tableView endEditing:YES];
+                        if (index==1) {
+                            NSLog(@"取消");
+                        }else{
+                            NSInteger row=[_sexPickerView selectedRowInComponent:0];
+                            _sexCell.content.text=[_sexList objectAtIndex:row];
+                            NSLog(@"完成");
+                        }
+                    };
+                    cell.content.inputAccessoryView=accessory;
+                    
+                    _sexCell=cell;
+                    //cell.detailTextLabel.text=[NSString stringWithFormat:@"%i",_pet.nSex];
+                    ;
+                }break;
+                case 4:
+                {
+                    cell.title.text=@"宠物描述:";
+                    //cell.detailTextLabel.text=_pet.strDescription;
                 }break;
                     
                 default:

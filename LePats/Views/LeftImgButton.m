@@ -20,7 +20,7 @@
 */
 
 -(CGRect)imageRectForContentRect:(CGRect)contentRect{
-    return CGRectMake(5, 5, 20, 20);
+    return CGRectMake(5, 2.5, 20, 20);
 }
 
 -(CGRect)titleRectForContentRect:(CGRect)contentRect{

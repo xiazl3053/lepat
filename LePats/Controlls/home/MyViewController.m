@@ -114,11 +114,11 @@
     detail.layer.borderColor=[UIColor grayColor].CGColor;
     detail.layer.borderWidth=0.5;
     
-    UIImageView *head=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, KMainScreenSize.width, 100)];
-    head.image=[UIImage imageNamed:@"headView_bg"];
+    UIImageView *head=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, KMainScreenSize.width, 220)];
+    head.image=[UIImage imageNamed:@"they_bgView"];
     [detail addSubview:head];
     
-    UIImageView *icon=[[UIImageView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-80)*.5, head.bottom-60, 80, 80)];
+    UIImageView *icon=[[UIImageView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-80)*.5, 30, 80, 80)];
     icon.layer.cornerRadius= icon.bounds.size.width/2;
     icon.layer.masksToBounds=YES;
     icon.userInteractionEnabled=YES;
@@ -133,22 +133,11 @@
     UILabel *nick=[[UILabel alloc]initWithFrame:CGRectMake(0, icon.bottom+10, KMainScreenSize.width, 20)];
     nick.text=[UserInfo sharedUserInfo].strNickName;
     nick.textAlignment=NSTextAlignmentCenter;
+    nick.textColor=[UIColor whiteColor];
     [detail addSubview:nick];
     _nickName=nick;
     
-    UILabel *sign=[[UILabel alloc]initWithFrame:CGRectMake(0, nick.bottom+5, KMainScreenSize.width, 20)];
-    sign.text=[UserInfo sharedUserInfo].strSignature;
-    sign.textColor=[UIColor grayColor];
-    sign.font=[UIFont systemFontOfSize:14];
-    if ([[UserInfo sharedUserInfo].strSignature isEqualToString:@""]) {
-        sign.text=@"这个人很懒,什么都没有留下.";
-    }
-    sign.textAlignment=NSTextAlignmentCenter;
-    [detail addSubview:sign];
-    _singture=sign;
-    
-    
-    UIView *status=[[UIView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-200)*.5,_singture.bottom, 200, 40)];
+    UIView *status=[[UIView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-200)*.5,_nickName.bottom+5, 200, 40)];
     
     UserOperationModel *model=[[UserOperationModel alloc]init];
     model.title=@"关注";
@@ -182,6 +171,17 @@
     }
     _statusView=status;
     [detail addSubview:status];
+    
+    UILabel *sign=[[UILabel alloc]initWithFrame:CGRectMake(0, _statusView.bottom+5, KMainScreenSize.width, 20)];
+    sign.text=[UserInfo sharedUserInfo].strSignature;
+    sign.textColor=[UIColor whiteColor];
+    sign.font=[UIFont systemFontOfSize:14];
+    if ([[UserInfo sharedUserInfo].strSignature isEqualToString:@""]) {
+        sign.text=@"这个人很懒,什么都没有留下.";
+    }
+    sign.textAlignment=NSTextAlignmentCenter;
+    [detail addSubview:sign];
+    _singture=sign;
     
     
 //    UIView *operation=[[UIView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-160)*.5,_statusView.bottom, 160, 40)];

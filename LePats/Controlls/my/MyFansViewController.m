@@ -76,8 +76,6 @@
         [weakSelf loadMoreData];
     }];
     
-    
-
 
     [self.view addSubview:self.tableView];
     

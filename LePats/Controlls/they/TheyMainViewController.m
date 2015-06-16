@@ -24,6 +24,9 @@
 #import "MyButton.h"
 #import "FocusService.h"
 #import "RelationService.h"
+#import "TwoTitleButton.h"
+#import "PetImageView.h"
+#import "PetDetailViewController.h"
 
 @interface TheyMainViewController()
 {
@@ -64,7 +67,7 @@
         if (error) {
             
         }else{
-         [_focusBtn setTitle:[weakSelf isFocusFromFocusCode:[UserInfo sharedUserInfo].nScore] forState:UIControlStateNormal];
+         [_focusBtn setTitle:[weakSelf isFocusFromFocusCode:code] forState:UIControlStateNormal];
         }
     };
     [service requestOperId:_nearInfo.strUserId];
@@ -113,14 +116,27 @@
         DLog(@"length:%@",lepet.strIconUrl);
         if(![lepet.strIconUrl isEqualToString:@""])
         {
-            UIImageView *imgView = [[UIImageView alloc] initWithFrame:Rect((x%4)*(width+5)+5, y/4*(width+5)+5,width,width)];
+            PetImageView *imgView = [[PetImageView alloc] initWithFrame:Rect((x%4)*(width+5)+5, y/4*(width+5)+5,width,width)];
             [scrollView addSubview:imgView];
+            imgView.petInfo=lepet;
             [imgView sd_setImageWithURL:[[NSURL alloc] initWithString:lepet.strIconUrl] placeholderImage:nil];
+            imgView.userInteractionEnabled=YES;
+            UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(gotoPetDetail:)];
+            [imgView addGestureRecognizer:tap];
             x++;
             y++;
         }
     }
     [scrollView setContentSize:CGSizeMake(kScreenSourchWidth,(y/4+1)*(width+5))];
+}
+
+-(void)gotoPetDetail:(UITapGestureRecognizer *)gesTure{
+    PetImageView *image=( PetImageView *)gesTure.view;
+    PetDetailViewController *pet=[[PetDetailViewController alloc]init];
+    pet.type=PetType_TA;
+    pet.nPetId=image.petInfo.nPetId;
+    [self.navigationController pushViewController:pet animated:YES];
+    
 }
 
 -(void)requestTUser
@@ -148,11 +164,11 @@
 
 -(void)initImgView
 {
-    imgBack=[[UIImageView alloc]initWithFrame:Rect(0, [self barSize].height, KMainScreenSize.width, 120)];
-    imgBack.image=[UIImage imageNamed:@"headView_bg"];
+    imgBack=[[UIImageView alloc]initWithFrame:Rect(0, [self barSize].height, KMainScreenSize.width, 260)];
+    imgBack.image=[UIImage imageNamed:@"they_bgView"];
     [self.view addSubview:imgBack];
    
-    imgHead=[ [UIImageView alloc] initWithFrame:Rect((KMainScreenSize.width-80)*.5, imgBack.y+60, 80, 80)];
+    imgHead=[ [UIImageView alloc] initWithFrame:Rect((KMainScreenSize.width-80)*.5, imgBack.y+30, 80, 80)];
     //icon.backgroundColor=[UIColor redColor];
     imgHead.layer.cornerRadius= imgHead.bounds.size.width/2;
     imgHead.layer.masksToBounds=YES;
@@ -281,28 +297,17 @@
 
 -(void)initDetailView
 {
-    detail=[[UIView alloc]initWithFrame:CGRectMake(0, imgHead.y+imgHead.height+20, KMainScreenSize.width, 140)];
+    detail=[[UIView alloc]initWithFrame:CGRectMake(0, imgHead.bottom+5, KMainScreenSize.width, 120)];
     
     UILabel *nick=[[UILabel alloc]initWithFrame:CGRectMake(0, 5, KMainScreenSize.width, 15)];
     nick.text = _nearInfo.strName;
+    nick.textColor=[UIColor whiteColor];
     nick.textAlignment=NSTextAlignmentCenter;
-    [detail addSubview:nick];
     [nick setFont:XCFONT(14)];
-    
-    UILabel *sign=[[UILabel alloc]initWithFrame:CGRectMake(0, nick.bottom+5, KMainScreenSize.width, 15)];
-    sign.text=[UserInfo sharedUserInfo].strSignature;
-    sign.textColor=[UIColor grayColor];
-    sign.font=[UIFont systemFontOfSize:14];
-    [sign setFont:XCFONT(12)];
-    if ([[UserInfo sharedUserInfo].strSignature isEqualToString:@""])
-    {
-        sign.text=@"这个人很懒,什么都没有留下.";
-    }
-    sign.textAlignment=NSTextAlignmentCenter;
-    [detail addSubview:sign];
+    [detail addSubview:nick];
     
     
-    UIView *status=[[UIView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-200)*.5,sign.bottom, 200, 40)];
+    UIView *status=[[UIView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-160)*.5,nick.bottom, 160, 30)];
     
     UserOperationModel *model=[[UserOperationModel alloc]init];
     model.title=@"关注";
@@ -320,13 +325,15 @@
     
     for (int i=0; i<list.count; i++) {
         UserOperationModel *obj=[list objectAtIndex:i];
-        MyButton *aBtn=[[MyButton alloc]initWithFrame:CGRectMake(i*status.width/list.count, 0, status.width/list.count, status.height)];
-        [aBtn setValueWithUserOperationModel:obj];
+        TwoTitleButton *aBtn=[[TwoTitleButton alloc]initWithFrame:CGRectMake(i*(status.width/list.count), 0, status.width/list.count, status.height) title1:obj.title title2:[NSString stringWithFormat:@"%i",obj.number]];
+        aBtn.tag=obj.tag;
         [aBtn addTarget:self action:@selector(gotoOther:) forControlEvents:UIControlEventTouchUpInside];
         [status addSubview:aBtn];
     }
     _statusView=status;
     [detail addSubview:status];
+    
+    
     
 //    UILabel *focus=[[UILabel alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.20, sign.bottom+10, KMainScreenSize.width*.25, 20)];
 //    focus.text=[NSString stringWithFormat:@"%d",_nearInfo.nFocusNum];
@@ -357,15 +364,15 @@
 //    fansTitle.tag=200;
 //    [detail addSubview:fansTitle];
     
-    UIView *operation=[[UIView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-160)*.5,status.bottom, 160, 40)];
+    UIView *operation=[[UIView alloc]initWithFrame:CGRectMake((KMainScreenSize.width-160)*.5,status.bottom, 160, 30)];
     
-    LeftImgButton *focusBtn=[[LeftImgButton alloc]initWithFrame:CGRectMake(0, 10, operation.width*.5-10, 30)];
-    focusBtn.layer.borderColor=[UIColor grayColor].CGColor;
+    LeftImgButton *focusBtn=[[LeftImgButton alloc]initWithFrame:CGRectMake(0, 0, operation.width*.5-10, 25)];
+    focusBtn.layer.borderColor=[UIColor whiteColor].CGColor;
     focusBtn.layer.borderWidth=1;
     //focus.backgroundColor=[UIColor whiteColor];
     [focusBtn setTitleColor:UIColorFromRGB(0x24cdfd) forState:UIControlStateSelected];
     //[focus setBackgroundColor:UIColorFromRGB(0x646566)];
-    [focusBtn setTitleColor:UIColorFromRGB(0x24cdfd) forState:UIControlStateNormal];
+    [focusBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [focusBtn setImage:[UIImage imageNamed:@"my_focus"] forState:UIControlStateNormal];
     [focusBtn setTitle:[self isFocusFromFocusCode:_nearInfo.nRelation] forState:UIControlStateNormal];
     focusBtn.titleLabel.font=[UIFont systemFontOfSize:12];
@@ -374,13 +381,13 @@
     [focusBtn addTarget:self action:@selector(getFocus) forControlEvents:UIControlEventTouchUpInside];
     _focusBtn=focusBtn;
     
-    LeftImgButton *chat=[[LeftImgButton alloc]initWithFrame:CGRectMake(focusBtn.right+20, 10, operation.width*.5-10, 30)];
+    LeftImgButton *chat=[[LeftImgButton alloc]initWithFrame:CGRectMake(focusBtn.right+20, 0, operation.width*.5-10, 25)];
     //chat.backgroundColor=[UIColor redColor];
-    chat.layer.borderColor=[UIColor grayColor].CGColor;
+    chat.layer.borderColor=[UIColor whiteColor].CGColor;
     chat.layer.borderWidth=1;
     [chat setTitleColor:UIColorFromRGB(0x24cdfd) forState:UIControlStateSelected];
     [chat setImage:[UIImage imageNamed:@"my_chat"] forState:UIControlStateNormal];
-    [chat setTitleColor:UIColorFromRGB(0x24cdfd) forState:UIControlStateNormal];
+    [chat setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     //[chat setBackgroundColor:UIColorFromRGB(0x24cdfd)];
     [chat setTitle:@"私信" forState:UIControlStateNormal];
     chat.titleLabel.font=[UIFont systemFontOfSize:12];
@@ -389,6 +396,17 @@
     [chat addTarget:self action:@selector(getChat) forControlEvents:UIControlEventTouchUpInside];
     
     [detail addSubview:operation];
+    
+    UILabel *sign=[[UILabel alloc]initWithFrame:CGRectMake(0, operation.bottom+5, KMainScreenSize.width, 25)];
+    sign.text=[UserInfo sharedUserInfo].strSignature;
+    sign.textColor=[UIColor whiteColor];
+    [sign setFont:XCFONT(14)];
+    if ([[UserInfo sharedUserInfo].strSignature isEqualToString:@""])
+    {
+        sign.text=@"这个人很懒,什么都没有留下.";
+    }
+    sign.textAlignment=NSTextAlignmentCenter;
+    [detail addSubview:sign];
 
     
 //    UILabel *heart=[[UILabel alloc]initWithFrame:CGRectMake(KMainScreenSize.width*.5, sign.bottom+10, KMainScreenSize.width*.25, 20)];

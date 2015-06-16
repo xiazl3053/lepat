@@ -29,12 +29,14 @@
 -(void)initViews{
     UILabel *number=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.width, self.height-20)];
     number.textAlignment=NSTextAlignmentCenter;
+    number.textColor=[UIColor whiteColor];
     number.font=[UIFont systemFontOfSize:14];
     [self addSubview:number];
     _number=number;
 
     UILabel *title=[[UILabel alloc]initWithFrame:CGRectMake(0, number.bottom, self.width, 20)];
     title.textAlignment=NSTextAlignmentCenter;
+    title.textColor=[UIColor whiteColor];
     title.font=[UIFont systemFontOfSize:14];
     [self addSubview:title];
     _title=title;

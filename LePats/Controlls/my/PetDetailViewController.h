@@ -11,6 +11,7 @@
 typedef enum : NSUInteger {
     PetType_ADD,
     PetType_EDIT,
+    PetType_TA,
 } PetType;
 
 @interface PetDetailViewController : BaseViewController
