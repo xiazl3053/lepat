@@ -28,7 +28,7 @@
         DLog(@"获取我的粉丝错误");
         if (self.myFansServiceBlock)
         {
-            self.myFansServiceBlock(nil,nil);
+            self.myFansServiceBlock(KLinkServiceErrorMsg,nil);
         }
         return ;
     }

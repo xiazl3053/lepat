@@ -35,7 +35,7 @@
         DLog(@"添加我的宠物错误");
         if (_addPetBlock)
         {
-            self.addPetBlock(nil);
+            self.addPetBlock(KLinkServiceErrorMsg);
         }
         return ;
     }

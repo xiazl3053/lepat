@@ -27,7 +27,7 @@
         DLog(@"获取我的礼品错误");
         if (self.giftServiceBlock)
         {
-            self.giftServiceBlock(nil,nil);
+            self.giftServiceBlock(KLinkServiceErrorMsg,nil);
         }
         return ;
     }

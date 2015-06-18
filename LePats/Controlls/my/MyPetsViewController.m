@@ -19,6 +19,7 @@
 
 @interface MyPetsViewController ()<UITableViewDataSource,UITableViewDelegate,MyPetTableViewCellDelegate>{
     UITableView *_tableView;
+    MyPetService *petService;
 }
 
 @property (nonatomic,strong) NSMutableArray *pets;
@@ -50,8 +51,8 @@
 {
     [ProgressHUD show:@"获取我的宠物"];
     __block MyPetsViewController *weakSelf = self;
-    MyPetService *service=[[MyPetService alloc]init];
-    service.myPetsBlock=^(NSString *error,NSArray *pets)
+    petService=[[MyPetService alloc]init];
+    petService.myPetsBlock=^(NSString *error,NSArray *pets)
     {
         
         [ProgressHUD dismiss];
@@ -69,7 +70,7 @@
         }
 
     };
-    [service requestPetInfo:0];
+    [petService requestPetInfo:0];
 }
 
 -(void)initData

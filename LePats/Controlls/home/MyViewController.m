@@ -17,6 +17,7 @@
 #import "MyButton.h"
 #import "UserOperationModel.h"
 #import "LeftImgButton.h"
+#import "Toast+UIView.h"
 
 @interface MyViewController ()<UITableViewDataSource,UITableViewDelegate>{
     UIImageView *_headView;
@@ -32,6 +33,7 @@
     UIView *_tableHeadView;
     UIView *_statusView;
     UITableView *_tableView;
+    MyInfoService *infoService;
 }
 
 @property (nonatomic,strong) NSArray *items;
@@ -70,34 +72,46 @@
 
 -(void)getUserInfo
 {
-    MyInfoService *service=[[MyInfoService alloc]init];
-    service.getMyInfoBlock=^(NSString *error){
-        
-        MyButton *focus=(MyButton *)[_statusView viewWithTag:100];
-        [focus setValueWithNumber:[UserInfo sharedUserInfo].strFocusNum];
-        
-        MyButton *fans=(MyButton *)[_statusView viewWithTag:200];
-        [fans setValueWithNumber:[UserInfo sharedUserInfo].strFansNum];
-        
-        MyButton *heart=(MyButton *)[_statusView viewWithTag:300];
-        [heart setValueWithNumber:[UserInfo sharedUserInfo].strFocusNum];
-        
-        MyButton *like=(MyButton *)[_statusView viewWithTag:400];
-        [like setValueWithNumber:[UserInfo sharedUserInfo].strFocusNum];
-        
-        _nickName.text=[UserInfo sharedUserInfo].strNickName;
-        
-        if ([[UserInfo sharedUserInfo].strSignature isEqualToString:@""]) {
-            _singture.text=@"这个人很懒,什么都没有留下.";
+    __weak typeof(self) weakSelf=self;
+    infoService=[[MyInfoService alloc]init];
+    infoService.getMyInfoBlock=^(NSString *error){
+        if (error) {
+            if([error intValue] == 50003)
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    LoginViewController *loginView = [[LoginViewController alloc] init];
+                    [[UIApplication sharedApplication].keyWindow setRootViewController:loginView];
+                });
+            }else{
+                [weakSelf.view makeToast:error];
+            }
         }else{
-            _singture.text=[UserInfo sharedUserInfo].strSignature;
+            MyButton *focus=(MyButton *)[_statusView viewWithTag:100];
+            [focus setValueWithNumber:[UserInfo sharedUserInfo].strFocusNum];
+            
+            MyButton *fans=(MyButton *)[_statusView viewWithTag:200];
+            [fans setValueWithNumber:[UserInfo sharedUserInfo].strFansNum];
+            
+            MyButton *heart=(MyButton *)[_statusView viewWithTag:300];
+            [heart setValueWithNumber:[UserInfo sharedUserInfo].strFocusNum];
+            
+            MyButton *like=(MyButton *)[_statusView viewWithTag:400];
+            [like setValueWithNumber:[UserInfo sharedUserInfo].strFocusNum];
+            
+            _nickName.text=[UserInfo sharedUserInfo].strNickName;
+            
+            if ([[UserInfo sharedUserInfo].strSignature isEqualToString:@""]) {
+                _singture.text=@"这个人很懒,什么都没有留下.";
+            }else{
+                _singture.text=[UserInfo sharedUserInfo].strSignature;
+            }
+            [_icon sd_setImageWithURL:[NSURL URLWithString:[UserInfo sharedUserInfo].strUserIcon] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
         }
-        [_icon sd_setImageWithURL:[NSURL URLWithString:[UserInfo sharedUserInfo].strUserIcon] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
     };
     if (self.nUserID==0) {
-        [service requestUserId:0];
+        [infoService requestUserId:0];
     }else{
-        [service requestUserId:self.nUserID];
+        [infoService requestUserId:self.nUserID];
     }
     
 }

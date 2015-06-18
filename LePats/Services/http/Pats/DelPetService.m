@@ -27,7 +27,7 @@
         DLog(@"获取我的宠物信息错误");
         if (_delPetBlock)
         {
-            _delPetBlock(nil);
+            _delPetBlock(KLinkServiceErrorMsg);
         }
         return ;
     }

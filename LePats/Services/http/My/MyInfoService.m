@@ -27,27 +27,26 @@
 
 -(void)reciveDic:(int *)nStatus dic:(NSDictionary *)dic
 {
-    if (*nStatus!=200)
-    {
-        DLog(@"获取我的信息错误");
-        if (_getMyInfoBlock)
-        {
-            self.getMyInfoBlock(nil);
-        }
-        return ;
-    }
-    DLog(@"dic:%@",dic);
-    if (self.getMyInfoBlock)
-    {
-        [[UserInfo sharedUserInfo] setLoginUser:[dic objectForKey:@"user"]];
-        if ([[dic objectForKey:KServiceResponseCode]intValue]==KServiceResponseSuccess)
-        {
-            UserInfo *user = [UserInfo sharedUserInfo];
-            [user setLoginUser:[dic objectForKey:@"user"]];
-            self.getMyInfoBlock(nil);
-        }else
-        {
-            self.getMyInfoBlock([dic objectForKey:KServiceResponseMsg]);
+    if (self.getMyInfoBlock) {
+        switch (*nStatus) {
+            case 200:{
+                [[UserInfo sharedUserInfo] setLoginUser:[dic objectForKey:@"user"]];
+                if ([[dic objectForKey:KServiceResponseCode]intValue]==KServiceResponseSuccess)
+                {
+                    UserInfo *user = [UserInfo sharedUserInfo];
+                    [user setLoginUser:[dic objectForKey:@"user"]];
+                    self.getMyInfoBlock(nil);
+                }else
+                {
+                    self.getMyInfoBlock([dic objectForKey:KServiceResponseMsg]);
+                }
+            }break;
+            case 0:{
+                self.getMyInfoBlock(KLinkServiceErrorMsg);
+            }break;
+                
+            default:
+                break;
         }
     }
 }

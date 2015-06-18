@@ -26,6 +26,9 @@
     UIImageView *_icon;
     UITableView *_tableView;
     UIDatePicker *_datePickerView;
+    MyInfoService *infoService;
+    EditMyInfoService *editInfoService;
+    HttpUploadManager *upload;
 }
 @property (nonatomic,strong) NSMutableArray *itemList;
 @end
@@ -54,14 +57,14 @@
 }
 
 -(void)getUserInfo{
-    MyInfoService *service=[[MyInfoService alloc]init];
+    infoService=[[MyInfoService alloc]init];
     __weak UIImageView *__icon = _icon;
     __weak UITableView *__tableView = _tableView;
-    service.getMyInfoBlock=^(NSString *error){
+    infoService.getMyInfoBlock=^(NSString *error){
         [__icon sd_setImageWithURL:[NSURL URLWithString:[UserInfo sharedUserInfo].strUserIcon] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
         [__tableView reloadData];
     };
-    [service requestUserId:0];
+    [infoService requestUserId:0];
 }
 
 -(void)initData{
@@ -231,6 +234,7 @@
     uDl.nLogin = 0;
     [LoginUserDB updateSaveInfo:uDl];
     [UserInfo sharedUserInfo].strToken=nil;
+    [UserInfo sharedUserInfo].strMobile=nil;
     
     [self.navigationController popViewControllerAnimated:YES];
     [[NSNotificationCenter defaultCenter]postNotificationName:KUserLogout object:nil];
@@ -345,15 +349,15 @@
 
 -(void)requestEditBrithDay{
     __block MyDetailViewController *__self = self;
-    EditMyInfoService *service=[[EditMyInfoService alloc]init];
-    service.editMyInfoBlock=^(NSString *error){
+    editInfoService=[[EditMyInfoService alloc]init];
+    editInfoService.editMyInfoBlock=^(NSString *error){
         if (error) {
             [__self.view makeToast:error];
         }else{
             [__self.view makeToast:@"更改出生年月成功"];
         }
     };
-    [service requestEditBrithday];
+    [editInfoService requestEditBrithday];
 }
 
 -(void)dataPickerValueChange:(UIDatePicker *)picker{
@@ -431,7 +435,7 @@
 
 -(void)updateImage:(UIImage *)img{
     [ProgressHUD show:@"正在上传头像..."];
-    HttpUploadManager *upload=[[HttpUploadManager alloc]init];
+    upload=[[HttpUploadManager alloc]init];
     upload.upDatePersonIconBlock=^(NSString *error){
         [ProgressHUD dismiss];
         if (error) {

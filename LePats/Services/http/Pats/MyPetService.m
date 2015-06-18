@@ -29,7 +29,7 @@
         DLog(@"获取我的宠物信息错误");
         if (self.myPetsBlock)
         {
-            self.myPetsBlock(nil,nil);
+            self.myPetsBlock(KLinkServiceErrorMsg,nil);
         }
         return ;
     }

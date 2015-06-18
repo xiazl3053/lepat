@@ -25,6 +25,7 @@
     if (*nStatus!=200)
     {
         DLog(@"getInfo.do");
+        self.relationBlock(KLinkServiceErrorMsg,-1);
         return ;
     }
     NSLog(@"%@",dic);

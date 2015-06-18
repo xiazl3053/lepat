@@ -22,6 +22,7 @@
     UIButton *_male;
     UIButton *_female;
     UIImage *_iconImg;
+    EditMyInfoService *editService;
 }
 
 @end
@@ -104,8 +105,8 @@
         return ;
     }
     __block EditMyInfoViewController *__self = self;
-    EditMyInfoService *service=[[EditMyInfoService alloc]init];
-    service.editMyInfoBlock=^(NSString *error){
+    editService=[[EditMyInfoService alloc]init];
+    editService.editMyInfoBlock=^(NSString *error){
         if (error) {
              [__self.view makeToast:error];
         }else{
@@ -116,13 +117,13 @@
             });
         }
     };
-    [service requestEditSingture];
+    [editService requestEditSingture];
 }
 
 -(void)requestEditBrithday{
     __block EditMyInfoViewController *__self = self;
-    EditMyInfoService *service=[[EditMyInfoService alloc]init];
-    service.editMyInfoBlock=^(NSString *error){
+    editService=[[EditMyInfoService alloc]init];
+    editService.editMyInfoBlock=^(NSString *error){
         if (error) {
             [__self.view makeToast:error];
         }else{
@@ -131,13 +132,13 @@
             });
         }
     };
-    [service requestEditBrithday];
+    [editService requestEditBrithday];
 }
 
 -(void)requestEditNickName{
     __block EditMyInfoViewController *__self = self;
-    EditMyInfoService *service=[[EditMyInfoService alloc]init];
-    service.editMyInfoBlock=^(NSString *error){
+   editService=[[EditMyInfoService alloc]init];
+    editService.editMyInfoBlock=^(NSString *error){
         if (error) {
              [__self.view makeToast:error];
         }else{
@@ -147,7 +148,7 @@
             });
         }
     };
-    [service requestEditNickName];
+    [editService requestEditNickName];
 }
 
 -(void)initContentView{

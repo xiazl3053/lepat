@@ -33,6 +33,8 @@
     PetSortModel *_selectSortModel;
     NSInteger _photoId;
     UIImageView *_imgView;
+    PetInfoService *petService;
+    PetInfoEditService *editPetservice;
 }
 
 @property (nonatomic,strong) NSArray *sortList;
@@ -81,11 +83,11 @@
 }
 
 -(void)queryPetInfo{
-    PetInfoService *pet=[[PetInfoService alloc]init];
+    petService=[[PetInfoService alloc]init];
     __weak PetDetailViewController *__self=self;
-    pet.getPetInfoBlock=^(NSString *error,LePetInfo *pet){
+    petService.getPetInfoBlock=^(NSString *error,LePetInfo *pet){
         if (error) {
-             [self.view makeToast:error];
+             [__self.view makeToast:error];
         }else{
             __self.pet=pet;
             if (self.type==PetType_ADD) {
@@ -100,14 +102,14 @@
     switch (self.type) {
         case PetType_ADD:
         {
-            [pet requestPetInfo:_pet.nPetId];
+            [petService requestPetInfo:_pet.nPetId];
         }break;
         case PetType_EDIT:{
-            [pet requestPetInfo:self.nPetId];
+            [petService requestPetInfo:self.nPetId];
         }break;
         case PetType_TA:{
             _tableView.userInteractionEnabled=NO;
-            [pet requestPetInfo:self.nPetId];
+            [petService requestPetInfo:self.nPetId];
         }break;
             
         default:
@@ -163,15 +165,15 @@
         __weak PetDetailViewController *__self = self;
         [self addRightEvent:^(id sender){
             if ([__self completa]) {
-                PetInfoEditService *service=[[PetInfoEditService alloc]init];
-                service.editPetBlock=^(NSString *error){
+                editPetservice=[[PetInfoEditService alloc]init];
+                editPetservice.editPetBlock=^(NSString *error){
                     if (error) {
                         [__self.view makeToast:error];
                     }else{
                         [__self.navigationController popViewControllerAnimated:YES];
                     }
                 };
-                [service requestEditPet:__self.pet];
+                [editPetservice requestEditPet:__self.pet];
             }else{
                 [__self.view makeToast:@"请输入完整的宠物信息"];
                 NSLog(@"信息错误");
@@ -230,14 +232,14 @@
     //    pet.nSortId=3;
     
     
-    
+    __weak typeof(self) weakSelf=self;
     if ([self completa]) {
         AddPetService *service=[[AddPetService alloc]init];
         service.addPetBlock=^(NSString *error){
             if (error) {
-                
+                [weakSelf.view makeToast:error];
             }else{
-                [self.navigationController popViewControllerAnimated:YES];
+                [weakSelf.navigationController popViewControllerAnimated:YES];
             }
         };
         [service requestAddPet:_pet];

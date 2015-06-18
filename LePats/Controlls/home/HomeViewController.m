@@ -23,9 +23,16 @@
 #import "SignInViewController.h"
 #import "GiftExchangeViewController.h"
 #import "FriendListViewController.h"
+#import "LoginUserDB.h"
+#import "UserModel.h"
+#import "MyInfoService.h"
+#import "Toast+UIView.h"
 
 
-@interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,HomeItemCollectionCellDelegate,HomeHeadReusableViewDelegate>
+@interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,HomeItemCollectionCellDelegate,HomeHeadReusableViewDelegate>{
+    PetSortService *petSortService;
+    MyInfoService *infoService;
+}
 @property (nonatomic,strong) NSMutableArray *itemList;
 
 @end
@@ -101,6 +108,30 @@
     [self initTestData];
     //[self getPetSort];
     [self initRigisterNotifcaion];
+    [self initUserLogin];
+}
+
+
+-(void)initUserLogin{
+    __weak typeof(self) weakSelf=self;
+    UserModel *user = [LoginUserDB querySaveInfo];
+    if (user.nLogin)
+    {
+        [UserInfo sharedUserInfo].strToken = user.strToken;
+        [UserInfo sharedUserInfo].strUserId = user.strUser;
+        [UserInfo sharedUserInfo].strPassword = user.strPwd;
+        
+        infoService=[[MyInfoService alloc]init];
+        infoService.getMyInfoBlock=^(NSString *error){
+            DLog(@"已接收到数据");
+            if (error) {
+                [weakSelf.view makeToast:error];
+            }else{
+                 [[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_SUCESS_VC object:nil];
+            }
+        };
+        [infoService requestUserId:0];
+    }
 }
 
 -(void)initRigisterNotifcaion
@@ -110,11 +141,11 @@
 
 -(void)getPetSort
 {
-    PetSortService *service=[[PetSortService alloc]init];
-    service.getPetSortBlock=^(NSString *error,NSArray *data){
+    petSortService=[[PetSortService alloc]init];
+    petSortService.getPetSortBlock=^(NSString *error,NSArray *data){
         [[PetSort sharedPetSort] setPetListArr:data];
     };
-    [service requestPetSort];
+    [petSortService requestPetSort];
 }
 
 
@@ -299,6 +330,13 @@
 }
 
 -(void)gotoViewControllerWithTag:(NSInteger)tag{
+    if([UserInfo sharedUserInfo].strMobile ==nil)
+    {
+        LoginViewController *loginView = [[LoginViewController alloc] init];
+        loginView.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:loginView animated:YES];
+        return ;
+    }
     switch (tag) {
         case 101:
         {

@@ -31,6 +31,7 @@
 
 @interface AppDelegate ()<UITabBarControllerDelegate>{
     WWSideslipViewController *_slide;
+    MyInfoService *infoService;
 }
 
 @end
@@ -45,31 +46,23 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [self initRegitster];
+    [self initMainVC];
+   // [self initUserLogin];
+    [self initBaiduMAP];
+    return YES;
+}
+
+-(void)initRegitster{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLoginView) name:MESSAGE_SHOW_LOGIN_VC object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestInfo) name:MESSAGE_LOGIN_SUC_VC object:nil];
+}
+
+-(void)initMainVC{
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLoginView) name:MESSAGE_SHOW_LOGIN_VC object:nil];
-    UserModel *user = [LoginUserDB querySaveInfo];
-    if (user.nLogin)
-    {
-        [UserInfo sharedUserInfo].strToken = user.strToken;
-        [UserInfo sharedUserInfo].strUserId = user.strUser;
-        [UserInfo sharedUserInfo].strPassword = user.strPwd;
-        
-        MyInfoService *service=[[MyInfoService alloc]init];
-        service.getMyInfoBlock=^(NSString *error){
-            DLog(@"已接收到数据");
-            [[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_SUCESS_VC object:nil];
-//            if([error intValue] == 50003)
-//            {
-//                dispatch_async(dispatch_get_main_queue(), ^{
-//                    LoginViewController *loginView = [[LoginViewController alloc] init];
-//                    [[UIApplication sharedApplication].keyWindow setRootViewController:loginView];
-//                });
-//            }
-        };
-        [service requestUserId:0];
-    }
     UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     MainViewController *main = [story instantiateViewControllerWithIdentifier:@"MainViewController"];
     main.delegate=self;
@@ -85,25 +78,25 @@
     
     //点击视图是是否恢复位置
     slide.sideslipTapGes.enabled = YES;
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestInfo) name:MESSAGE_LOGIN_SUC_VC object:nil];
-    
+    [self.window setRootViewController:slide];
+    [self.window makeKeyAndVisible];
+}
+
+
+-(void)initBaiduMAP{
     bmkManager = [[BMKMapManager alloc] init];
     BOOL ret = [bmkManager start:@"ibGcUE1K7Vg7QksSjpxLRprl" generalDelegate:self];
     if (!ret)
     {
         NSLog(@"manager start failed!");
     }
-    [self.window setRootViewController:slide];
-    [self.window makeKeyAndVisible];
-    return YES;
 }
 
 -(BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
 {
     
     NSLog(@"%s",__FUNCTION__);
-    if ([UserInfo sharedUserInfo].strToken) {
+    if ([UserInfo sharedUserInfo].strMobile) {
         return YES;
     }else
     {

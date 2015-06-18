@@ -33,7 +33,7 @@
         DLog(@"编辑我的宠物错误");
         if (self.editPetBlock)
         {
-            self.editPetBlock(nil);
+            self.editPetBlock(KLinkServiceErrorMsg);
         }
         return ;
     }

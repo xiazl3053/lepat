@@ -25,6 +25,7 @@
     UIButton *_login;
     UITableView *tableView;
     UILabel *_nickName;
+    MyInfoService *infoService;
 }
 
 @property (nonatomic,strong) NSMutableArray *itemList;
@@ -69,12 +70,14 @@
 
 -(void)getLoginInfo
 {
-    MyInfoService *service=[[MyInfoService alloc]init];
+    if (infoService==nil) {
+      infoService=[[MyInfoService alloc]init];
+    }
     __weak UIImageView *__imgView = _imgView;
     __weak UIButton *__login = _login;
     __weak UILabel *__nickName = _nickName;
     __weak UITableView *__tableView = tableView;
-    service.getMyInfoBlock=^(NSString *error)
+    infoService.getMyInfoBlock=^(NSString *error)
     {
         if (!error)
         {
@@ -97,7 +100,7 @@
             
         }
     };
-    [service requestUserId:0];
+    [infoService requestUserId:0];
 }
 
 
@@ -110,8 +113,8 @@
 
 -(void)getPersonInfo
 {
-    MyInfoService *service=[[MyInfoService alloc]init];
-    service.getMyInfoBlock=^(NSString *error){
+    infoService=[[MyInfoService alloc]init];
+    infoService.getMyInfoBlock=^(NSString *error){
         if (!error)
         {
             [_imgView sd_setImageWithURL:[NSURL URLWithString:[UserInfo sharedUserInfo].strUserIcon] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
@@ -126,7 +129,7 @@
         
         }
     };
-    [service requestUserId:0];
+    [infoService requestUserId:0];
 }
 
 -(void)initParams{
@@ -233,7 +236,7 @@
     [my addSubview:login];
     
     UILabel *title=[[UILabel alloc]initWithFrame:CGRectMake((200-100)*.5, icon.bottom+5, 100, 25)];
-    if ([UserInfo sharedUserInfo].strToken)
+    if ([UserInfo sharedUserInfo].strMobile)
     {
         login.hidden=YES;
         title.text=[UserInfo sharedUserInfo].strNickName;
@@ -279,7 +282,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if ([UserInfo sharedUserInfo].strToken) {
+    if ([UserInfo sharedUserInfo].strMobile) {
         HomeItemModel *model=[self.itemList objectAtIndex:indexPath.row];
         [[NSNotificationCenter defaultCenter]postNotificationName:KShowMainViewController object:model];
     }else{

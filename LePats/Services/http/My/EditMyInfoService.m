@@ -70,7 +70,7 @@
         DLog(@"更改我的信息错误");
         if (_editMyInfoBlock)
         {
-            _editMyInfoBlock(nil);
+            _editMyInfoBlock(KLinkServiceErrorMsg);
         }
         return ;
     }

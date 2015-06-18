@@ -18,6 +18,7 @@
 
 @interface MyFocusViewController ()<UITableViewDataSource,UITableViewDelegate,FriendViewDelegate>{
     NSArray *_focusList;
+    MyFocusService *myFocusService;
     FocusService *focus;
 }
 @property (nonatomic,strong) UITableView *tableView;
@@ -86,9 +87,8 @@
 
 -(void)loadNewData{
     __weak typeof(self) weakSelf = self;
-    MyFocusService *service=[[MyFocusService alloc]init];
-    int userID=[[UserInfo sharedUserInfo].strUserId intValue];
-    service.focusServiceBlock=^(NSString *error,NSArray *data){
+    myFocusService=[[MyFocusService alloc]init];
+    myFocusService.focusServiceBlock=^(NSString *error,NSArray *data){
         [weakSelf.tableView.header endRefreshing];
         [weakSelf.tableView.footer endRefreshing];
         if (error) {
@@ -98,7 +98,7 @@
             [weakSelf.tableView reloadData];
         }
     };
-    [service requestUserId:self.nUserId];
+    [myFocusService requestUserId:self.nUserId];
     
 }
 

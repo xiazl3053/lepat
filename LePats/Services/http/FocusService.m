@@ -23,6 +23,7 @@
 {
     if (*nStatus != 200)
     {
+        _httpFocus(0,KLinkServiceErrorMsg);
         return ;
     }
     DLog(@"dict:%@",dict);

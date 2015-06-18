@@ -45,6 +45,8 @@
     UIView *_line;
     UIView *_statusView;
     LeftImgButton *_focusBtn;
+    RelationService *relationService;
+    FocusService *focus;
 }
 @property (nonatomic,strong) NSMutableArray *aryPets;
 @end
@@ -62,15 +64,17 @@
 
 -(void)requestRelation{
     __weak typeof(self) weakSelf =self;
-    RelationService *service=[[RelationService alloc]init];
-    service.relationBlock=^(NSString *error,NSInteger code){
+    if (relationService==nil) {
+        relationService=[[RelationService alloc]init];
+    }
+    relationService.relationBlock=^(NSString *error,NSInteger code){
         if (error) {
-            
+           // [weakSelf.view makeToast:error];
         }else{
-         [_focusBtn setTitle:[weakSelf isFocusFromFocusCode:code] forState:UIControlStateNormal];
+            [_focusBtn setTitle:[weakSelf isFocusFromFocusCode:code] forState:UIControlStateNormal];
         }
     };
-    [service requestOperId:_nearInfo.strUserId];
+    [relationService requestOperId:_nearInfo.strUserId];
 }
 
 -(void)requestTheyInfo
@@ -475,7 +479,7 @@
 -(void)getFocus{
     
     __weak typeof(self) weakSelf=self;
-   FocusService *focus = [[FocusService alloc] init];
+   focus = [[FocusService alloc] init];
     
     focus.httpFocus = ^(int nStatus,NSString *strMsg)
     {
@@ -485,7 +489,7 @@
         }
         else
         {
-            
+            [weakSelf.view makeToast:strMsg];
         }
     };
     [focus requestFocus:_nearInfo.strUserId];

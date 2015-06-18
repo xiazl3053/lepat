@@ -26,7 +26,7 @@
         DLog(@"获取我的宠物信息错误");
         if (self.getPetInfoBlock)
         {
-            self.getPetInfoBlock(nil,nil);
+            self.getPetInfoBlock(KLinkServiceErrorMsg,nil);
         }
         return ;
     }

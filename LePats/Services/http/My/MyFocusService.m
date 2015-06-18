@@ -29,7 +29,7 @@
         DLog(@"获取我的关注错误");
         if (self.focusServiceBlock)
         {
-            self.focusServiceBlock(nil,nil);
+            self.focusServiceBlock(KLinkServiceErrorMsg,nil);
         }
         return ;
     }
