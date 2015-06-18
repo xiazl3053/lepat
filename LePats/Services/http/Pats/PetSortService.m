@@ -31,7 +31,7 @@
         }
         return ;
     }
-    DLog(@"dic:%@",dic);
+   // DLog(@"dic:%@",dic);
     if (self.getPetSortBlock)
     {
         if ([[dic objectForKey:KServiceResponseCode]intValue]==KServiceResponseSuccess)

@@ -35,6 +35,14 @@
     [self sendRequest:strUrl];
 }
 
+-(void)requestEditIsOpen
+{
+    UserInfo *user = [UserInfo sharedUserInfo];
+    NSString *strUrl = [NSString stringWithFormat:@"%@pets/user/setInfo.do?isopen=%i&userid=%@&token=%@%@",
+                        LEPAT_HTTP_HOST,user.nIsOpen,user.strUserId,user.strToken,LEPAT_VERSION_INFO];
+    [self sendRequest:strUrl];
+}
+
 -(void)requestEditNickName
 {
     UserInfo *user = [UserInfo sharedUserInfo];

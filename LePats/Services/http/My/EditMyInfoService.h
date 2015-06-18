@@ -18,5 +18,6 @@ typedef void(^EditMyInfoBlock)(NSString *error);
 -(void)requestEditPasssword;
 -(void)requestEditSingture;
 -(void)requestEditBrithday;
+-(void)requestEditIsOpen;
 
 @end

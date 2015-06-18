@@ -120,7 +120,7 @@
     [dic7 setValue:user.strSignature forKey:@"content"];
     
     NSMutableDictionary *dic8=[NSMutableDictionary dictionary];
-    [dic8 setValue:@"更换背景" forKey:@"title"];
+    [dic8 setValue:@"共享地理位置" forKey:@"title"];
     [dic8 setValue:@" " forKey:@"content"];
     
     NSMutableArray *section1=[NSMutableArray array];
@@ -175,7 +175,8 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *identifer=@"MyDetailCell";
-    MyDetailTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:identifer];
+    MyDetailTableViewCell *cell=nil;
+    //[tableView dequeueReusableCellWithIdentifier:identifer];
     if (!cell) {
         cell=[[MyDetailTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
     }
@@ -188,7 +189,7 @@
             _icon=icon;
             cell.content.hidden=YES;
             cell.indicate.hidden=YES;
-            cell.title.frame=CGRectMake(30, 10, 200, 44);
+            cell.title.frame=CGRectMake(10, 10, 200, 44);
             [cell addSubview:icon];
         }
         
@@ -197,6 +198,16 @@
         }
         
         if (indexPath.row==1) {
+            cell.indicate.hidden=YES;
+        }
+    }
+    
+    if (indexPath.section==2) {
+        if (indexPath.row==1) {
+            UISwitch *swit=[[UISwitch alloc]initWithFrame:CGRectMake(KMainScreenSize.width-60, 10, 40, 24)];
+            [cell addSubview:swit];
+            swit.on=[UserInfo sharedUserInfo].nIsOpen;
+            [swit addTarget:self action:@selector(switchValueChange:) forControlEvents:UIControlEventValueChanged];
             cell.indicate.hidden=YES;
         }
     }
@@ -215,7 +226,14 @@
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, cell.bounds.size.width);
     }
     [cell setValueWithNSDictionay:dic];
+    
+
     return cell;
+}
+
+-(void)switchValueChange:(UISwitch *)swith{
+    [UserInfo sharedUserInfo].nIsOpen=swith.on;
+    [self requestEditIsOpen];
 }
 
 -(void)logoutView
@@ -347,9 +365,27 @@
     }
 }
 
+-(void)requestEditIsOpen{
+    __block MyDetailViewController *__self = self;
+    if (editInfoService==nil) {
+        editInfoService=[[EditMyInfoService alloc]init];
+    }
+    editInfoService.editMyInfoBlock=^(NSString *error){
+        if (error) {
+            [__self.view makeToast:error];
+        }else{
+            
+           // [__self.view makeToast:@"更改出生年月成功"];
+        }
+    };
+    [editInfoService requestEditIsOpen];
+}
+
 -(void)requestEditBrithDay{
     __block MyDetailViewController *__self = self;
-    editInfoService=[[EditMyInfoService alloc]init];
+    if (editInfoService==nil) {
+        editInfoService=[[EditMyInfoService alloc]init];
+    }
     editInfoService.editMyInfoBlock=^(NSString *error){
         if (error) {
             [__self.view makeToast:error];

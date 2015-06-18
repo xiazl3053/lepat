@@ -25,7 +25,7 @@
 
 -(void)initViews
 {
-    self.title=[[UILabel alloc]initWithFrame:CGRectMake(30, (self.frame.size.height-44)*.5, 80, 44)];
+    self.title=[[UILabel alloc]initWithFrame:CGRectMake(10, (self.frame.size.height-44)*.5, 90, 44)];
     _title.textColor=[UIColor blackColor];
     _title.font=[UIFont systemFontOfSize:14];
     [self addSubview:_title];

@@ -26,6 +26,7 @@ DEFINE_SINGLETON_FOR_CLASS(UserInfo);
     _strFocusNum=[dicInfo objectForKey:@"focusNum"];
     _strUserIcon=[dicInfo objectForKey:@"userIcon"];
     _nScore=[[dicInfo objectForKey:@"points"]intValue];
+    _nIsOpen=[[dicInfo objectForKey:@"isopen"]intValue];
 }
 
 -(double)getDistan:(CLLocationCoordinate2D)dStart end:(CLLocationCoordinate2D)dEnd

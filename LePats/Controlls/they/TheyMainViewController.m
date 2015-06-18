@@ -177,7 +177,7 @@
     imgHead.layer.cornerRadius= imgHead.bounds.size.width/2;
     imgHead.layer.masksToBounds=YES;
     imgHead.userInteractionEnabled=YES;
-    [imgHead sd_setImageWithURL:[[NSURL alloc] initWithString:_nearInfo.strFile] placeholderImage:[UIImage imageNamed:@""]];
+    [imgHead sd_setImageWithURL:[[NSURL alloc] initWithString:_nearInfo.strFile] placeholderImage:[UIImage imageNamed:@"left_icon_noraml"]];
     
     UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(theyDetail)];
     [imgHead addGestureRecognizer:tap];

@@ -26,6 +26,7 @@ DEFINE_SINGLETON_FOR_HEADER(UserInfo);
 @property (nonatomic,copy) NSString *strFocusNum;
 @property (nonatomic,copy) NSString *strFansNum;
 @property (nonatomic,strong) NSString *strSignature;
+@property (nonatomic,assign) int nIsOpen;
 
 
 -(void)setLoginUser:(NSDictionary *)strInfo;
